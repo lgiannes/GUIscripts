@@ -1,0 +1,1 @@
+home/neutrino_ubuntu/Root_SW_FCTEST/sFGD_unpacking/bin /Users/neutrino/Desktop/FPGA/working_folder/UT90_analog_time/root_exe/daq_test_root_exe

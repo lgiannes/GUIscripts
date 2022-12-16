@@ -1,4 +1,4 @@
-byte FEB_BoardID = 16;
+byte FEB_BoardID = 0;
 
 void ActivateGPIO(){
     // Speak with GPIO and select GPIO devices:

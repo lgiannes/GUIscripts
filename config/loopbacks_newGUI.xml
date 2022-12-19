@@ -4921,14 +4921,17 @@
       FixedMuxMppcChannel="False"
       FixedMuxHkChannel="0" />
     <Housekeeping-DPRAM-V1>
-      <Group0 />
-      <Group1 />
-      <Group2 />
-      <Group3 />
-      <Group4 />
-      <Group5 />
-      <Group6 />
-      <Group7 />
+      <Group>
+        <Group0 />
+        <Group1 />
+        <Group2 />
+        <Group3 />
+        <Group4 />
+        <Group5 />
+        <Group6 />
+        <Group7 />
+      </Group>
+      <FEB-HK />
     </Housekeeping-DPRAM-V1>
   </FPGA-HV-HK>
   <FPGA-MISC>
@@ -5017,38 +5020,17 @@
     <GPIO-ADC
       InitOrStart="False" />
     <GPIO-ADC-DPRAM>
-      <Channels0
-        Value="98432" />
-      <Channels1
-        Value="230018" />
-      <Channels2
-        Value="99460" />
-      <Channels3
-        Value="231046" />
-      <Channels4
-        Value="100488" />
-      <Channels5
-        Value="232074" />
-      <Channels6
-        Value="101516" />
-      <Channels7
-        Value="233102" />
-      <Channels8
-        Value="102544" />
-      <Channels9
-        Value="234130" />
-      <Channels10
-        Value="103572" />
-      <Channels11
-        Value="235158" />
-      <Channels12
-        Value="104600" />
-      <Channels13
-        Value="236186" />
-      <Channels14
-        Value="105628" />
-      <Channels15
-        Value="237214" />
+      <HV-Channels>
+        <CH0 />
+        <CH1 />
+        <CH2 />
+        <CH3 />
+        <CH4 />
+        <CH5 />
+        <CH6 />
+        <CH7 />
+      </HV-Channels>
+      <Others />
     </GPIO-ADC-DPRAM>
   </GPIO>
 </FEB_CONFIG>

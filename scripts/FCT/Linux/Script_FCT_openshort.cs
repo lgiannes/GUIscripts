@@ -45,14 +45,29 @@ void ScriptMain(){
     }else{
          System.Console.WriteLine("Sync test Successful!");
     }
+        
+    // Enable preamp and DAQ on all channels
+    ActivateAllCh(LG,HG);
+    // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
+                                                                        System.Console.WriteLine("FEB is configured");
+
+    // Set up communication with Pulse gen
+    var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
+    //BashOutput = ExecuteBashCommand("fg_setup.sh");
+
+                                                                        System.Console.WriteLine("Pulse gen is configured");
     
     RunAcquisition();
+
+    RunBaselineAcq(32786);
+    RunBaselineAcq(50786);
 }
 
 
 void RunAcquisition(){
 
     int baseline = 32786;
+    var BashOutput = "";
     
     string file_name = "FCT_os_LG"+LG.ToString()+"HG"+HG.ToString()+"amp"+((int)1000*amplitude).ToString()+"mV_"+"bl"+baseline.ToString();
     
@@ -61,16 +76,12 @@ void RunAcquisition(){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
-    
-    // Enable preamp and DAQ on all channels
-    ActivateAllCh(LG,HG);
-    // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
-                                                                        System.Console.WriteLine("FEB is configured");
+    BoardLib.SetBoardId(0); 
+    BoardLib.DeviceConfigure(8);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetDirectParameters();
 
-    // Set up communication with Pulse gen
-    var BashOutput = ExecuteBashCommand("fg_setup.sh");
-                                                                        System.Console.WriteLine("Pulse gen is configured");
-    
+
     BoardLib.SetBoardId(0); 
     Sync.Sleep(500);                                                                    
     BoardLib.StartAcquisition(data_path + file_name,true); 
@@ -112,7 +123,73 @@ void RunAcquisition(){
     Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 
+
+
+
 }
+
+
+void RunBaselineAcq(int baseline){
+    
+    string file_name = "FCT_BLTEST_LG"+LG.ToString()+"HG"+HG.ToString()+"amp"+((int)1000*amplitude).ToString()+"mV_"+"baseline"+baseline.ToString();
+    var BashOutput = "";
+    
+    for(int asic = 0;asic<8;asic++){
+        BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
+        BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
+    }
+    BoardLib.SetBoardId(0); 
+    BoardLib.DeviceConfigure(8);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetDirectParameters();
+
+   
+    BoardLib.SetBoardId(0); 
+    Sync.Sleep(500);                                                                    
+    BoardLib.StartAcquisition(data_path + file_name,true); 
+                                                                        System.Console.WriteLine("Asynchronous acquisition started");
+
+    Sync.Sleep(500);
+    BoardLib.SetBoardId(126); 
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(500);                                                                   
+    
+
+    for(int i=0;i<8;i++){
+        int channel = 0;
+    //for(int channel=179;channel<181;channel++){
+        channel = i*32 + 16*(i/4) + (int)(Math.Pow(2,i%4))-1;
+        SetKaladin(channel);
+        System.Console.WriteLine("asic " + i + " channel " + (16*(i/4) + (int)(Math.Pow(2,i%4))-1).ToString());
+                                                                        //System.Console.WriteLine("Kaladin set");       
+         Sync.Sleep(10);                                                                   
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+        Sync.Sleep(10);
+        BashOutput = ExecuteBashCommand("bash fg.sh 1");
+        Sync.Sleep(500);
+        BashOutput = ExecuteBashCommand("bash fg.sh 0");
+        Sync.Sleep(100);
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+        Sync.Sleep(10);
+
+                                                                        //System.Console.WriteLine("channel "+channel.ToString()+" done");
+    }
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    Sync.Sleep(500);                                                                   
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(500);
+    BoardLib.SetBoardId(0); 
+    Sync.Sleep(500);
+    BoardLib.StopAcquisition();
+    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
+                                                                        System.Console.WriteLine("END OF ACQUISITION");
+
+}
+
+
 
 
 bool SyncTest(){

@@ -1,0 +1,50 @@
+
+(UnigeGpioBoard:143153): Pango-CRITICAL **: 15:02:51.602: pango_layout_get_width: assertion 'layout != NULL' failed
+
+(UnigeGpioBoard:143153): Pango-CRITICAL **: 15:02:51.602: pango_layout_get_line_count: assertion 'layout != NULL' failed
+
+(UnigeGpioBoard:143153): Gdk-CRITICAL **: 15:02:51.602: IA__gdk_draw_layout: assertion 'PANGO_IS_LAYOUT (layout)' failed
+
+(UnigeGpioBoard:143153): Pango-CRITICAL **: 15:02:52.700: pango_layout_get_width: assertion 'layout != NULL' failed
+
+(UnigeGpioBoard:143153): Pango-CRITICAL **: 15:02:52.700: pango_layout_get_line_count: assertion 'layout != NULL' failed
+
+(UnigeGpioBoard:143153): Gdk-CRITICAL **: 15:02:52.700: IA__gdk_draw_layout: assertion 'PANGO_IS_LAYOUT (layout)' failed
+**
+Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+**
+Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+Bail out! Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+Bail out! Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+
+=================================================================
+	Native Crash Reporting
+Aborted (core dumped)
+
+
+
+
+
+
+double free or corruption (fasttop)
+**
+Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+Bail out! Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+
+=================================================================
+	Native Crash Reporting
+=================================================================
+Got a SIGABRT while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries 
+used by your application.
+=================================================================
+Aborted (core dumped)
+root@neutrino-ESPRIMO-P757:/home/neutrino/FCT/GUI_UT92# mono UnigeGpioBoard.exe
+**
+Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+Bail out! Gdk:ERROR:../../../../gdk/gdkregion-generic.c:1110:miUnionNonO: assertion failed: (y1 < y2)
+
+=================================================================
+	Native Crash Reporting
+=================================================================
+Aborted (core dumped)

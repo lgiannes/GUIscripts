@@ -1,11 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// INIT SETTINGS
+// INIT SETTINGS (should put this in a config file or similar)
 
 //Load a given configuration
 string config_path = "/home/neutrino/FCT/code/config/config_FCT2_newGUI.xml";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
-string data_path   = "/DATA/dataFCT/";
+string data_path   =    "/home/neutrino/FCT/data_local/";
+                        //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
 
 int LG = 56;
@@ -16,7 +17,19 @@ double amplitude = 0.03;//V
 
 
 
-void ScriptMain(){
+void ScriptMainArgs(int SN){
+
+    // // Delete "EndOfScript.txt" dummy file if it exists in the data directory
+    // NO NEED TO DO. ALREADY DONE IN THE BASH SCRIPT 
+    // if (File.Exists(Path.Combine(data_path, "EndOfScript.txt"))){    
+    //     // If file found, delete it    
+    //     File.Delete(Path.Combine(data_path, "EndOfScript.txt"));    
+    // }    
+
+    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
+    data_path = data_path + "SN_" + SN.ToString() + "/";
+    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
     
@@ -37,9 +50,9 @@ void ScriptMain(){
     BoardLib.SetBoardId(0);
     BoardLib.SetDirectParameters();
 
-    bool Sync = false;
-    Sync = SyncTest();
-    if(!Sync){
+    bool Sync_good = false;
+    Sync_good = SyncTest();
+    if(!Sync_good){
         System.Console.WriteLine("Sync not working");
         return;
     }else{
@@ -53,18 +66,71 @@ void ScriptMain(){
 
     // Set up communication with Pulse gen
     var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
+    Sync.Sleep(50);
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+    Sync.Sleep(50);
+    // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    // System.Console.WriteLine("off");
+    // Sync.Sleep(5000);
     //BashOutput = ExecuteBashCommand("fg_setup.sh");
+    if(string.Compare(BashOutput,"error: no device connected\n")==0){
+        System.Console.WriteLine(BashOutput);
+    }else{
+        System.Console.WriteLine("Pulse gen is configured");
+    }
 
-                                                                        System.Console.WriteLine("Pulse gen is configured");
-    
+
     RunAcquisition();
 
-    RunBaselineAcq(32786);
-    RunBaselineAcq(50786);
+    //Restore initial config
+    BoardLib.OpenConfigFile(config_path);
+    SendGPIO();
+    SendFEB();
+    Sync.Sleep(100);
+    Sync_good = false;
+    Sync_good = SyncTest();
+    if(!Sync_good){
+        System.Console.WriteLine("Sync not working");
+        return;
+    }else{
+         System.Console.WriteLine("Sync test Successful!");
+    }
+    RunBaselineAcq(50000);
+
+    //Restore initial config
+    BoardLib.OpenConfigFile(config_path);
+    SendGPIO();
+    SendFEB();
+    Sync.Sleep(100);
+    Sync_good = false;
+    Sync_good = SyncTest();
+    if(!Sync_good){
+        System.Console.WriteLine("Sync not working");
+        return;
+    }else{
+         System.Console.WriteLine("Sync test Successful!");
+    }
+    
+    RunBaselineAcq(32000);
+
+    // Turn off Pulse Gen at the end
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    System.Console.WriteLine("Pulse Generator OFF");
+
+    //Generate dummy file at the end of the script
+    string[] o = {"END OF SCRIPT"};
+    File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 
 }
 
 
+
+
 void RunAcquisition(){
+    Sync.Sleep(500);                                                                    
 
     int baseline = 32786;
     var BashOutput = "";
@@ -92,29 +158,33 @@ void RunAcquisition(){
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(500);                                                                   
-    
 
     for(int channel=0;channel<256;channel++){
     //for(int channel=179;channel<181;channel++){
-    
+        
         SetKaladin(channel);
                                                                         //System.Console.WriteLine("Kaladin set");       
-        Sync.Sleep(10);                                                                   
+        Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        Sync.Sleep(10);
-        BashOutput = ExecuteBashCommand("bash fg.sh 1");
+                        System.Console.WriteLine("opening gate");       
+        // Sync.Sleep(50);
+        // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+        // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+        // //BashOutput = ExecuteBashCommand("bash fgON.sh");
         Sync.Sleep(500);
-        BashOutput = ExecuteBashCommand("bash fg.sh 0");
-        Sync.Sleep(100);
+        // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+        // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+        // //BashOutput = ExecuteBashCommand("bash fgOFF.sh");
+        // Sync.Sleep(50);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+                        System.Console.WriteLine("closing gate");       
         Sync.Sleep(10);
 
                                                                         //System.Console.WriteLine("channel "+channel.ToString()+" done");
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    Sync.Sleep(500);                                                                   
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(500);
     BoardLib.SetBoardId(0); 
@@ -142,6 +212,7 @@ void RunBaselineAcq(int baseline){
     BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetDirectParameters();
+    Sync.Sleep(50);                                                                    
 
    
     BoardLib.SetBoardId(0); 
@@ -155,24 +226,25 @@ void RunBaselineAcq(int baseline){
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(500);                                                                   
     
-
     for(int i=0;i<8;i++){
         int channel = 0;
-    //for(int channel=179;channel<181;channel++){
+        //for(int channel=179;channel<181;channel++){
         channel = i*32 + 16*(i/4) + (int)(Math.Pow(2,i%4))-1;
         SetKaladin(channel);
         System.Console.WriteLine("asic " + i + " channel " + (16*(i/4) + (int)(Math.Pow(2,i%4))-1).ToString());
                                                                         //System.Console.WriteLine("Kaladin set");       
-         Sync.Sleep(10);                                                                   
+        Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        Sync.Sleep(10);
-        BashOutput = ExecuteBashCommand("bash fg.sh 1");
+                        System.Console.WriteLine("opening gate");       
+        // Sync.Sleep(10);
+        // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
         Sync.Sleep(500);
-        BashOutput = ExecuteBashCommand("bash fg.sh 0");
-        Sync.Sleep(100);
+        // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+        // Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+                        System.Console.WriteLine("closing gate");       
         Sync.Sleep(10);
 
                                                                         //System.Console.WriteLine("channel "+channel.ToString()+" done");
@@ -214,7 +286,11 @@ bool SyncTest(){
         success = false;
         return success;
     }
-
+    //Restore initial config
+    BoardLib.OpenConfigFile(config_path);
+    SendGPIO();
+    SendFEB();
+    Sync.Sleep(100);
     return success;
 }
 

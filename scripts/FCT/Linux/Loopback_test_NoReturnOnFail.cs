@@ -302,7 +302,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     File.AppendAllText(@OutFile_Name, "Starting Housekeeping test." + Environment.NewLine);
     // Initialize: HV to 0 V;
     for(int i = 0;i<8;i++){
-        BoardLib.SetVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group"+i.ToString()+".MPPC-HV",0);
+        BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId((byte)((int)FEB_BoardID%128));
     BoardLib.DeviceConfigure(11);
@@ -340,7 +340,93 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     bool HVShort_success = HVShort_test(OutFile_Name);
     Restore_Initial_Config(FEB_BoardID,config_path);
 
-    return ( HV_ADC_success && HVShort_success); // && of all HK tests
+    // 3: test Temperature on the FPGA
+    bool FPGAtemp_success = FPGAtemp_test(OutFile_Name);
+    Restore_Initial_Config(FEB_BoardID,config_path);
+
+    // 4: test current in 12V backplane
+    bool I12V_success = I12V_test(OutFile_Name);
+    Restore_Initial_Config(FEB_BoardID,config_path);
+    // So far this just prints the currents, need to implement some success/fail criterion
+
+    // 5: test FEB temperature
+    // 6: test PoweMezza temprature
+    // 7: test CITIROC temperatures (x8)
+    // 8: test backplane HV
+    // 9: FPGA current test
+
+    return ( HV_ADC_success && HVShort_success && FPGAtemp_success && I12V_success); // && of all HK tests
+}
+
+bool I12V_test(string OutFile_Name){
+    File.AppendAllText(@OutFile_Name,"Starting test of current in 12V.");
+    // 1. CITIROC power test: enable one citiroc at a time and check the current on the 12V-FEB
+    // Enable PowerPulsing
+    for(int i=0;i<8;i++){
+        BoardLib.SetVariable("ASICS.ASIC0.PowerModes.DiscriDisPP",false);
+        BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+i.ToString()+".AllStagesPowerOn",false);
+    }
+    // Check the current that each single CITI draws:
+    double current12V=0;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            if(i==j){
+                BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+j.ToString()+".AllStagesPowerOn",true);
+            }else{
+                BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+j.ToString()+".AllStagesPowerOn",false);
+            }
+        }
+        BoardLib.DeviceConfigure(13);
+        Sync.Sleep(100);
+        BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V1");
+        current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-12V-Current") );
+        File.AppendAllText(@OutFile_Name,"Enabled CITIROC #"+j+". Current: "+ current12V.ToString());
+    }
+    // Check current for 0,1,2,...8 CITIs
+    for(int i=0;i<9;i++){
+        for(int j=0;j<8;j++){
+            if(j<i){
+                BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+j.ToString()+".AllStagesPowerOn",true);
+            }else{
+                BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+j.ToString()+".AllStagesPowerOn",false);
+            }
+        }
+        BoardLib.DeviceConfigure(13);
+        Sync.Sleep(100);
+        BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V1");
+        current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-12V-Current") );
+        File.AppendAllText(@OutFile_Name,"Enabled "+i+" CITIROCs. Current: "+ current12V.ToString());
+    }
+    return success;
+}
+
+
+bool FPGAtemp_test(string OutFile_Name){
+    bool success = false;
+    System.Console.WriteLine("FPGA temperature test");
+    File.AppendAllText(@OutFile_Name, "FPGA temperature test:"+ Environment.NewLine);
+    BoardLib.DeviceConfigure(13);
+    Sync.Sleep(100);
+    BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V1");
+    // Set current template (OK if [mu-Delta,mu+Delta])
+    double mu = 20;//degres
+    double Delta = 5;//degres
+    //double CF = 0.1716;// Conversion factor (UInt32 to uA)
+    double read = 0;
+    // UInt32 current_read_int = 0;
+    // Read current
+    // current_read_int = BoardLib.GetUInt32Variable("GPIO.GPIO-ADC-DPRAM.Channels10.Value");
+    // current_read_uA = current_read_int*CF;
+    read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FPGA-Temp") );
+    if(read < mu+Delta && read > mu-Delta){
+        File.AppendAllText(@OutFile_Name, "FPGA temperature: "+read"\ ˚C -> SUCCESS"+Environment.NewLine);
+        success = true;
+    }else{
+        File.AppendAllText(@OutFile_Name, "FPGA temperature: "+read"\ ˚C -> FAILED"+Environment.NewLine);
+        Dialog.ShowDialog("FPGA temperature test FAILED");
+        success = false;
+    }
+    return success;
 }
 
 bool HVShort_test(string OutFile_Name){
@@ -362,7 +448,7 @@ bool HVShort_test(string OutFile_Name){
     double Delta = 5000;//uA
     double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double current_read_uA = 0;
-    UInt32 current_read_int = 0;
+    // UInt32 current_read_int = 0;
     // Read current
     // current_read_int = BoardLib.GetUInt32Variable("GPIO.GPIO-ADC-DPRAM.Channels10.Value");
     // current_read_uA = current_read_int*CF;

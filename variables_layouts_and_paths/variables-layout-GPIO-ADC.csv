@@ -1,0 +1,18 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[6]
+-------------------------------------------------
+This update object:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 0
+;;Nb. of Data Bits = 16
+;;Nb. of 16-bits Words  = 1
+;;Available Bit Size  = 16 bits
+;;Used Bit Size  = 1 bits
+;Associated UserSetCmd on GPIO_ADC, Index = 3
+;;Associated UserSetCmd Error [0] =  Address set for user set config command 'GPIO_ADC' (User Set Index '3') is greater than allowed Nb of words in FPGA
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/GPIO/GPIO-ADC/InitOrStart;InitOrStart;1;0;1;;;0;1 for ADC initialisation, 0 for ADC cycle start;

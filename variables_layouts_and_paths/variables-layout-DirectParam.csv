@@ -1,0 +1,14 @@
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/Board/DirectParam/ExtClkEn;ExtClkEn;1;0;1;;;0;Enable External clock as DAQ clock else internal 100MHz clock;
+1;;1;2;/FEB_CONFIG/Board/DirectParam/BaselineDACApply;BaselineDACApply;1;0;1;;;0;Apply LG/HG Baseline DAC on selected channels;
+2;;2;3;/FEB_CONFIG/Board/DirectParam/HvDACApply;HvDACApply;1;0;1;;;0;Apply HV DAC on selected channels;
+3;;3;4;/FEB_CONFIG/Board/DirectParam/AveEn;AveEn;1;0;1;;;0;Asic val event;
+4;;4;5;/FEB_CONFIG/Board/DirectParam/GtEn;GtEn;1;0;1;;;0;global trigger enable;
+5;;5;6;/FEB_CONFIG/Board/DirectParam/AdcFsmConfLock;AdcFsmConfLock;1;0;1;;;0;lock ADC during ADC configuration;
+6;;6;7;/FEB_CONFIG/Board/DirectParam/AdcFsmReset;AdcFsmReset;1;0;1;;;0;reset the ADC FSMs after ADC configuration;
+7;;7;8;/FEB_CONFIG/Board/DirectParam/IGEn;IGEn;1;0;1;;;0;Internal Generator enable;
+8;;8;9;/FEB_CONFIG/Board/DirectParam/GtsIdRst;GtsIdRst;1;0;1;;;0;GTS ID reset, TAGID=0;
+9;;9;10;/FEB_CONFIG/Board/DirectParam/GateIdRst;GateIdRst;1;0;1;;;0;Gate ID reset, GATE ID=0;
+10;;10;11;/FEB_CONFIG/Board/DirectParam/ReadoutSMRst;ReadoutSMRst;1;0;1;;;0;Reset readout SM;
+11;;11;12;/FEB_CONFIG/Board/DirectParam/RstL1Fifo;RstL1Fifo;1;0;1;;;0;Reset L1 FIFO;
+12;;12;13;/FEB_CONFIG/Board/DirectParam/RstL2Fifo;RstL2Fifo;1;0;1;;;0;Reset L2 FIFO;

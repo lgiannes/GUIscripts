@@ -1,0 +1,53 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[0]
+-------------------------------------------------
+This update object:
+;UserSetConfig Parameters:
+;;Nb. of Address Bits = 0
+;;Nb. of Data Bits = 16
+;;Nb. of 16-bits Words  = 1
+;;Available Bit Size  = 16 bits
+;;Used Bit Size  = 512 bits
+;UserGetConfigRange Parameters:
+;;Nb. of 16-bits Words  = 32
+;;Available Bit Size  = 512 bits
+;;Used Bit Size  = 512 bits
+;Associated UserGetCmd on HK_DPRAM, Index Range = [32 .. 63]
+;Blocks Transfer Allowed
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;16;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group0/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=16, LSb=0
+1;;16;32;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group1/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=32, LSb=16
+2;;32;48;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group2/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=48, LSb=32
+3;;48;64;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group3/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=64, LSb=48
+4;;64;80;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group4/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=80, LSb=64
+5;;80;96;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group5/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=96, LSb=80
+6;;96;112;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group6/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=112, LSb=96
+7;;112;128;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group7/MPPC-HV;MPPC-HV;16;0;65535;;;0;MPPC HV (on 12-bits TLV2548);MSb=128, LSb=112
+8;;128;144;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group0/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=144, LSb=128
+9;;144;160;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group1/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=160, LSb=144
+10;;160;176;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group2/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=176, LSb=160
+11;;176;192;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group3/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=192, LSb=176
+12;;192;208;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group4/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=208, LSb=192
+13;;208;224;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group5/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=224, LSb=208
+14;;224;240;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group6/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=240, LSb=224
+15;;240;256;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group7/MPPC-Temp;MPPC-Temp;16;0;65535;;;0;MPPC temperature (on 12-bits TLV2548);MSb=256, LSb=240
+16;;256;272;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/3V3-MAX10;3V3-MAX10;16;0;65535;;;0;3V3 MAX10 voltage;MSb=272, LSb=256
+17;;272;288;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/FEB-12V-Current;FEB-12V-Current;16;0;65535;;;0;FEB current on 12V input;MSb=288, LSb=272
+18;;288;304;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/FEB-BKP-HV;FEB-BKP-HV;16;0;65535;;;0;FEB Backplane HV;MSb=304, LSb=288
+19;;304;320;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/FEB-FPGA-Current;FEB-FPGA-Current;16;0;65535;;;0;FEB FPGA core current;MSb=320, LSb=304
+20;;320;336;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/FPGA-Temp;FPGA-Temp;16;0;65535;;;0;FPGA temperature;MSb=336, LSb=320
+21;;336;352;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/Reserved;Reserved;16;0;65535;;;0;;MSb=352, LSb=336
+22;;352;368;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/FEB-Temp0;FEB-Temp0;16;0;65535;;;0;FEB temperature #0;MSb=368, LSb=352
+23;;368;384;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/FEB-HK/FEB-Temp1;FEB-Temp1;16;0;65535;;;0;FEB temperature #1;MSb=384, LSb=368
+24;;384;400;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group0/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=400, LSb=384
+25;;400;416;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group1/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=416, LSb=400
+26;;416;432;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group2/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=432, LSb=416
+27;;432;448;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group3/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=448, LSb=432
+28;;448;464;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group4/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=464, LSb=448
+29;;464;480;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group5/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=480, LSb=464
+30;;480;496;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group6/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=496, LSb=480
+31;;496;512;/FEB_CONFIG/FPGA-HV-HK/Housekeeping-DPRAM-V1/Group/Group7/Citiroc-Temp;Citiroc-Temp;16;0;65535;;;0;Citiroc temperature;MSb=512, LSb=496

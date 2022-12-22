@@ -1,0 +1,12 @@
+Short Name;Tree Name;Type;Description;Remarks
+ADCtestEn;FPGA-HV-HK.FPGA-HouseKeeping.ADCtestEn;Bool;Set the HK & MPPC ADCs to be in test mode (select ADCtestMode) rather than in standard ADC channel inputs mode
+ADCtestMode;FPGA-HV-HK.FPGA-HouseKeeping.ADCtestMode;Enum;ADCs Test mode when ADCtestEn='1'
+CitiTempHkToDAQ;FPGA-HV-HK.FPGA-HouseKeeping.CitiTempHkToDAQ;Bool;Enable Citiroc temperature Housekeeping to be pushed to DAQ (250Hz)
+FebHkToDAQ;FPGA-HV-HK.FPGA-HouseKeeping.FebHkToDAQ;Bool;Enable FEB Housekeeping to be pushed to DAQ (1KHz except Power Mezzanine values at 500Hz)
+FixedMuxHkChannel;FPGA-HV-HK.FPGA-HouseKeeping.FixedMuxHkChannel;Byte;HK ADC Fixed MUX channel when FixedMuxHkEn='1', used for CITIROC temperature per group
+FixedMuxHkEn;FPGA-HV-HK.FPGA-HouseKeeping.FixedMuxHkEn;Bool;Fixed Mux enable for HK ADC
+FixedMuxMppcChannel;FPGA-HV-HK.FPGA-HouseKeeping.FixedMuxMppcChannel;Bool;MPPC ADC Fixed MUX channel when FixedMuxMppcEn='1', used for HV(0) or MPPC(1)
+FixedMuxMppcEn;FPGA-HV-HK.FPGA-HouseKeeping.FixedMuxMppcEn;Bool;Fixed Mux enable for MPPC ADC
+HKEn;FPGA-HV-HK.FPGA-HouseKeeping.HKEn;Bool;Enable Housekeeping automatic cycling (1KHz)
+MppcHvHkToDAQ;FPGA-HV-HK.FPGA-HouseKeeping.MppcHvHkToDAQ;Bool;Enable MPPC HV0-7 Housekeeping to be pushed to DAQ (500Hz)
+MppcTempHkToDAQ;FPGA-HV-HK.FPGA-HouseKeeping.MppcTempHkToDAQ;Bool;Enable MPPC temperature Housekeeping to be pushed to DAQ (500Hz)

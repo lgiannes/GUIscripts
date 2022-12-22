@@ -1,0 +1,8 @@
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;Gap
+1;;1;2;/FEB_CONFIG/Board/DataReadoutParam/FifoReset;FifoReset;1;0;1;;;0;Reset Fifo;
+2;;2;3;/FEB_CONFIG/Board/DataReadoutParam/AveEn;AveEn;1;0;1;;;0;Asic val event;
+3;;3;4;/FEB_CONFIG/Board/DataReadoutParam/GtEn;GtEn;1;0;1;;;0;global trigger enable;
+4;;4;5;/FEB_CONFIG/Board/DataReadoutParam/IGEn;IGEn;1;0;1;;;0;internal generator enable;
+5;;5;6;/FEB_CONFIG/Board/DataReadoutParam/GtsIdRst;GtsIdRst;1;0;1;;;0;GTS ID reset, TAGID=0;
+6;;6;7;/FEB_CONFIG/Board/DataReadoutParam/GateIdRst;GateIdRst;1;0;1;;;0;Gate ID reset, TAGID=0;

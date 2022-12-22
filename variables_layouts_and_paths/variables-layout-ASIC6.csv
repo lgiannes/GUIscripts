@@ -1,0 +1,407 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+/FEB_CONFIG/ASICS/ASIC6:
+;Mapped to DPRAM Configuration Device[6]
+;DPRAM Total Size (all devices) = 16384 bits (1024 x 16-bits)
+;DPRAM Total Nb. of Address lines = 10 (16-bits data width)
+;DPRAM Device Selection Address lines (MSBs) = 3
+;DPRAM Device Sub-area Address lines (LSBs) = 7
+-------------------------------------------------
+This device:
+;DPRAM Device Size = 128 x 16-bits (2048 bits)
+;DPRAM Device Index = 6 (on DPRAM 3-bits MSB address lines)
+;DPRAM Device Arguments Length = 72 (1152 bits)
+;DPRAM Device Apply Field = 255
+;DPRAM Device Available Bit Size  = 2048 bits
+;DPRAM Device Transferred Bit Size  = 1152 bits
+;DPRAM Device Used Bit Size  = 1144 bits
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;1144;1140;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1140, LSb=1144
+1;;1140;1136;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1136, LSb=1140
+2;;1136;1132;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1132, LSb=1136
+3;;1132;1128;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1128, LSb=1132
+4;;1128;1124;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1124, LSb=1128
+5;;1124;1120;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1120, LSb=1124
+6;;1120;1116;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1116, LSb=1120
+7;;1116;1112;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1112, LSb=1116
+8;;1112;1108;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1108, LSb=1112
+9;;1108;1104;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1104, LSb=1108
+10;;1104;1100;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1100, LSb=1104
+11;;1100;1096;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1096, LSb=1100
+12;;1096;1092;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1092, LSb=1096
+13;;1092;1088;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1088, LSb=1092
+14;;1088;1084;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1084, LSb=1088
+15;;1084;1080;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1080, LSb=1084
+16;;1080;1076;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1076, LSb=1080
+17;;1076;1072;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1072, LSb=1076
+18;;1072;1068;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1068, LSb=1072
+19;;1068;1064;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1064, LSb=1068
+20;;1064;1060;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1060, LSb=1064
+21;;1060;1056;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1056, LSb=1060
+22;;1056;1052;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1052, LSb=1056
+23;;1052;1048;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1048, LSb=1052
+24;;1048;1044;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1044, LSb=1048
+25;;1044;1040;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1040, LSb=1044
+26;;1040;1036;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1036, LSb=1040
+27;;1036;1032;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1032, LSb=1036
+28;;1032;1028;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1028, LSb=1032
+29;;1028;1024;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1024, LSb=1028
+30;;1024;1020;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1020, LSb=1024
+31;;1020;1016;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/DAC4bTrigger_t;DAC4bTrigger_t;4;0;15;1;;15;DAC fast trigger threshold (4-bits, [0-15]);MSb=1016, LSb=1020
+32;;1016;1012;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=1012, LSb=1016
+33;;1012;1008;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=1008, LSb=1012
+34;;1008;1004;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=1004, LSb=1008
+35;;1004;1000;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=1000, LSb=1004
+36;;1000;996;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=996, LSb=1000
+37;;996;992;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=992, LSb=996
+38;;992;988;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=988, LSb=992
+39;;988;984;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=984, LSb=988
+40;;984;980;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=980, LSb=984
+41;;980;976;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=976, LSb=980
+42;;976;972;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=972, LSb=976
+43;;972;968;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=968, LSb=972
+44;;968;964;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=964, LSb=968
+45;;964;960;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=960, LSb=964
+46;;960;956;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=956, LSb=960
+47;;956;952;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=952, LSb=956
+48;;952;948;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=948, LSb=952
+49;;948;944;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=944, LSb=948
+50;;944;940;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=940, LSb=944
+51;;940;936;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=936, LSb=940
+52;;936;932;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=932, LSb=936
+53;;932;928;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=928, LSb=932
+54;;928;924;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=924, LSb=928
+55;;924;920;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=920, LSb=924
+56;;920;916;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=916, LSb=920
+57;;916;912;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=912, LSb=916
+58;;912;908;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=908, LSb=912
+59;;908;904;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=904, LSb=908
+60;;904;900;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=900, LSb=904
+61;;900;896;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=896, LSb=900
+62;;896;892;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=892, LSb=896
+63;;892;888;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/DAC4bTrigger;DAC4bTrigger;4;0;15;1;;15;DAC trigger threshold (4-bits, [0-15]);MSb=888, LSb=892
+64;;888;887;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DiscriEn;DiscriEn;1;0;1;;;1;;
+65;;887;886;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DiscriDisPP;DiscriDisPP;1;0;1;;;1;;
+66;;886;885;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/RSorDiscri;RSorDiscri;1;0;1;;;0;Switch logical discriminator to Reset/Set mode (checked) or standard discriminator (not checked);
+67;;885;884;/FEB_CONFIG/ASICS/ASIC6/PowerModes/Discri_tEn;Discri_tEn;1;0;1;;;1;;
+68;;884;883;/FEB_CONFIG/ASICS/ASIC6/PowerModes/Discri_tDisPP;Discri_tDisPP;1;0;1;;;1;;
+69;;883;882;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC4bEn;DAC4bEn;1;0;1;;;1;;
+70;;882;881;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC4bDisPP;DAC4bDisPP;1;0;1;;;1;;
+71;;881;880;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC4b_tEn;DAC4b_tEn;1;0;1;;;1;;
+72;;880;879;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC4b_tDisPP;DAC4b_tDisPP;1;0;1;;;1;;
+73;;879;878;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+74;;878;877;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+75;;877;876;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+76;;876;875;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+77;;875;874;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+78;;874;873;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+79;;873;872;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+80;;872;871;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+81;;871;870;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+82;;870;869;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+83;;869;868;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+84;;868;867;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+85;;867;866;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+86;;866;865;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+87;;865;864;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+88;;864;863;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+89;;863;862;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+90;;862;861;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+91;;861;860;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+92;;860;859;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+93;;859;858;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+94;;858;857;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+95;;857;856;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+96;;856;855;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+97;;855;854;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+98;;854;853;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+99;;853;852;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+100;;852;851;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+101;;851;850;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+102;;850;849;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+103;;849;848;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+104;;848;847;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/DiscriMask;DiscriMask;1;0;1;;1;0;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked;
+105;;847;846;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_T_H_DisPP;HG_T_H_DisPP;1;0;1;;;1;;
+106;;846;845;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_T_H_En;HG_T_H_En;1;0;1;;;1;;
+107;;845;844;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_TH_DisPP;LG_TH_DisPP;1;0;1;;;1;;
+108;;844;843;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_TH_En;LG_TH_En;1;0;1;;;1;;
+109;;843;842;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/SCAweakBias;SCAweakBias;1;0;1;;;0;Enable SCA weak bias;
+110;;842;841;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_PdetDisPP;HG_PdetDisPP;1;0;1;;;1;;
+111;;841;840;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_PdetEn;HG_PdetEn;1;0;1;;;1;;
+112;;840;839;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_PdetDisPP;LG_PdetDisPP;1;0;1;;;1;;
+113;;839;838;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_PdetEn;LG_PdetEn;1;0;1;;;1;;
+114;;838;837;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/HG_SCAorPeakD;HG_SCAorPeakD;1;0;1;;;1;Enable High Gain Track&Hold SCA mode (checked) or Peak Detector(not checked);
+115;;837;836;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/LG_SCAorPeakD;LG_SCAorPeakD;1;0;1;;;1;Enable Low Gain Track&Hold SCA mode (checked) or Peak Detector(not checked);
+116;;836;835;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/PeakSensingBypass;PeakSensingBypass;1;0;1;;;0;Debug mode for Peak Detector : Bypass the Peak Sensing logical cell and use external pin PSmode (checked) - only if PD mode enabled;
+117;;835;834;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/SelTrigExtPSC;SelTrigExtPSC;1;0;1;;;0;Select ext. pin PSGTrig for PD trigger input (checked) else standard channel discri ouptup used for PD - only if PD mode enabled;
+118;;834;833;/FEB_CONFIG/ASICS/ASIC6/PowerModes/FastShaperFollowerDisPP;FastShaperFollowerDisPP;1;0;1;;;1;;
+119;;833;832;/FEB_CONFIG/ASICS/ASIC6/PowerModes/FastShaperEn;FastShaperEn;1;0;1;;;1;;
+120;;832;831;/FEB_CONFIG/ASICS/ASIC6/PowerModes/FastShaperDisPP;FastShaperDisPP;1;0;1;;;1;;
+121;;831;830;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_SlowShaperDisPP;LG_SlowShaperDisPP;1;0;1;;;1;;
+122;;830;829;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_SlowShaperEn;LG_SlowShaperEn;1;0;1;;;1;;
+123;;829;826;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/LG_SH_TimeConstant;LG_SH_TimeConstant;3;1;7;1;1;7;Low Gain Slow Shaper Time Constant (1:12.5ns, 7:87.5ns);MSb=826, LSb=829
+124;;826;825;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_SlowShaperDisPP;HG_SlowShaperDisPP;1;0;1;;;1;;
+125;;825;824;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_SlowShaperEn;HG_SlowShaperEn;1;0;1;;;1;;
+126;;824;821;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/HG_SH_TimeConstant;HG_SH_TimeConstant;3;1;7;1;1;7;High Gain Slow Shaper Time Constant (3-bits, 1:12.5ns-7:87.5ns);MSb=821, LSb=824
+127;;821;820;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/LG_PA_WeakBias;LG_PA_WeakBias;1;0;1;;;0;Enable Low Gain weak bias;
+128;;820;819;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_PA_DisPP;LG_PA_DisPP;1;0;1;;;1;;
+129;;819;818;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_PA_En;LG_PA_En;1;0;1;;;1;;
+130;;818;817;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_PA_DisPP;HG_PA_DisPP;1;0;1;;;1;;
+131;;817;816;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_PA_En;HG_PA_En;1;0;1;;;1;;
+132;;816;815;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/FastShaperOnLG;FastShaperOnLG;1;0;1;;;0;Switch fast shaper on Low Gain path (checked) or High Gain path (not checked);
+133;;815;814;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/InputDAC_En;InputDAC_En;1;0;1;;;1;Enable all 32 individual input DAC;
+134;;814;813;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/InputDAC_4V5ref;InputDAC_4V5ref;1;0;1;;;1;Set input DAC to 4.5V reference (checked) or 2.5V reference (not checked);
+135;;813;805;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=813, LSb=805
+136;;805;804;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+137;;804;796;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=804, LSb=796
+138;;796;795;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+139;;795;787;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=795, LSb=787
+140;;787;786;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+141;;786;778;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=786, LSb=778
+142;;778;777;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+143;;777;769;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=777, LSb=769
+144;;769;768;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+145;;768;760;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=768, LSb=760
+146;;760;759;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+147;;759;751;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=759, LSb=751
+148;;751;750;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+149;;750;742;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=750, LSb=742
+150;;742;741;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+151;;741;733;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=741, LSb=733
+152;;733;732;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+153;;732;724;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=732, LSb=724
+154;;724;723;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+155;;723;715;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=723, LSb=715
+156;;715;714;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+157;;714;706;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=714, LSb=706
+158;;706;705;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+159;;705;697;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=705, LSb=697
+160;;697;696;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+161;;696;688;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=696, LSb=688
+162;;688;687;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+163;;687;679;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=687, LSb=679
+164;;679;678;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+165;;678;670;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=678, LSb=670
+166;;670;669;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+167;;669;661;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=669, LSb=661
+168;;661;660;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+169;;660;652;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=660, LSb=652
+170;;652;651;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+171;;651;643;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=651, LSb=643
+172;;643;642;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+173;;642;634;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=642, LSb=634
+174;;634;633;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+175;;633;625;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=633, LSb=625
+176;;625;624;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+177;;624;616;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=624, LSb=616
+178;;616;615;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+179;;615;607;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=615, LSb=607
+180;;607;606;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+181;;606;598;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=606, LSb=598
+182;;598;597;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+183;;597;589;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=597, LSb=589
+184;;589;588;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+185;;588;580;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=588, LSb=580
+186;;580;579;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+187;;579;571;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=579, LSb=571
+188;;571;570;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+189;;570;562;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=570, LSb=562
+190;;562;561;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+191;;561;553;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=561, LSb=553
+192;;553;552;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+193;;552;544;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=552, LSb=544
+194;;544;543;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+195;;543;535;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=543, LSb=535
+196;;535;534;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+197;;534;526;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/inputDAC;inputDAC;8;0;255;;;0;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM);MSb=534, LSb=526
+198;;526;525;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/inputDAC_En;inputDAC_En;1;0;1;;;1;Enable Input DAC;
+199;;525;519;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=525, LSb=519
+200;;519;513;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=519, LSb=513
+201;;513;512;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+202;;512;511;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+203;;511;510;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel0/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+204;;510;504;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=510, LSb=504
+205;;504;498;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=504, LSb=498
+206;;498;497;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+207;;497;496;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+208;;496;495;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel1/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+209;;495;489;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=495, LSb=489
+210;;489;483;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=489, LSb=483
+211;;483;482;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+212;;482;481;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+213;;481;480;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel2/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+214;;480;474;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=480, LSb=474
+215;;474;468;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=474, LSb=468
+216;;468;467;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+217;;467;466;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+218;;466;465;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel3/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+219;;465;459;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=465, LSb=459
+220;;459;453;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=459, LSb=453
+221;;453;452;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+222;;452;451;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+223;;451;450;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel4/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+224;;450;444;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=450, LSb=444
+225;;444;438;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=444, LSb=438
+226;;438;437;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+227;;437;436;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+228;;436;435;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel5/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+229;;435;429;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=435, LSb=429
+230;;429;423;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=429, LSb=423
+231;;423;422;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+232;;422;421;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+233;;421;420;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel6/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+234;;420;414;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=420, LSb=414
+235;;414;408;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=414, LSb=408
+236;;408;407;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+237;;407;406;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+238;;406;405;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel7/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+239;;405;399;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=405, LSb=399
+240;;399;393;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=399, LSb=393
+241;;393;392;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+242;;392;391;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+243;;391;390;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel8/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+244;;390;384;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=390, LSb=384
+245;;384;378;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=384, LSb=378
+246;;378;377;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+247;;377;376;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+248;;376;375;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel9/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+249;;375;369;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=375, LSb=369
+250;;369;363;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=369, LSb=363
+251;;363;362;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+252;;362;361;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+253;;361;360;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel10/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+254;;360;354;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=360, LSb=354
+255;;354;348;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=354, LSb=348
+256;;348;347;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+257;;347;346;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+258;;346;345;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel11/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+259;;345;339;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=345, LSb=339
+260;;339;333;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=339, LSb=333
+261;;333;332;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+262;;332;331;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+263;;331;330;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel12/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+264;;330;324;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=330, LSb=324
+265;;324;318;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=324, LSb=318
+266;;318;317;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+267;;317;316;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+268;;316;315;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel13/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+269;;315;309;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=315, LSb=309
+270;;309;303;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=309, LSb=303
+271;;303;302;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+272;;302;301;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+273;;301;300;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel14/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+274;;300;294;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=300, LSb=294
+275;;294;288;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=294, LSb=288
+276;;288;287;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+277;;287;286;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+278;;286;285;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel15/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+279;;285;279;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=285, LSb=279
+280;;279;273;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=279, LSb=273
+281;;273;272;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+282;;272;271;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+283;;271;270;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel16/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+284;;270;264;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=270, LSb=264
+285;;264;258;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=264, LSb=258
+286;;258;257;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+287;;257;256;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+288;;256;255;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel17/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+289;;255;249;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=255, LSb=249
+290;;249;243;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=249, LSb=243
+291;;243;242;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+292;;242;241;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+293;;241;240;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel18/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+294;;240;234;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=240, LSb=234
+295;;234;228;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=234, LSb=228
+296;;228;227;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+297;;227;226;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+298;;226;225;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel19/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+299;;225;219;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=225, LSb=219
+300;;219;213;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=219, LSb=213
+301;;213;212;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+302;;212;211;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+303;;211;210;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel20/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+304;;210;204;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=210, LSb=204
+305;;204;198;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=204, LSb=198
+306;;198;197;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+307;;197;196;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+308;;196;195;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel21/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+309;;195;189;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=195, LSb=189
+310;;189;183;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=189, LSb=183
+311;;183;182;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+312;;182;181;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+313;;181;180;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel22/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+314;;180;174;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=180, LSb=174
+315;;174;168;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=174, LSb=168
+316;;168;167;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+317;;167;166;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+318;;166;165;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel23/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+319;;165;159;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=165, LSb=159
+320;;159;153;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=159, LSb=153
+321;;153;152;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+322;;152;151;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+323;;151;150;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel24/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+324;;150;144;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=150, LSb=144
+325;;144;138;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=144, LSb=138
+326;;138;137;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+327;;137;136;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+328;;136;135;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel25/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+329;;135;129;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=135, LSb=129
+330;;129;123;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=129, LSb=123
+331;;123;122;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+332;;122;121;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+333;;121;120;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel26/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+334;;120;114;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=120, LSb=114
+335;;114;108;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=114, LSb=108
+336;;108;107;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+337;;107;106;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+338;;106;105;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel27/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+339;;105;99;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=105, LSb=99
+340;;99;93;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=99, LSb=93
+341;;93;92;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+342;;92;91;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+343;;91;90;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel28/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+344;;90;84;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=90, LSb=84
+345;;84;78;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=84, LSb=78
+346;;78;77;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+347;;77;76;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+348;;76;75;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel29/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+349;;75;69;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=75, LSb=69
+350;;69;63;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=69, LSb=63
+351;;63;62;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+352;;62;61;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+353;;61;60;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel30/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+354;;60;54;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/HG_Gain;HG_Gain;6;0;63;;;0;Preamplifier High Gain (6-bits, [0-63]);MSb=60, LSb=54
+355;;54;48;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/LG_Gain;LG_Gain;6;0;63;;;0;Preamplifier Low Gain (6-bits, [0-63]);MSb=54, LSb=48
+356;;48;47;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/HG_CTest;HG_CTest;1;0;1;;;0;Switch High Gain input channel to calibration input;
+357;;47;46;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/LG_CTest;LG_CTest;1;0;1;;;0;Switch Low Gain input channel to calibration input;
+358;;46;45;/FEB_CONFIG/ASICS/ASIC6/Channels/Channel31/PA_DIS;PA_DIS;1;0;1;;;0;Disable preamplifier;
+359;;45;44;/FEB_CONFIG/ASICS/ASIC6/PowerModes/TempDisPP;TempDisPP;1;0;1;;;1;;
+360;;44;43;/FEB_CONFIG/ASICS/ASIC6/PowerModes/TempEn;TempEn;1;0;1;;;1;;
+361;;43;42;/FEB_CONFIG/ASICS/ASIC6/PowerModes/BandGapDisPP;BandGapDisPP;1;0;1;;;1;;
+362;;42;41;/FEB_CONFIG/ASICS/ASIC6/PowerModes/BandGapEn;BandGapEn;1;0;1;;;1;;
+363;;41;40;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC10bEn;DAC10bEn;1;0;1;;;1;;
+364;;40;39;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC10bDisPP;DAC10bDisPP;1;0;1;;;1;;
+365;;39;38;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC10b_tEn;DAC10b_tEn;1;0;1;;;1;;
+366;;38;37;/FEB_CONFIG/ASICS/ASIC6/PowerModes/DAC10b_tDisPP;DAC10b_tDisPP;1;0;1;;;1;;
+367;;37;27;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/DAC10b;DAC10b;10;0;1023;;;1023;Global 10-bits DAC trigger threshold (0-1023);MSb=37, LSb=27
+368;;27;17;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/DAC10b_t;DAC10b_t;10;0;1023;;;1023;Global 10-bits DAC fast trigger threshold (0-1023);MSb=27, LSb=17
+369;;17;16;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_OTAqEn;HG_OTAqEn;1;0;1;;;1;;
+370;;16;15;/FEB_CONFIG/ASICS/ASIC6/PowerModes/HG_OTAqDisPP;HG_OTAqDisPP;1;0;1;;;1;;
+371;;15;14;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_OTAqEn;LG_OTAqEn;1;0;1;;;1;;
+372;;14;13;/FEB_CONFIG/ASICS/ASIC6/PowerModes/LG_OTAqDisPP;LG_OTAqDisPP;1;0;1;;;1;;
+373;;13;12;/FEB_CONFIG/ASICS/ASIC6/PowerModes/ProbeOTAqEn;ProbeOTAqEn;1;0;1;;;1;;
+374;;12;11;/FEB_CONFIG/ASICS/ASIC6/PowerModes/ProbeOTAqDisPP;ProbeOTAqDisPP;1;0;1;;;1;;
+375;;11;10;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/TestbOTAq;TestbOTAq;1;0;1;;;0;;
+376;;10;9;/FEB_CONFIG/ASICS/ASIC6/PowerModes/ValEvtRxEn;ValEvtRxEn;1;0;1;;;1;;
+377;;9;8;/FEB_CONFIG/ASICS/ASIC6/PowerModes/ValEvtRxDisPP;ValEvtRxDisPP;1;0;1;;;1;;
+378;;8;7;/FEB_CONFIG/ASICS/ASIC6/PowerModes/RazChnRxEn;RazChnRxEn;1;0;1;;;1;;
+379;;7;6;/FEB_CONFIG/ASICS/ASIC6/PowerModes/RazChnRxDisPP;RazChnRxDisPP;1;0;1;;;1;;
+380;;6;5;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/EnHitMuxOut;EnHitMuxOut;1;0;1;;;0;Enable multiplexed trigger output;
+381;;5;4;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/EnOR32;EnOR32;1;0;1;;;1;Enable OR32 trigger output;
+382;;4;3;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/EnNOR32;EnNOR32;1;0;1;;;0;Enable NOR32 trigger output (= !OR32 if TriggerPolarity=0);
+383;;3;2;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/TriggerPolarity;TriggerPolarity;1;0;1;;;0;Trigger polarity for OR32, rising edge (unchecked) or falling edge (checked);
+384;;2;1;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/EnNOR32_t;EnNOR32_t;1;0;1;;;0;Enable NOR32 fast trigger output (= !OR32t);
+385;;1;0;/FEB_CONFIG/ASICS/ASIC6/GlobalControl/En32Trigger;En32Trigger;1;0;1;;;1;Enable all 32 individual trigger outputs;

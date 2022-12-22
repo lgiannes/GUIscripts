@@ -1,0 +1,30 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping:
+ Mapped to UserSet/Get/Apply Configuration Device[12]
+-------------------------------------------------
+This device:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 2
+;;Nb. of Data Bits = 14
+;;Nb. of 14-bits Words  = 1
+;;Available Bit Size  = 14 bits
+;;Used Bit Size  = 13 bits
+;Associated UserSet on HV_HOUSEKEEPING, Index = 4
+;;Associated UserSet Error [0] =  Address set for user set config command 'HV_HOUSEKEEPING' (User Set Index '4') is greater than allowed nb of words in FPGA
+;Associated UserGetCmd on HV_HOUSEKEEPING, Index = 4
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/ADCtestEn;ADCtestEn;1;0;1;;;0;Set the HK & MPPC ADCs to be in test mode (select ADCtestMode) rather than in standard ADC channel inputs mode;
+1;;1;3;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/ADCtestMode;ADCtestMode;2;0;2;;;0;ADCs Test mode when ADCtestEn='1';MSb=3, LSb=1
+2;;3;4;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/FixedMuxMppcEn;FixedMuxMppcEn;1;0;1;;;0;Fixed Mux enable for MPPC ADC;
+3;;4;5;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/FixedMuxHkEn;FixedMuxHkEn;1;0;1;;;0;Fixed Mux enable for HK ADC;
+4;;5;6;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/FixedMuxMppcChannel;FixedMuxMppcChannel;1;0;1;;;0;MPPC ADC Fixed MUX channel when FixedMuxMppcEn='1', used for HV(0) or MPPC(1);
+5;;6;8;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/FixedMuxHkChannel;FixedMuxHkChannel;2;0;3;;;0;HK ADC Fixed MUX channel when FixedMuxHkEn='1', used for CITIROC temperature per group;MSb=8, LSb=6
+6;;8;9;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/HKEn;HKEn;1;0;1;;;0;Enable Housekeeping automatic cycling (1KHz);
+7;;9;10;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/MppcHvHkToDAQ;MppcHvHkToDAQ;1;0;1;;;0;Enable MPPC HV0-7 Housekeeping to be pushed to DAQ (500Hz);
+8;;10;11;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/MppcTempHkToDAQ;MppcTempHkToDAQ;1;0;1;;;0;Enable MPPC temperature Housekeeping to be pushed to DAQ (500Hz);
+9;;11;12;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/FebHkToDAQ;FebHkToDAQ;1;0;1;;;0;Enable FEB Housekeeping to be pushed to DAQ (1KHz except Power Mezzanine values at 500Hz);
+10;;12;13;/FEB_CONFIG/FPGA-HV-HK/FPGA-HouseKeeping/CitiTempHkToDAQ;CitiTempHkToDAQ;1;0;1;;;0;Enable Citiroc temperature Housekeeping to be pushed to DAQ (250Hz);

@@ -1,0 +1,17 @@
+Short Name;Tree Name;Type;Description;Remarks
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH0.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH1.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH2.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH3.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH4.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH5.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH6.ApplyEn;Bool;Enable DAC channel set during apply cycle
+ApplyEn;FPGA-HV-HK.FPGA-HV.HV-CH7.ApplyEn;Bool;Enable DAC channel set during apply cycle
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH0.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH1.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH2.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH3.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH4.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH5.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH6.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)
+DAC;FPGA-HV-HK.FPGA-HV.HV-CH7.DAC;UInt16;HV DAC Set (HV(V) = 102.46*Value/65535)

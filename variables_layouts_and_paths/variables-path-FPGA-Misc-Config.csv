@@ -1,0 +1,26 @@
+Short Name;Tree Name;Type;Description;Remarks
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics0.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics1.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics2.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics3.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics4.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics5.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics6.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+AllStagesPowerOn;FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics7.AllStagesPowerOn;Bool;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing)
+BusyLoopbackEn;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.BusyLoopbackEn;Bool;Enable OCB/FEB Busy loopback (BUSY_OUT_OD <= OCB_BUSY_IN)
+DisableTrigExtPSC;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC;Byte;Disable TrigExtPSC signal for CITIROC groups 1 & 0 (b1b0 for corresponding Group, default='00'=enabled, is used with FPGA-DAQ-Global/OR32toTrigExtPSC)
+En;FPGA-MISC.FPGA-Misc-Config.LEDs.LED0.En;Bool;Led enable
+En;FPGA-MISC.FPGA-Misc-Config.LEDs.LED1.En;Bool;Led enable
+En;FPGA-MISC.FPGA-Misc-Config.LEDs.LED2.En;Bool;Led enable
+En;FPGA-MISC.FPGA-Misc-Config.LEDs.LED3.En;Bool;Led enable
+En;FPGA-MISC.FPGA-Misc-Config.LEDs.LED4.En;Bool;Led enable
+En;FPGA-MISC.FPGA-Misc-Config.LEDs.LED5.En;Bool;Led enable
+ForceResetPA;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA;Byte;Force Reset PA signal for CITIROC groups 1 & 0 (b1b0 for corresponding Group)
+ForceResetPSC;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC;Byte;Force Reset PSC signal for CITIROC groups 1 & 0 (b1b0 for corresponding Group)
+GlobalEnable;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable;Bool;Enable global functional testing
+MIBdbgAddr75Sel;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel;Bool;Select MIBdbg <= ADDR[7..5].SEL when '1', else MIBdbg <= ADDR[4..0]
+MIBdbgFromAddrEn;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgFromAddrEn;Bool;Enable MIB debug output from FEB address and RPROG SEL (MIB debug out <= ADDR/SEL)
+RemoteProgRxTxLoopbackEn;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.RemoteProgRxTxLoopbackEn;Bool;Enable remote programmation loopback (TX <= RX)
+SumOr32En;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.SumOr32En;Bool;Enable sum_or32 output from FEB address (FEB_sum_or32 <= FEB ADDR[3..0])
+TrigLoopbackEn;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.TrigLoopbackEn;Bool;Enable TrigIn/TrigOut loopback (TRIG_OUT <= FEB_TRIG_IN)
+TrigODLoopbackEn;FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.TrigODLoopbackEn;Bool;Enable TrigIn/TrigOut_OD loopback (TRIG_OUT_OD <= FEB_TRIG_IN)

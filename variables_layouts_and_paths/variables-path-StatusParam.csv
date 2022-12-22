@@ -1,0 +1,6 @@
+Short Name;Tree Name;Type;Description;Remarks
+Adc0InitError;Board.StatusParam.Adc0InitError;Bool;ADC 0 init status;Disabled in GUI
+Adc1InitError;Board.StatusParam.Adc1InitError;Bool;ADC 1 init status;Disabled in GUI
+ExtClockSel;Board.StatusParam.ExtClockSel;Bool;External clock selected as DAQ clock else internal 100MHz clock;Disabled in GUI
+GateEn;Board.StatusParam.GateEn;Bool;GateEnabled;Disabled in GUI
+TriggerIn;Board.StatusParam.TriggerIn;Bool;Trigger Input Status;Disabled in GUI

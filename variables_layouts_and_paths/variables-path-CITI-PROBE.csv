@@ -1,0 +1,3 @@
+Short Name;Tree Name;Type;Description;Remarks
+ChannelSelect;FPGA-MISC.CITI-PROBE.ChannelSelect;UInt16;Select the ASIC and channel : ChannelSelect = 1023 - [256*ASIC_NUM(3..0) + SELECTED_CHANNEL(255..0)], only one asic probe channel selected, the others asic probe channel will be 0
+Group_1or0;FPGA-MISC.CITI-PROBE.Group_1or0;Bool;Select Group 1 when checked, else 0

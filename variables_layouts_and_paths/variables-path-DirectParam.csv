@@ -1,0 +1,14 @@
+Short Name;Tree Name;Type;Description;Remarks
+AdcFsmConfLock;Board.DirectParam.AdcFsmConfLock;Bool;lock ADC during ADC configuration
+AdcFsmReset;Board.DirectParam.AdcFsmReset;Bool;reset the ADC FSMs after ADC configuration
+AveEn;Board.DirectParam.AveEn;Bool;Asic val event
+BaselineDACApply;Board.DirectParam.BaselineDACApply;Bool;Apply LG/HG Baseline DAC on selected channels
+ExtClkEn;Board.DirectParam.ExtClkEn;Bool;Enable External clock as DAQ clock else internal 100MHz clock
+GateIdRst;Board.DirectParam.GateIdRst;Bool;Gate ID reset, GATE ID=0
+GtEn;Board.DirectParam.GtEn;Bool;global trigger enable
+GtsIdRst;Board.DirectParam.GtsIdRst;Bool;GTS ID reset, TAGID=0
+HvDACApply;Board.DirectParam.HvDACApply;Bool;Apply HV DAC on selected channels
+IGEn;Board.DirectParam.IGEn;Bool;Internal Generator enable
+ReadoutSMRst;Board.DirectParam.ReadoutSMRst;Bool;Reset readout SM
+RstL1Fifo;Board.DirectParam.RstL1Fifo;Bool;Reset L1 FIFO
+RstL2Fifo;Board.DirectParam.RstL2Fifo;Bool;Reset L2 FIFO

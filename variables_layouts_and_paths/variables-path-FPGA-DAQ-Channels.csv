@@ -1,0 +1,1073 @@
+Short Name;Tree Name;Type;Description;Remarks
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Thresholds.FPGA-Analog-Compare.HG;UInt16;High Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+HG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Thresholds.BaselineDAC.HG;UInt16;High Gain DAC baseline set (16-bits [0-65535])
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Thresholds.BaselineDAC.HG_ApplyEn;Bool;Enable HG baseline DAC set during apply cycle
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel0.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel1.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel2.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel3.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel4.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel5.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel6.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel7.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel8.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel9.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel10.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel11.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel12.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel13.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel14.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel15.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel16.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel17.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel18.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel19.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel20.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel21.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel22.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel23.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel24.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel25.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel26.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel27.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel28.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel29.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel30.HG_En;Bool;Enable High Gain Analog Event measurements
+HG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel31.HG_En;Bool;Enable High Gain Analog Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel0.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel1.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel2.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel3.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel4.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel5.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel6.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel7.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel8.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel9.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel10.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel11.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel12.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel13.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel14.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel15.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel16.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel17.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel18.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel19.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel20.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel21.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel22.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel23.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel24.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel25.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel26.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel27.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel28.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel29.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel30.Hit_En;Bool;Enable Timing Event measurements
+Hit_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel31.Hit_En;Bool;Enable Timing Event measurements
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Thresholds.FPGA-Analog-Compare.LG;UInt16;Low Gain threshold to push DAQ from ADC values (12-bits [0-4095])
+LG;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Thresholds.BaselineDAC.LG;UInt16;Low Gain DAC baseline set (16-bits [0-65535])
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_ApplyEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Thresholds.BaselineDAC.LG_ApplyEn;Bool;Enable LG baseline DAC set during apply cycle
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel0.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel1.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel2.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel3.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel4.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel5.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel6.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel7.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel8.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel9.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel10.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel11.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel12.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel13.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel14.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel15.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel16.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel17.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel18.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel19.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel20.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel21.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel22.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel23.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel24.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel25.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel26.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel27.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel28.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel29.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel30.LG_En;Bool;Enable Low Gain Analog Event measurements
+LG_En;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel31.LG_En;Bool;Enable Low Gain Analog Event measurements
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC0.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC1.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC2.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC3.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC4.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC5.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC6.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel0.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel1.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel2.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel3.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel4.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel5.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel6.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel7.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel8.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel9.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel10.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel11.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel12.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel13.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel14.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel15.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel16.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel17.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel18.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel19.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel20.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel21.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel22.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel23.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel24.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel25.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel26.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel27.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel28.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel29.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel30.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode
+OR256tAdcEn;FPGA-DAQ.FPGA-DAQ-Channels.ASIC7.Channels.Channel31.OR256tAdcEn;Bool;Enable ADC to be triggered by individual ASIC trigger output in Or32tADC mode

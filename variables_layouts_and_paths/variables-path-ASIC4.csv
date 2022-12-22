@@ -1,0 +1,341 @@
+Short Name;Tree Name;Type;Description;Remarks
+DAC10b;ASICS.ASIC4.GlobalControl.DAC10b;UInt16;Global 10-bits DAC trigger threshold (0-1023)
+DAC10b_t;ASICS.ASIC4.GlobalControl.DAC10b_t;UInt16;Global 10-bits DAC fast trigger threshold (0-1023)
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel0.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel1.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel2.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel3.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel4.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel5.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel6.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel7.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel8.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel9.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel10.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel11.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel12.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel13.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel14.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel15.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel16.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel17.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel18.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel19.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel20.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel21.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel22.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel23.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel24.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel25.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel26.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel27.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel28.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel29.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel30.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger;ASICS.ASIC4.Channels.Channel31.DAC4bTrigger;Byte;DAC trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel0.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel1.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel2.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel3.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel4.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel5.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel6.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel7.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel8.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel9.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel10.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel11.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel12.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel13.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel14.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel15.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel16.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel17.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel18.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel19.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel20.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel21.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel22.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel23.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel24.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel25.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel26.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel27.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel28.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel29.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel30.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DAC4bTrigger_t;ASICS.ASIC4.Channels.Channel31.DAC4bTrigger_t;Byte;DAC fast trigger threshold (4-bits, [0-15])
+DiscriMask;ASICS.ASIC4.Channels.Channel0.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel1.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel2.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel3.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel4.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel5.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel6.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel7.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel8.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel9.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel10.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel11.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel12.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel13.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel14.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel15.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel16.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel17.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel18.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel19.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel20.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel21.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel22.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel23.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel24.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel25.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel26.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel27.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel28.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel29.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel30.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+DiscriMask;ASICS.ASIC4.Channels.Channel31.DiscriMask;Bool;Disable the normal threshold discriminator (OR32 & NOR32 line only) when checked
+En32Trigger;ASICS.ASIC4.GlobalControl.En32Trigger;Bool;Enable all 32 individual trigger outputs
+EnHitMuxOut;ASICS.ASIC4.GlobalControl.EnHitMuxOut;Bool;Enable multiplexed trigger output
+EnNOR32;ASICS.ASIC4.GlobalControl.EnNOR32;Bool;Enable NOR32 trigger output (= !OR32 if TriggerPolarity=0)
+EnNOR32_t;ASICS.ASIC4.GlobalControl.EnNOR32_t;Bool;Enable NOR32 fast trigger output (= !OR32t)
+EnOR32;ASICS.ASIC4.GlobalControl.EnOR32;Bool;Enable OR32 trigger output
+FastShaperOnLG;ASICS.ASIC4.GlobalControl.FastShaperOnLG;Bool;Switch fast shaper on Low Gain path (checked) or High Gain path (not checked)
+HG_CTest;ASICS.ASIC4.Channels.Channel0.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel1.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel2.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel3.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel4.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel5.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel6.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel7.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel8.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel9.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel10.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel11.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel12.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel13.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel14.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel15.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel16.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel17.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel18.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel19.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel20.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel21.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel22.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel23.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel24.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel25.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel26.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel27.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel28.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel29.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel30.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_CTest;ASICS.ASIC4.Channels.Channel31.HG_CTest;Bool;Switch High Gain input channel to calibration input
+HG_Gain;ASICS.ASIC4.Channels.Channel0.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel1.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel2.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel3.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel4.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel5.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel6.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel7.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel8.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel9.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel10.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel11.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel12.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel13.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel14.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel15.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel16.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel17.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel18.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel19.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel20.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel21.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel22.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel23.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel24.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel25.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel26.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel27.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel28.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel29.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel30.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_Gain;ASICS.ASIC4.Channels.Channel31.HG_Gain;Byte;Preamplifier High Gain (6-bits, [0-63])
+HG_SCAorPeakD;ASICS.ASIC4.GlobalControl.HG_SCAorPeakD;Bool;Enable High Gain Track&Hold SCA mode (checked) or Peak Detector(not checked)
+HG_SH_TimeConstant;ASICS.ASIC4.GlobalControl.HG_SH_TimeConstant;Byte;High Gain Slow Shaper Time Constant (3-bits, 1:12.5ns-7:87.5ns)
+inputDAC;ASICS.ASIC4.Channels.Channel0.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel1.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel2.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel3.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel4.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel5.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel6.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel7.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel8.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel9.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel10.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel11.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel12.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel13.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel14.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel15.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel16.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel17.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel18.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel19.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel20.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel21.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel22.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel23.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel24.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel25.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel26.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel27.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel28.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel29.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel30.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+inputDAC;ASICS.ASIC4.Channels.Channel31.inputDAC;Byte;Input DAC level (8-bits, [0-255], 0=5V on DAC i.e. Min HV on SiPM)
+InputDAC_4V5ref;ASICS.ASIC4.GlobalControl.InputDAC_4V5ref;Bool;Set input DAC to 4.5V reference (checked) or 2.5V reference (not checked)
+inputDAC_En;ASICS.ASIC4.Channels.Channel0.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel1.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel2.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel3.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel4.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel5.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel6.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel7.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel8.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel9.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel10.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel11.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel12.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel13.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel14.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel15.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel16.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel17.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel18.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel19.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel20.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel21.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel22.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel23.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel24.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel25.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel26.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel27.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel28.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel29.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel30.inputDAC_En;Bool;Enable Input DAC
+inputDAC_En;ASICS.ASIC4.Channels.Channel31.inputDAC_En;Bool;Enable Input DAC
+InputDAC_En;ASICS.ASIC4.GlobalControl.InputDAC_En;Bool;Enable all 32 individual input DAC
+LG_CTest;ASICS.ASIC4.Channels.Channel0.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel1.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel2.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel3.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel4.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel5.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel6.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel7.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel8.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel9.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel10.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel11.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel12.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel13.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel14.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel15.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel16.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel17.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel18.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel19.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel20.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel21.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel22.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel23.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel24.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel25.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel26.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel27.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel28.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel29.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel30.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_CTest;ASICS.ASIC4.Channels.Channel31.LG_CTest;Bool;Switch Low Gain input channel to calibration input
+LG_Gain;ASICS.ASIC4.Channels.Channel0.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel1.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel2.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel3.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel4.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel5.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel6.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel7.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel8.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel9.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel10.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel11.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel12.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel13.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel14.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel15.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel16.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel17.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel18.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel19.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel20.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel21.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel22.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel23.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel24.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel25.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel26.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel27.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel28.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel29.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel30.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_Gain;ASICS.ASIC4.Channels.Channel31.LG_Gain;Byte;Preamplifier Low Gain (6-bits, [0-63])
+LG_PA_WeakBias;ASICS.ASIC4.GlobalControl.LG_PA_WeakBias;Bool;Enable Low Gain weak bias;Disabled in GUI
+LG_SCAorPeakD;ASICS.ASIC4.GlobalControl.LG_SCAorPeakD;Bool;Enable Low Gain Track&Hold SCA mode (checked) or Peak Detector(not checked)
+LG_SH_TimeConstant;ASICS.ASIC4.GlobalControl.LG_SH_TimeConstant;Byte;Low Gain Slow Shaper Time Constant (1:12.5ns, 7:87.5ns)
+PA_DIS;ASICS.ASIC4.Channels.Channel0.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel1.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel2.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel3.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel4.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel5.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel6.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel7.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel8.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel9.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel10.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel11.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel12.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel13.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel14.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel15.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel16.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel17.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel18.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel19.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel20.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel21.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel22.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel23.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel24.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel25.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel26.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel27.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel28.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel29.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel30.PA_DIS;Bool;Disable preamplifier
+PA_DIS;ASICS.ASIC4.Channels.Channel31.PA_DIS;Bool;Disable preamplifier
+PeakSensingBypass;ASICS.ASIC4.GlobalControl.PeakSensingBypass;Bool;Debug mode for Peak Detector : Bypass the Peak Sensing logical cell and use external pin PSmode (checked) - only if PD mode enabled
+RSorDiscri;ASICS.ASIC4.GlobalControl.RSorDiscri;Bool;Switch logical discriminator to Reset/Set mode (checked) or standard discriminator (not checked)
+SCAweakBias;ASICS.ASIC4.GlobalControl.SCAweakBias;Bool;Enable SCA weak bias;Disabled in GUI
+SelTrigExtPSC;ASICS.ASIC4.GlobalControl.SelTrigExtPSC;Bool;Select ext. pin PSGTrig for PD trigger input (checked) else standard channel discri ouptup used for PD - only if PD mode enabled
+TriggerPolarity;ASICS.ASIC4.GlobalControl.TriggerPolarity;Bool;Trigger polarity for OR32, rising edge (unchecked) or falling edge (checked);Disabled in GUI

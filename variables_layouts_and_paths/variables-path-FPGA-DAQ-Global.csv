@@ -1,0 +1,20 @@
+Short Name;Tree Name;Type;Description;Remarks
+AdcDelay;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcDelay;UInt16;ADC delay: 10ns*(adc_delay+2))(10-bits)
+AdcPhaseBit;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcPhaseBit;UInt16;ADC Data to DCO Phase X'0':0°, X'3':180°, max X'B':660°, step 60°
+AdcStartsignal;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcStartsignal;Enum;ADC started on signal
+AdcTestMode;FPGA-DAQ.FPGA-DAQ-Global.Debug.AdcTestMode;Byte;ADC test mode defaut '0'=NoTest 8bits
+AdcTestModeEn;FPGA-DAQ.FPGA-DAQ-Global.Debug.AdcTestModeEn;Bool;ADC test mode (1)enabled
+DebugConnMux;FPGA-DAQ.FPGA-DAQ-Global.Debug.DebugConnMux;Bool;debug mux, signals on debug connector from Citi group 0 (0) or group 1 (1)
+HaLimit;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Reset-limit.HaLimit;Bool;Hit Analog limit to 1 event per channel
+HoldDisable;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldDisable;Bool;Hold LG & HG disable
+HoldHG;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG;UInt16;Hold HG delay x 2.5ns (13-bits) max 8191
+HoldLG;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG;UInt16;Hold LG delay x 2.5ns (13-bits) max 8191
+HoldMaskEn;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold-Mask.HoldMaskEn;Bool;HOLD MASK enable
+HoldMaskStart;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold-Mask.HoldMaskStart;UInt16;HOLD mask starting value, 13-bits @ 10ns, max=81.92us
+HoldMaskStop;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold-Mask.HoldMaskStop;UInt16;HOLD mask stoping value, 13-bits @ 10ns, max=81.92us, MUST BE > HOLD mask
+HoldOnRazChN;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldOnRazChN;Bool;Hold clear is synchronized with RAZ_CHN when='1', else with Reset_PA
+L0IndTrigDelay;FPGA-DAQ.FPGA-DAQ-Global.Timing-path.L0IndTrigDelay;Byte;L0 individual input trigger delay before L0 counters [0-63] x2.5ns
+OR32toTrigExtPSC;FPGA-DAQ.FPGA-DAQ-Global.Debug.OR32toTrigExtPSC;Bool;Put the OR32 to the Citiroc PS_global_trig input pin (set also SelTrigExtPSC to '1' in Citiroc config to use this feature)
+RazChNDis;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Reset-limit.RazChNDis;Bool;RAZ CHN disable
+ResetPaDis;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Reset-limit.ResetPaDis;Bool;Reset PA disable
+ResetPscDis;FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Reset-limit.ResetPscDis;Bool;Reset PSC disable

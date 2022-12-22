@@ -1,0 +1,20 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[2]
+-------------------------------------------------
+This update object:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 0
+;;Nb. of Data Bits = 16
+;;Nb. of 16-bits Words  = 1
+;;Available Bit Size  = 16 bits
+;;Used Bit Size  = 16 bits
+;Associated UserSet on ASIC_PROBE, Index = 7
+;;Associated UserSet Error [0] =  Address set for user set config command 'ASIC_PROBE' (User Set Index '7') is greater than allowed Nb of words in FPGA
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;10;/FEB_CONFIG/FPGA-MISC/CITI-PROBE/ChannelSelect;ChannelSelect;10;0;1023;;;0;Select the ASIC and channel : ChannelSelect = 1023 - [256*ASIC_NUM(3..0) + SELECTED_CHANNEL(255..0)], only one asic probe channel selected, the others asic probe channel will be 0;MSb=10, LSb=0
+1;;10;15;/FEB_CONFIG/FPGA-MISC/CITI-PROBE/Reserved;Reserved;5;0;1;;;0;;MSb=15, LSb=10
+2;;15;16;/FEB_CONFIG/FPGA-MISC/CITI-PROBE/Group_1or0;Group_1or0;1;0;1;;;0;Select Group 1 when checked, else 0;

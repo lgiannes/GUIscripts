@@ -1,0 +1,42 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[1]
+-------------------------------------------------
+This update object:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 2
+;;Nb. of Data Bits = 14
+;;Nb. of 14-bits Words  = 2
+;;Available Bit Size  = 28 bits
+;;Used Bit Size  = 28 bits
+;Associated UserSet on MISC, Index = 5
+;;Associated UserSet Error [0] =  Address set for user set config command 'MISC' (User Set Index '5') is greater than allowed Nb of words in FPGA
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/LEDs/LED0/En;En;1;0;1;;;0;Led enable;
+1;;1;2;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/LEDs/LED1/En;En;1;0;1;;;0;Led enable;
+2;;2;3;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/LEDs/LED2/En;En;1;0;1;;;0;Led enable;
+3;;3;4;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/LEDs/LED3/En;En;1;0;1;;;0;Led enable;
+4;;4;5;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/LEDs/LED4/En;En;1;0;1;;;0;Led enable;
+5;;5;6;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/LEDs/LED5/En;En;1;0;1;;;0;Led enable;
+6;;6;7;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics0/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+7;;7;8;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics1/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+8;;8;9;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics2/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+9;;9;10;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics3/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+10;;10;11;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics4/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+11;;11;12;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics5/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+12;;12;13;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics6/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+13;;13;14;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/AsicsPowerSavingDisable/Asics7/AllStagesPowerOn;AllStagesPowerOn;1;0;1;;;1;Asics Power Pulsing Control (0:PWR pulsing enabled /1:No power pulsing);
+14;;14;15;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/GlobalEnable;GlobalEnable;1;0;1;;;0;Enable global functional testing;
+15;;15;16;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/RemoteProgRxTxLoopbackEn;RemoteProgRxTxLoopbackEn;1;0;1;;;0;Enable remote programmation loopback (TX <= RX);
+16;;16;17;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/MIBdbgFromAddrEn;MIBdbgFromAddrEn;1;0;1;;;0;Enable MIB debug output from FEB address and RPROG SEL (MIB debug out <= ADDR/SEL);
+17;;17;18;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/MIBdbgAddr75Sel;MIBdbgAddr75Sel;1;0;1;;;0;Select MIBdbg <= ADDR[7..5].SEL when '1', else MIBdbg <= ADDR[4..0];
+18;;18;19;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/BusyLoopbackEn;BusyLoopbackEn;1;0;1;;;0;Enable OCB/FEB Busy loopback (BUSY_OUT_OD <= OCB_BUSY_IN);
+19;;19;20;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/TrigLoopbackEn;TrigLoopbackEn;1;0;1;;;0;Enable TrigIn/TrigOut loopback (TRIG_OUT <= FEB_TRIG_IN);
+20;;20;21;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/TrigODLoopbackEn;TrigODLoopbackEn;1;0;1;;;0;Enable TrigIn/TrigOut_OD loopback (TRIG_OUT_OD <= FEB_TRIG_IN);
+21;;21;22;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/SumOr32En;SumOr32En;1;0;1;;;0;Enable sum_or32 output from FEB address (FEB_sum_or32 <= FEB ADDR[3..0]);
+22;;22;24;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/ForceResetPA;ForceResetPA;2;0;3;;;0;Force Reset PA signal for CITIROC groups 1 & 0 (b1b0 for corresponding Group);MSb=24, LSb=22
+23;;24;26;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/ForceResetPSC;ForceResetPSC;2;0;3;;;0;Force Reset PSC signal for CITIROC groups 1 & 0 (b1b0 for corresponding Group);MSb=26, LSb=24
+24;;26;28;/FEB_CONFIG/FPGA-MISC/FPGA-Misc-Config/FunctionalTesting/DisableTrigExtPSC;DisableTrigExtPSC;2;0;3;;;0;Disable TrigExtPSC signal for CITIROC groups 1 & 0 (b1b0 for corresponding Group, default='00'=enabled, is used with FPGA-DAQ-Global/OR32toTrigExtPSC);MSb=28, LSb=26

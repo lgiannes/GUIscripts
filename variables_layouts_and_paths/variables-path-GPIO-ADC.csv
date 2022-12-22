@@ -1,0 +1,2 @@
+Short Name;Tree Name;Type;Description;Remarks
+InitOrStart;GPIO.GPIO-ADC.InitOrStart;Bool;1 for ADC initialisation, 0 for ADC cycle start

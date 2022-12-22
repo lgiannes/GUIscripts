@@ -1,0 +1,23 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[4]
+-------------------------------------------------
+This update object:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 0
+;;Nb. of Data Bits = 16
+;;Nb. of 16-bits Words  = 1
+;;Available Bit Size  = 16 bits
+;;Used Bit Size  = 11 bits
+;Associated UserGetCmd on GPIO_STATUS, Index = 160
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/GPIO/GPIO-STATUS/GTSEn;GTSEn;1;0;1;;;0;GTS Enabled;
+1;;1;6;/FEB_CONFIG/GPIO/GPIO-STATUS/MIBDebug;MIBDebug;5;0;31;;;0;MIB Debug Connector output;MSb=6, LSb=1
+2;;6;7;/FEB_CONFIG/GPIO/GPIO-STATUS/FEB-RPROG-Tx;FEB-RPROG-Tx;1;0;1;;;0;FEB Remote Prog TX output;
+3;;7;8;/FEB_CONFIG/GPIO/GPIO-STATUS/FEB-BUSY-OD;FEB-BUSY-OD;1;0;1;;;0;FEB Busy OD output;
+4;;8;9;/FEB_CONFIG/GPIO/GPIO-STATUS/FEB-TRIGOUT;FEB-TRIGOUT;1;0;1;;;0;FEB Trigger output;
+5;;9;10;/FEB_CONFIG/GPIO/GPIO-STATUS/FEB-TRIGOUT-OD;FEB-TRIGOUT-OD;1;0;1;;;0;FEB Trigger OD output;
+6;;10;11;/FEB_CONFIG/GPIO/GPIO-STATUS/FEB-PMB_ALERTN;FEB-PMB_ALERTN;1;0;1;;;0;FEB PMB alert (active low);

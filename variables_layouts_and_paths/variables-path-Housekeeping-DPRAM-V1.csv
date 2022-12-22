@@ -1,0 +1,32 @@
+Short Name;Tree Name;Type;Description;Remarks
+3V3-MAX10;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.3V3-MAX10;UInt16;3V3 MAX10 voltage;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group0.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group1.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group2.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group3.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group4.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group5.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group6.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+Citiroc-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group7.Citiroc-Temp;UInt16;Citiroc temperature;Disabled in GUI
+FEB-12V-Current;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-12V-Current;UInt16;FEB current on 12V input;Disabled in GUI
+FEB-BKP-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-BKP-HV;UInt16;FEB Backplane HV;Disabled in GUI
+FEB-FPGA-Current;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-FPGA-Current;UInt16;FEB FPGA core current;Disabled in GUI
+FEB-Temp0;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-Temp0;UInt16;FEB temperature #0;Disabled in GUI
+FEB-Temp1;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-Temp1;UInt16;FEB temperature #1;Disabled in GUI
+FPGA-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FPGA-Temp;UInt16;FPGA temperature;Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group0.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group1.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group2.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group3.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group4.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group5.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group6.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-HV;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group7.MPPC-HV;UInt16;MPPC HV (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group0.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group1.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group2.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group3.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group4.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group5.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group6.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI
+MPPC-Temp;FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group7.MPPC-Temp;UInt16;MPPC temperature (on 12-bits TLV2548);Disabled in GUI

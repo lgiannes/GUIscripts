@@ -1,0 +1,7 @@
+Short Name;Tree Name;Type;Description;Remarks
+AveEn;Board.DataReadoutParam.AveEn;Bool;Asic val event
+FifoReset;Board.DataReadoutParam.FifoReset;Bool;Reset Fifo
+GateIdRst;Board.DataReadoutParam.GateIdRst;Bool;Gate ID reset, TAGID=0
+GtEn;Board.DataReadoutParam.GtEn;Bool;global trigger enable
+GtsIdRst;Board.DataReadoutParam.GtsIdRst;Bool;GTS ID reset, TAGID=0
+IGEn;Board.DataReadoutParam.IGEn;Bool;internal generator enable

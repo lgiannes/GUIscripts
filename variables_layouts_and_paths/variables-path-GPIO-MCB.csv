@@ -1,0 +1,6 @@
+Short Name;Tree Name;Type;Description;Remarks
+EventCntPeriod;GPIO.GPIO-MCB.EVENT.EventCntPeriod;UInt16;Internal Event counter period in 10us GTS ticks (14-bits / 0-163.83ms)
+EventCntPhase;GPIO.GPIO-MCB.EVENT.EventCntPhase;UInt16;Internal Event counter phase in clk ticks (10-bits, 0-998)
+GateCntPeriod;GPIO.GPIO-MCB.GATE.GateCntPeriod;UInt16;Internal Gate counter period in 10us GTS ticks (16-bits / 0-655.35ms)
+GateCntPhase;GPIO.GPIO-MCB.GATE.GateCntPhase;UInt16;Internal Gate counter phase in clk ticks (10-bits, 0-998)
+GateCntWidth;GPIO.GPIO-MCB.GATE.GateCntWidth;UInt16;Internal Gate counter width in 10us GTS ticks (14-bits / 0-163.83ms)

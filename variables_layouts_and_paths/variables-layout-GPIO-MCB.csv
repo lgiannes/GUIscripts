@@ -1,0 +1,25 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+/FEB_CONFIG/GPIO/GPIO-MCB:
+ Mapped to UserSet/Get/Apply Configuration Device[13]
+-------------------------------------------------
+This device:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 3
+;;Nb. of Data Bits = 13
+;;Nb. of 13-bits Words  = 5
+;;Available Bit Size  = 65 bits
+;;Used Bit Size  = 64 bits
+;Associated UserSetCmd on GPIO_MCB, Index = 1
+;;Associated UserSetCmd Error [0] =  Address set for user set config command 'GPIO_MCB' (User Set Index '1') is greater than allowed nb of words in FPGA
+;Associated UserGetCmd on GPIO_MCB, Index = 161
+;Blocks Transfer Allowed
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;16;/FEB_CONFIG/GPIO/GPIO-MCB/GATE/GateCntPeriod;GateCntPeriod;16;0;65535;;;1000;Internal Gate counter period in 10us GTS ticks (16-bits / 0-655.35ms);MSb=16, LSb=0
+1;;16;26;/FEB_CONFIG/GPIO/GPIO-MCB/GATE/GateCntPhase;GateCntPhase;10;0;998;;;0;Internal Gate counter phase in clk ticks (10-bits, 0-998);MSb=26, LSb=16
+2;;26;40;/FEB_CONFIG/GPIO/GPIO-MCB/GATE/GateCntWidth;GateCntWidth;14;0;16383;;;15;Internal Gate counter width in 10us GTS ticks (14-bits / 0-163.83ms);MSb=40, LSb=26
+3;;40;54;/FEB_CONFIG/GPIO/GPIO-MCB/EVENT/EventCntPeriod;EventCntPeriod;14;0;16383;;;2000;Internal Event counter period in 10us GTS ticks (14-bits / 0-163.83ms);MSb=54, LSb=40
+4;;54;64;/FEB_CONFIG/GPIO/GPIO-MCB/EVENT/EventCntPhase;EventCntPhase;10;0;998;;;0;Internal Event counter phase in clk ticks (10-bits, 0-998);MSb=64, LSb=54

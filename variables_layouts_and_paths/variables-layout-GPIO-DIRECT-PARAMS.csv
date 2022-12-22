@@ -1,0 +1,29 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[3]
+-------------------------------------------------
+This update object:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 0
+;;Nb. of Data Bits = 16
+;;Nb. of 16-bits Words  = 1
+;;Available Bit Size  = 16 bits
+;;Used Bit Size  = 14 bits
+;Associated UserSetCmd on GPIO_DPAR, Index = 0
+;;Associated UserSetCmd Error [0] =  Address set for user set config command 'GPIO_DPAR' (User Set Index '0') is greater than allowed Nb of words in FPGA
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/GTSEn;GTSEn;1;0;1;;;0;Enable GTS beacon;
+1;;1;2;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/SyncReset;SyncReset;1;0;1;;;0;Sync Reset;
+2;;2;3;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/ReadoutEn;ReadoutEn;1;0;1;;;0;Enable Readout;
+3;;3;4;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/EventNumCntReset;EventNumCntReset;1;0;1;;;0;Event Number Counter Reset;
+4;;4;5;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/GateTagCntReset;GateTagCntReset;1;0;1;;;0;Generator Gate Tag Counter Reset;
+5;;5;6;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/ExtEventSel;ExtEventSel;1;0;1;;;0;Select external Event (NIM IN1) when '1', else internal event signal generator;
+6;;6;7;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/ExtGateSel;ExtGateSel;1;0;1;;;0;Select external Gate (NIM IN0) when '1', else internal gate signal generator;
+7;;7;8;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/EventGenEn;EventGenEn;1;0;1;;;0;Enable generator with event number to be pushed into encoder;
+8;;8;9;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/GateGenEn;GateGenEn;1;0;1;;;0;Enable gate generator with selected GateType to be pushed into encoder (OR with Gate Open bit);
+9;;9;12;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/GateType;GateType;3;0;7;;;0;Gate Type 0 closed, 1 beam,2 cosmics, 3 LED;MSb=12, LSb=9
+10;;12;13;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/ForceBusyEn;ForceBusyEn;1;0;1;;;0;Force OCB Busy when set;
+11;;13;14;/FEB_CONFIG/GPIO/GPIO-DIRECT-PARAMS/GateOpen;GateOpen;1;0;1;;;0;Open the gate when '1', close it when '0' (OR with Gate Generator);

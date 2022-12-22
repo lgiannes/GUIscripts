@@ -1,0 +1,13 @@
+Short Name;Tree Name;Type;Description;Remarks
+EventGenEn;GPIO.GPIO-DIRECT-PARAMS.EventGenEn;Bool;Enable generator with event number to be pushed into encoder
+EventNumCntReset;GPIO.GPIO-DIRECT-PARAMS.EventNumCntReset;Bool;Event Number Counter Reset
+ExtEventSel;GPIO.GPIO-DIRECT-PARAMS.ExtEventSel;Bool;Select external Event (NIM IN1) when '1', else internal event signal generator
+ExtGateSel;GPIO.GPIO-DIRECT-PARAMS.ExtGateSel;Bool;Select external Gate (NIM IN0) when '1', else internal gate signal generator
+ForceBusyEn;GPIO.GPIO-DIRECT-PARAMS.ForceBusyEn;Bool;Force OCB Busy when set
+GateGenEn;GPIO.GPIO-DIRECT-PARAMS.GateGenEn;Bool;Enable gate generator with selected GateType to be pushed into encoder (OR with Gate Open bit)
+GateOpen;GPIO.GPIO-DIRECT-PARAMS.GateOpen;Bool;Open the gate when '1', close it when '0' (OR with Gate Generator)
+GateTagCntReset;GPIO.GPIO-DIRECT-PARAMS.GateTagCntReset;Bool;Generator Gate Tag Counter Reset
+GateType;GPIO.GPIO-DIRECT-PARAMS.GateType;Byte;Gate Type 0 closed, 1 beam,2 cosmics, 3 LED
+GTSEn;GPIO.GPIO-DIRECT-PARAMS.GTSEn;Bool;Enable GTS beacon
+ReadoutEn;GPIO.GPIO-DIRECT-PARAMS.ReadoutEn;Bool;Enable Readout
+SyncReset;GPIO.GPIO-DIRECT-PARAMS.SyncReset;Bool;Sync Reset

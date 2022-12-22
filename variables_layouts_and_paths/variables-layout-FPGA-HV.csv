@@ -1,0 +1,35 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+/FEB_CONFIG/FPGA-HV-HK/FPGA-HV:
+ Mapped to UserSet/Get/Apply Configuration Device[11]
+-------------------------------------------------
+This device:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 4
+;;Nb. of Data Bits = 12
+;;Nb. of 12-bits Words  = 12
+;;Available Bit Size  = 144 bits
+;;Used Bit Size  = 136 bits
+;Associated UserSet on HV_CONTROL_LOOP, Index = 3
+;;Associated UserSet Error [0] =  Address set for user set config command 'HV_CONTROL_LOOP' (User Set Index '3') is greater than allowed nb of words in FPGA
+;Associated UserGetCmd on HV_CONTROL_LOOP, Index = 3
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;16;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH0/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=16, LSb=0
+1;;16;32;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH1/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=32, LSb=16
+2;;32;48;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH2/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=48, LSb=32
+3;;48;64;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH3/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=64, LSb=48
+4;;64;80;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH4/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=80, LSb=64
+5;;80;96;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH5/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=96, LSb=80
+6;;96;112;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH6/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=112, LSb=96
+7;;112;128;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH7/DAC;DAC;16;0;65535;;;0;HV DAC Set (HV(V) = 102.46*Value/65535);MSb=128, LSb=112
+8;;128;129;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH0/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+9;;129;130;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH1/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+10;;130;131;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH2/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+11;;131;132;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH3/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+12;;132;133;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH4/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+13;;133;134;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH5/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+14;;134;135;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH6/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;
+15;;135;136;/FEB_CONFIG/FPGA-HV-HK/FPGA-HV/HV-CH7/ApplyEn;ApplyEn;1;0;1;;;1;Enable DAC channel set during apply cycle;

@@ -1,0 +1,45 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+/FEB_CONFIG/FPGA-Sync-Trig-Phase:
+ Mapped to UserSet/Get/Apply Configuration Device[10]
+-------------------------------------------------
+This device:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 3
+;;Nb. of Data Bits = 13
+;;Nb. of 13-bits Words  = 4
+;;Available Bit Size  = 52 bits
+;;Used Bit Size  = 52 bits
+;Associated UserSet on SYNC_TRIG_PHASE, Index = 0
+;;Associated UserSet Error [0] =  Address set for user set config command 'SYNC_TRIG_PHASE' (User Set Index '0') is greater than allowed nb of words in FPGA
+;Associated UserGetCmd on SYNC_TRIG_PHASE, Index = 0
+;Associated Reset Variable on Direct Parameters = ReadoutSMRst
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/GTSEn;GTSEn;1;0;1;;;0;Enable the SYNC-GTS signal if checked;
+1;;1;2;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/ResetEn;ResetEn;1;0;1;;;0;Enable the SYNC-RESET signal if checked;
+2;;2;3;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/GateCntResetEn;GateCntResetEn;1;0;1;;;0;Enable the Gate Tag/Time counters to be resetted from SYNC-RESET signal if checked;
+3;;3;4;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/GTSCntResetEn;GTSCntResetEn;1;0;1;;;0;Enable the GTS tag counter to be resetted from SYNC-RESET signal if checked;
+4;;4;5;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/ReadoutEnEn;ReadoutEnEn;1;0;1;;;0;Enable the SYNC-READOUT_EN signal if checked;
+5;;5;6;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/SyncGateEn;SyncGateEn;1;0;1;;;0;Enable the SYNC-GATE signal if checked;
+6;;6;7;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/LedSyncEn;LedSyncEn;1;0;1;;;0;Enable the SYNC-LED_SYNC signal if checked;
+7;;7;8;/FEB_CONFIG/FPGA-Sync-Trig-Phase/MCB-SYNC/EventEn;EventEn;1;0;1;;;0;Enable the SYNC-EVENT signal if checked;
+8;;8;9;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Trig-generator/extGlobalTrig;extGlobalTrig;1;0;1;;;0;Internal generator(0) or External trigger(1);
+9;;9;10;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Trig-generator/L1AdcCalsync;L1AdcCalsync;1;0;1;;;0;Calibration(1) or Acquisition(0) mode for ADC synchro signal;
+10;;10;26;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Trig-generator/IntGenPeriod;IntGenPeriod;16;0;65535;;;1000;Trigger period for internal generator (16-bits) x5us (prescaler);MSb=26, LSb=10
+11;;26;27;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Triggers-Backplane-Output/TriggerOut;TriggerOut;1;0;1;;;0;Trigger Output state;
+12;;27;28;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Triggers-Backplane-Output/TriggerOutEn;TriggerOutEn;1;0;1;;;0;Trigger Output enable;
+13;;28;29;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Triggers-Backplane-Output/TriggerOutOr;TriggerOutOr;1;0;1;;;0;Trigger Out OR (Open Drain output = 0 when set to '0', open drain when set to '1');
+14;;29;33;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Triggers-Backplane-Output/Sum_OR32;Sum_OR32;4;0;15;;;0;Sum of OR32 (4-bits);MSb=33, LSb=29
+15;;33;34;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/Triggers-Backplane-Output/BusyOut;BusyOut;1;0;1;;;0;Busy Out (Open Drain output = 0 when set to '0', open drain when set to '1');
+16;;34;36;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/ReadoutStartSignal;ReadoutStartSignal;2;0;3;;;0;readout is started on signal ;MSb=36, LSb=34
+17;;36;37;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/ReadoutGateOpen;ReadoutGateOpen;1;0;1;;;0;readout pushed when gate open is on;
+18;;37;38;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/StopOnSyncRden;StopOnSyncRden;1;0;1;;;0;readout stopped when SYNCIN RDEN= 0;
+19;;38;39;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/GtsTagIncOnGts;GtsTagIncOnGts;1;0;1;;;0;Gts Tag is incremeted on SYNCin GTS when 1, else on WR_GTS_TRAILER2 state;
+20;;39;40;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/FistEdgeAndRden;FistEdgeAndRden;1;0;1;;;0;need 1st edge mode selected 0= start on 1st gts or gts+gate whithout rden, 1= 1st gts or gts+gate whith rden;
+21;;40;41;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/HoldstartTimeOnDaq;HoldstartTimeOnDaq;1;0;1;;;0;enable hold start time to be pushed on DAQ;
+22;;41;42;/FEB_CONFIG/FPGA-Sync-Trig-Phase/TRIGGERS/DAQ-Triggers/HoldstopTimeOnDaq;HoldstopTimeOnDaq;1;0;1;;;0;enable hold stop time to be pushed on DAQ;
+23;;42;43;/FEB_CONFIG/FPGA-Sync-Trig-Phase/PHASE/Test;Test;1;0;1;;;0;Test;
+24;;43;52;/FEB_CONFIG/FPGA-Sync-Trig-Phase/PHASE/Reserved;Reserved;9;0;10;;;0;reserve6bits;MSb=52, LSb=43

@@ -1,0 +1,29 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+Mapped to Update Device[5]
+-------------------------------------------------
+This update object:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 3
+;;Nb. of Data Bits = 13
+;;Nb. of 13-bits Words  = 5
+;;Available Bit Size  = 65 bits
+;;Used Bit Size  = 58 bits
+;Associated UserSetCmd on GPIO_MISC, Index = 2
+;;Associated UserSetCmd Error [0] =  Address set for user set config command 'GPIO_MISC' (User Set Index '2') is greater than allowed Nb of words in FPGA
+;Blocks Transfer Allowed
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;8;/FEB_CONFIG/GPIO/GPIO-MISC/FEB-ADDR;FEB-ADDR;8;0;255;;;0;FEB address set;MSb=8, LSb=0
+1;;8;40;/FEB_CONFIG/GPIO/GPIO-MISC/KAL-EN;KAL-EN;32;0;4294967295;;;0;Kaladin Mux Enable;MSb=40, LSb=8
+2;;40;43;/FEB_CONFIG/GPIO/GPIO-MISC/KAL-MUX;KAL-MUX;3;0;7;;;0;Kaladin Mux selection;MSb=43, LSb=40
+3;;43;51;/FEB_CONFIG/GPIO/GPIO-MISC/TSEN-SW;TSEN-SW;8;0;255;;;0;Temperature Sensor Switch;MSb=51, LSb=43
+4;;51;52;/FEB_CONFIG/GPIO/GPIO-MISC/HVAB-SW;HVAB-SW;1;0;1;;;0;HV A (1) or B (0) selection;
+5;;52;53;/FEB_CONFIG/GPIO/GPIO-MISC/HV-Short;HV-Short;1;0;1;;;0;HV, Short circuit enable;
+6;;53;54;/FEB_CONFIG/GPIO/GPIO-MISC/FEB-EN;FEB-EN;1;0;1;;;0;FEB Enable;
+7;;54;55;/FEB_CONFIG/GPIO/GPIO-MISC/PMB-RESET;PMB-RESET;1;0;1;;;0;PMB Reset;
+8;;55;56;/FEB_CONFIG/GPIO/GPIO-MISC/FEB-TRIGIN;FEB-TRIGIN;1;0;1;;;0;FEB Trigger input;
+9;;56;57;/FEB_CONFIG/GPIO/GPIO-MISC/FEB-SEL-IN;FEB-SEL-IN;1;0;1;;;0;FEB SEL IN;
+10;;57;58;/FEB_CONFIG/GPIO/GPIO-MISC/FEB-RPROG-RX;FEB-RPROG-RX;1;0;1;;;0;FEB RPROG RX input;

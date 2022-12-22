@@ -1,0 +1,8 @@
+Short Name;Tree Name;Type;Description;Remarks
+FEB-BUSY-OD;GPIO.GPIO-STATUS.FEB-BUSY-OD;Bool;FEB Busy OD output;Disabled in GUI
+FEB-PMB_ALERTN;GPIO.GPIO-STATUS.FEB-PMB_ALERTN;Bool;FEB PMB alert (active low);Disabled in GUI
+FEB-RPROG-Tx;GPIO.GPIO-STATUS.FEB-RPROG-Tx;Bool;FEB Remote Prog TX output;Disabled in GUI
+FEB-TRIGOUT;GPIO.GPIO-STATUS.FEB-TRIGOUT;Bool;FEB Trigger output;Disabled in GUI
+FEB-TRIGOUT-OD;GPIO.GPIO-STATUS.FEB-TRIGOUT-OD;Bool;FEB Trigger OD output;Disabled in GUI
+GTSEn;GPIO.GPIO-STATUS.GTSEn;Bool;GTS Enabled;Disabled in GUI
+MIBDebug;GPIO.GPIO-STATUS.MIBDebug;Byte;MIB Debug Connector output;Disabled in GUI

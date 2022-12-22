@@ -1,0 +1,10 @@
+Short Name;Tree Name;Type;Description;Remarks
+AutoResetOnTimeout;Board.UsbEthParam.AutoResetOnTimeout;Bool;Enable autoreset EP1IN flux control when timeout asserted
+FileLimit;Board.UsbEthParam.FileLimit;UInt32;Define the limit of readout file size i.e. Readout is automatically stopped when this size is reached
+Packets;Board.UsbEthParam.Packets;Byte;Number of packets transferred before data is written into file. Minimum 8 for optimized data throughput, should be reduced when data throughput is low (else timeout my be asserted)
+PacketSize;Board.UsbEthParam.PacketSize;UInt16;Number of bytes per packet during the USB transfer. Nominal=16384 for optimized data throughput on FX3 >=v3.0 (12288 for FX3 <v3.0), should be reduced when data throughput is low (else timeout my be asserted)
+Queues;Board.UsbEthParam.Queues;Byte;Number of queues used in asynchronous USB data transfer (NOT. IMPL);Disabled in GUI
+StartRequestOnly;Board.UsbEthParam.StartRequestOnly;Bool;Chain mode function : only check this box for starting the readout on the next boards in chain mode 
+StopDaqEndTimeout;Board.UsbEthParam.StopDaqEndTimeout;UInt32;Timeout assertion time on FPGA answer after a stop request (from user stop, script, Xfer Timeout or File Limit)
+StopOnTimeout;Board.UsbEthParam.StopOnTimeout;Bool;Enable readout stop when timeout asserted
+Timeout;Board.UsbEthParam.Timeout;UInt32;Xfer Timeout assertion time while reading on readout EP1IN (ms)

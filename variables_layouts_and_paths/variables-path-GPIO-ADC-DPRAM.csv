@@ -1,0 +1,13 @@
+Short Name;Tree Name;Type;Description;Remarks
+3V3-MIB;GPIO.GPIO-ADC-DPRAM.Others.3V3-MIB;UInt32;Global HV;Disabled in GUI
+Global-HV;GPIO.GPIO-ADC-DPRAM.Others.Global-HV;UInt32;Global HV;Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH0.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH1.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH2.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH3.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH4.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH5.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH6.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV;GPIO.GPIO-ADC-DPRAM.HV-Channels.CH7.HV;UInt32;HV DPRAM channel[7..0] value (18-bits);Disabled in GUI
+HV-Current;GPIO.GPIO-ADC-DPRAM.Others.HV-Current;UInt32;HV current;Disabled in GUI
+Sum32;GPIO.GPIO-ADC-DPRAM.Others.Sum32;UInt32;Sum32 analog value;Disabled in GUI

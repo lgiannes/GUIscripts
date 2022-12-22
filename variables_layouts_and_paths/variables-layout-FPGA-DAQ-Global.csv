@@ -1,0 +1,42 @@
+-------------------------------------------------
+Memory Layout Global Parameters:
+/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global:
+ Mapped to UserSet/Get/Apply Configuration Device[9]
+-------------------------------------------------
+This device:
+;UserSet/GetConfig Parameters:
+;;Nb. of Address Bits = 4
+;;Nb. of Data Bits = 12
+;;Nb. of 12-bits Words  = 14
+;;Available Bit Size  = 168 bits
+;;Used Bit Size  = 168 bits
+;Associated UserSet on GLOBAL_DAQ, Index = 2
+;;Associated UserSet Error [0] =  Address set for user set config command 'GLOBAL_DAQ' (User Set Index '2') is greater than allowed nb of words in FPGA
+;Associated UserGetCmd on GLOBAL_DAQ, Index = 2
+;Associated Reset Variable on Direct Parameters = AdcFsmReset
+-------------------------------------------------
+Variables Layout:
+
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;13;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold/HoldLG;HoldLG;13;0;8191;;;15;Hold LG delay x 2.5ns (13-bits) max 8191;MSb=13, LSb=0
+1;;13;26;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold/HoldHG;HoldHG;13;0;8191;;;15;Hold HG delay x 2.5ns (13-bits) max 8191;MSb=26, LSb=13
+2;;26;27;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold/HoldDisable;HoldDisable;1;0;1;;;0;Hold LG & HG disable;
+3;;27;28;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold/HoldOnRazChN;HoldOnRazChN;1;0;1;;;0;Hold clear is synchronized with RAZ_CHN when='1', else with Reset_PA;
+4;;28;29;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold-Mask/HoldMaskEn;HoldMaskEn;1;0;1;;;0;HOLD MASK enable;
+5;;29;42;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold-Mask/HoldMaskStart;HoldMaskStart;13;0;8191;;;500;HOLD mask starting value, 13-bits @ 10ns, max=81.92us;MSb=42, LSb=29
+6;;42;55;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Hold-Mask/HoldMaskStop;HoldMaskStop;13;0;8191;;;1000;HOLD mask stoping value, 13-bits @ 10ns, max=81.92us, MUST BE > HOLD mask;MSb=55, LSb=42
+7;;55;56;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Reset-limit/ResetPaDis;ResetPaDis;1;0;1;;;0;Reset PA disable;
+8;;56;57;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Reset-limit/ResetPscDis;ResetPscDis;1;0;1;;;0;Reset PSC disable;
+9;;57;58;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Reset-limit/RazChNDis;RazChNDis;1;0;1;;;0;RAZ CHN disable;
+10;;58;59;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/Reset-limit/HaLimit;HaLimit;1;0;1;;;0;Hit Analog limit to 1 event per channel;
+11;;59;69;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/ADC/AdcDelay;AdcDelay;10;0;1023;;;0;ADC delay: 10ns*(adc_delay+2))(10-bits);MSb=69, LSb=59
+12;;69;73;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/ADC/AdcPhaseBit;AdcPhaseBit;4;0;11;;;3;ADC Data to DCO Phase X'0':0°, X'3':180°, max X'B':660°, step 60°;MSb=73, LSb=69
+13;;73;75;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Analog-path/ADC/AdcStartsignal;AdcStartsignal;2;0;3;;;0;ADC started on signal;MSb=75, LSb=73
+14;;75;81;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Timing-path/L0IndTrigDelay;L0IndTrigDelay;6;0;63;;;0;L0 individual input trigger delay before L0 counters [0-63] x2.5ns;MSb=81, LSb=75
+15;;81;82;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Debug/DebugConnMux;DebugConnMux;1;0;1;;;0;debug mux, signals on debug connector from Citi group 0 (0) or group 1 (1);
+16;;82;83;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Debug/OR32toTrigExtPSC;OR32toTrigExtPSC;1;0;1;;;0;Put the OR32 to the Citiroc PS_global_trig input pin (set also SelTrigExtPSC to '1' in Citiroc config to use this feature);
+17;;83;84;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Debug/AdcTestModeEn;AdcTestModeEn;1;0;1;;;0;ADC test mode (1)enabled;
+18;;84;92;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/Debug/AdcTestMode;AdcTestMode;8;0;255;;;0;ADC test mode defaut '0'=NoTest 8bits;MSb=92, LSb=84
+19;;92;124;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/ReserveDAQGlobal/Reserved0;Reserved0;32;0;65535;;;0;reserve14bits;MSb=124, LSb=92
+20;;124;154;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/ReserveDAQGlobal/Reserved1;Reserved1;30;0;65535;;;0;reserve32bits;MSb=154, LSb=124
+21;;154;168;/FEB_CONFIG/FPGA-DAQ/FPGA-DAQ-Global/ReserveDAQGlobal/Reserved2;Reserved2;14;0;8;;;0;reserve14bits;MSb=168, LSb=154

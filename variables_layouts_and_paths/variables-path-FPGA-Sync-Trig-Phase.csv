@@ -1,0 +1,25 @@
+Short Name;Tree Name;Type;Description;Remarks
+BusyOut;FPGA-Sync-Trig-Phase.TRIGGERS.Triggers-Backplane-Output.BusyOut;Bool;Busy Out (Open Drain output = 0 when set to '0', open drain when set to '1')
+EventEn;FPGA-Sync-Trig-Phase.MCB-SYNC.EventEn;Bool;Enable the SYNC-EVENT signal if checked
+extGlobalTrig;FPGA-Sync-Trig-Phase.TRIGGERS.Trig-generator.extGlobalTrig;Bool;Internal generator(0) or External trigger(1)
+FistEdgeAndRden;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.FistEdgeAndRden;Bool;need 1st edge mode selected 0= start on 1st gts or gts+gate whithout rden, 1= 1st gts or gts+gate whith rden
+GateCntResetEn;FPGA-Sync-Trig-Phase.MCB-SYNC.GateCntResetEn;Bool;Enable the Gate Tag/Time counters to be resetted from SYNC-RESET signal if checked
+GTSCntResetEn;FPGA-Sync-Trig-Phase.MCB-SYNC.GTSCntResetEn;Bool;Enable the GTS tag counter to be resetted from SYNC-RESET signal if checked
+GTSEn;FPGA-Sync-Trig-Phase.MCB-SYNC.GTSEn;Bool;Enable the SYNC-GTS signal if checked
+GtsTagIncOnGts;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.GtsTagIncOnGts;Bool;Gts Tag is incremeted on SYNCin GTS when 1, else on WR_GTS_TRAILER2 state
+HoldstartTimeOnDaq;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.HoldstartTimeOnDaq;Bool;enable hold start time to be pushed on DAQ
+HoldstopTimeOnDaq;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.HoldstopTimeOnDaq;Bool;enable hold stop time to be pushed on DAQ
+IntGenPeriod;FPGA-Sync-Trig-Phase.TRIGGERS.Trig-generator.IntGenPeriod;UInt16;Trigger period for internal generator (16-bits) x5us (prescaler)
+L1AdcCalsync;FPGA-Sync-Trig-Phase.TRIGGERS.Trig-generator.L1AdcCalsync;Bool;Calibration(1) or Acquisition(0) mode for ADC synchro signal
+LedSyncEn;FPGA-Sync-Trig-Phase.MCB-SYNC.LedSyncEn;Bool;Enable the SYNC-LED_SYNC signal if checked
+ReadoutEnEn;FPGA-Sync-Trig-Phase.MCB-SYNC.ReadoutEnEn;Bool;Enable the SYNC-READOUT_EN signal if checked
+ReadoutGateOpen;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.ReadoutGateOpen;Bool;readout pushed when gate open is on
+ReadoutStartSignal;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.ReadoutStartSignal;Enum;readout is started on signal 
+ResetEn;FPGA-Sync-Trig-Phase.MCB-SYNC.ResetEn;Bool;Enable the SYNC-RESET signal if checked
+StopOnSyncRden;FPGA-Sync-Trig-Phase.TRIGGERS.DAQ-Triggers.StopOnSyncRden;Bool;readout stopped when SYNCIN RDEN= 0
+Sum_OR32;FPGA-Sync-Trig-Phase.TRIGGERS.Triggers-Backplane-Output.Sum_OR32;Byte;Sum of OR32 (4-bits)
+SyncGateEn;FPGA-Sync-Trig-Phase.MCB-SYNC.SyncGateEn;Bool;Enable the SYNC-GATE signal if checked
+Test;FPGA-Sync-Trig-Phase.PHASE.Test;Bool;Test
+TriggerOut;FPGA-Sync-Trig-Phase.TRIGGERS.Triggers-Backplane-Output.TriggerOut;Bool;Trigger Output state
+TriggerOutEn;FPGA-Sync-Trig-Phase.TRIGGERS.Triggers-Backplane-Output.TriggerOutEn;Bool;Trigger Output enable
+TriggerOutOr;FPGA-Sync-Trig-Phase.TRIGGERS.Triggers-Backplane-Output.TriggerOutOr;Bool;Trigger Out OR (Open Drain output = 0 when set to '0', open drain when set to '1')

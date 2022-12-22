@@ -1,0 +1,7 @@
+Order;Check;Start Index;Next Index;Tree Name;Name;Bit Size;Min;Max;MSB First;Active Low;Default;Description;Comment
+0;;0;1;/FEB_CONFIG/Board/StatusParam/ExtClockSel;ExtClockSel;1;0;1;;;0;External clock selected as DAQ clock else internal 100MHz clock;
+1;;1;2;/FEB_CONFIG/Board/StatusParam/TriggerIn;TriggerIn;1;0;1;;;0;Trigger Input Status;
+2;;2;3;/FEB_CONFIG/Board/StatusParam/Adc0InitError;Adc0InitError;1;0;1;;;0;ADC 0 init status;
+3;;3;4;/FEB_CONFIG/Board/StatusParam/Adc1InitError;Adc1InitError;1;0;1;;;0;ADC 1 init status;
+4;Gap
+5;;7;8;/FEB_CONFIG/Board/StatusParam/GateEn;GateEn;1;0;1;;;0;GateEnabled;

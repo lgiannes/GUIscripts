@@ -344,18 +344,18 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     bool FPGAtemp_success = FPGAtemp_test(OutFile_Name);
     Restore_Initial_Config(FEB_BoardID,config_path);
 
-    // 4: test current in 12V backplane
+    // 4: test current in 12V from backplane
     bool I12V_success = I12V_test(OutFile_Name);
     Restore_Initial_Config(FEB_BoardID,config_path);
     // So far this just prints the currents, need to implement some success/fail criterion
 
     // 5: test FEB temperature
-    // 6: test PoweMezza temprature
+    // 6: test PowerMezza temperature
     // 7: test CITIROC temperatures (x8)
-    // 8: test backplane HV
+    // 8: test backplane HV 
     // 9: FPGA current test
 
-    return ( HV_ADC_success && HVShort_success && FPGAtemp_success && I12V_success); // && of all HK tests
+    return ( HV_ADC_success && HVShort_success && FPGAtemp_success && I12V_success ); // && of all HK tests
 }
 
 bool I12V_test(string OutFile_Name){
@@ -409,8 +409,8 @@ bool FPGAtemp_test(string OutFile_Name){
     Sync.Sleep(100);
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V1");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 20;//degres
-    double Delta = 5;//degres
+    double mu = 20;//degrees
+    double Delta = 5;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;

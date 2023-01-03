@@ -1,8 +1,9 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INIT SETTINGS (should put this in a config file or similar)
 
-//Load a given configuration
-string config_path = "/home/neutrino/FCT/code/config/config_FCT2_newGUI.xml";
+//Name of default configuration
+string config_folder = "/home/neutrino/FCT/code/config/";
+string config_path = config_folder+"config_FCT2_newGUI.xml";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
 string data_path   =    "/home/neutrino/FCT/data_local/";
@@ -33,10 +34,8 @@ void ScriptMainArgs(int SN){
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
     
-    //Send config (need to make two configs?)
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
-
     // Set the required Direct Parameters
     BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);

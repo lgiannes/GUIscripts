@@ -11,14 +11,12 @@ width=1E-6 #s
 # device=$( tio -L[0] )
 # #echo $device
 # if [ -z "$device" ];
-# then echo "error: no device connected"
+# then 
+# echo "error: no device connected. Connect pulse generator"
+# exit
 # else
 # echo $device
 # tio ${device} --response-timeout 2000
-# echo "OUTPUT ON;WAVE PULSE;AMPL $amp;PULSFREQ $freq;PULSWID $width;PULSRISE $rise;PULSFALL $fall" | tio ${device} --response-timeout 2000
-# sleep 3
-# echo "OUTPUT OFF" | tio ${device} --response-timeout 2000
-# sleep 3
 # fi
 
 

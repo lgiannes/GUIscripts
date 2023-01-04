@@ -3,7 +3,6 @@
 
 //Name of default configuration
 string config_folder = "/home/neutrino/FCT/code/config/";
-string config_path = config_folder+"config_FCT2_newGUI.xml";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
 string data_path   =    "/home/neutrino/FCT/data_local/";
@@ -18,7 +17,9 @@ double amplitude = 0.03;//V
 
 
 
-void ScriptMainArgs(int SN){
+void ScriptMainArgs(int SN,int bl1, int bl2){
+    
+    string config_path = config_folder+"config_FCT2_newGUI.xml";
 
     // // Delete "EndOfScript.txt" dummy file if it exists in the data directory
     // NO NEED TO DO. ALREADY DONE IN THE BASH SCRIPT 
@@ -57,6 +58,10 @@ void ScriptMainArgs(int SN){
     }else{
          System.Console.WriteLine("Sync test Successful!");
     }
+    //Restore initial config
+    BoardLib.OpenConfigFile(config_path);
+    SendGPIO();
+    Sync.Sleep(200);
         
     // Enable preamp and DAQ on all channels
     ActivateAllCh(LG,HG);
@@ -81,38 +86,72 @@ void ScriptMainArgs(int SN){
     }
 
 
-    RunAcquisition();
+    //RunAcquisition();
 
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
-    SendFEB();
-    Sync.Sleep(100);
-    Sync_good = false;
-    Sync_good = SyncTest();
-    if(!Sync_good){
-        System.Console.WriteLine("Sync not working");
-        return;
-    }else{
-         System.Console.WriteLine("Sync test Successful!");
-    }
-    RunBaselineAcq(50000);
-
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
-    SendFEB();
-    Sync.Sleep(100);
-    Sync_good = false;
-    Sync_good = SyncTest();
-    if(!Sync_good){
-        System.Console.WriteLine("Sync not working");
-        return;
-    }else{
-         System.Console.WriteLine("Sync test Successful!");
-    }
+    Sync.Sleep(500);
+    TurnOffFEB();
+    Sync.Sleep(500);
+    TurnOnFEB();
     
-    RunBaselineAcq(32000);
+    Sync_good = false;
+    Sync_good = SyncTest();
+    if(!Sync_good){
+        System.Console.WriteLine("Sync not working");
+        return;
+    }else{
+        System.Console.WriteLine("Sync test Successful!");
+    }
+    //Restore initial config
+    BoardLib.OpenConfigFile(config_path);
+    SendGPIO();
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetBoardId(0);
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(200);
+    SendFEB();
+    Sync.Sleep(200);
+
+    RunBaselineAcq(bl1);
+
+    Sync.Sleep(500);
+    TurnOffFEB();
+    Sync.Sleep(500);
+    TurnOnFEB();
+
+    if(!Sync_good){
+        System.Console.WriteLine("Sync not working");
+        return;
+    }else{
+         System.Console.WriteLine("Sync test Successful!");
+    }
+    //Restore initial config
+    BoardLib.OpenConfigFile(config_path);
+    SendGPIO();
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetBoardId(0);
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(200);
+    SendFEB();
+    Sync.Sleep(200);
+
+    RunBaselineAcq(bl2);
+
+    Sync.Sleep(500);
+    TurnOffFEB();
 
     // Turn off Pulse Gen at the end
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -123,6 +162,7 @@ void ScriptMainArgs(int SN){
     //Generate dummy file at the end of the script
     string[] o = {"END OF SCRIPT"};
     File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 
+    return;
 }
 
 
@@ -166,7 +206,11 @@ void RunAcquisition(){
         Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-                        System.Console.WriteLine("opening gate");       
+                        System.Console.WriteLine("opening gate");     
+        if( !BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
+            System.Console.WriteLine("ERROR: GATE NOT OPEN");
+            break;
+        }   
         // Sync.Sleep(50);
         // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
         // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
@@ -178,18 +222,22 @@ void RunAcquisition(){
         // Sync.Sleep(50);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-                        System.Console.WriteLine("closing gate");       
+                        System.Console.WriteLine("closing gate");  
+        if( BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
+            System.Console.WriteLine("ERROR: GATE NOT CLOSED");
+            break;
+        }        
         Sync.Sleep(10);
 
                                                                         //System.Console.WriteLine("channel "+channel.ToString()+" done");
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    Sync.Sleep(10);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(500);
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(500);
-    BoardLib.StopAcquisition();
-    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
+    Sync.Sleep(1100);
+    //BoardLib.StopAcquisition();
+    //Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 
 
@@ -227,35 +275,41 @@ void RunBaselineAcq(int baseline){
     
     for(int i=0;i<8;i++){
         int channel = 0;
-        //for(int channel=179;channel<181;channel++){
-        channel = i*32 + 16*(i/4) + (int)(Math.Pow(2,i%4))-1;
+        // WARNING: if you change the definition of channel here, you need to change also the ROOT analysis:
+        // function at "Gate_to_Kal_Ch" defined at line 369 of "FCTbaseline.cpp". Then, recompile ROOT analysis
+        channel = i*32;// + 16*(i/4) + (int)(Math.Pow(2,i%4))-1;
         SetKaladin(channel);
-        System.Console.WriteLine("asic " + i + " channel " + (16*(i/4) + (int)(Math.Pow(2,i%4))-1).ToString());
+        System.Console.WriteLine("asic " + channel/32 + " channel " + (channel%32).ToString());
                                                                         //System.Console.WriteLine("Kaladin set");       
         Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        // Sync.Sleep(10);
-        // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+        if( !BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
+            System.Console.WriteLine("ERROR: GATE NOT OPEN");
+            break;
+        }   // Sync.Sleep(10);
+        //BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
         Sync.Sleep(500);
-        // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+        //BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
         // Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        if( BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
+            System.Console.WriteLine("ERROR: GATE NOT CLOSED");
+            break;
+        }        Sync.Sleep(10);
 
                                                                         //System.Console.WriteLine("channel "+channel.ToString()+" done");
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    Sync.Sleep(500);                                                                   
+    Sync.Sleep(10);                                                                   
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(500);
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(500);
-    BoardLib.StopAcquisition();
-    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
+    Sync.Sleep(1100);
+    //BoardLib.StopAcquisition();
+    //Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 
 }
@@ -285,11 +339,7 @@ bool SyncTest(){
         success = false;
         return success;
     }
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
-    SendFEB();
-    Sync.Sleep(100);
+
     return success;
 }
 
@@ -299,6 +349,11 @@ void TurnOnFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
     BoardLib.SetBoardId(126); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
+}
+void TurnOffFEB(){    
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
+    BoardLib.SetBoardId(126); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    Sync.Sleep(500);
 }
 
 void SetKaladin(int channel){

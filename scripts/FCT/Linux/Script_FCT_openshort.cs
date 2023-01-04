@@ -86,7 +86,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     }
 
 
-    //RunAcquisition();
+    RunAcquisition();
 
     Sync.Sleep(500);
     TurnOffFEB();

@@ -2,7 +2,7 @@
 
 freq=200 #Hz
 pulseper=1/$freq #s
-amp=0.03 #V
+amp=0.06 #V
 rise=10E-9 #s
 fall=99E-9 #s
 width=1E-6 #s

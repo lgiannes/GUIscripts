@@ -30,14 +30,20 @@ ip_address="10.195.52.144"
 port="11000"
 
 #Kill all the jobs (avoid double serial communication)
-kill $(jobs -p)
+#kill $(jobs -p)
+sudo kill $(pidof mono)
 
 # Check that the pulse generator is connected. Otherwise, abort script
 if bash check_fg.sh | grep -q '/dev/ttyACM0'; then
   echo "Pulse Gen is connected to: " 
 else
-  echo "ERROR: Pulse Gen is NOT connected"
-  exit
+  read -p "ERROR: Pulse Gen is NOT connected. Continue? (y=yes, any other key=no) " -n 1 -r 
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    break
+  else
+    exit
+  fi
 fi
 
 # Open GUI and wait 
@@ -61,7 +67,7 @@ command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_F
 #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
 if [[ -f $Data_path$dummy_EOS ]]
 then 
-read -p "Files already present for this SN. Do you want to overwrite? " -n 1 -r
+read -p "Files already present for this SN. Do you want to overwrite?  (y=yes, any other key=no) " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -85,6 +91,8 @@ fi
 # Open the serial com and send the command. Leave it open for some seconds to show the 
 # initial script log on terminal
 { sleep 1; echo $command; bash wait.sh $sn; }| telnet $ip_address $port 
+
+
 
 # Close the GUI
 sudo kill $(pidof mono)

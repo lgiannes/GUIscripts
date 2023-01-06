@@ -1,0 +1,5036 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FEB_CONFIG>
+  <INFO
+    File_Version="1.0" />
+  <Board>
+    <UsbEthParam
+      Timeout="1000"
+      StopOnTimeout="True"
+      AutoResetOnTimeout="False"
+      PacketSize="16384"
+      Packets="2"
+      FileLimit="10000"
+      Queues="1"
+      StartRequestOnly="False"
+      StopDaqEndTimeout="2000" />
+    <DirectParam
+      ExtClkEn="True"
+      AveEn="True"
+      GtEn="True"
+      AdcFsmConfLock="False"
+      IGEn="False" />
+    <DataReadoutParam
+      GtEn="False"
+      IGEn="False" />
+    <StatusParam />
+  </Board>
+  <ASICS>
+    <ASIC0>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC0>
+    <ASIC1>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC1>
+    <ASIC2>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC2>
+    <ASIC3>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC3>
+    <ASIC4>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC4>
+    <ASIC5>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC5>
+    <ASIC6>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC6>
+    <ASIC7>
+      <Channels>
+        <Channel0
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel1
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel2
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel3
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel4
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel5
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel6
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel7
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel8
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel9
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel10
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel11
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel12
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel13
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel14
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel15
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel16
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel17
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel18
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel19
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel20
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel21
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel22
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel23
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel24
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel25
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel26
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel27
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel28
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel29
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel30
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+        <Channel31
+          DAC4bTrigger_t="0"
+          DAC4bTrigger="0"
+          inputDAC="0"
+          inputDAC_En="True"
+          HG_Gain="12"
+          HG_CTest="False"
+          LG_Gain="56"
+          LG_CTest="False"
+          PA_DIS="False"
+          DiscriMask="False" />
+      </Channels>
+      <PowerModes
+        FastShaperEn="True"
+        FastShaperDisPP="True"
+        FastShaperFollowerDisPP="True"
+        DiscriEn="True"
+        DiscriDisPP="True"
+        Discri_tEn="True"
+        Discri_tDisPP="True"
+        DAC4bEn="True"
+        DAC4bDisPP="True"
+        DAC4b_tEn="True"
+        DAC4b_tDisPP="True"
+        TempEn="True"
+        TempDisPP="True"
+        BandGapEn="True"
+        BandGapDisPP="True"
+        DAC10bEn="True"
+        DAC10bDisPP="True"
+        DAC10b_tEn="True"
+        DAC10b_tDisPP="True"
+        ProbeOTAqEn="True"
+        ProbeOTAqDisPP="True"
+        ValEvtRxEn="True"
+        ValEvtRxDisPP="True"
+        RazChnRxEn="True"
+        RazChnRxDisPP="True"
+        HG_T_H_En="True"
+        HG_T_H_DisPP="True"
+        HG_PdetEn="True"
+        HG_PdetDisPP="True"
+        HG_SlowShaperEn="True"
+        HG_SlowShaperDisPP="True"
+        HG_PA_En="True"
+        HG_PA_DisPP="True"
+        HG_OTAqEn="True"
+        HG_OTAqDisPP="True"
+        LG_TH_En="True"
+        LG_TH_DisPP="True"
+        LG_PdetEn="True"
+        LG_PdetDisPP="True"
+        LG_SlowShaperEn="True"
+        LG_SlowShaperDisPP="True"
+        LG_PA_En="True"
+        LG_PA_DisPP="True"
+        LG_OTAqEn="True"
+        LG_OTAqDisPP="True" />
+      <GlobalControl
+        HG_SCAorPeakD="False"
+        HG_SH_TimeConstant="1"
+        LG_SCAorPeakD="False"
+        LG_SH_TimeConstant="1"
+        LG_PA_WeakBias="False"
+        DAC10b="300"
+        DAC10b_t="300"
+        TriggerPolarity="False"
+        En32Trigger="True"
+        EnHitMuxOut="False"
+        EnOR32="True"
+        EnNOR32="False"
+        EnNOR32_t="True"
+        InputDAC_4V5ref="True"
+        InputDAC_En="True"
+        FastShaperOnLG="False"
+        RSorDiscri="False"
+        SCAweakBias="False"
+        PeakSensingBypass="False"
+        SelTrigExtPSC="False"
+        TestbOTAq="False" />
+    </ASIC7>
+  </ASICS>
+  <FPGA-DAQ>
+    <FPGA-DAQ-Channels>
+      <ASIC0>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="32786"
+            LG="32786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC0>
+      <ASIC1>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC1>
+      <ASIC2>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC2>
+      <ASIC3>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC3>
+      <ASIC4>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC4>
+      <ASIC5>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC5>
+      <ASIC6>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC6>
+      <ASIC7>
+        <Channels>
+          <Channel0
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel1
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel2
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel3
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel4
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel5
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel6
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel7
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel8
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel9
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel10
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel11
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel12
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel13
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel14
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel15
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel16
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel17
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel18
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel19
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel20
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel21
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel22
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel23
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel24
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel25
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel26
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel27
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel28
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel29
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel30
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+          <Channel31
+            Hit_En="True"
+            HG_En="True"
+            LG_En="True"
+            OR256tAdcEn="False" />
+        </Channels>
+        <Thresholds>
+          <FPGA-Analog-Compare
+            HG="1"
+            LG="1" />
+          <BaselineDAC
+            HG="50786"
+            LG="50786"
+            HG_ApplyEn="True"
+            LG_ApplyEn="True" />
+        </Thresholds>
+      </ASIC7>
+    </FPGA-DAQ-Channels>
+    <FPGA-DAQ-Global>
+      <Analog-path>
+        <Hold
+          HoldLG="15"
+          HoldHG="15"
+          HoldDisable="False"
+          HoldOnRazChN="False" />
+        <Hold-Mask
+          HoldMaskEn="False"
+          HoldMaskStart="500"
+          HoldMaskStop="1000" />
+        <Reset-limit
+          ResetPaDis="False"
+          ResetPscDis="False"
+          RazChNDis="False"
+          HaLimit="False" />
+        <ADC
+          AdcDelay="0"
+          AdcPhaseBit="3"
+          AdcStartsignal="NOR32Tx8" />
+      </Analog-path>
+      <Timing-path
+        L0IndTrigDelay="0" />
+      <Debug
+        DebugConnMux="False"
+        OR32toTrigExtPSC="False"
+        AdcTestModeEn="False"
+        AdcTestMode="0" />
+      <ReserveDAQGlobal
+        Reserved0="0"
+        Reserved1="0"
+        Reserved2="0" />
+    </FPGA-DAQ-Global>
+  </FPGA-DAQ>
+  <FPGA-Sync-Trig-Phase>
+    <MCB-SYNC
+      GTSEn="True"
+      ResetEn="True"
+      GateCntResetEn="False"
+      GTSCntResetEn="True"
+      ReadoutEnEn="True"
+      SyncGateEn="True"
+      LedSyncEn="False"
+      EventEn="False" />
+    <TRIGGERS>
+      <Trig-generator
+        extGlobalTrig="True"
+        L1AdcCalsync="False"
+        IntGenPeriod="1000" />
+      <Triggers-Backplane-Output
+        TriggerOut="False"
+        TriggerOutEn="False"
+        TriggerOutOr="False"
+        Sum_OR32="0"
+        BusyOut="False" />
+      <DAQ-Triggers
+        ReadoutStartSignal="DAQSTARTSTOP"
+        ReadoutGateOpen="True"
+        StopOnSyncRden="False"
+        GtsTagIncOnGts="True"
+        FistEdgeAndRden="False"
+        HoldstartTimeOnDaq="False"
+        HoldstopTimeOnDaq="False" />
+    </TRIGGERS>
+    <PHASE
+      Test="False"
+      Reserved="0" />
+  </FPGA-Sync-Trig-Phase>
+  <FPGA-HV-HK>
+    <FPGA-HV>
+      <HV-CH0
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH1
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH2
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH3
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH4
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH5
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH6
+        DAC="0"
+        ApplyEn="True" />
+      <HV-CH7
+        DAC="0"
+        ApplyEn="True" />
+    </FPGA-HV>
+    <FPGA-HouseKeeping
+      HKEn="False"
+      MppcHvHkToDAQ="False"
+      MppcTempHkToDAQ="False"
+      FebHkToDAQ="False"
+      CitiTempHkToDAQ="False"
+      ADCtestEn="False"
+      ADCtestMode="(VREFP+VREFM)/2"
+      FixedMuxMppcEn="False"
+      FixedMuxHkEn="False"
+      FixedMuxMppcChannel="False"
+      FixedMuxHkChannel="0" />
+    <Housekeeping-DPRAM-V2>
+      <Group>
+        <Group0 />
+        <Group1 />
+        <Group2 />
+        <Group3 />
+        <Group4 />
+        <Group5 />
+        <Group6 />
+        <Group7 />
+      </Group>
+      <FEB-HK />
+    </Housekeeping-DPRAM-V2>
+  </FPGA-HV-HK>
+  <FPGA-MISC>
+    <FPGA-Misc-Config>
+      <LEDs>
+        <LED0
+          En="False" />
+        <LED1
+          En="False" />
+        <LED2
+          En="False" />
+        <LED3
+          En="False" />
+        <LED4
+          En="False" />
+        <LED5
+          En="False" />
+      </LEDs>
+      <AsicsPowerSavingDisable>
+        <Asics0
+          AllStagesPowerOn="True" />
+        <Asics1
+          AllStagesPowerOn="True" />
+        <Asics2
+          AllStagesPowerOn="True" />
+        <Asics3
+          AllStagesPowerOn="True" />
+        <Asics4
+          AllStagesPowerOn="True" />
+        <Asics5
+          AllStagesPowerOn="True" />
+        <Asics6
+          AllStagesPowerOn="True" />
+        <Asics7
+          AllStagesPowerOn="True" />
+      </AsicsPowerSavingDisable>
+      <FunctionalTesting
+        GlobalEnable="False"
+        RemoteProgRxTxLoopbackEn="False"
+        MIBdbgFromAddrEn="False"
+        MIBdbgAddr75Sel="False"
+        BusyLoopbackEn="False"
+        TrigLoopbackEn="False"
+        TrigODLoopbackEn="False"
+        SumOr32En="False"
+        ForceResetPA="0"
+        ForceResetPSC="0"
+        DisableTrigExtPSC="0" />
+    </FPGA-Misc-Config>
+    <CITI-PROBE
+      ChannelSelect="0"
+      Reserved="0"
+      Group_1or0="False" />
+  </FPGA-MISC>
+  <GPIO>
+    <GPIO-DIRECT-PARAMS
+      GTSEn="False"
+      ReadoutEn="True"
+      ExtGateSel="False"
+      GateGenEn="False"
+      GateType="1"
+      ExtEventSel="False"
+      EventGenEn="False" />
+    <GPIO-STATUS />
+    <GPIO-MCB>
+      <GATE
+        GateCntPeriod="10"
+        GateCntPhase="0"
+        GateCntWidth="5" />
+      <EVENT
+        EventCntPeriod="2000"
+        EventCntPhase="0" />
+    </GPIO-MCB>
+    <GPIO-MISC
+      FEB-ADDR="0"
+      KAL-EN="1073741824"
+      KAL-MUX="7"
+      TSEN-SW="0"
+      HVAB-SW="False"
+      HV-Short="False"
+      FEB-EN="True"
+      PMB-RESET="False"
+      FEB-TRIGIN="False"
+      FEB-SEL-IN="False"
+      FEB-RPROG-RX="False" />
+    <GPIO-ADC
+      InitOrStart="False" />
+    <GPIO-ADC-DPRAM>
+      <HV-Channels>
+        <CH0 />
+        <CH1 />
+        <CH2 />
+        <CH3 />
+        <CH4 />
+        <CH5 />
+        <CH6 />
+        <CH7 />
+      </HV-Channels>
+      <Others />
+    </GPIO-ADC-DPRAM>
+  </GPIO>
+</FEB_CONFIG>

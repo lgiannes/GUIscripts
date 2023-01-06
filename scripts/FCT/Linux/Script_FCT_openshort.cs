@@ -19,7 +19,7 @@ double amplitude = 0.03;//V
 
 void ScriptMainArgs(int SN,int bl1, int bl2){
     
-    string config_path = config_folder+"config_FCT2_newGUI.xml";
+    string config_path = config_folder+"config_FCT2_newGUI_V2.xml";
 
     // // Delete "EndOfScript.txt" dummy file if it exists in the data directory
     // NO NEED TO DO. ALREADY DONE IN THE BASH SCRIPT 
@@ -88,9 +88,10 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
 
     RunAcquisition();
 
+    //BoardLib.Reconnect();
     Sync.Sleep(500);
     TurnOffFEB();
-    Sync.Sleep(500);
+    Sync.Sleep(1000);
     TurnOnFEB();
     
     Sync_good = false;
@@ -115,21 +116,24 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetBoardId(0);
     BoardLib.SetDirectParameters();
     Sync.Sleep(200);
-    SendFEB();
+    ActivateAllCh(LG,HG);
     Sync.Sleep(200);
 
     RunBaselineAcq(bl1);
 
+    //BoardLib.Reconnect();
     Sync.Sleep(500);
     TurnOffFEB();
-    Sync.Sleep(500);
+    Sync.Sleep(1000);
     TurnOnFEB();
-
+    
+    Sync_good = false;
+    Sync_good = SyncTest();
     if(!Sync_good){
         System.Console.WriteLine("Sync not working");
         return;
     }else{
-         System.Console.WriteLine("Sync test Successful!");
+        System.Console.WriteLine("Sync test Successful!");
     }
     //Restore initial config
     BoardLib.OpenConfigFile(config_path);
@@ -145,7 +149,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetBoardId(0);
     BoardLib.SetDirectParameters();
     Sync.Sleep(200);
-    SendFEB();
+    ActivateAllCh(LG,HG);
     Sync.Sleep(200);
 
     RunBaselineAcq(bl2);
@@ -188,15 +192,22 @@ void RunAcquisition(){
 
 
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(500);                                                                    
-    BoardLib.StartAcquisition(data_path + file_name,true); 
-                                                                        System.Console.WriteLine("Asynchronous acquisition started");
+    Sync.Sleep(20);                                                                    
+    if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
+        System.Console.WriteLine("Asynchronous acquisition started");
+    }
 
-    Sync.Sleep(500);
+    Sync.Sleep(300);                                                                   
+    if(!BoardLib.IsTransferingData){
+        System.Console.WriteLine("WARNING: DAQ stopped right after starting. RESTART daq");
+        BoardLib.StartAcquisition(data_path + file_name,true);
+    }
+
+    Sync.Sleep(20);
     BoardLib.SetBoardId(126); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(500);                                                                   
+    Sync.Sleep(300);                                                                   
 
     for(int channel=0;channel<256;channel++){
     //for(int channel=179;channel<181;channel++){
@@ -235,9 +246,10 @@ void RunAcquisition(){
     Sync.Sleep(10);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
+    BoardLib.StopAcquisition();
+    BoardLib.WaitForEndOfTransfer(true);
     Sync.Sleep(1100);
-    //BoardLib.StopAcquisition();
-    //Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
+    // Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 
 
@@ -263,16 +275,23 @@ void RunBaselineAcq(int baseline){
 
    
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(500);                                                                    
-    BoardLib.StartAcquisition(data_path + file_name,true); 
-                                                                        System.Console.WriteLine("Asynchronous acquisition started");
+    Sync.Sleep(20);                                                                    
+    if (BoardLib.StartAcquisition(data_path + file_name,true)){ 
+        System.Console.WriteLine("Asynchronous acquisition started");
+    }
 
-    Sync.Sleep(500);
+    Sync.Sleep(300);                                                                   
+    if(!BoardLib.IsTransferingData){
+        System.Console.WriteLine("WARNING: DAQ stopped right after starting. RESTART daq");
+        BoardLib.StartAcquisition(data_path + file_name,true);
+    }
+
+    Sync.Sleep(20);
     BoardLib.SetBoardId(126); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(500);                                                                   
-    
+    Sync.Sleep(100);                                                                   
+
     for(int i=0;i<8;i++){
         int channel = 0;
         // WARNING: if you change the definition of channel here, you need to change also the ROOT analysis:
@@ -307,8 +326,9 @@ void RunBaselineAcq(int baseline){
     Sync.Sleep(10);                                                                   
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
+    BoardLib.StopAcquisition();
+    BoardLib.WaitForEndOfTransfer(true);
     Sync.Sleep(1100);
-    //BoardLib.StopAcquisition();
     //Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 
@@ -339,7 +359,9 @@ bool SyncTest(){
         success = false;
         return success;
     }
-
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    BoardLib.SetBoardId(126);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     return success;
 }
 
@@ -374,8 +396,8 @@ void SetKaladin(int channel){
     System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
     
     BoardLib.SetBoardId(126); 
-    Sync.Sleep(10);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    Sync.Sleep(10);
 
 }
 

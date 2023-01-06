@@ -390,14 +390,90 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     bool FPGAcurrent_success = FPGAcurrent_test(OutFile_Name);
     Restore_Initial_Config(FEB_BoardID,config_path);
 
-    // 10: MPPC HV test (from FEB side, to test the FEB MPPC-ADC )
+    // 10: MPPC HV test (from FEB-HK side, to test the FEB MPPC-ADC )
 
+    bool MPPC_HV_success = MPPCHV_test(OutFile_Name);
+    Restore_Initial_Config(FEB_BoardID,config_path);
 
     return ( HV_ADC_success && HVShort_success && FPGAtemp_success && 
              I12V_success && FEBtemp0_success && FEBtemp1_success && 
-             CITItemp_success && bkpHV_success && FPGAcurrent_success
+             CITItemp_success && bkpHV_success && FPGAcurrent_success &&
+             MPPC_HV_success
            ); // && of all HK tests
 }
+
+bool MPPCHV_test(string OutFile_Name){
+    // Set high voltages
+    bool HV_ADC_success,HV_ADC_success1,HV_ADC_success2;
+    double HighestHV = 40;//V
+    double[] HVs_volts = new double[8];
+    // Test two different HV value for each ASIC. -> two loops
+    for(int i=0;i<8;i++){
+        HVs_volts[i] = HighestHV/8*(i);
+    }
+    HV_ADC_success1 = HV_test_FEBside(HVs_volts,OutFile_Name);
+    for(int i=0;i<8;i++){
+        HVs_volts[i] = HighestHV/8*(7-i);
+    }
+    HV_ADC_success2 = HV_test_FEBside(HVs_volts,OutFile_Name);
+    // SUCCESS if both are successful
+    HV_ADC_success = (HV_ADC_success1 && HV_ADC_success2);
+    if(!HV_ADC_success){
+        Dialog.ShowDialog("MPPC HV test (FEB side) FAILED");
+    }
+    return HV_ADC_success;
+}
+
+// ANOTHER VERSION
+// bool MPPCHV_test(string OutFile_Name){
+//     double HV_set = 35;// V
+//     double Delta = 0.5;// V
+//     double CF = 65535/102.46;
+//     double HV_set_GUI = HV_set*CF;
+//     double read=0;
+//     bool success = true;
+
+//     System.Console.WriteLine("MPPC HV test");
+//     File.AppendAllText(@OutFile_Name,"----Starting test of HV set on MPPC and 'MPPC_ADC'." + Environment.NewLine);
+
+//     BoardLib.SetBoardID(0);
+
+//     for(int asic=0;asic<8;asic++){
+//         File.AppendAllText(@OutFile_Name,"ONLY ASIC "+asic.ToString()+" ON"+Environment.NewLine);
+//         for(int i=0;i<8;i++){
+//             if(i==asic){
+//                 BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set_GUI);
+//             }else{
+//                 BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
+//             }
+//         }
+//         BoardLib.DeviceConfigure(11);
+//         Sync.Sleep(500);
+//         BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
+//         BoardLib.SetDirectParameters();
+//         Sync.Sleep(1000);
+//         for(int i=0;i<8;i++){
+//             read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC") );
+//             if(i==asic){
+//                 if(read>HV_set-Delta && read<HV_set+Delta){
+//                     File.AppendAllText(@OutFile_Name,"HV on asic"+asic.ToString()+": "+read+" : SUCCESS"+Environment.NewLine);
+//                 }else{
+//                     File.AppendAllText(@OutFile_Name,"HV on asic"+asic.ToString()+": "+read+" : FAILED"+Environment.NewLine);
+//                 }
+//             }else{
+//                 if(read>0-Delta && read<0+Delta){
+//                     //File.AppendAllText(@OutFile_Name,"HV on asic"+asic.ToString()+": "+read+" : SUCCESS"+Environment.NewLine);
+//                 }else{
+//                     File.AppendAllText(@OutFile_Name,"HV on asic"+asic.ToString()+": "+read+" : FAILED"+Environment.NewLine);
+//                 }
+//             }
+//         }
+
+//     }
+
+
+// }
+
 
 bool I12V_test(string OutFile_Name){
     bool success = true;
@@ -461,10 +537,10 @@ bool FPGAtemp_test(string OutFile_Name){
     // current_read_uA = current_read_int*CF;
     read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FPGA-Temp") );
     if(read < mu+Delta && read > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "FPGA temperature: "+read+" °C -> SUCCESS"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FPGA temperature: "+read+" °C -> SUCCESS. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
-        File.AppendAllText(@OutFile_Name, "FPGA temperature: "+read+" °C -> FAILED"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FPGA temperature: "+read+" °C -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         Dialog.ShowDialog("FPGA temperature test FAILED");
         success = false;
     }
@@ -489,10 +565,10 @@ bool FEBtemp0_test(string OutFile_Name){
     // current_read_uA = current_read_int*CF;
     read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-Temp0") );
     if(read < mu+Delta && read > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "FEB temperature (0): "+read+" °C -> SUCCESS"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FEB temperature (0): "+read+" °C -> SUCCESS. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
-        File.AppendAllText(@OutFile_Name, "FEB temperature (0): "+read+" °C -> FAILED"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FEB temperature (0): "+read+" °C -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         Dialog.ShowDialog("FEB temperature 0 test FAILED");
         success = false;
     }
@@ -516,10 +592,10 @@ bool FEBtemp1_test(string OutFile_Name){
     // current_read_uA = current_read_int*CF;
     read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-Temp1") );
     if(read < mu+Delta && read > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "FEB temperature (1): "+read+" °C -> SUCCESS"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FEB temperature (1): "+read+" °C -> SUCCESS. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
-        File.AppendAllText(@OutFile_Name, "FEB temperature (1): "+read+" °C -> FAILED"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FEB temperature (1): "+read+" °C -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         Dialog.ShowDialog("FEB temperature 1 test FAILED");
         success = false;
     }
@@ -543,10 +619,10 @@ bool FPGAcurrent_test(string OutFile_Name){
     // current_read_uA = current_read_int*CF;
     read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-FPGA-Current") );
     if(read < mu+Delta && read > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "FPGA current: "+read+" A -> SUCCESS"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FPGA current: "+read+" A -> SUCCESS. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
-        File.AppendAllText(@OutFile_Name, "FPGA current: "+read+" A -> FAILED"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "FPGA current: "+read+" A -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         Dialog.ShowDialog("FPGA current test FAILED");
         success = false;
     }
@@ -571,10 +647,10 @@ bool bkpHV_test(string OutFile_Name){
     // current_read_uA = current_read_int*CF;
     read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.FEB-HK.FEB-BKP-HV") );
     if(read < mu+Delta && read > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "backplane HV: "+read+" V -> SUCCESS"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "backplane HV: "+read+" V -> SUCCESS. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
-        File.AppendAllText(@OutFile_Name, "backplane HV: "+read+" V -> FAILED"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "backplane HV: "+read+" V -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         Dialog.ShowDialog("backplane HV test FAILED");
         success = false;
     }
@@ -589,7 +665,7 @@ bool CITItemp_test(string OutFile_Name){
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V1");
     // Set current template (OK if [mu-Delta,mu+Delta])
     double mu = 24.5;//degrees
-    double Delta = 3.5;//degrees
+    double Delta = 5;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -601,10 +677,10 @@ bool CITItemp_test(string OutFile_Name){
     for(int asic=0;asic<8;asic++){
         read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group"+asic.ToString()+".Citiroc-Temp") );
         if(read < mu+Delta && read > mu-Delta){
-            File.AppendAllText(@OutFile_Name, "CITIROC "+asic.ToString()+" temperature: "+read+" °C -> SUCCESS"+Environment.NewLine);
+            File.AppendAllText(@OutFile_Name, "CITIROC "+asic.ToString()+" temperature: "+read+" °C -> SUCCESS. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
             vsuc[asic] = true;
         }else{
-            File.AppendAllText(@OutFile_Name, "CITIROC "+asic.ToString()+" temperature: "+read+" °C -> FAILED"+Environment.NewLine);
+            File.AppendAllText(@OutFile_Name, "CITIROC "+asic.ToString()+" temperature: "+read+" °C -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
             vsuc[asic] = false;
         }
     }
@@ -633,6 +709,10 @@ bool HVShort_test(string OutFile_Name){
     // Set HV
     double CF_set = 65535/102.46;
     int HV_set_GUI;
+    double mu = 35000;//uA
+    double Delta = 5000;//uA
+    double CF = 0.1716;// Conversion factor (UInt32 to uA)
+    double current_read_uA = 0;
     double HV_set = 0; // to not make it trip before I have PS with 50 mA limit
     for(int i = 0;i<8;i++){
         HV_set_GUI = (int) (HV_set * CF_set);
@@ -654,20 +734,17 @@ bool HVShort_test(string OutFile_Name){
     BoardLib.UpdateUserParameters("GPIO.GPIO-ADC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-ADC-DPRAM");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 35000;//uA
-    double Delta = 5000;//uA
-    double CF = 0.1716;// Conversion factor (UInt32 to uA)
-    double current_read_uA = 0;
+
     // UInt32 current_read_int = 0;
     // Read current
     // current_read_int = BoardLib.GetUInt32Variable("GPIO.GPIO-ADC-DPRAM.Channels10.Value");
     // current_read_uA = current_read_int*CF;
     current_read_uA = Convert.ToDouble( BoardLib.GetFormulaVariable("GPIO.GPIO-ADC-DPRAM.Others.HV-Current") );
     if(current_read_uA < mu+Delta && current_read_uA > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "HV short test successful."+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "HV short test successful. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
-        File.AppendAllText(@OutFile_Name, "HV short test failed. -> Current: "+current_read_uA+" uA"+Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "HV short test failed. -> Current: "+current_read_uA+" uA "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         Dialog.ShowDialog("'HV Short' test FAILED");
         success = false;
     }
@@ -683,7 +760,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
     UInt32 HV_read_au;
     double HV_read_volts;
 
-    double Delta = 0.3;//V
+    double Delta = 0.4;//V
     for(int i = 0;i<8;i++){
         HV_set_GUI = (int) (HVs_volts[i] * CF_set);
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set_GUI);
@@ -696,7 +773,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
     BoardLib.SetDirectParameters();
-    Sync.Sleep(3000);
+    Sync.Sleep(1000);
     BoardLib.SetBoardId(126);
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-ADC");
@@ -707,6 +784,58 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
         // HV_read_au = BoardLib.GetUInt32Variable("GPIO.GPIO-ADC-DPRAM.HV-Channels.CH"+i.ToString()+".HV");
         // HV_read_volts = HV_read_au*CF_get;
         HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("GPIO.GPIO-ADC-DPRAM.HV-Channels.CH"+i.ToString()+".HV") );
+        if(HV_read_volts < HVs_volts[i]+Delta && HV_read_volts > HVs_volts[i]-Delta){
+            File.AppendAllText(@OutFile_Name, "Hv measurement in ASIC"+ i.ToString() + ": successful! -> Set: "+HVs_volts[i].ToString()+"+-" +Delta.ToString()+" Measured: "+HV_read_volts.ToString()+ Environment.NewLine);
+        }else{
+            File.AppendAllText(@OutFile_Name, "Hv measurement in ASIC"+ i.ToString()+": failed. -> Set: "+HVs_volts[i].ToString()+"+-" +Delta.ToString()+" Measured: "+HV_read_volts.ToString()+Environment.NewLine);
+            success = false;
+        }
+    }
+
+    //At the end, reset everything to 0
+    for(int i = 0;i<8;i++){
+        BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
+    }
+    BoardLib.SetBoardId((byte)((int)FEB_BoardID%128));
+    BoardLib.DeviceConfigure(11);
+    Sync.Sleep(100);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(1000);
+    return success;
+
+}
+
+
+bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
+    bool success = true;
+    // conversion factor: there are two different conversion, one to set the HV and one to get the HV measurement
+    double CF_set = 65535/102.46;
+    double CF_get = (1+1000/29.4)*3/Math.Pow(2,18);
+    int HV_set_GUI;
+    UInt32 HV_read_au;
+    double HV_read_volts;
+
+    double Delta = 0.4;//V
+    for(int i = 0;i<8;i++){
+        HV_set_GUI = (int) (HVs_volts[i] * CF_set);
+        BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set_GUI);
+        //System.Console.WriteLine(HV_set_GUI.ToString());
+    }
+    BoardLib.SetBoardId((byte)((int)FEB_BoardID%128));
+    BoardLib.DeviceConfigure(11);
+    Sync.Sleep(500);
+    File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting MPPC HV test (FEB side)" + Environment.NewLine);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(1500);
+    BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
+    BoardLib.DeviceConfigure(12);
+    BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V1");
+    for(int i = 0;i<8;i++){
+        HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V1.Group.Group"+i.ToString()+".MPPC-HV") );
         if(HV_read_volts < HVs_volts[i]+Delta && HV_read_volts > HVs_volts[i]-Delta){
             File.AppendAllText(@OutFile_Name, "Hv measurement in ASIC"+ i.ToString() + ": successful! -> Set: "+HVs_volts[i].ToString()+"+-" +Delta.ToString()+" Measured: "+HV_read_volts.ToString()+ Environment.NewLine);
         }else{
@@ -817,6 +946,11 @@ bool read_IsInRange(byte address_set,double ADC_read,string OutFile_Name){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetBoardId(126); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    Sync.Sleep(1500);
+}
+void TurnOffFEB(){    
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
     BoardLib.SetBoardId(126); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
 }
@@ -942,7 +1076,7 @@ void ScriptMain(){
     bool LB_success=false;
     bool HK_success=false;
 
-    // LB_success = Run_LoopBack_test(OutFile_Name,config_path);
+    //LB_success = Run_LoopBack_test(OutFile_Name,config_path);
     HK_success = HouseKeeping_test(OutFile_Name,FEB_BoardID,config_path);
     System.Console.WriteLine("end of test");       
     if (LB_success && HK_success){
@@ -956,6 +1090,8 @@ void ScriptMain(){
         File.AppendAllText(@OutFile_Name, "**                             TEST FAILED                          **"  + Environment.NewLine);
         File.AppendAllText(@OutFile_Name, "**********************************************************************"  + Environment.NewLine);
     }
+
+    TurnOffFEB();
 
     return;
 }

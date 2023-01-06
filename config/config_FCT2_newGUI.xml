@@ -3588,8 +3588,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4920,7 +4920,7 @@
       FixedMuxHkEn="False"
       FixedMuxMppcChannel="False"
       FixedMuxHkChannel="0" />
-    <Housekeeping-DPRAM-V1>
+    <Housekeeping-DPRAM-V2>
       <Group>
         <Group0 />
         <Group1 />
@@ -4932,7 +4932,7 @@
         <Group7 />
       </Group>
       <FEB-HK />
-    </Housekeeping-DPRAM-V1>
+    </Housekeeping-DPRAM-V2>
   </FPGA-HV-HK>
   <FPGA-MISC>
     <FPGA-Misc-Config>

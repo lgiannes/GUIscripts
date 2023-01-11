@@ -12,6 +12,7 @@ exe_path="/home/neutrino/FCT/FunctionalTest/bin/";
 exe_analog="FuncTest";
 exe_bl="FCTbaseline"
 Data_path="/home/neutrino/FCT/data_local/";
+export DATADIR=$Data_path
 Data_file_name="FCT_os_LG56HG12amp30mV_bl32786.daq";
 # For BASELINE test:
 bl1=32000

@@ -1,7 +1,10 @@
 void ScriptMain(){
+// void ScriptMainArgs(int SN){
+    int SN = 1; // to be set as argument when the script is launched from bash
+
     int LG =56;
     int HG =12;
-    int SN = 1; // to be set as argument when the script is launched from bash
+    string data_path = "/home/neutrino/FCT/data_local/";
 
     // Set up communication with Pulse gen
     var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
@@ -79,7 +82,7 @@ void ScriptMain(){
     SendFEB();
     config = "NOR32ON.xml";
     BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("NOR32ON",config_folder+config, SN);
+    RunCITITriggerAcq_8gates("NOR32ON",config_folder+config, SN, data_path);
 
     TurnOffFEB();
     TurnOnFEB();
@@ -98,7 +101,7 @@ void ScriptMain(){
     SendFEB();
     config = "NOR32TON.xml";
     BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("NOR32TON",config_folder+config, SN);
+    RunCITITriggerAcq_8gates("NOR32TON",config_folder+config, SN, data_path);
 
     TurnOffFEB();
     TurnOnFEB();
@@ -120,7 +123,7 @@ void ScriptMain(){
     SendFEB();
     config = "PSCExtTrig.xml";
     BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN);
+    RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN, data_path);
 
     TurnOffFEB();
     TurnOnFEB();
@@ -130,10 +133,46 @@ void ScriptMain(){
     SendFEB();
     BoardLib.SetDirectParameters();
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /*  Hold time and Shaping time setting:
+    Hold Time = N_set * 2.5 ns | Range: 0 to 8191
+    Sh.  Time = N_set * 12.5 ns| Range: 0 to 7
+    */
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 6. Hold time SCA test (right Hold Time) -> signal expected in each gate
-    
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG",15);
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG",15);
+    for(int asic=0;asic<8;asic++){
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SCAorPeakD",true);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SCAorPeakD",true);
+        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
+        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
+    }
+    SendFEB();
+    config = "SCA_RightHT.xml";
+    BoardLib.SaveConfigFile(config_folder + config);
+    RunCITITriggerAcq_PSCExtTrig("SCA_RightHT",config_folder+config, SN, data_path);
+
+    TurnOffFEB();
+    TurnOnFEB();
+
+    // Restore default config
+    BoardLib.OpenConfigFile(default_config);
+    SendFEB();
+    BoardLib.SetDirectParameters();
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 7. Hold time SCA test (wrong Hold Time) -> no expected signal
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG",60);
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG",60);
+    for(int asic=0;asic<8;asic++){
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SCAorPeakD",true);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SCAorPeakD",true);
+        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
+        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
+    }
+    SendFEB();
+    config = "SCA_WrongHT.xml";
+    BoardLib.SaveConfigFile(config_folder + config);
+    RunCITITriggerAcq_PSCExtTrig("SCA_WrongHT",config_folder+config, SN, data_path);
 
     TurnOffFEB();
 
@@ -144,13 +183,16 @@ void ScriptMain(){
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     System.Console.WriteLine("Pulse Generator OFF");
 
-
+    //Generate dummy file at the end of the script
+    string[] o = {"END OF SCRIPT"};
+    File.WriteAllLinesAsync(data_path+"EndOfScript_citi.txt",o); 
+    return;
 }
 
 
 
 
-void RunCITITriggerAcq_8gates(string Test, string config, int SN){
+void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     SendFEB();
@@ -159,8 +201,8 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN){
     
     string file_name = "FCT_"+Test;
 
-    string data_path   =    "/home/neutrino/FCT/data_local/";
-        // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
+
+    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
     data_path = data_path + "/CITI_trigger_tests/";
@@ -211,7 +253,7 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN){
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 }
 
-void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN){
+void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     SendFEB();
@@ -220,8 +262,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN){
     
     string file_name = "FCT_"+Test;
 
-    string data_path   =    "/home/neutrino/FCT/data_local/";
-        // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
+    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
     data_path = data_path + "/CITI_trigger_tests/";
@@ -290,7 +331,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN){
                                                                         System.Console.WriteLine("END OF ACQUISITION");
 }
 
-void RunCITITriggerAcq_32gates(string Test, string config, int SN){
+void RunCITITriggerAcq_32gates(string Test, string config, int SN, data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     SendFEB();
@@ -299,8 +340,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN){
     
     string file_name = "FCT_"+Test;
 
-    string data_path   =    "/home/neutrino/FCT/data_local/";
-        // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
+    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
     data_path = data_path + "/CITI_trigger_tests/";

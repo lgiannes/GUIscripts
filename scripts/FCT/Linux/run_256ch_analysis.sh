@@ -3,8 +3,9 @@ bl1=$2
 bl2=$3
 
 if [[ $# -eq 4 && ($4 == 1) ]]
-then DATADIR="/home/neutrino/FCT/data_local/SN_"$sn
-then echo "Running analysis only"
+then 
+  DATADIR="/home/neutrino/FCT/data_local/SN_"$sn
+  echo "Running analysis only"
 fi
 
 
@@ -20,6 +21,9 @@ CITI_subfolder="/CITI_trigger_tests/"
 setup_path="/home/neutrino/FCT/FunctionalTest/setup.sh";
 log_file=$DATADIR"/log.txt";
 
+
+# echo $DATADIR
+
 #Launch the ROOT analyses.
 #Setup
 source $setup_path;
@@ -30,3 +34,5 @@ $exe_path$exe_bl -a $DATADIR$Data_file_name_bl1 -b $DATADIR$Data_file_name_bl2 -
 #CITIROC triggers test
 $exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn;
 
+tail -n3 $DATADIR/output_*.txt
+#tail -n3 $( ls $DATADIR/IO_TEST/ -tp | grep -v / | head -n1 )

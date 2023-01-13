@@ -355,8 +355,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
 
 
     // 2: HV short test 
-    bool HVShort_success = HVShort_test(OutFile_Name,0); // to not make it trip before I have PS with 50 mA limit
-    
+    bool HVShort_success = HVShort_test(OutFile_Name,35); 
     
     Restore_Initial_Config(FEB_BoardID,config_path);
     BoardLib.SetBoardId(0);
@@ -511,7 +510,8 @@ bool I12V_test(string OutFile_Name){
                 BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+j.ToString()+".AllStagesPowerOn",false);
             }
         }
-        BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");        Sync.Sleep(100);
+        BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");        
+        Sync.Sleep(1000);
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-12V-Current") );
         File.AppendAllText(@OutFile_Name,"Enabled CITIROC #"+i+". Current: "+ current12V.ToString() + " A" + Environment.NewLine);
@@ -526,7 +526,7 @@ bool I12V_test(string OutFile_Name){
             }
         }
         BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-        Sync.Sleep(100);
+        Sync.Sleep(1000);
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-12V-Current") );
         File.AppendAllText(@OutFile_Name,"Enabled "+i+" CITIROCs. Current: "+ current12V.ToString() + " A" + Environment.NewLine);
@@ -542,8 +542,8 @@ bool FPGAtemp_test(string OutFile_Name){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 20;//degrees
-    double Delta = 5;//degrees
+    double mu = 25;//degrees
+    double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -570,8 +570,8 @@ bool FEBtemp0_test(string OutFile_Name){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 36;//degrees
-    double Delta = 3;//degrees
+    double mu = 25;//degrees
+    double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -597,8 +597,8 @@ bool FEBtemp1_test(string OutFile_Name){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 33;//degrees
-    double Delta = 3;//degrees
+    double mu = 25;//degrees
+    double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -624,8 +624,8 @@ bool PMezza_2V2_test(string OutFile_Name){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 33;//degrees
-    double Delta = 3;//degrees
+    double mu = 25;//degrees
+    double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -651,8 +651,8 @@ bool PMezza_0V9_test(string OutFile_Name){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 33;//degrees
-    double Delta = 3;//degrees
+    double mu = 25;//degrees
+    double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -733,8 +733,8 @@ bool CITItemp_test(string OutFile_Name){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 24.5;//degrees
-    double Delta = 5;//degrees
+    double mu = 25;//degrees
+    double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;
@@ -778,8 +778,8 @@ bool HVShort_test(string OutFile_Name, double HV_set=35){
     // Set HV
     double CF_set = 65535/102.46;
     int HV_set_GUI;
-    double mu = 35000;//uA
-    double Delta = 5000;//uA
+    double mu = 30000;//uA
+    double Delta = 10000;//uA
     double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double current_read_uA = 0;
     for(int i = 0;i<8;i++){
@@ -930,8 +930,8 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
 bool read_IsInRange(byte address_set,UInt32 ADC_read,string OutFile_Name){
     bool accept = false;
         // Compute expected voltage for a given FEB address:
-    double A0 = 19.412;
-    double A1 = 15.765;
+    double A0 = 3.3;
+    double A1 = 6;
         // Compute the bit SUM:
         int SUM = 0;
         int BITS = 5;
@@ -973,8 +973,8 @@ bool read_IsInRange(byte address_set,UInt32 ADC_read,string OutFile_Name){
 bool read_IsInRange(byte address_set,double ADC_read,string OutFile_Name){
     bool accept = false;
         // Compute expected voltage for a given FEB address:
-    double A0 = 19.412;
-    double A1 = 15.765;
+    double A0 = 3.3;
+    double A1 = 6;
         // Compute the bit SUM:
         int SUM = 0;
         int BITS = 5;
@@ -1067,7 +1067,7 @@ void ScriptMain(){
 
 
     // Set the output folder, 
-    string output_path = "/DATA/Data_FEB/FCT_output/"; 
+    string output_path = "/DATA/neutrino/FCT/data_local/"; 
 
     // Serial number of FEB under test. To be inserted fsum32rom user at the beginning of the script
     int SN = -999;

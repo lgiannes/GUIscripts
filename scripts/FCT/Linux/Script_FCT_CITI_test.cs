@@ -1,10 +1,14 @@
-void ScriptMain(){
-// void ScriptMainArgs(int SN){
-    int SN = 1; // to be set as argument when the script is launched from bash
+//void ScriptMain(){
+ void ScriptMainArgs(int SN){
+//    int SN = 1; // to be set as argument when the script is launched from bash
 
     int LG =56;
     int HG =12;
     string data_path = "/home/neutrino/FCT/data_local/";
+
+    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
+    data_path = data_path + "SN_" + SN.ToString() + "/";
+    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
     // Set up communication with Pulse gen
     var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
@@ -36,19 +40,14 @@ void ScriptMain(){
     // The default config is the same as the one used for the 256ch + baseline test
     // where the ADC starts on OR32 and enOR32=ON
     
-    BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    System.Console.WriteLine("FEB is configured");
-
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 1. test VALID_event, Force Reset PSC, Force Reset PA (32 gates),
     // ADC starts on OR32 and enOR32=ON (default): 
     // signal expected ONLY in the first 8 gates (default config with OR32=ON)
-    RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN);
+    RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
     
-    TurnOffFEB();
-    TurnOnFEB();
+
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
@@ -63,10 +62,9 @@ void ScriptMain(){
     SendFEB();
     config = "OR32OFF.xml";
     BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("OR32OFF",config_folder+config, SN);
+    RunCITITriggerAcq_8gates("OR32OFF",config_folder+config, SN, data_path);
 
-    TurnOffFEB();
-    TurnOnFEB();
+
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
@@ -78,14 +76,14 @@ void ScriptMain(){
     BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcStartsignal","NOR32x8");
     for(int asic=0;asic<8;asic++){
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnNOR32",true);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
     }
     SendFEB();
     config = "NOR32ON.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("NOR32ON",config_folder+config, SN, data_path);
 
-    TurnOffFEB();
-    TurnOnFEB();
+
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
@@ -97,14 +95,13 @@ void ScriptMain(){
     BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcStartsignal","NOR32Tx8");
     for(int asic=0;asic<8;asic++){
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnNOR32_t",true);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
     }
     SendFEB();
     config = "NOR32TON.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("NOR32TON",config_folder+config, SN, data_path);
 
-    TurnOffFEB();
-    TurnOnFEB();
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
@@ -113,9 +110,9 @@ void ScriptMain(){
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 5. PSCExtTrig: loopback Or32 to ExtTrigPSC, 
-    // gates 0-3: disable ExtTrigPSC on the first 4 CITI -> NO expected signal
-    // gates 4-7: disable ExtTrigPSC on the last 4 CITI -> NO expected signal
-    // gates 8-15: enable ExtTrigPSC on all CITI -> signal expected in all gates
+    // gates 8-11: disable ExtTrigPSC on the first 4 CITI -> NO expected signal
+    // gates 12-15: disable ExtTrigPSC on the last 4 CITI -> NO expected signal
+    // gates 0-7: enable ExtTrigPSC on all CITI -> signal expected in all gates
     BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Debug.OR32toTrigExtPSC",true);
     for(int asic=0;asic<8;asic++){
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.SelTrigExtPSC",true);
@@ -125,8 +122,7 @@ void ScriptMain(){
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN, data_path);
 
-    TurnOffFEB();
-    TurnOnFEB();
+  
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
@@ -144,16 +140,15 @@ void ScriptMain(){
     for(int asic=0;asic<8;asic++){
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SCAorPeakD",true);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SCAorPeakD",true);
-        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
-        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
     }
     SendFEB();
     config = "SCA_RightHT.xml";
     BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_PSCExtTrig("SCA_RightHT",config_folder+config, SN, data_path);
+    RunCITITriggerAcq_8gates("SCA_RightHT",config_folder+config, SN, data_path);
 
-    TurnOffFEB();
-    TurnOnFEB();
+
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
@@ -166,13 +161,13 @@ void ScriptMain(){
     for(int asic=0;asic<8;asic++){
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SCAorPeakD",true);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SCAorPeakD",true);
-        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
-        BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
+        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
     }
     SendFEB();
     config = "SCA_WrongHT.xml";
     BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_PSCExtTrig("SCA_WrongHT",config_folder+config, SN, data_path);
+    RunCITITriggerAcq_8gates("SCA_WrongHT",config_folder+config, SN, data_path);
 
     TurnOffFEB();
 
@@ -195,6 +190,16 @@ void ScriptMain(){
 void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
+    BoardLib.SetBoardId(0); 
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetDirectParameters();
     SendFEB();
     Sync.Sleep(200);                                                     
 
@@ -202,11 +207,9 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
     string file_name = "FCT_"+Test;
 
 
-    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
-    data_path = data_path + "SN_" + SN.ToString() + "/";
-    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+
     data_path = data_path + "/CITI_trigger_tests/";
-    DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
 
     BoardLib.SetBoardId(0); 
@@ -256,17 +259,24 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
 void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
-    SendFEB();
+    BoardLib.SetBoardId(0); 
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetDirectParameters();SendFEB();
     Sync.Sleep(200);                                                     
 
     
     string file_name = "FCT_"+Test;
 
-    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
-    data_path = data_path + "SN_" + SN.ToString() + "/";
-    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+
     data_path = data_path + "/CITI_trigger_tests/";
-    DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
 
     BoardLib.SetBoardId(0); 
@@ -290,19 +300,22 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     for(int i=0;i<16;i++){        
         if(i==0){
             BoardLib.SetBoardId(0); 
-            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",1);
-            BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            BoardLib.SetBoardId(126); 
-        }
-        if(i==4){
-            BoardLib.SetBoardId(0); 
-            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",2);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             BoardLib.SetBoardId(126); 
         }
         if(i==8){
             BoardLib.SetBoardId(0); 
-            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",1);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
+            BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
+            BoardLib.SetBoardId(126); 
+        }
+        if(i==12){
+            BoardLib.SetBoardId(0); 
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",2);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             BoardLib.SetBoardId(126); 
         }
@@ -329,22 +342,34 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     BoardLib.StopAcquisition();
     Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
                                                                         System.Console.WriteLine("END OF ACQUISITION");
+    BoardLib.SetBoardId(0); 
+    BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
+    BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
+    BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
 }
 
-void RunCITITriggerAcq_32gates(string Test, string config, int SN, data_path){
+void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
+    BoardLib.SetBoardId(0); 
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetDirectParameters();
     SendFEB();
     Sync.Sleep(200);                                                     
 
     
     string file_name = "FCT_"+Test;
 
-    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
-    data_path = data_path + "SN_" + SN.ToString() + "/";
-    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+
     data_path = data_path + "/CITI_trigger_tests/";
-    DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
 
     BoardLib.SetBoardId(0); 
@@ -408,12 +433,14 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, data_path){
         if(i==0){
             BoardLib.SetBoardId(0); 
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",1);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             BoardLib.SetBoardId(126); 
         }        
         if(i==4){
             BoardLib.SetBoardId(0); 
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",2);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             BoardLib.SetBoardId(126); 
         }
@@ -433,6 +460,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, data_path){
     }
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",0);
+    BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
 
     //Forth bunch of 8 gates: Force Reset PA: expect no signal
@@ -441,12 +469,14 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, data_path){
         if(i==0){
             BoardLib.SetBoardId(0); 
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",1);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             BoardLib.SetBoardId(126); 
         }        
         if(i==4){
             BoardLib.SetBoardId(0); 
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",2);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             BoardLib.SetBoardId(126); 
         }
@@ -466,6 +496,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, data_path){
     }
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",0);
+    BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
 
 

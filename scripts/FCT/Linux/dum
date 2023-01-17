@@ -1,0 +1,70 @@
+
+void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_path){
+    Sync.Sleep(100);                                                     
+    BoardLib.OpenConfigFile(config);
+    BoardLib.SetBoardId(0); 
+    SendFEB();
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(200);                                                     
+
+    
+    string file_name = "FCT_"+Test;
+
+
+
+    data_path = data_path + "/CITI_trigger_tests/";
+    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
+
+
+    BoardLib.SetBoardId(0); 
+    Sync.Sleep(50);                                                                    
+    if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
+        System.Console.WriteLine("Asynchronous acquisition started");
+    }
+    
+    Sync.Sleep(300);                                                                   
+    if(!BoardLib.IsTransferingData){
+        System.Console.WriteLine("WARNING: DAQ stopped right after starting. RESTART daq");
+        BoardLib.StartAcquisition(data_path + file_name,true);
+    }
+    
+    Sync.Sleep(100);
+    BoardLib.SetBoardId(126); 
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(100);                                                                   
+    int channel = 0;
+    for(int i=0;i<8;i++){        
+        channel = i*32;
+        System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
+        SetKaladin(channel);
+        Sync.Sleep(50);                                                                   
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+                        System.Console.WriteLine("opening gate");       
+        Sync.Sleep(100);
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+                        System.Console.WriteLine("closing gate");       
+        Sync.Sleep(10);
+
+                                                                        //System.Console.WriteLine("channel "+channel.ToString()+" done");
+    }
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(100);
+    BoardLib.SetBoardId(0); 
+    Sync.Sleep(100);
+    BoardLib.StopAcquisition();
+    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
+                                                                        System.Console.WriteLine("END OF ACQUISITION");
+}
+

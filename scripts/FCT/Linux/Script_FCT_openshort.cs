@@ -74,11 +74,6 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
     Sync.Sleep(50);
-    // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-    // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-    // System.Console.WriteLine("off");
-    // Sync.Sleep(5000);
-    //BashOutput = ExecuteBashCommand("fg_setup.sh");
     if(string.Compare(BashOutput,"error: no device connected\n")==0){
         System.Console.WriteLine(BashOutput);
     }else{
@@ -154,7 +149,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     RunBaselineAcq(bl2);
 
     Sync.Sleep(500);
-    TurnOffFEB();
+    //TurnOffFEB();
 
     // Turn off Pulse Gen at the end
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -189,7 +184,10 @@ void RunAcquisition(){
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetDirectParameters();
 
-
+    BoardLib.SetBoardId(126); 
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
     Sync.Sleep(20);                                                                    
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
@@ -276,10 +274,13 @@ void RunBaselineAcq(int baseline){
     BoardLib.SetDirectParameters();
     Sync.Sleep(50);                                                                    
 
-   
+    BoardLib.SetBoardId(126); 
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
     Sync.Sleep(20);                                                                    
-    if (BoardLib.StartAcquisition(data_path + file_name,true)){ 
+    if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
 

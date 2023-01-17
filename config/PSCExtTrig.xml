@@ -5,7 +5,7 @@
   <Board>
     <UsbEthParam
       Timeout="1000"
-      StopOnTimeout="True"
+      StopOnTimeout="False"
       AutoResetOnTimeout="False"
       PacketSize="16384"
       Packets="2"
@@ -428,9 +428,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -852,9 +852,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -1276,9 +1276,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -1700,9 +1700,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -2124,9 +2124,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -2548,9 +2548,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -2972,9 +2972,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"
@@ -3396,9 +3396,9 @@
         LG_OTAqDisPP="True" />
       <GlobalControl
         HG_SCAorPeakD="False"
-        HG_SH_TimeConstant="1"
+        HG_SH_TimeConstant="3"
         LG_SCAorPeakD="False"
-        LG_SH_TimeConstant="1"
+        LG_SH_TimeConstant="3"
         LG_PA_WeakBias="False"
         DAC10b="300"
         DAC10b_t="300"

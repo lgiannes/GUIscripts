@@ -22,20 +22,13 @@
         System.Console.WriteLine("Pulse gen is configured");
     }
 
+
+
     TurnOnFEB();
-    BoardLib.SetBoardId(0); 
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
-    BoardLib.SetDirectParameters();
+
 
     string config_folder = "/home/neutrino/FCT/code/config/";
-    string default_config = config_folder + "config_FCT2_newGUI.xml";
+    string default_config = config_folder + "config_FCT2_newGUI_V2.xml";
     string config="";
     // The default config is the same as the one used for the 256ch + baseline test
     // where the ADC starts on OR32 and enOR32=ON
@@ -49,10 +42,7 @@
     
 
 
-    // Restore default config
-    BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    BoardLib.SetDirectParameters();
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 2. ADC starts on OR32, enOR32=OFF -> no expected signal
@@ -238,7 +228,7 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(500);
+        Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
@@ -326,7 +316,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(500);
+        Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
@@ -341,7 +331,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     Sync.Sleep(100);
     BoardLib.StopAcquisition();
     Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
-                                                                        System.Console.WriteLine("END OF ACQUISITION");
+    System.Console.WriteLine("END OF ACQUISITION");
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
@@ -400,7 +390,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(500);
+        Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
@@ -410,6 +400,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("Board.DirectParam.AveEn", false);
     BoardLib.SetDirectParameters();
+    Sync.Sleep(100);
     for(int i=0;i<8;i++){        
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
@@ -418,7 +409,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(500);
+        Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
@@ -427,6 +418,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetDirectParameters();
+    Sync.Sleep(100);
     //Third bunch of 8 gates: Force Reset PSC: expect no signal
     for(int i=0;i<8;i++){        
 
@@ -452,7 +444,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(500);
+        Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
@@ -488,7 +480,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(500);
+        Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       

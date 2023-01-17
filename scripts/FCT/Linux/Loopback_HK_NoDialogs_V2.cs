@@ -84,7 +84,7 @@ bool Run_LoopBack_test(string OutFile_Name, string config_path){
     Restore_Initial_Config(FEB_BoardID,config_path);
                                                                         System.Console.WriteLine("----------------------------step 6 completed");       
     
-    
+    System.Console.WriteLine(MIBdebug_success+" "+FEBbusy_success+" "+FEBtrig_success+" "+LB_FEBtrig_OD_success+" "+SUM32_success);
     return (MIBdebug_success && FEBbusy_success && FEBtrig_success && LB_FEBtrig_OD_success && SUM32_success);
     
 
@@ -231,9 +231,11 @@ bool FEB_busy_test(byte FEB_BoardID, string OutFile_Name){
 void Restore_Initial_Config(byte FEB_BoardID,string config_path){
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); // This resets teh FEB Board ID to the value set in the config file (0)
-    // BoardLib.SetBoardId(0);
-    // BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
+    SendFEB();
+    BoardLib.SetBoardId(126);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); 
+    BoardLib.SetBoardId(0);
+    BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config"); 
 }
 
 bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
@@ -330,11 +332,11 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     double[] HVs_volts = new double[8];
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(i);
+        HVs_volts[i] = HighestHV/8*(i)+1;
     }
     HV_ADC_success1 = HV_test(HVs_volts,OutFile_Name);
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(7-i);
+        HVs_volts[i] = HighestHV/8*(7-i)+1;
     }
     HV_ADC_success2 = HV_test(HVs_volts,OutFile_Name);
     // SUCCESS if both are successful
@@ -359,6 +361,10 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     
     Restore_Initial_Config(FEB_BoardID,config_path);
     BoardLib.SetBoardId(0);
+    // Send back the HV on the CITIROC to 0
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(500);
     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
     BoardLib.DeviceConfigure(12);
     Sync.Sleep(200);
@@ -386,6 +392,8 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     
     Restore_Initial_Config(FEB_BoardID,config_path);
 
+    System.Console.WriteLine(HV_ADC_success+" "+FPGAcurrent_success+" "+HVShort_success+" "+FPGAtemp_success+" "+FEBtemp0_success+" "+FEBtemp1_success+" "+I12V_success+" "+bkpHV_success+" "+CITItemp_success+" "+MPPC_HV_success+" "+PMezza_0V9_success+" "+PMezza_2V2_success);
+    
     return ( HV_ADC_success && HVShort_success && FPGAtemp_success && 
              I12V_success && FEBtemp0_success && FEBtemp1_success && 
              CITItemp_success && bkpHV_success && FPGAcurrent_success &&
@@ -400,11 +408,11 @@ bool MPPCHV_test(string OutFile_Name){
     double[] HVs_volts = new double[8];
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(i);
+        HVs_volts[i] = HighestHV/8*(i)+1;
     }
     HV_ADC_success1 = HV_test_FEBside(HVs_volts,OutFile_Name);
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(7-i);
+        HVs_volts[i] = HighestHV/8*(7-i)+1;
     }
     HV_ADC_success2 = HV_test_FEBside(HVs_volts,OutFile_Name);
     // SUCCESS if both are successful
@@ -470,6 +478,8 @@ bool I12V_test(string OutFile_Name){
     bool success = true;
     System.Console.WriteLine("12V current test");
     File.AppendAllText(@OutFile_Name,"----Starting test of current in 12V." + Environment.NewLine);
+    double[] currents={0,0,0,0,0,0,0,0,0};
+    double Delta = 0.12;//[A] expected current difference between 0 and 8 enabled CITIROCs
     // 1. CITIROC power test: enable one citiroc at a time and check the current on the 12V-FEB
     // Enable PowerPulsing
     BoardLib.SetBoardId(0);
@@ -499,6 +509,8 @@ bool I12V_test(string OutFile_Name){
         BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".PowerModes.LG_OTAqDisPP",false);
     
         BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+i.ToString()+".AllStagesPowerOn",false);
+        BoardLib.DeviceConfigure((byte)i);
+        Sync.Sleep(10);
     }
     // Check the current that each single CITI draws:
     double current12V=0;
@@ -511,7 +523,7 @@ bool I12V_test(string OutFile_Name){
             }
         }
         BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");        
-        Sync.Sleep(1000);
+        Sync.Sleep(20);
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-12V-Current") );
         File.AppendAllText(@OutFile_Name,"Enabled CITIROC #"+i+". Current: "+ current12V.ToString() + " A" + Environment.NewLine);
@@ -526,11 +538,19 @@ bool I12V_test(string OutFile_Name){
             }
         }
         BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-        Sync.Sleep(1000);
+        Sync.Sleep(20);
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-12V-Current") );
+        currents[i]=current12V;
         File.AppendAllText(@OutFile_Name,"Enabled "+i+" CITIROCs. Current: "+ current12V.ToString() + " A" + Environment.NewLine);
     }
+    if( Math.Abs(currents[0]-currents[8])<Delta ){
+        success = false;
+        File.AppendAllText(@OutFile_Name,"I12V test failed"+ Environment.NewLine);
+    }else{
+        File.AppendAllText(@OutFile_Name,"I12V test: success"+ Environment.NewLine);
+    }
+    
     return success;
 }
 
@@ -809,13 +829,14 @@ bool HVShort_test(string OutFile_Name, double HV_set=35){
     // current_read_uA = current_read_int*CF;
     current_read_uA = Convert.ToDouble( BoardLib.GetFormulaVariable("GPIO.GPIO-ADC-DPRAM.Others.HV-Current") );
     if(current_read_uA < mu+Delta && current_read_uA > mu-Delta){
-        File.AppendAllText(@OutFile_Name, "HV short test successful. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "HV short test successful. -> Current: "+current_read_uA+" uA "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         success = true;
     }else{
         File.AppendAllText(@OutFile_Name, "HV short test failed. -> Current: "+current_read_uA+" uA "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         System.Console.WriteLine("'HV Short' test FAILED");
         success = false;
     }
+    
     return success;
 }
 
@@ -1057,8 +1078,9 @@ void SendFEB(byte FEBID=0){
     Sync.Sleep(50);
 }
 
-
 void ScriptMain(){
+//void ScriptMainArgs(int SN){
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                    SETTINGS
     // Set the configuration file:
@@ -1070,7 +1092,7 @@ void ScriptMain(){
     string output_path = "/DATA/neutrino/FCT/data_local/"; 
 
     // Serial number of FEB under test. To be inserted fsum32rom user at the beginning of the script
-    int SN = -999;
+    //int SN = -999;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -1087,7 +1109,7 @@ void ScriptMain(){
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);
 
     // Ask the user fot the FEB Serial Number
-    SN = Dialog.ShowInputDialog<int>("Insert Serial number of FEB under test.");       
+    int SN = Dialog.ShowInputDialog<int>("Insert Serial number of FEB under test.");       
 
     // Generate output txt file
     string OutFile_Name = CreateOutputFile(SN,"IO",output_path);
@@ -1101,14 +1123,14 @@ void ScriptMain(){
     System.Console.WriteLine("end of test");       
     if (LB_success && HK_success){
         File.AppendAllText(@OutFile_Name, Environment.NewLine + 
-                                          "//////////////////////////////////////////////////////////////////////"  + Environment.NewLine);
-        File.AppendAllText(@OutFile_Name, "//                             GREEN LIGHT                          //"  + Environment.NewLine);
-        File.AppendAllText(@OutFile_Name, "//////////////////////////////////////////////////////////////////////"  + Environment.NewLine);
+                                          "/////////////////////" + Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "// TEST SUCCESSFUL //"  + Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "/////////////////////"  + Environment.NewLine);
     }else{
         File.AppendAllText(@OutFile_Name, Environment.NewLine + 
-                                          "**********************************************************************"  + Environment.NewLine);
-        File.AppendAllText(@OutFile_Name, "**                             TEST FAILED                          **"  + Environment.NewLine);
-        File.AppendAllText(@OutFile_Name, "**********************************************************************"  + Environment.NewLine);
+                                          "|||||||||||||||||||||" + Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "||   TEST FAILED   ||"  + Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "|||||||||||||||||||||"  + Environment.NewLine);
     }
 
     TurnOffFEB();

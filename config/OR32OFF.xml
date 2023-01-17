@@ -3762,8 +3762,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -3936,8 +3936,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4110,8 +4110,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4284,8 +4284,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4458,8 +4458,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4632,8 +4632,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4806,8 +4806,8 @@
             HG="1"
             LG="1" />
           <BaselineDAC
-            HG="50786"
-            LG="50786"
+            HG="32786"
+            LG="32786"
             HG_ApplyEn="True"
             LG_ApplyEn="True" />
         </Thresholds>
@@ -4969,7 +4969,7 @@
           AllStagesPowerOn="True" />
       </AsicsPowerSavingDisable>
       <FunctionalTesting
-        GlobalEnable="False"
+        GlobalEnable="True"
         RemoteProgRxTxLoopbackEn="False"
         MIBdbgFromAddrEn="False"
         MIBdbgAddr75Sel="False"
@@ -5007,8 +5007,8 @@
     </GPIO-MCB>
     <GPIO-MISC
       FEB-ADDR="0"
-      KAL-EN="1073741824"
-      KAL-MUX="7"
+      KAL-EN="268435456"
+      KAL-MUX="0"
       TSEN-SW="0"
       HVAB-SW="False"
       HV-Short="False"

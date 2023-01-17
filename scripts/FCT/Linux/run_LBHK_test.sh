@@ -1,6 +1,4 @@
 sn=$1
-bl1=$2
-bl2=$3
 
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
@@ -8,14 +6,11 @@ GUI_exe="/UnigeGpioBoard.exe"
 ip_address="10.195.52.144"
 port="11000"
 
-dummy_EOS="EndOfScript.txt"
-dummy_EOS_citi="EndOfScript_citi.txt"
+EOS=
 Data_path=$DATADIR
-echo "DATADIR: "$DATADIR
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
-command_citi="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_CITI_test.cs\",$sn)"
+command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Loopback_HK_NoDialogs_V2.cs\",$sn)"
 # Close all GUIs to avoid double serial com
 sudo kill $(pidof mono)
 # Open GUI and wait 
@@ -27,9 +22,8 @@ echo "(Close pop-up error windows on GUI, if any. DO NOT CLOSE THE SOCKET WINDOW
 read -n 1
 
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS; sleep 1; echo $command_citi; bash wait.sh $Data_path$dummy_EOS_citi; } | telnet $ip_address $port 
-
-# sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS; 
+{ sleep 1; echo $command; sleep 40; } | telnet $ip_address $port 
+bash wait_LBHK.sh $Data_path/IO_TEST/;
 
 # Close the GUI
 sudo kill $(pidof mono)

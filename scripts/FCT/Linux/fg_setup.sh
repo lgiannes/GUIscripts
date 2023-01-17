@@ -1,6 +1,6 @@
 #! /bin/bash
 
-freq=200 #Hz
+freq=1000 #Hz
 pulseper=1/$freq #s
 amp=0.06 #V
 rise=10E-9 #s

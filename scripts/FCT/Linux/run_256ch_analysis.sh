@@ -32,7 +32,9 @@ $exe_path$exe_analog -f $DATADIR$Data_file_name -s$sn;
 #Baseline test
 $exe_path$exe_bl -a $DATADIR$Data_file_name_bl1 -b $DATADIR$Data_file_name_bl2 -s$sn;
 #CITIROC triggers test
-$exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn;
+$exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn -v0;
 
 tail -n3 $DATADIR/output_*.txt
-#tail -n3 $( ls $DATADIR/IO_TEST/ -tp | grep -v / | head -n1 )
+# LBHK_last_output=$( ls -tp $DATADIR/IO_TEST/ | grep -v / | head -n1 )
+# tail -n3 $DATADIR/IO_TEST/$LBHK_last_output
+tail -n3 $( ls $DATADIR/IO_TEST/ -tp | grep -v / | head -n1 )

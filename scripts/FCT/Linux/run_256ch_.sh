@@ -4,14 +4,15 @@
 start=`date +%s`
 ###########################################
 
-
+GotSN=false
 read -p "Run Loopback/Housekeeping test? " -n 1 -r 
 echo 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo "Enter serial number:"
   read sn
-  bash Run_LBHK_test.sh $sn
+  GotSN=true
+  bash run_LBHK_test.sh $sn
   read -p "Go on with other tests? " -n 1 -r 
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -45,7 +46,7 @@ else
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     # Ask the user for the FEB Serial Number
-    echo "Enter serial number:"
+    echo "Enter serial number (for analysis only):"
     read sn
     export DATADIR=$DATADIR"SN_"$sn"/"
     echo "DATADIR: "$DATADIR
@@ -66,8 +67,11 @@ fi
 
 
 # Ask the user for the FEB Serial Number
-echo "Enter serial number:"
-read sn
+if [ $GotSN = false ]
+then 
+  echo "Enter serial number:"
+  read sn
+fi
 
 # Print out data folder and give rwe permission
 export DATADIR=$DATADIR"SN_"$sn"/"

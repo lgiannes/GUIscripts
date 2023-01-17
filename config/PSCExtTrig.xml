@@ -5,7 +5,7 @@
   <Board>
     <UsbEthParam
       Timeout="1000"
-      StopOnTimeout="False"
+      StopOnTimeout="True"
       AutoResetOnTimeout="False"
       PacketSize="16384"
       Packets="2"

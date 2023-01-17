@@ -43,8 +43,8 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     // Send to board
     BoardLib.SetBoardId(0);
@@ -104,8 +104,8 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     BoardLib.SetBoardId(0);
     BoardLib.SetDirectParameters();
@@ -137,8 +137,8 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     BoardLib.SetBoardId(0);
     BoardLib.SetDirectParameters();
@@ -189,7 +189,7 @@ void RunAcquisition(){
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(20);                                                                    
+    Sync.Sleep(200);                                                                    
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
@@ -279,7 +279,7 @@ void RunBaselineAcq(int baseline){
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(20);                                                                    
+    Sync.Sleep(200);                                                                    
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }

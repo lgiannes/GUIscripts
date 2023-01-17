@@ -29,8 +29,8 @@
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     // Send to board
     BoardLib.SetBoardId(0);
@@ -58,8 +58,10 @@
     // 1. test VALID_event, Force Reset PSC, Force Reset PA (32 gates),
     // ADC starts on OR32 and enOR32=ON (default): 
     // signal expected ONLY in the first 8 gates (default config with OR32=ON)
-    RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
-    
+    int OutputRun = -999;
+    while(OutputRun==-999){
+        OutputRun = RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
+    }
 
 
 
@@ -209,8 +211,8 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     BoardLib.SetDirectParameters();
     Sync.Sleep(200);                                                     
@@ -284,8 +286,8 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     BoardLib.SetDirectParameters();
     Sync.Sleep(200);                                                     
@@ -378,7 +380,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
 
 }
 
-void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_path){
+int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_path){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
@@ -433,16 +435,18 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
         Sync.Sleep(10);
     }
     //Second bunch of 8 gates: disable valid event: expect no signal
-    BoardLib.SetBoardId(0); 
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
     BoardLib.SetVariable("Board.DirectParam.AveEn", false);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetBoardId(0); 
     BoardLib.SetDirectParameters();
     Sync.Sleep(100);
+    if(!BoardLib.IsTransferingData){
+        System.Console.WriteLine("ERROR: DAQ stopped!");
+        BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+        BoardLib.SetBoardId(0); 
+        BoardLib.SetDirectParameters();
+        Sync.Sleep(100);
+        return -999;
+    }
     for(int i=0;i<8;i++){        
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
@@ -556,6 +560,7 @@ void RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_p
     BoardLib.StopAcquisition();
     Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
     System.Console.WriteLine("END OF ACQUISITION");
+    return 0;
 }
 
 void SelectGPIOdevices(){

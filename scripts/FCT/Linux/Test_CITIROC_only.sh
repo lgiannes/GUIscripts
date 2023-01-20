@@ -25,6 +25,8 @@ GotSN=false
 
 
 export DATADIR="/home/neutrino/FCT/data_local/"
+export GENERALDATADIR=$DATADIR
+
 # For BASELINE test:
 bl1=32000
 bl2=50000
@@ -78,14 +80,13 @@ export DATADIR=$DATADIR"SN_"$sn"/"
 echo "DATADIR: "$DATADIR
 sudo chmod 777 $DATADIR
 
-if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]
+if [[ -f $DATADIR$dummy_EOS_citi ]]
 then 
   read -p "Files already present for this SN. Do you want to overwrite?  (y=yes, any other key=no) " -n 1 -r
   echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
-    rm -f $DATADIR$dummy_EOS
     rm -f $DATADIR$dummy_EOS_citi
     bash run_CITI_datataking.sh $sn $bl1 $bl2
     bash run_CITI_analysis.sh $sn $bl1 $bl2
@@ -97,7 +98,6 @@ then
     exit
   fi
 else
-  rm -f $DATADIR$dummy_EOS;
   rm -f $DATADIR$dummy_EOS_citi;
   bash run_CITI_datataking.sh $sn $bl1 $bl2;
   bash run_CITI_analysis.sh $sn $bl1 $bl2;

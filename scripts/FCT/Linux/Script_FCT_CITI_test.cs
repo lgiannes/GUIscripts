@@ -4,7 +4,7 @@
 
     int LG =56;
     int HG =12;
-    string data_path = "/home/neutrino/FCT/data_local/";
+    string data_path = Environment.GetEnvironmentVariable("GENERALDATADIR");  
 
     // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
     data_path = data_path + "SN_" + SN.ToString() + "/";
@@ -183,6 +183,11 @@
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("SCA_WrongHT",config_folder+config, SN, data_path);
 
+
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.SetDirectParameters(); Sync.Sleep(1);
     TurnOffFEB();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -467,6 +472,14 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetDirectParameters();
     Sync.Sleep(100);
+    if(!BoardLib.IsTransferingData){
+        System.Console.WriteLine("ERROR: DAQ stopped!");
+        BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+        BoardLib.SetBoardId(0); 
+        BoardLib.SetDirectParameters();
+        Sync.Sleep(100);
+        return -999;
+    }
     //Third bunch of 8 gates: Force Reset PSC: expect no signal
     for(int i=0;i<8;i++){        
 
@@ -507,7 +520,14 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(50);                                                                    
-
+    if(!BoardLib.IsTransferingData){
+        System.Console.WriteLine("ERROR: DAQ stopped!");
+        BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+        BoardLib.SetBoardId(0); 
+        BoardLib.SetDirectParameters();
+        Sync.Sleep(100);
+        return -999;
+    }
     //Forth bunch of 8 gates: Force Reset PA: expect no signal
     for(int i=0;i<8;i++){        
 

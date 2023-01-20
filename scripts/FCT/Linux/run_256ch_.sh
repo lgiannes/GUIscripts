@@ -5,26 +5,27 @@ start=`date +%s`
 ###########################################
 
 GotSN=false
-# read -p "Run Loopback/Housekeeping test? " -n 1 -r 
-# echo 
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#   echo "Enter serial number:"
-#   read sn
-#   GotSN=true
-#   bash run_LBHK_test.sh $sn
-#   read -p "Go on with other tests? " -n 1 -r 
-#   echo
-#   if [[ $REPLY =~ ^[Yy]$ ]]
-#   then
-#     echo "Starting other tests ..."
-#   else
-#     exit
-#   fi  
-# fi
+read -p "Run Loopback/Housekeeping test? " -n 1 -r 
+echo 
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  echo "Enter serial number:"
+  read sn
+  GotSN=true
+  bash run_LBHK_test.sh $sn
+  read -p "Go on with other tests? " -n 1 -r 
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    echo "Starting other tests ..."
+  else
+    exit
+  fi  
+fi
 
 
 export DATADIR="/home/neutrino/FCT/data_local/"
+export GENERALDATADIR=$DATADIR
 # For BASELINE test:
 bl1=32000
 bl2=50000

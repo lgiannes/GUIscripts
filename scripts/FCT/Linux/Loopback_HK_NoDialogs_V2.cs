@@ -2,7 +2,7 @@ byte FEB_BoardID = 0;
 
 void ActivateGPIO(){
     // Speak with GPIO and select GPIO devices:
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     for(int i=0;i<13;i++){
         BoardLib.ActivateConfigDevice((byte)i,false);
     }
@@ -13,7 +13,7 @@ void ActivateGPIO(){
 
 void ActivateFEB(){
     // Speak with FEB+oldGPIO and select FEB devices:
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     for(int i=0;i<13;i++){
         BoardLib.ActivateConfigDevice((byte)i,true);
     }
@@ -37,6 +37,7 @@ string CreateOutputFile(int SN,string whichtest, string output_path){
                                                         now.Second.ToString() +".txt";
     
     File.AppendAllText(@OutFile_Name, "IO TEST for FEB Serial Number "+SN.ToString() + Environment.NewLine);
+    
     return OutFile_Name;
 
 }
@@ -97,10 +98,10 @@ bool SUM_or32_test(byte FEB_BoardID, string OutFile_Name){
     // Test preparation
     bool SUM32_success = true;
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.SumOr32En",true);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-ADC");
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",false);
@@ -138,10 +139,10 @@ bool SUM_or32_test(byte FEB_BoardID, string OutFile_Name){
 
 bool FEB_trigOD_test(byte FEB_BoardID, string OutFile_Name){
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.TrigODLoopbackEn",true);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-TRIGIN", true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
@@ -168,10 +169,10 @@ bool FEB_trigOD_test(byte FEB_BoardID, string OutFile_Name){
 
 bool FEB_trig_test(byte FEB_BoardID, string OutFile_Name){
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.TrigLoopbackEn",true);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-TRIGIN", true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
@@ -200,10 +201,10 @@ bool FEB_trig_test(byte FEB_BoardID, string OutFile_Name){
 
 bool FEB_busy_test(byte FEB_BoardID, string OutFile_Name){
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.BusyLoopbackEn",true);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ForceBusyEn", true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
@@ -232,9 +233,9 @@ void Restore_Initial_Config(byte FEB_BoardID,string config_path){
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
     SendFEB();
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); 
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config"); 
 }
 
@@ -242,11 +243,11 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
     
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgFromAddrEn",true);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel",false);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
 
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     byte address=0;
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
@@ -273,10 +274,10 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         }
     }
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel",true);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     for(int i=5;i<8;i++){
         address = (byte)Math.Pow(2,i);
         BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
@@ -298,7 +299,7 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
     return MIBdebug_success;
 }
 
-bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
+bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, string HK_values){
     // Starting Housekeeping test
     System.Console.WriteLine("Starting Housekeeping test.");
     File.AppendAllText(@OutFile_Name,     "**************************************************************************" + Environment.NewLine 
@@ -311,7 +312,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     for(int i = 0;i<8;i++){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -319,6 +320,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     BoardLib.SetDirectParameters();
     Sync.Sleep(1000);
 
+   
 
     // 1: High Voltage measurement DAC-ADC test
     System.Console.WriteLine("HV 'from GPIO' test");
@@ -334,11 +336,11 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     for(int i=0;i<8;i++){
         HVs_volts[i] = HighestHV/8*(i)+1;
     }
-    HV_ADC_success1 = HV_test(HVs_volts,OutFile_Name);
+    HV_ADC_success1 = HV_test(HVs_volts,OutFile_Name, HK_values);
     for(int i=0;i<8;i++){
         HVs_volts[i] = HighestHV/8*(7-i)+1;
     }
-    HV_ADC_success2 = HV_test(HVs_volts,OutFile_Name);
+    HV_ADC_success2 = HV_test(HVs_volts,OutFile_Name, HK_values);
     // SUCCESS if both are successful
     HV_ADC_success = (HV_ADC_success1 && HV_ADC_success2);
     if(!HV_ADC_success){
@@ -348,7 +350,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     for(int i = 0;i<8;i++){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
@@ -357,10 +359,10 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
 
 
     // 2: HV short test 
-    bool HVShort_success = HVShort_test(OutFile_Name,35); 
+    bool HVShort_success = HVShort_test(OutFile_Name, HK_values, 35); 
     
     Restore_Initial_Config(FEB_BoardID,config_path);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     // Send back the HV on the CITIROC to 0
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
     BoardLib.SetDirectParameters();
@@ -370,23 +372,23 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     Sync.Sleep(200);
     
     // 3: test Temperature on the FPGA
-    bool FPGAtemp_success = FPGAtemp_test(OutFile_Name);
+    bool FPGAtemp_success = FPGAtemp_test(OutFile_Name, HK_values);
     // 4: test FEB temperature (0)
-    bool FEBtemp0_success = FEBtemp0_test(OutFile_Name);
+    bool FEBtemp0_success = FEBtemp0_test(OutFile_Name, HK_values);
     // 5: test FEB temperature (1)
-    bool FEBtemp1_success = FEBtemp1_test(OutFile_Name);
+    bool FEBtemp1_success = FEBtemp1_test(OutFile_Name, HK_values);
     // 6: test PMezza 2V2 temperature
-    bool PMezza_2V2_success = PMezza_2V2_test(OutFile_Name);
+    bool PMezza_2V2_success = PMezza_2V2_test(OutFile_Name, HK_values);
     // 7: test PMezza 0V9 temperature
-    bool PMezza_0V9_success = PMezza_0V9_test(OutFile_Name);
+    bool PMezza_0V9_success = PMezza_0V9_test(OutFile_Name, HK_values);
     // 8: test backplane HV
-    bool bkpHV_success = bkpHV_test(OutFile_Name);
+    bool bkpHV_success = bkpHV_test(OutFile_Name, HK_values);
     // 9: FPGA current test
-    bool FPGAcurrent_success = FPGAcurrent_test(OutFile_Name);
+    bool FPGAcurrent_success = FPGAcurrent_test(OutFile_Name, HK_values);
     // 10: test current in 12V from backplane
-    bool I12V_success = I12V_test(OutFile_Name); // So far this just prints the currents
+    bool I12V_success = I12V_test(OutFile_Name, HK_values); // So far this just prints the currents
     // 11: test CITIROC temperatures (x8)
-    bool CITItemp_success = CITItemp_test(OutFile_Name);
+    bool CITItemp_success = CITItemp_test(OutFile_Name, HK_values);
     // 12: MPPC HV test (from FEB-HK side, to test the FEB MPPC-ADC )
     bool MPPC_HV_success = MPPCHV_test(OutFile_Name);
     
@@ -435,7 +437,7 @@ bool MPPCHV_test(string OutFile_Name){
 //     System.Console.WriteLine("MPPC HV test");
 //     File.AppendAllText(@OutFile_Name,"----Starting test of HV set on MPPC and 'MPPC_ADC'." + Environment.NewLine);
 
-//     BoardLib.SetBoardId(0);
+//     BoardLib.SetBoardId(0); Sync.Sleep(1);
 
 //     for(int asic=0;asic<8;asic++){
 //         File.AppendAllText(@OutFile_Name,"ONLY ASIC "+asic.ToString()+" ON"+Environment.NewLine);
@@ -474,7 +476,7 @@ bool MPPCHV_test(string OutFile_Name){
 // }
 
 
-bool I12V_test(string OutFile_Name){
+bool I12V_test(string OutFile_Name, string HK_values){
     bool success = true;
     System.Console.WriteLine("12V current test");
     File.AppendAllText(@OutFile_Name,"----Starting test of current in 12V." + Environment.NewLine);
@@ -482,7 +484,7 @@ bool I12V_test(string OutFile_Name){
     double Delta = 0.12;//[A] expected current difference between 0 and 8 enabled CITIROCs
     // 1. CITIROC power test: enable one citiroc at a time and check the current on the 12V-FEB
     // Enable PowerPulsing
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     for(int i=0;i<8;i++){
         BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".PowerModes.DiscriDisPP",false);
         BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".PowerModes.Discri_tDisPP",false);
@@ -527,7 +529,8 @@ bool I12V_test(string OutFile_Name){
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-12V-Current") );
         File.AppendAllText(@OutFile_Name,"Enabled CITIROC #"+i+". Current: "+ current12V.ToString() + " A" + Environment.NewLine);
-    }
+        File.AppendAllText(@HK_values,"I_citi" + i + "; " + current12V.ToString() + "; A; current flowing in 12V when only CITIROC " + i + " is enabled" + Environment.NewLine);
+    }   
     // Check current for 0,1,2,...8 CITIs
     for(int i=0;i<9;i++){
         for(int j=0;j<8;j++){
@@ -543,6 +546,9 @@ bool I12V_test(string OutFile_Name){
         current12V = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-12V-Current") );
         currents[i]=current12V;
         File.AppendAllText(@OutFile_Name,"Enabled "+i+" CITIROCs. Current: "+ current12V.ToString() + " A" + Environment.NewLine);
+        if(i==8){
+            File.AppendAllText(@HK_values,"I12V; " + current12V.ToString() + "; A; current flowing in 12V with all CITIROCs enabled" + Environment.NewLine);
+        }
     }
     if( Math.Abs(currents[0]-currents[8])<Delta ){
         success = false;
@@ -555,7 +561,7 @@ bool I12V_test(string OutFile_Name){
 }
 
 
-bool FPGAtemp_test(string OutFile_Name){
+bool FPGAtemp_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("FPGA temperature test");
     File.AppendAllText(@OutFile_Name, "----FPGA temperature test:"+ Environment.NewLine);
@@ -579,11 +585,13 @@ bool FPGAtemp_test(string OutFile_Name){
         System.Console.WriteLine("FPGA temperature test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "T_FPGA; "+read+"; °C; FPGA temperature" +Environment.NewLine);
+
     return success;
 }
 
 
-bool FEBtemp0_test(string OutFile_Name){
+bool FEBtemp0_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("FEB temperature 0 test");
     File.AppendAllText(@OutFile_Name, "----FEB temperature 0 test:"+ Environment.NewLine);
@@ -607,10 +615,12 @@ bool FEBtemp0_test(string OutFile_Name){
         System.Console.WriteLine("FEB temperature 0 test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "T_FEB0; "+read+"; °C; FEB temperature, sensor 0" +Environment.NewLine);
+
     return success;
 }
 
-bool FEBtemp1_test(string OutFile_Name){
+bool FEBtemp1_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("FEB temperature 1 test");
     File.AppendAllText(@OutFile_Name, "----FEB temperature 1 test:"+ Environment.NewLine);
@@ -634,10 +644,12 @@ bool FEBtemp1_test(string OutFile_Name){
         System.Console.WriteLine("FEB temperature 1 test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "T_FEB1; "+read+"; °C; FEB temperature, sensor 1" +Environment.NewLine);
+
     return success;
 }
 
-bool PMezza_2V2_test(string OutFile_Name){
+bool PMezza_2V2_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("PMezza 2V2 test");
     File.AppendAllText(@OutFile_Name, "----PMezza 2V2 test:"+ Environment.NewLine);
@@ -661,10 +673,12 @@ bool PMezza_2V2_test(string OutFile_Name){
         System.Console.WriteLine("PMezza 2V2  test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "T_2V2; "+read+"; °C; Temperature on Power mezzanine 2.2 V line" +Environment.NewLine);
+
     return success;
 }
 
-bool PMezza_0V9_test(string OutFile_Name){
+bool PMezza_0V9_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("PMezza 0V9 test");
     File.AppendAllText(@OutFile_Name, "----PMezza 0V9 test:"+ Environment.NewLine);
@@ -688,10 +702,12 @@ bool PMezza_0V9_test(string OutFile_Name){
         System.Console.WriteLine("PMezza 0V9  test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "T_0V9; "+read+"; °C; Temperature on Power mezzanine 0.9 V line" +Environment.NewLine);
+
     return success;
 }
 
-bool FPGAcurrent_test(string OutFile_Name){
+bool FPGAcurrent_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("FPGA current test");
     File.AppendAllText(@OutFile_Name, "----FPGA current test:"+ Environment.NewLine);
@@ -715,11 +731,13 @@ bool FPGAcurrent_test(string OutFile_Name){
         System.Console.WriteLine("FPGA current test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "I_FPGA; "+read+"; A; Current flowing in FPGA" +Environment.NewLine);
+
     return success;
 }
 
 
-bool bkpHV_test(string OutFile_Name){
+bool bkpHV_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("backplane HV test");
     File.AppendAllText(@OutFile_Name, "----backplane HV test:"+ Environment.NewLine);
@@ -743,10 +761,12 @@ bool bkpHV_test(string OutFile_Name){
         System.Console.WriteLine("backplane HV test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "HV_bkp; "+read+"; V; Backplane HV" +Environment.NewLine);
+
     return success;
 }
 
-bool CITItemp_test(string OutFile_Name){
+bool CITItemp_test(string OutFile_Name, string HK_values){
     bool success = false;
     System.Console.WriteLine("CITIROC temperature test");
     File.AppendAllText(@OutFile_Name, "----CITIROC temperature test:"+ Environment.NewLine);
@@ -772,7 +792,10 @@ bool CITItemp_test(string OutFile_Name){
             File.AppendAllText(@OutFile_Name, "CITIROC "+asic.ToString()+" temperature: "+read+" °C -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
             vsuc[asic] = false;
         }
+        File.AppendAllText(@HK_values, "T_citi" + asic + "; "+read+"; °C; Temperature of CITIROC " + asic +Environment.NewLine);
+
     }
+
     for(int asic=0;asic<8;asic++){
         if(!vsuc[asic]){
             success = false;
@@ -787,12 +810,12 @@ bool CITItemp_test(string OutFile_Name){
     return success;
 }
 
-bool HVShort_test(string OutFile_Name, double HV_set=35){ 
+bool HVShort_test(string OutFile_Name, string HK_values, double HV_set=35){ 
     bool success = false;
     System.Console.WriteLine("HV-short test");
     File.AppendAllText(@OutFile_Name, "----HV short test:"+ Environment.NewLine);
     // Setting up test:
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-MISC.HV-Short",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     // Set HV
@@ -807,7 +830,7 @@ bool HVShort_test(string OutFile_Name, double HV_set=35){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set_GUI);
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -815,7 +838,7 @@ bool HVShort_test(string OutFile_Name, double HV_set=35){
     BoardLib.SetDirectParameters();
     Sync.Sleep(1000);
     // Set ADC to read values
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-ADC");
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",false);
@@ -836,11 +859,13 @@ bool HVShort_test(string OutFile_Name, double HV_set=35){
         System.Console.WriteLine("'HV Short' test FAILED");
         success = false;
     }
+    File.AppendAllText(@HK_values, "I_HVshort; "+current_read_uA+"; uA; Current in HV circuit when shorted (35 V default load, see HV_bkp)" +Environment.NewLine);
+
     
     return success;
 }
 
-bool HV_test(double[] HVs_volts,string OutFile_Name){
+bool HV_test(double[] HVs_volts,string OutFile_Name, string HK_values){
     bool success = true;
     // conversion factor: there are two different conversion, one to set the HV and one to get the HV measurement
     double CF_set = 65535/102.46;
@@ -855,7 +880,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set_GUI);
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(500);
     File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting HV DAC-ADC test" + Environment.NewLine);
@@ -863,7 +888,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
     BoardLib.SetDirectParameters();
     Sync.Sleep(1000);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-ADC");
     BoardLib.SetVariable("GPIO.GPIO-ADC.InitOrStart",false);
@@ -879,13 +904,14 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
             File.AppendAllText(@OutFile_Name, "Hv measurement in ASIC"+ i.ToString()+": failed. -> Set: "+HVs_volts[i].ToString()+"+-" +Delta.ToString()+" Measured: "+HV_read_volts.ToString()+Environment.NewLine);
             success = false;
         }
+        File.AppendAllText(@HK_values, "V_citi"+i+"; "+HV_read_volts+"; V; Voltage on CITIROC" + i + " (Set:" + HVs_volts[i].ToString() + " V) " + Environment.NewLine);
     }
 
     //At the end, reset everything to 0
     for(int i = 0;i<8;i++){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -912,7 +938,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set_GUI);
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(500);
     File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting MPPC HV test (FEB side)" + Environment.NewLine);
@@ -937,7 +963,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
     for(int i = 0;i<8;i++){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(11);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -1035,18 +1061,18 @@ bool read_IsInRange(byte address_set,double ADC_read,string OutFile_Name){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
-    BoardLib.SetBoardId(126); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
-    BoardLib.SetBoardId(126); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
 }
 
 void SelectGPIOdevices(){
     // Speak with GPIO
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     for(int i=0;i<13;i++){
         BoardLib.ActivateConfigDevice((byte)i,false);
     }
@@ -1113,13 +1139,25 @@ void ScriptMain(){
 
     // Generate output txt file
     string OutFile_Name = CreateOutputFile(SN,"IO",output_path);
-
+    // Generate output csv file for HK values //////////////////////////////////////////
+    DateTime now = DateTime.Now;
+    string HK_values = output_path + "SN_" +SN.ToString() + "/IO_TEST/HouseKeeping_"+
+                                                        now.Year.ToString() + "_"+
+                                                        now.Month.ToString() + "_"+
+                                                        now.Day.ToString() + "-"+
+                                                        now.Hour.ToString() + "_"+
+                                                        now.Minute.ToString() + "_"+
+                                                        now.Second.ToString() +".csv";
+    File.AppendAllText(@HK_values, "SN "+SN.ToString() + Environment.NewLine);
+    File.AppendAllText(@HK_values, "measurement; value; unit; comment;  " + Environment.NewLine);
+    /////////////////////////////////////////////////////////////////////////////////////
+ 
     System.Console.WriteLine("----------------------------step 1 (initialization) completed");       
     bool LB_success=false;
     bool HK_success=false;
 
     LB_success = Run_LoopBack_test(OutFile_Name,config_path);
-    HK_success = HouseKeeping_test(OutFile_Name,FEB_BoardID,config_path);
+    HK_success = HouseKeeping_test(OutFile_Name,FEB_BoardID,config_path,HK_values);
     System.Console.WriteLine("end of test");       
     if (LB_success && HK_success){
         File.AppendAllText(@OutFile_Name, Environment.NewLine + 
@@ -1138,72 +1176,3 @@ void ScriptMain(){
     return;
 }
 
-
-
-// BACKUP 
-
-//   // 2: HV short test 
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool HVShort_success = HVShort_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 3: test Temperature on the FPGA
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     Sync.Sleep(200);
-//     bool FPGAtemp_success = FPGAtemp_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 4: test FEB temperature (0)
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool FEBtemp0_success = FEBtemp0_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 5: test FEB temperature (1)
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool FEBtemp1_success = FEBtemp1_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 6: test PMezza 2V2 temperature
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool PMezza_2V2_success = PMezza_2V2_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 7: test PMezza 0V9 temperature
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool PMezza_0V9_success = PMezza_0V9_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 8: test current in 12V from backplane
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool I12V_success = I12V_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-//     // So far this just prints the currents, need to implement some success/fail criterion
-
-//     // 9: test CITIROC temperatures (x8)
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool CITItemp_success = CITItemp_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 10: test backplane HV
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool bkpHV_success = bkpHV_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 11: FPGA current test
-//     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-//     BoardLib.DeviceConfigure(12);
-//     bool FPGAcurrent_success = FPGAcurrent_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);
-
-//     // 12: MPPC HV test (from FEB-HK side, to test the FEB MPPC-ADC )
-//     bool MPPC_HV_success = MPPCHV_test(OutFile_Name);
-//     Restore_Initial_Config(FEB_BoardID,config_path);

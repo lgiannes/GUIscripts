@@ -19,7 +19,7 @@ command_citi="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Scr
 # Close all GUIs to avoid double serial com
 sudo kill $(pidof mono)
 # Open GUI and wait 
-( cd $GUI_path && mono $GUI_path$GUI_exe& )
+( cd $GUI_path && mono $GUI_path$GUI_exe & )
 echo "Opening GUI ..."
 sleep 0.5
 echo "When GUI is open, press Enter "

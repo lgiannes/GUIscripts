@@ -5,7 +5,7 @@
 string config_folder = "/home/neutrino/FCT/code/config/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
-string data_path   =    "/home/neutrino/FCT/data_local/";
+string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR");  
                         //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
 
@@ -32,6 +32,8 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
+    
+
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
     
@@ -47,7 +49,9 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     // Send to board
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); 
+    Sync.Sleep(10);
+
     BoardLib.SetDirectParameters();
 
     bool Sync_good = false;
@@ -107,7 +111,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(5);
     BoardLib.SetDirectParameters();
     Sync.Sleep(200);
     ActivateAllCh(LG,HG);
@@ -140,7 +144,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(5);
     BoardLib.SetDirectParameters();
     Sync.Sleep(200);
     ActivateAllCh(LG,HG);
@@ -150,7 +154,10 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
 
     Sync.Sleep(500);
     //TurnOffFEB();
-
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.SetDirectParameters(); Sync.Sleep(1);
     // Turn off Pulse Gen at the end
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -179,17 +186,18 @@ void RunAcquisition(){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
-    BoardLib.SetBoardId(0); 
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    Sync.Sleep(5);
     BoardLib.SetDirectParameters();
 
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    BoardLib.SetBoardId(0); 
     Sync.Sleep(200);                                                                    
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
@@ -200,37 +208,38 @@ void RunAcquisition(){
         BoardLib.StartAcquisition(data_path + file_name,true);
     }
 
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.ReadStatus();
+    bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    while(GateEn){
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+        Sync.Sleep(200); 
+        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
+    }
+
     Sync.Sleep(20);
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(300);                                                                   
 
     for(int channel=0;channel<256;channel++){
-    //for(int channel=179;channel<181;channel++){
         
         SetKaladin(channel);
                                                                         //System.Console.WriteLine("Kaladin set");       
         Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
-        BoardLib.SetBoardId(126); 
+        BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");     
         if( !BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
             System.Console.WriteLine("ERROR: GATE NOT OPEN");
             break;
         }   
-        // Sync.Sleep(50);
-        // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-        // BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-        // //BashOutput = ExecuteBashCommand("bash fgON.sh");
         Sync.Sleep(100);
-        // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-        // BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-        // //BashOutput = ExecuteBashCommand("bash fgOFF.sh");
-        // Sync.Sleep(50);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-        BoardLib.SetBoardId(126); 
+        BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");  
         if( BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
@@ -239,22 +248,27 @@ void RunAcquisition(){
         }        
         Sync.Sleep(10);
 
-                                                                        //System.Console.WriteLine("channel "+channel.ToString()+" done");
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     Sync.Sleep(10);
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    BoardLib.SetBoardId(0); 
+    Sync.Sleep(100);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.ReadStatus();
+    GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    while(GateEn){
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+        Sync.Sleep(200); 
+        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
+    }
     BoardLib.StopAcquisition();
     BoardLib.WaitForEndOfTransfer(true);
     Sync.Sleep(1100);
     Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
     
     System.Console.WriteLine("END OF ACQUISITION");
-
-
-
 
 }
 
@@ -268,17 +282,18 @@ void RunBaselineAcq(int baseline){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
-    BoardLib.SetBoardId(0); 
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    Sync.Sleep(5);
     BoardLib.SetDirectParameters();
     Sync.Sleep(50);                                                                    
 
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    BoardLib.SetBoardId(0); 
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     Sync.Sleep(200);                                                                    
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
@@ -291,7 +306,7 @@ void RunBaselineAcq(int baseline){
     }
 
     Sync.Sleep(20);
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(100);                                                                   
@@ -306,19 +321,16 @@ void RunBaselineAcq(int baseline){
                                                                         //System.Console.WriteLine("Kaladin set");       
         Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
-        BoardLib.SetBoardId(126); 
+        BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
         if( !BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
             System.Console.WriteLine("ERROR: GATE NOT OPEN");
             break;
-        }   // Sync.Sleep(10);
-        //BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+        }
         Sync.Sleep(100);
-        //BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-        // Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-        BoardLib.SetBoardId(126); 
+        BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
         if( BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
@@ -330,9 +342,9 @@ void RunBaselineAcq(int baseline){
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     Sync.Sleep(10);                                                                   
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    BoardLib.SetBoardId(0); 
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.StopAcquisition();
     BoardLib.WaitForEndOfTransfer(true);
     Sync.Sleep(1100);
@@ -348,10 +360,10 @@ void RunBaselineAcq(int baseline){
 bool SyncTest(){
     bool success = true;
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(50);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     if(GateEn){
@@ -359,10 +371,10 @@ bool SyncTest(){
         return success;
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(50);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.ReadStatus();
     GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     if(!GateEn){
@@ -370,10 +382,10 @@ bool SyncTest(){
         return success;
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(50);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     return success;
 }
 
@@ -381,14 +393,14 @@ bool SyncTest(){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(500);
@@ -411,7 +423,7 @@ void SetKaladin(int channel){
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-MUX", Kal_MUX_output);
     System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
     
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(10);
 
@@ -421,7 +433,7 @@ void SetKaladin(int channel){
 
 
 void ActivateAllCh(int LG_gain,int HG_gain){
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
     for (int i_ch = 0; i_ch < 256; i_ch++){
         int asic=i_ch/32;
         int local_ch=i_ch%32; 
@@ -536,7 +548,7 @@ void SelectFEBdevices(byte FEBID=0){
 
 void SendGPIO(){
     SelectGPIOdevices();
-    BoardLib.SetBoardId(126);
+    BoardLib.SetBoardId(126); Sync.Sleep(3);
     BoardLib.BoardConfigure();
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
@@ -544,7 +556,7 @@ void SendGPIO(){
 
 void SendFEB(byte FEBID=0){
     SelectFEBdevices(FEBID);
-    BoardLib.SetBoardId(0);
+    BoardLib.SetBoardId(0); Sync.Sleep(3);
     BoardLib.BoardConfigure();
     Sync.Sleep(50);
 }

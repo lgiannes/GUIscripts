@@ -10,7 +10,7 @@ EOS=
 Data_path=$DATADIR
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Loopback_HK_NoDialogs_V2.cs\",$sn)"
+command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/LBHK_fromscript.cs\",$sn)"
 # Close all GUIs to avoid double serial com
 sudo kill $(pidof mono)
 # Open GUI and wait 
@@ -22,8 +22,8 @@ echo "(Close pop-up error windows on GUI, if any. DO NOT CLOSE THE SOCKET WINDOW
 read -n 1
 
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; sleep 40; } | telnet $ip_address $port 
-bash wait_LBHK.sh $Data_path/IO_TEST/;
+{ sleep 1; echo $command; bash wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
+
 
 # Close the GUI
 sudo kill $(pidof mono)

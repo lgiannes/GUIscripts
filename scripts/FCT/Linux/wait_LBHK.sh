@@ -5,8 +5,8 @@ file_path_name=$( ls -tp $1 | grep -v / | head -n1 )
 endline=false
 while [[ ($endline != "/////////////////////") && ($endline != "|||||||||||||||||||||") ]]
 do
-    endline=$( tail -n 3 $file_path_name )
-    echo $endline
+    endline=$( tail -n1  $1$file_path_name )
+    # echo $endline
     sleep 1
-    echo z
+    # echo z
 done

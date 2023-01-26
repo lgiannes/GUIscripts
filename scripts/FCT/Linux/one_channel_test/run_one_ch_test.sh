@@ -3,7 +3,8 @@
 SN=$1
 channel=$2
 
-export DATADIR="/home/neutrino/FCT/data_local/"
+source setup.sh
+
 exe_path="/home/neutrino/FCT/FunctionalTest/bin/";
 
 
@@ -16,8 +17,7 @@ else
   exit
 fi
 
-export DATADIR=$DATADIR
-sudo chmod 777 $DATADIR
+sudo chmod 777 $GENERALDATADIR
 
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
@@ -29,7 +29,12 @@ port="11000"
 # Define the command to run the GUI script
 command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/one_channel_test/Script_one_ch.cs\",$SN,$channel)"
 # Close all GUIs to avoid double serial com
-sudo kill $(pidof mono)
+if [ -z $(pidof mono) ]
+then 
+    echo
+else
+    sudo kill $(pidof mono)
+fi
 # Open GUI and wait 
 ( cd $GUI_path && mono $GUI_path$GUI_exe & )
 echo "Opening GUI ..."
@@ -42,10 +47,13 @@ read -n 1
 { sleep 1; echo $command; sleep 11; } | telnet $ip_address $port 
 
 # Close the GUI
-sudo kill $(pidof mono)
-sleep 1
-
-file_name=$DATADIR"/one_ch_test_SN"$SN"_ch"$channel".daq"
+if [ -z $(pidof mono) ]
+then 
+    echo
+else
+    sudo kill $(pidof mono)
+fi
+file_name=$GENERALDATADIR"/one_ch_test_SN"$SN"_ch"$channel".daq"
 
 $exe_path/OneChannelTest -f $file_name
 echo "done"

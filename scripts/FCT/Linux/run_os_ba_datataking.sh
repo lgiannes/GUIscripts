@@ -18,7 +18,7 @@ command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_F
 # Close all GUIs to avoid double serial com
 sudo kill $(pidof mono)
 # Open GUI and wait 
-( cd $GUI_path && mono $GUI_path$GUI_exe& )
+( cd $GUI_path && mono $GUI_path$GUI_exe & )
 echo "Opening GUI ..."
 sleep 0.5
 echo "When GUI is open, press Enter "
@@ -31,5 +31,9 @@ read -n 1
 # sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS;
 
 # Close the GUI
-sudo kill $(pidof mono)
-sleep 1
+if [ -z $(pidof mono) ]
+then 
+    echo
+else
+    sudo kill $(pidof mono)
+fi

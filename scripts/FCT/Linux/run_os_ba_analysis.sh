@@ -23,7 +23,13 @@ log_file=$DATADIR"/log.txt";
 
 
 # echo $DATADIR
-
+echo 
+echo " /------------------------\\"
+echo " |                        |"
+echo " |  Analysis starting ... |"
+echo " |                        |"
+echo " \------------------------/"
+echo
 #Launch the ROOT analyses.
 #Setup
 source $setup_path;
@@ -32,10 +38,7 @@ $exe_path$exe_analog -f $DATADIR$Data_file_name -s$sn;
 #Baseline test
 $exe_path$exe_bl -a $DATADIR$Data_file_name_bl1 -b $DATADIR$Data_file_name_bl2 -s$sn;
 
-tail -n3 $DATADIR/output_*.txt
-# LBHK_last_output=$( ls -tp $DATADIR/IO_TEST/ | grep -v / | head -n1 )
-# tail -n3 $DATADIR/IO_TEST/$LBHK_last_output
-IO_TEST_output=$( ls $DATADIR/IO_TEST/ -tp | grep -v / | head -n1 )
-echo "==>" $DATADIR/IO_TEST/$IO_TEST_output "<=="
-
-tail -n3 $DATADIR/IO_TEST/$IO_TEST_output
+echo 
+echo "RESULTS:"
+echo 
+bash ShowResults.sh $sn

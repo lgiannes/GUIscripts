@@ -5,7 +5,7 @@
 string config_folder = "/home/neutrino/FCT/code/config/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
-string data_path   =  Environment.GetEnvironmentVariable("DATADIR");  
+string data_path   =  Environment.GetEnvironmentVariable("GENERALDATADIR");  
 //"/home/neutrino/FCT/data_local/";
                         //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
@@ -37,8 +37,8 @@ void ScriptMainArgs(int SN, int channel){
     SendGPIO();
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.SetDirectParameters(); Sync.Sleep(1);
+    BoardLib.SetBoardId(0); Sync.Sleep(250);
+    BoardLib.SetDirectParameters(); Sync.Sleep(250);
     SendFEB();
     // Set the required Direct Parameters
     BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
@@ -50,8 +50,8 @@ void ScriptMainArgs(int SN, int channel){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
     // Send to board
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.SetDirectParameters();
+    BoardLib.SetBoardId(0); Sync.Sleep(250);
+    BoardLib.SetDirectParameters(); Sync.Sleep(250);
 
     bool Sync_good = false;
     Sync_good = SyncTest();
@@ -64,7 +64,7 @@ void ScriptMainArgs(int SN, int channel){
     //Restore initial config
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
-    Sync.Sleep(50);
+    Sync.Sleep(500);
         
     // Enable preamp and DAQ on all channels
     ActivateAllCh(56,12);
@@ -88,8 +88,8 @@ void ScriptMainArgs(int SN, int channel){
     
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.SetDirectParameters(); Sync.Sleep(1);
+    BoardLib.SetBoardId(0); Sync.Sleep(250);
+    BoardLib.SetDirectParameters(); Sync.Sleep(250);
     TurnOffFEB();
     return;
 }
@@ -119,8 +119,8 @@ void RunAcquisition(int SN,int channel){
     BoardLib.SetBoardId(0); Sync.Sleep(1); 
     BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    Sync.Sleep(3); 
-    BoardLib.SetDirectParameters();
+    Sync.Sleep(250); 
+    BoardLib.SetDirectParameters(); Sync.Sleep(250); 
     Sync.Sleep(3); 
 
     BoardLib.SetBoardId(126); Sync.Sleep(1); 
@@ -393,17 +393,19 @@ void SelectFEBdevices(byte FEBID=0){
 
 void SendGPIO(){
     SelectGPIOdevices();
-    BoardLib.SetBoardId(126); Sync.Sleep(1);
+    BoardLib.SetBoardId(126); Sync.Sleep(3);
     BoardLib.BoardConfigure();
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
 }
+
 
 void SendFEB(byte FEBID=0){
     SelectFEBdevices(FEBID);
     BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.BoardConfigure();
-    Sync.Sleep(50);
+    Sync.Sleep(500);
 }
 
 void CallRootExe_unpack(){

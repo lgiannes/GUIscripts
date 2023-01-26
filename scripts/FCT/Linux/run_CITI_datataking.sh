@@ -11,15 +11,20 @@ port="11000"
 dummy_EOS="EndOfScript.txt"
 dummy_EOS_citi="EndOfScript_citi.txt"
 Data_path=$DATADIR
-echo "DATADIR: "$DATADIR
+# echo "DATADIR: "$DATADIR
 
 # Define the command to run the GUI script
 command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
 command_citi="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_CITI_test.cs\",$sn)"
 # Close all GUIs to avoid double serial com
-sudo kill $(pidof mono)
+if [ -z $(pidof mono) ]
+then 
+    echo
+else
+    sudo kill $(pidof mono)
+fi
 # Open GUI and wait 
-( cd $GUI_path && mono $GUI_path$GUI_exe& )
+( cd $GUI_path && mono $GUI_path$GUI_exe & )
 echo "Opening GUI ..."
 sleep 0.5
 echo "When GUI is open, press Enter "
@@ -30,5 +35,9 @@ read -n 1
 { sleep 1; echo $command_citi; bash wait.sh $Data_path$dummy_EOS_citi; } | telnet $ip_address $port 
 
 # Close the GUI
-sudo kill $(pidof mono)
-sleep 1
+if [ -z $(pidof mono) ]
+then 
+    echo
+else
+    sudo kill $(pidof mono)
+fi

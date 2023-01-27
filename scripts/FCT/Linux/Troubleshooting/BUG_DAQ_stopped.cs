@@ -108,7 +108,7 @@ void RunAcquisition(){
     Sync.Sleep(300);                                                                   
 
     // Start loop on channels
-    for(int channel=0;channel<256;channel++){
+    for(int channel=0;channel<10;channel++){
         
         // Change Kaladin channel
         SetKaladin(channel);

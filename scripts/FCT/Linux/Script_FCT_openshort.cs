@@ -153,7 +153,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     RunBaselineAcq(bl2);
 
     Sync.Sleep(500);
-    //TurnOffFEB();
+    TurnOffFEB();
 
     // Turn off Pulse Gen at the end
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -221,9 +221,12 @@ void RunAcquisition(){
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(300);                                                                   
-
+    double Tot_KB_Previous_Iter = 0;
+    double Tot_KB = 0;
+    DateTime LastIter=DateTime.Now, ThisIter=DateTime.Now;
     for(int channel=0;channel<256;channel++){
-        
+
+
         SetKaladin(channel);
                                                                         //System.Console.WriteLine("Kaladin set");       
         Sync.Sleep(50);                                                                   
@@ -245,7 +248,21 @@ void RunAcquisition(){
             break;
         }        
         Sync.Sleep(10);
-
+        
+        Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
+        ThisIter = DateTime.Now;
+        double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
+        System.Console.WriteLine("rate: "+rate+" kB/s");
+        if((Tot_KB-Tot_KB_Previous_Iter)<10){
+            System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+            System.Console.WriteLine("+                                     +");
+            System.Console.WriteLine("+  FATAL ERROR: NOT PUSHING GTS/Gate! +");
+            System.Console.WriteLine("+                                     +");
+            System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+            break;
+        }
+        Tot_KB_Previous_Iter = Tot_KB;
+        LastIter = DateTime.Now;
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     Sync.Sleep(10);
@@ -309,7 +326,9 @@ void RunBaselineAcq(int baseline){
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(100);                                                                   
-
+    double Tot_KB_Previous_Iter = 0;
+    double Tot_KB = 0;
+    DateTime LastIter=DateTime.Now, ThisIter=DateTime.Now;
     for(int i=0;i<8;i++){
         int channel = 0;
         // WARNING: if you change the definition of channel here, you need to change also the ROOT analysis:
@@ -337,7 +356,21 @@ void RunBaselineAcq(int baseline){
             break;
         }        Sync.Sleep(10);
 
-                                                                        //System.Console.WriteLine("channel "+channel.ToString()+" done");
+        
+        Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
+        ThisIter = DateTime.Now;
+        double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
+        System.Console.WriteLine("rate: "+rate+" kB/s");
+        if((Tot_KB-Tot_KB_Previous_Iter)<10){
+            System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+            System.Console.WriteLine("+                                     +");
+            System.Console.WriteLine("+  FATAL ERROR: NOT PUSHING GTS/Gate! +");
+            System.Console.WriteLine("+                                     +");
+            System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+            break;
+        }
+        Tot_KB_Previous_Iter = Tot_KB;
+        LastIter = DateTime.Now;
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     Sync.Sleep(10);                                                                   
@@ -402,7 +435,7 @@ void TurnOffFEB(){
     BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(500);
+    Sync.Sleep(1000);
 }
 
 void SetKaladin(int channel){
@@ -413,18 +446,23 @@ void SetKaladin(int channel){
     int MUX = asic*4 + loc_MUX;     // Global MUX (32 in total, 4 per ASIC)
     uint Kal_En_hex=0;
     
+    System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
     System.Console.WriteLine("-------------------------"); 
-    System.Console.WriteLine("Ch    :\t"+channel.ToString());
+    System.Console.WriteLine("Kal Ch    :\t"+channel.ToString());
     
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-EN", Math.Pow(2,MUX)); // the GUI does automatically the conversion dec-to-hex. DO NOT FEED WITH A HEX VALUE
-    System.Console.WriteLine("MUX_EN hex: "+Convert.ToString((BoardLib.GetUInt32Variable("GPIO.GPIO-MISC.KAL-EN")),16)); // Manually convert to hex for displaying
+    //System.Console.WriteLine("MUX_EN hex: "+Convert.ToString((BoardLib.GetUInt32Variable("GPIO.GPIO-MISC.KAL-EN")),16)); // Manually convert to hex for displaying
     
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-MUX", Kal_MUX_output);
-    System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
+    // /System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
     
     BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(10);
+
+    //System.Console.WriteLine(BoardLib.ElapsedTime);
+    //System.Console.WriteLine("average rate: "+BoardLib.AvgXferRate+" kB/s");
+
 
 }
 

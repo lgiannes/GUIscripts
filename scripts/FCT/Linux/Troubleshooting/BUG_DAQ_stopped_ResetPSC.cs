@@ -103,7 +103,15 @@ int RunCITITriggerAcq_32gates(string Test, string config){
             Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }
-
+        if(i==24){
+            BoardLib.SetBoardId(0); 
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",0);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
+            BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
+            Sync.Sleep(50);                                                                    
+            BoardLib.SetBoardId(126); 
+        }
+        
         channel = (i%8)*32;
         SetKaladin(channel);
         System.Console.WriteLine("------->gate "+i);

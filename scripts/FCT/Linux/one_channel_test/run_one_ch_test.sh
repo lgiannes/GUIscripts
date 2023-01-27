@@ -44,7 +44,7 @@ echo "(Close pop-up error windows on GUI, if any. DO NOT CLOSE THE SOCKET WINDOW
 read -n 1
 
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; sleep 11; } | telnet $ip_address $port 
+{ sleep 1; echo $command; sleep 13; } | telnet $ip_address $port 
 
 # Close the GUI
 if [ -z $(pidof mono) ]

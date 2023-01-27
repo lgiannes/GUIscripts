@@ -5,3 +5,4 @@ do
 sleep 1
 done
 echo "EOS file found!"
+sleep 1

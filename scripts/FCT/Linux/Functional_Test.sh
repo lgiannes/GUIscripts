@@ -37,7 +37,7 @@ then
   echo    "|                                      |"
   read -p "\\--------------------------------------/" -n 1 -r 
   echo
-  if [[ $REPLY =~ ^[Yy]$ ]]
+  if [[ $REPLY =~ ^[Yy\r]$ ]]
   then
     echo "Starting other tests ..."
   else
@@ -124,9 +124,10 @@ else
   rm -f $DATADIR$dummy_EOS_citi;
   bash run_256ch_data_taking.sh $sn $bl1 $bl2;
   bash run_256ch_analysis.sh $sn $bl1 $bl2;
-  echo "EXIT"
-  exit;
+  exit
 fi
+
+
 
 ########### To measure execution time #####
 end=`date +%s`

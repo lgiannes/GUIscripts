@@ -35,11 +35,11 @@ void ScriptMainArgs(int SN, int channel){
     
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetBoardId(0); Sync.Sleep(250);
-    BoardLib.SetDirectParameters(); Sync.Sleep(250);
-    SendFEB();
+    // BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
+    // BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    // BoardLib.SetBoardId(0); Sync.Sleep(250);
+    // BoardLib.SetDirectParameters(); Sync.Sleep(250);
+    // SendFEB();
     // Set the required Direct Parameters
     BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -53,18 +53,6 @@ void ScriptMainArgs(int SN, int channel){
     BoardLib.SetBoardId(0); Sync.Sleep(250);
     BoardLib.SetDirectParameters(); Sync.Sleep(250);
 
-    bool Sync_good = false;
-    Sync_good = SyncTest();
-    if(!Sync_good){
-        System.Console.WriteLine("Sync not working");
-        return;
-    }else{
-         System.Console.WriteLine("Sync test Successful!");
-    }
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
-    Sync.Sleep(500);
         
     // Enable preamp and DAQ on all channels
     ActivateAllCh(56,12);
@@ -241,14 +229,14 @@ void TurnOnFEB(){
     BoardLib.SetBoardId(126); Sync.Sleep(1); 
     Sync.Sleep(5);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(150);
+    Sync.Sleep(1500);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
     BoardLib.SetBoardId(126); Sync.Sleep(1); 
     Sync.Sleep(5);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(500);
+    Sync.Sleep(1500);
 }
 
 void SetKaladin(int channel){

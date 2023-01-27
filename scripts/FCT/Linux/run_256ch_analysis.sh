@@ -43,11 +43,4 @@ $exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn -v0;
 echo 
 echo "RESULTS:"
 echo 
-tail -n3 $DATADIR/output_*.txt
-# LBHK_last_output=$( ls -tp $DATADIR/IO_TEST/ | grep -v / | head -n1 )
-# tail -n3 $DATADIR/IO_TEST/$LBHK_last_output
-IO_TEST_output=$( ls $DATADIR/IO_TEST/IO_TEST* -tp | grep -v / | head -n1 )
-echo
-echo "==>" $DATADIR/IO_TEST/$IO_TEST_output "<=="
-
-tail -n3 $DATADIR/IO_TEST/$IO_TEST_output
+bash ShowResults.sh $sn

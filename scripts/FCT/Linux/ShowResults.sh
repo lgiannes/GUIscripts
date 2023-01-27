@@ -2,10 +2,12 @@ SN=$1
 
 source setup.sh
 
-DATADIR=$GENERALDATADIR/SN_$SN/
+DATADIR=$GENERALDATADIR/SN_$SN
 echo
 tail -n3 $DATADIR/output_*.txt
-IO_TEST_output=$( ls $DATADIR/IO_TEST/ -tp | grep "IO_TEST" | grep -v / | head -n1 )
+LBHK_dir=$DATADIR/IO_TEST/
+IO_TEST_output=$( ls $LBHK_dir -tp | grep "IO_TEST_" | grep -v / | head -n1 )
+
 echo
 echo "==>" $DATADIR/IO_TEST/$IO_TEST_output "<=="
 

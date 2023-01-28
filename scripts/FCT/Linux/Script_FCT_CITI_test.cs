@@ -10,7 +10,9 @@
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
-
+    // System.Console.WriteLine("Preparing CITIROC trigger test ...");
+    // BoardLib.Reconnect();
+    // Sync.Sleep(5000);
 
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
@@ -30,12 +32,33 @@
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
+    
     // Send to board
     BoardLib.SetBoardId(0);
-    BoardLib.SetDirectParameters();
-    Sync.Sleep(200);
+    Sync.Sleep(10);
+
+    // // Do sync test
+    // BoardLib.SetDirectParameters(); Sync.Sleep(220);    
+    // bool Sync_good = false;
+    // Sync_good = SyncTest();
+    // if(!Sync_good){
+    //     System.Console.WriteLine("Sync not working");
+    //     return;
+    // }else{
+    //      System.Console.WriteLine("Sync test Successful!");
+    // }
+    // //Restore initial config
+    // BoardLib.OpenConfigFile(defaconfig_path);
+    // SendGPIO();
+    // Sync.Sleep(200);
+
 
     ActivateAllCh(LG,HG);
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
@@ -291,7 +314,7 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
@@ -302,6 +325,8 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
+
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetBoardId(126); 
@@ -417,7 +442,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
@@ -428,6 +453,8 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
+
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetBoardId(126); 
@@ -517,7 +544,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
@@ -528,6 +555,8 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
+
     }
     //Second bunch of 8 gates: disable valid event: expect no signal
     BoardLib.SetVariable("Board.DirectParam.AveEn", false);
@@ -564,7 +593,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
@@ -575,6 +604,8 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
+
     }
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
@@ -629,7 +660,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
@@ -640,6 +671,8 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
+
     }
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",0);
@@ -696,17 +729,19 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
             System.Console.WriteLine("+  FATAL ERROR: NOT PUSHING GTS/Gate! +");
             System.Console.WriteLine("+                                     +");
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
-            break;
+            //break;
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
+
     }
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",0);
@@ -759,10 +794,10 @@ void SelectFEBdevices(){
 }
 
 void SendGPIO(){
-    SelectGPIOdevices();
+    // SelectGPIOdevices();
     BoardLib.SetBoardId(126); Sync.Sleep(3);
-    BoardLib.BoardConfigure();
-    Sync.Sleep(50);
+    // BoardLib.BoardConfigure();
+    // Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
 }
@@ -914,7 +949,6 @@ void SetKaladin(int channel){
     int MUX = asic*4 + loc_MUX;     // Global MUX (32 in total, 4 per ASIC)
     uint Kal_En_hex=0;
     
-    System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
     System.Console.WriteLine("-------------------------"); 
     System.Console.WriteLine("Kal Ch    :\t"+channel.ToString());
     
@@ -932,4 +966,36 @@ void SetKaladin(int channel){
     //System.Console.WriteLine("average rate: "+BoardLib.AvgXferRate+" kB/s");
 
 
+}
+
+bool SyncTest(){
+    bool success = true;
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(50);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.ReadStatus();
+    bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    if(GateEn){
+        success = false;
+        return success;
+    }
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(50);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.ReadStatus();
+    GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    if(!GateEn){
+        success = false;
+        return success;
+    }
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    BoardLib.SetBoardId(126); Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    Sync.Sleep(50);
+    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    return success;
 }

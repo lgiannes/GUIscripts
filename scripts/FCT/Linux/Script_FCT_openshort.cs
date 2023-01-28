@@ -32,7 +32,9 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
-    
+    // System.Console.WriteLine("Preparing 256-chs test ...");
+    // BoardLib.Reconnect();
+    // Sync.Sleep(5000);
 
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
@@ -46,8 +48,13 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetVariable("Board.DirectParam.GtEn", true);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
     BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
     // Send to board
     BoardLib.SetBoardId(0); 
     Sync.Sleep(10);
@@ -85,7 +92,11 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     }
 
 
-    RunAcquisition();
+    int AcqTag = RunAcquisition();
+    if(AcqTag==-10){
+        System.Console.WriteLine("Re-running 256-ch acquisition!");
+        AcqTag = RunAcquisition();
+    }
     //BoardLib.Reconnect();
     // Sync.Sleep(500);
     // TurnOffFEB();
@@ -155,6 +166,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     Sync.Sleep(500);
     TurnOffFEB();
 
+
     // Turn off Pulse Gen at the end
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -170,7 +182,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
 
 
 
-void RunAcquisition(){
+int RunAcquisition(){
     Sync.Sleep(500);                                                                    
 
     int baseline = 32786;
@@ -226,43 +238,51 @@ void RunAcquisition(){
     DateTime LastIter=DateTime.Now, ThisIter=DateTime.Now;
     for(int channel=0;channel<256;channel++){
 
+        BoardLib.SetBoardId(0); Sync.Sleep(1);
+        BoardLib.ReadStatus();
+        bool Gate_is_open = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+        if(Gate_is_open){
+            System.Console.WriteLine("ERROR in gate sequence");
+            return -10;
+        }
 
         SetKaladin(channel);
-                                                                        //System.Console.WriteLine("Kaladin set");       
         Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.SetBoardId(126); Sync.Sleep(1); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");     
-        if( !BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
-            System.Console.WriteLine("ERROR: GATE NOT OPEN");
-            break;
-        }   
         Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.SetBoardId(126); Sync.Sleep(1); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");  
-        if( BoardLib.GetBoolVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen") ){
-            System.Console.WriteLine("ERROR: GATE NOT CLOSED");
-            break;
-        }        
+   
         Sync.Sleep(10);
         
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
             System.Console.WriteLine("+  FATAL ERROR: NOT PUSHING GTS/Gate! +");
             System.Console.WriteLine("+                                     +");
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
-            break;
+            return -999;
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+
+        BoardLib.SetBoardId(0); Sync.Sleep(1);
+        BoardLib.ReadStatus();
+        Gate_is_open = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+        if(Gate_is_open){
+            System.Console.WriteLine("ERROR in gate sequence");
+            return -10;
+        }
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     Sync.Sleep(10);
@@ -285,7 +305,7 @@ void RunAcquisition(){
     Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
     
     System.Console.WriteLine("END OF ACQUISITION");
-
+    return 0;
 }
 
 
@@ -360,7 +380,7 @@ void RunBaselineAcq(int baseline){
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
         double rate = (Tot_KB-Tot_KB_Previous_Iter)*1000/(double)(ThisIter-LastIter).TotalMilliseconds;
-        System.Console.WriteLine("rate: "+rate+" kB/s");
+        System.Console.WriteLine("rate: "+Math.Truncate(rate)+" kB/s");
         if((Tot_KB-Tot_KB_Previous_Iter)<10){
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
             System.Console.WriteLine("+                                     +");
@@ -371,12 +391,14 @@ void RunBaselineAcq(int baseline){
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
+        System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
     }
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     Sync.Sleep(10);                                                                   
     BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); Sync.Sleep(1);
+
     BoardLib.StopAcquisition();
     BoardLib.WaitForEndOfTransfer(true);
     Sync.Sleep(1100);
@@ -446,7 +468,6 @@ void SetKaladin(int channel){
     int MUX = asic*4 + loc_MUX;     // Global MUX (32 in total, 4 per ASIC)
     uint Kal_En_hex=0;
     
-    System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
     System.Console.WriteLine("-------------------------"); 
     System.Console.WriteLine("Kal Ch    :\t"+channel.ToString());
     
@@ -584,10 +605,10 @@ void SelectFEBdevices(byte FEBID=0){
 }
 
 void SendGPIO(){
-    SelectGPIOdevices();
+    // SelectGPIOdevices();
     BoardLib.SetBoardId(126); Sync.Sleep(3);
-    BoardLib.BoardConfigure();
-    Sync.Sleep(50);
+    // BoardLib.BoardConfigure();
+    // Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
 }

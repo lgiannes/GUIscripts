@@ -79,6 +79,11 @@ void ScriptMainArgs(int SN, int channel){
     BoardLib.SetBoardId(0); Sync.Sleep(250);
     BoardLib.SetDirectParameters(); Sync.Sleep(250);
     TurnOffFEB();
+
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+
     return;
 }
 

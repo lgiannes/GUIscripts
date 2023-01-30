@@ -29,9 +29,9 @@
     
     // Send to board
     BoardLib.SetBoardId(0);
-    Sync.Sleep(10);
+    //Sync.Sleep(10);
     
-    BoardLib.SetDirectParameters(); Sync.Sleep(3);
+    BoardLib.SetDirectParameters(); //Sync.Sleep(3);
 
     bool Sync_good = false;
     Sync_good = SyncTest();
@@ -44,7 +44,7 @@
     //Restore initial config
     BoardLib.OpenConfigFile(default_config);
     SendGPIO();
-    Sync.Sleep(200);
+    //Sync.Sleep(200);
 
     ActivateAllCh(LG,HG);
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
@@ -52,10 +52,10 @@
 
     // Set up communication with Pulse gen
     var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
-    Sync.Sleep(50);
+    //Sync.Sleep(50);
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-    Sync.Sleep(50);
+    //Sync.Sleep(50);
     if(string.Compare(BashOutput,"error: no device connected\n")==0){
         System.Console.WriteLine(BashOutput);
     }else{
@@ -76,7 +76,7 @@
         SetDefaultDirectParameters();
         BoardLib.SetBoardId(0);
         BoardLib.SetDirectParameters();
-        Sync.Sleep(3);
+        //Sync.Sleep(3);
         OutputRun = RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
     }
 
@@ -203,8 +203,8 @@
 
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.SetDirectParameters(); Sync.Sleep(1);
+    BoardLib.SetBoardId(0); //Sync.Sleep(1);
+    BoardLib.SetDirectParameters(); //Sync.Sleep(1);
     TurnOffFEB();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -224,13 +224,13 @@
 
 
 void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_path){
-    Sync.Sleep(100);                                                     
+    //Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
     SendFEB();
     SetDefaultDirectParameters();
     BoardLib.SetDirectParameters();
-    Sync.Sleep(2);                                                     
+    //Sync.Sleep(2);                                                     
 
     
     string file_name = "FCT_"+Test;
@@ -245,7 +245,7 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
     BoardLib.SetBoardId(0); 
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
@@ -257,11 +257,11 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         BoardLib.StartAcquisition(data_path + file_name,true);
     }
     
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(126); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);                                                                   
+    //Sync.Sleep(100);                                                                   
     int channel = 0;
     double Tot_KB_Previous_Iter = 0;
     double Tot_KB = 0;
@@ -271,7 +271,7 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
         SetKaladin(channel);
-        Sync.Sleep(50);                                                                   
+        //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
@@ -281,7 +281,7 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        Sync.Sleep(70);
 
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
@@ -303,16 +303,16 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetBoardId(126); 
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(100);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    //Sync.Sleep(100);
+    BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     while(GateEn){
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        Sync.Sleep(200); 
+        //Sync.Sleep(200); 
         BoardLib.ReadStatus();
         GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
     }
@@ -322,14 +322,14 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
 }
 
 void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string data_path){
-    Sync.Sleep(100);                                                     
+    //Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
     SendFEB();
     SetDefaultDirectParameters();
 
     BoardLib.SetDirectParameters();
-    Sync.Sleep(2);                                                     
+    //Sync.Sleep(2);                                                     
 
     
     string file_name = "FCT_"+Test;
@@ -343,7 +343,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
     BoardLib.SetBoardId(0); 
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
@@ -355,11 +355,11 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         BoardLib.StartAcquisition(data_path + file_name,true);
     }
 
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(126); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);                                                                   
+    //Sync.Sleep(100);                                                                   
     int channel = 0;
     double Tot_KB_Previous_Iter = 0;
     double Tot_KB = 0;
@@ -371,7 +371,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",1);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }
         if(i==4){
@@ -379,7 +379,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",2);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }
         if(i==8){
@@ -387,13 +387,13 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }
         channel = (i%8)*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
         SetKaladin(channel);
-        Sync.Sleep(50);                                                                   
+        //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
@@ -403,7 +403,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        Sync.Sleep(70);
 
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
@@ -425,16 +425,16 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetBoardId(126); 
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(100);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    //Sync.Sleep(100);
+    BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     while(GateEn){
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        Sync.Sleep(200); 
+        //Sync.Sleep(200); 
         BoardLib.ReadStatus();
         GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
     }
@@ -445,12 +445,12 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
 
 }
 
 int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_path){
-    Sync.Sleep(100);                                                     
+    //Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
     SendFEB();           
@@ -469,7 +469,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
     if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
@@ -480,11 +480,11 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         BoardLib.StartAcquisition(data_path + file_name,true);
     }
 
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(126); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);                                                                   
+    //Sync.Sleep(100);                                                                   
     int channel = 0;
     double Tot_KB_Previous_Iter = 0;
     double Tot_KB = 0;
@@ -495,7 +495,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
         SetKaladin(channel);
-        Sync.Sleep(50);                                                                   
+        //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
@@ -505,7 +505,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        Sync.Sleep(70);
 
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
@@ -528,13 +528,13 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("Board.DirectParam.AveEn", false);
     BoardLib.SetBoardId(0); 
     BoardLib.SetDirectParameters();
-    Sync.Sleep(3);
+    //Sync.Sleep(3);
     if(!BoardLib.IsTransferingData){
         System.Console.WriteLine("ERROR: DAQ stopped!");
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
         BoardLib.SetBoardId(0); 
         BoardLib.SetDirectParameters();
-        Sync.Sleep(3);
+        //Sync.Sleep(3);
         return -999;
     }
     Tot_KB_Previous_Iter = 0;
@@ -544,7 +544,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
         SetKaladin(channel);
-        Sync.Sleep(50);                                                                   
+        //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
     BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
@@ -554,7 +554,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        Sync.Sleep(70);
 
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
@@ -576,13 +576,13 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("Board.DirectParam.AveEn", true);
     BoardLib.SetDirectParameters();
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     if(!BoardLib.IsTransferingData){
         System.Console.WriteLine("ERROR: DAQ stopped!");
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-        BoardLib.SetBoardId(0); Sync.Sleep(1);
+        BoardLib.SetBoardId(0); //Sync.Sleep(1);
         BoardLib.SetDirectParameters();
-        Sync.Sleep(3);
+        //Sync.Sleep(3);
         return -999;
     }
     //Third bunch of 8 gates: Force Reset PSC: expect no signal
@@ -596,7 +596,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",1);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }        
         if(i==4){
@@ -604,14 +604,14 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",2);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }
 
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
         SetKaladin(channel);
-        Sync.Sleep(50);                                                                   
+        //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
     BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
@@ -621,7 +621,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        Sync.Sleep(70);
 
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
@@ -644,13 +644,13 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
     if(!BoardLib.IsTransferingData){
         System.Console.WriteLine("ERROR: DAQ stopped!");
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
         BoardLib.SetBoardId(0); 
         BoardLib.SetDirectParameters();
-        Sync.Sleep(3);
+        //Sync.Sleep(3);
         return -999;
     }
     //Forth bunch of 8 gates: Force Reset PA: expect no signal
@@ -665,7 +665,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",1);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }        
         if(i==4){
@@ -673,14 +673,14 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",2);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
         }
 
         channel = i*32;
         System.Console.WriteLine("asic " + (channel/32).ToString() + " channel " + (channel%32).ToString());
         SetKaladin(channel);
-        Sync.Sleep(50);                                                                   
+        //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
     BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
@@ -690,7 +690,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetBoardId(126); 
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
-        Sync.Sleep(10);
+        Sync.Sleep(70);
 
         Tot_KB = Convert.ToDouble(BoardLib.XferKBytes);
         ThisIter = DateTime.Now;
@@ -713,23 +713,23 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPA",0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
 
 
 
     BoardLib.SetBoardId(126); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(100);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    //Sync.Sleep(100);
+    BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     while(GateEn){
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        Sync.Sleep(200); 
+        //Sync.Sleep(200); 
         BoardLib.ReadStatus();
         GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
     }
@@ -761,7 +761,7 @@ void SelectFEBdevices(){
 
 void SendGPIO(){
     // SelectGPIOdevices();
-    BoardLib.SetBoardId(126); Sync.Sleep(3);
+    BoardLib.SetBoardId(126); //Sync.Sleep(3);
     // BoardLib.BoardConfigure();
     // Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
@@ -772,7 +772,7 @@ void SendFEB(){
     SelectFEBdevices();
     BoardLib.SetBoardId(0);
     BoardLib.BoardConfigure();
-    Sync.Sleep(400);
+    //Sync.Sleep(400);
 }
 
 void TurnOnFEB(){    
@@ -924,9 +924,9 @@ void SetKaladin(int channel){
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-MUX", Kal_MUX_output);
     // /System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
     
-    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
+    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(10);
+    //Sync.Sleep(10);
 
     //System.Console.WriteLine(BoardLib.ElapsedTime);
     //System.Console.WriteLine("average rate: "+BoardLib.AvgXferRate+" kB/s");

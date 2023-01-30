@@ -229,7 +229,7 @@ void TurnOnFEB(){
     BoardLib.SetBoardId(126); Sync.Sleep(1); 
     Sync.Sleep(5);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(1500);
+    Sync.Sleep(2000);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);

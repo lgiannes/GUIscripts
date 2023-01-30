@@ -28,7 +28,7 @@ then
   echo "Enter serial number:"
   read sn
   GotSN=true
-  bash run_LBHK_test.sh $sn
+  bash FCT_LBHK_test.sh $sn
   echo
   echo    "/--------------------------------------\\"
   echo    "|                                      |"
@@ -76,7 +76,7 @@ else
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
        echo "Running analysis on existing files"
-       bash run_256ch_analysis.sh $sn $bl1 $bl2
+       bash run_fct_analysis.sh $sn $bl1 $bl2
        exit
     # else
     #   echo "no data"
@@ -110,20 +110,20 @@ then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
     rm -f $DATADIR$dummy_EOS
     rm -f $DATADIR$dummy_EOS_citi
-    bash run_256ch_data_taking.sh $sn $bl1 $bl2
-    bash run_256ch_analysis.sh $sn $bl1 $bl2
+    bash run_fct_data_taking.sh $sn $bl1 $bl2
+    bash run_fct_analysis.sh $sn $bl1 $bl2
   else
     echo
     echo "Running analysis on existing files"
     echo
-    bash run_256ch_analysis.sh $sn $bl1 $bl2
+    bash run_fct_analysis.sh $sn $bl1 $bl2
     exit
   fi
 else
   rm -f $DATADIR$dummy_EOS;
   rm -f $DATADIR$dummy_EOS_citi;
-  bash run_256ch_data_taking.sh $sn $bl1 $bl2;
-  bash run_256ch_analysis.sh $sn $bl1 $bl2;
+  bash run_fct_data_taking.sh $sn $bl1 $bl2;
+  bash run_fct_analysis.sh $sn $bl1 $bl2;
   exit
 fi
 

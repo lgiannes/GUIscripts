@@ -13,7 +13,6 @@
     // System.Console.WriteLine("Preparing CITIROC trigger test ...");
     // BoardLib.Reconnect();
     // Sync.Sleep(5000);
-
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
 
@@ -26,39 +25,26 @@
     BoardLib.OpenConfigFile(default_config);
     SendGPIO();
     // Set the required Direct Parameters
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
-    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
-    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
-    BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
-    BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
-    BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
+    SetDefaultDirectParameters();
     
     // Send to board
     BoardLib.SetBoardId(0);
     Sync.Sleep(10);
+    
+    BoardLib.SetDirectParameters(); Sync.Sleep(3);
 
-    // // Do sync test
-    // BoardLib.SetDirectParameters(); Sync.Sleep(220);    
-    // bool Sync_good = false;
-    // Sync_good = SyncTest();
-    // if(!Sync_good){
-    //     System.Console.WriteLine("Sync not working");
-    //     return;
-    // }else{
-    //      System.Console.WriteLine("Sync test Successful!");
-    // }
-    // //Restore initial config
-    // BoardLib.OpenConfigFile(defaconfig_path);
-    // SendGPIO();
-    // Sync.Sleep(200);
-
+    bool Sync_good = false;
+    Sync_good = SyncTest();
+    if(!Sync_good){
+        System.Console.WriteLine("Sync not working");
+        return;
+    }else{
+         System.Console.WriteLine("Sync test Successful!");
+    }
+    //Restore initial config
+    BoardLib.OpenConfigFile(default_config);
+    SendGPIO();
+    Sync.Sleep(200);
 
     ActivateAllCh(LG,HG);
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
@@ -87,17 +73,10 @@
     if(OutputRun==-999){
         BoardLib.Reconnect();
         Sync.Sleep(3000);
-        BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-        BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-        BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-        BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-        BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-        BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-        BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
-        BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+        SetDefaultDirectParameters();
         BoardLib.SetBoardId(0);
         BoardLib.SetDirectParameters();
-        Sync.Sleep(200);
+        Sync.Sleep(3);
         OutputRun = RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
     }
 
@@ -109,7 +88,7 @@
     for(int asic=0;asic<8;asic++){
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
     }
-    SendFEB();
+    // SendFEB();
     config = "OR32OFF.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("OR32OFF",config_folder+config, SN, data_path);
@@ -118,8 +97,8 @@
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    BoardLib.SetDirectParameters();
+    //SendFEB();
+    //BoardLib.SetDirectParameters();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 3. ADC starts on NOR32, enNOR32=ON -> signal expected in each gate
@@ -128,7 +107,7 @@
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnNOR32",true);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
     }
-    SendFEB();
+    // SendFEB();
     config = "NOR32ON.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("NOR32ON",config_folder+config, SN, data_path);
@@ -137,8 +116,8 @@
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    BoardLib.SetDirectParameters();
+    //SendFEB();
+    //BoardLib.SetDirectParameters();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 4. ADC starts on NOR32_t, enNOR32_t=ON -> signal expected in each gate
@@ -147,7 +126,7 @@
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnNOR32_t",true);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
     }
-    SendFEB();
+    //SendFEB();
     config = "NOR32TON.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("NOR32TON",config_folder+config, SN, data_path);
@@ -155,8 +134,8 @@
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    BoardLib.SetDirectParameters();
+    //SendFEB();
+    //BoardLib.SetDirectParameters();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 5. PSCExtTrig: loopback Or32 to ExtTrigPSC, 
@@ -169,7 +148,7 @@
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
     }
-    SendFEB();
+    //SendFEB();
     config = "PSCExtTrig.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN, data_path);
@@ -178,8 +157,8 @@
 
     // Restore default config
     BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    BoardLib.SetDirectParameters();
+    //SendFEB();
+    //BoardLib.SetDirectParameters();
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     /*  Hold time and Shaping time setting:
     Hold Time = N_set * 2.5 ns | Range: 0 to 8191
@@ -195,7 +174,7 @@
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
     }
-    SendFEB();
+    //SendFEB();
     config = "SCA_RightHT.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("SCA_RightHT",config_folder+config, SN, data_path);
@@ -216,7 +195,7 @@
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
     }
-    SendFEB();
+    //SendFEB();
     config = "SCA_WrongHT.xml";
     BoardLib.SaveConfigFile(config_folder + config);
     RunCITITriggerAcq_8gates("SCA_WrongHT",config_folder+config, SN, data_path);
@@ -249,16 +228,9 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
     SendFEB();
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    SetDefaultDirectParameters();
     BoardLib.SetDirectParameters();
-    Sync.Sleep(200);                                                     
+    Sync.Sleep(2);                                                     
 
     
     string file_name = "FCT_"+Test;
@@ -354,16 +326,10 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
     SendFEB();
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    SetDefaultDirectParameters();
+
     BoardLib.SetDirectParameters();
-    Sync.Sleep(200);                                                     
+    Sync.Sleep(2);                                                     
 
     
     string file_name = "FCT_"+Test;
@@ -562,13 +528,13 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
     BoardLib.SetVariable("Board.DirectParam.AveEn", false);
     BoardLib.SetBoardId(0); 
     BoardLib.SetDirectParameters();
-    Sync.Sleep(100);
+    Sync.Sleep(3);
     if(!BoardLib.IsTransferingData){
         System.Console.WriteLine("ERROR: DAQ stopped!");
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
         BoardLib.SetBoardId(0); 
         BoardLib.SetDirectParameters();
-        Sync.Sleep(100);
+        Sync.Sleep(3);
         return -999;
     }
     Tot_KB_Previous_Iter = 0;
@@ -616,7 +582,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
         BoardLib.SetBoardId(0); Sync.Sleep(1);
         BoardLib.SetDirectParameters();
-        Sync.Sleep(100);
+        Sync.Sleep(3);
         return -999;
     }
     //Third bunch of 8 gates: Force Reset PSC: expect no signal
@@ -684,7 +650,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
         BoardLib.SetBoardId(0); 
         BoardLib.SetDirectParameters();
-        Sync.Sleep(100);
+        Sync.Sleep(3);
         return -999;
     }
     //Forth bunch of 8 gates: Force Reset PA: expect no signal
@@ -736,7 +702,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
             System.Console.WriteLine("+  FATAL ERROR: NOT PUSHING GTS/Gate! +");
             System.Console.WriteLine("+                                     +");
             System.Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
-            //break;
+            break;
         }
         Tot_KB_Previous_Iter = Tot_KB;
         LastIter = DateTime.Now;
@@ -813,7 +779,7 @@ void TurnOnFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
     BoardLib.SetBoardId(126); 
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(1500);
+    Sync.Sleep(2000);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
@@ -998,4 +964,20 @@ bool SyncTest(){
     Sync.Sleep(50);
     BoardLib.SetBoardId(0); Sync.Sleep(1);
     return success;
+}
+
+void SetDefaultDirectParameters(){
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
 }

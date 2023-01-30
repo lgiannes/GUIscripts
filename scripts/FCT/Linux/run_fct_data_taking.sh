@@ -29,7 +29,9 @@ read -n 1
 fi
 
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS; sleep 1; echo $command_citi; bash wait.sh $Data_path$dummy_EOS_citi; } | telnet $ip_address $port 
+{ sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS; } | telnet $ip_address $port 
+sleep 2
+{ sleep 1; echo $command_citi; bash wait.sh $Data_path$dummy_EOS_citi; } | telnet $ip_address $port 
 
 # sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS;
 

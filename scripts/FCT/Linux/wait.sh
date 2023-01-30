@@ -4,5 +4,5 @@ while [ ! -f $file_path_name ]
 do
 sleep 1
 done
-echo "EOS file found!"
+# echo "EOS file found!"
 sleep 1

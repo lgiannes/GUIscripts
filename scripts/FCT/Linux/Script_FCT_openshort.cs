@@ -40,26 +40,13 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     System.Console.WriteLine("FEB is on");
     
     BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
     // Set the required Direct Parameters
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
-    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
-    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
-    BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
-    BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
-    BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
+    SetDefaultDirectParameters();
+
     // Send to board
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(10);
-
-    BoardLib.SetDirectParameters(); Sync.Sleep(220);
+    Sync.Sleep(3);
+    BoardLib.SetDirectParameters(); Sync.Sleep(3);
     
     bool Sync_good = false;
     Sync_good = SyncTest();
@@ -71,7 +58,6 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     }
     //Restore initial config
     BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
     Sync.Sleep(200);
         
     // Enable preamp and DAQ on all channels
@@ -114,16 +100,10 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     //Restore initial config
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    SetDefaultDirectParameters();
+
     BoardLib.SetBoardId(0); Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); Sync.Sleep(220);
+    BoardLib.SetDirectParameters(); Sync.Sleep(3);
     Sync.Sleep(200);
     ActivateAllCh(LG,HG);
     Sync.Sleep(200);
@@ -147,23 +127,24 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     //Restore initial config
     BoardLib.OpenConfigFile(config_path);
     SendGPIO();
-    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
-    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
-    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
-    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
-    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", false);
-    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    SetDefaultDirectParameters();
+
     BoardLib.SetBoardId(0); Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); Sync.Sleep(220);
+    BoardLib.SetDirectParameters(); Sync.Sleep(3);
     Sync.Sleep(250);
     ActivateAllCh(LG,HG);
     Sync.Sleep(200);
 
     RunBaselineAcq(bl2);
 
-    Sync.Sleep(500);
+    
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",false);
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    SetDefaultDirectParameters();
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(5);
+
     TurnOffFEB();
 
 
@@ -176,6 +157,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     //Generate dummy file at the end of the script
     string[] o = {"END OF SCRIPT"};
     File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 
+    System.Console.WriteLine("END OF SCRIPT");
     return;
 }
 
@@ -199,7 +181,7 @@ int RunAcquisition(){
     BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); Sync.Sleep(220);
+    BoardLib.SetDirectParameters(); Sync.Sleep(3);
 
     BoardLib.SetBoardId(126); Sync.Sleep(1); 
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",true);
@@ -322,7 +304,7 @@ void RunBaselineAcq(int baseline){
     BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); Sync.Sleep(220);
+    BoardLib.SetDirectParameters(); Sync.Sleep(3);
 
     BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",true);
@@ -450,7 +432,7 @@ void TurnOnFEB(){
     BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(1500);
+    Sync.Sleep(2000);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
@@ -605,11 +587,8 @@ void SelectFEBdevices(byte FEBID=0){
 }
 
 void SendGPIO(){
-    // SelectGPIOdevices();
     BoardLib.SetBoardId(126); Sync.Sleep(3);
-    // BoardLib.BoardConfigure();
-    // Sync.Sleep(50);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    System.Console.WriteLine("reset GTS/gate/readoutEn");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
 }
 
@@ -677,4 +656,21 @@ static string ExecuteBashCommand(string command)
     proc.WaitForExit();
 
     return proc.StandardOutput.ReadToEnd();
+}
+
+
+void SetDefaultDirectParameters(){
+    BoardLib.SetVariable("Board.DirectParam.ExtClkEn", true);
+    BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", false);
+    BoardLib.SetVariable("Board.DirectParam.AveEn", true);
+    BoardLib.SetVariable("Board.DirectParam.GtEn", true);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", false);
+    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
+    BoardLib.SetVariable("Board.DirectParam.IGEn", false);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.RstL1Fifo", true);
+    BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
+    BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
 }

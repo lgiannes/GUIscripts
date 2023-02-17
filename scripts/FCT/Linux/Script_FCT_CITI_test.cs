@@ -300,25 +300,8 @@ void RunCITITriggerAcq_8gates(string Test, string config, int SN,string data_pat
         System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
 
     }
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    BoardLib.SetBoardId(126); 
-    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); 
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.ReadStatus();
-    bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
-    while(GateEn){
-        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        //Sync.Sleep(200); 
-        BoardLib.ReadStatus();
-        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
-    }
-    BoardLib.StopAcquisition();
-    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
-    System.Console.WriteLine("END OF ACQUISITION");
+    EndOfRunProtocol();
+
 }
 
 void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string data_path){
@@ -422,25 +405,8 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         System.Console.WriteLine("Transferred "+BoardLib.XferKBytes+" kB");
 
     }
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    BoardLib.SetBoardId(126); 
-    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); 
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.ReadStatus();
-    bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
-    while(GateEn){
-        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        //Sync.Sleep(200); 
-        BoardLib.ReadStatus();
-        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
-    }
-    BoardLib.StopAcquisition();
-    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
-    System.Console.WriteLine("END OF ACQUISITION");
+    EndOfRunProtocol();
+
     BoardLib.SetBoardId(0); 
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
@@ -717,25 +683,8 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
 
 
 
-    BoardLib.SetBoardId(126); 
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); 
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.ReadStatus();
-    bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
-    while(GateEn){
-        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        //Sync.Sleep(200); 
-        BoardLib.ReadStatus();
-        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
-    }
-    BoardLib.StopAcquisition();
-    Sync.SleepUntil( ()=>!BoardLib.IsTransferingData );
-    System.Console.WriteLine("END OF ACQUISITION");
+    EndOfRunProtocol();
+
     return 0;
 }
 
@@ -980,4 +929,27 @@ void SetDefaultDirectParameters(){
     BoardLib.SetVariable("Board.DirectParam.GateIdRst", true);
     BoardLib.SetVariable("Board.DirectParam.GtsIdRst", true);
     BoardLib.SetVariable("Board.DirectParam.ReadoutSMRst", true);
+}
+
+void EndOfRunProtocol(){
+    BoardLib.StopAcquisition();
+    BoardLib.WaitForEndOfTransfer(true);
+    System.Console.WriteLine("END OF ACQUISITION");
+    
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    //Sync.Sleep(10);
+    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    //Sync.Sleep(100);
+    BoardLib.SetBoardId(0); //Sync.Sleep(1);
+    BoardLib.ReadStatus();
+    int GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    while(GateEn){
+        BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+        //Sync.Sleep(200); 
+        BoardLib.ReadStatus();
+        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
+    }
+    System.Console.WriteLine("Stopped GTS beacon");
 }

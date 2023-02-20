@@ -1092,12 +1092,18 @@ void SelectFEBdevices(byte FEBID=0){
     }
 }
 
-void SendGPIO(){
-    SelectGPIOdevices();
-    BoardLib.BoardConfigure();
+void SendGPIO(byte x_phase){
+    BoardLib.SetBoardId(126);
+	 BoardLib.DeviceConfigure(13);
+	 System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
+	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
+	 Console.WriteLine(" => GPIO Phase set to " + x_phase.ToString());
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+	 BoardLib.UpdateUserParameters("GPIO.GPIO-PHASE-TUNE");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+	 System.Console.WriteLine("SendGPIO done");
 }
-
 void SendFEB(byte FEBID=0){
     SelectFEBdevices(FEBID);
     BoardLib.BoardConfigure();

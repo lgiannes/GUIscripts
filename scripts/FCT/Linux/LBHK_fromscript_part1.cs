@@ -26,8 +26,8 @@ string CreateOutputFile(int SN,string whichtest, string output_path){
     
     string SNfolder_path = output_path + "SN_" +SN.ToString();
     string TESTfolder_path = output_path + "SN_" +SN.ToString() + "/" +whichtest+"_TEST/";
-    var SNfolder = System.IO.Directory.CreateDirectory(SNfolder_path);
-    var TESTfolder = System.IO.Directory.CreateDirectory(TESTfolder_path);
+    //var SNfolder = System.IO.Directory.CreateDirectory(SNfolder_path);
+    //var TESTfolder = System.IO.Directory.CreateDirectory(TESTfolder_path);
     DateTime now = DateTime.Now;
     string OutFile_Name = TESTfolder_path + whichtest+"_TEST_"+ now.Year.ToString() + "_"+
                                                         now.Month.ToString() + "_"+
@@ -37,6 +37,7 @@ string CreateOutputFile(int SN,string whichtest, string output_path){
                                                         now.Second.ToString() +".txt";
     
     File.AppendAllText(@OutFile_Name, "IO TEST for FEB Serial Number "+SN.ToString() + Environment.NewLine);
+    
     return OutFile_Name;
 
 }
@@ -196,7 +197,7 @@ bool FEB_busy_test(byte FEB_BoardID, string OutFile_Name){
 
 void Restore_Initial_Config(byte FEB_BoardID,string config_path){
     BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
+    SendGPIO(3);
     SendFEB();
     BoardLib.SetBoardId(126);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); 
@@ -1032,13 +1033,17 @@ void SelectFEBdevices(byte FEBID=0){
     }
 }
 
-void SendGPIO(){
-    SelectGPIOdevices();
-    BoardLib.SetBoardId(126); Sync.Sleep(3);
-    BoardLib.BoardConfigure();
+void SendGPIO(byte x_phase){
+    BoardLib.SetBoardId(126);
+	 BoardLib.DeviceConfigure(13);
+	 //System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); Sync.Sleep(2);
+	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
+	 //Console.WriteLine(" => GPIO Phase set to " + x_phase.ToString());
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+	 BoardLib.UpdateUserParameters("GPIO.GPIO-PHASE-TUNE");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+	 //System.Console.WriteLine("SendGPIO done");
 }
 
 void SendFEB(byte FEBID=0){
@@ -1057,7 +1062,7 @@ void ScriptMainArgs(int SN){
 
 
     // Set the output folder, 
-    string output_path = "/DATA/neutrino/FCT/data_local/"; 
+    string output_path = Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/"; 
 
     // Serial number of FEB under test. To be inserted fsum32rom user at the beginning of the script
     //int SN = -999;
@@ -1069,7 +1074,7 @@ void ScriptMainArgs(int SN){
 
     // send Board tab settings
     BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
+    SendGPIO(3);
     FEB_BoardID = 0;//Dialog.ShowInputDialog<byte>("Insert Board ID (default=0)"); 
     SendFEB(FEB_BoardID);
     Sync.Sleep(100);

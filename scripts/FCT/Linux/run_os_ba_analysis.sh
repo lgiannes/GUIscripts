@@ -4,12 +4,12 @@ bl2=$3
 
 if [[ $# -eq 4 && ($4 == 1) ]]
 then 
-  DATADIR="/home/neutrino/FCT/data_local/SN_"$sn
+  DATADIR=$GENERALDATADIR"/SN_"$sn
   echo "Running analysis only"
 fi
 
 
-exe_path="/home/neutrino/FCT/FunctionalTest/bin/";
+exe_path=$ANALYSIS_FOLDER"/bin/";
 exe_analog="FuncTest";
 exe_bl="FCTbaseline"
 exe_citi="FCTcitiTriggers"

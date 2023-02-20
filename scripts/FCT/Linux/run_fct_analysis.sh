@@ -4,7 +4,7 @@ bl2=$3
 
 if [[ $# -eq 4 && ($4 == 1) ]]
 then 
-  DATADIR=$GENERALDATADIR"/SN_"$sn
+  DATADIR=$GENERALDATADIR"FEBs/SN_"$sn
   echo "Running analysis only"
 fi
 

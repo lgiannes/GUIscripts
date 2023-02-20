@@ -222,7 +222,7 @@ bool FEB_busy_test(byte FEB_BoardID, string OutFile_Name){
 
 void Restore_Initial_Config(byte FEB_BoardID,string config_path){
     BoardLib.OpenConfigFile(config_path);
-    SendGPIO();
+    SendGPIO(3);
     SendFEB();
     BoardLib.SetBoardId(126); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); 
@@ -1083,14 +1083,19 @@ void SelectFEBdevices(byte FEBID=0){
     }
 }
 
-void SendGPIO(){
-    SelectGPIOdevices();
-    BoardLib.SetBoardId(126); Sync.Sleep(3);
-    BoardLib.BoardConfigure();
+void SendGPIO(byte x_phase){
+    BoardLib.SetBoardId(126);
+	 BoardLib.DeviceConfigure(13);
+	 //System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
+	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
+	 //Console.WriteLine(" => GPIO Phase set to " + x_phase.ToString());
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+	 BoardLib.UpdateUserParameters("GPIO.GPIO-PHASE-TUNE");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+	 //System.Console.WriteLine("SendGPIO done");
 }
+
 void SendFEB(byte FEBID=0){
     SelectFEBdevices(FEBID);
     BoardLib.BoardConfigure();
@@ -1107,7 +1112,7 @@ void ScriptMainArgs(int SN){
 
 
     // Set the output folder, 
-    string output_path = "/DATA/neutrino/FCT/data_local/"; 
+    string output_path = Environment.GetEnvironmentVariable("GENERALDATADIR"); 
 
     // Serial number of FEB under test. To be inserted fsum32rom user at the beginning of the script
     //int SN = -999;

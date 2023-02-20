@@ -10,6 +10,9 @@ port="11000"
 
 
 Data_path=$GENERALDATADIR/SN_$sn/
+[ ! -d $Data_path ] && mkdir $Data_path
+[ ! -d $Data_path/IO_TEST/ ] && mkdir $Data_path/IO_TEST/
+sudo chmod 777 $Data_path/IO_TEST/ 
 
 # Close all GUIs to avoid double serial com
 if [ -z $(pidof mono) ]
@@ -40,7 +43,7 @@ echo "\----------------------------------------------------/"
 read -n 1
 command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/LBHK_fromscript_part1.cs\",$sn)"
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; sleep 3; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
+{ sleep 1; echo $command; sleep 1; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
 # PART 2:
 echo

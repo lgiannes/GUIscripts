@@ -5,7 +5,7 @@
 string config_folder = "/home/neutrino/FCT/code/config/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
-string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR");  
+string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/";  
                         //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
 
@@ -29,7 +29,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     // }    
 
     // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
-    data_path = data_path + "/FEBs/SN_" + SN.ToString() + "/";
+    data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
     // BoardLib.Reconnect();

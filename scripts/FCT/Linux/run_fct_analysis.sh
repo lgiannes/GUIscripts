@@ -4,12 +4,12 @@ bl2=$3
 
 if [[ $# -eq 4 && ($4 == 1) ]]
 then 
-  DATADIR="/home/neutrino/FCT/data_local/SN_"$sn
+  DATADIR=$GENERALDATADIR"/SN_"$sn
   echo "Running analysis only"
 fi
 
 
-exe_path="/home/neutrino/FCT/FunctionalTest/bin/";
+exe_path=$ANALYSIS_FOLDER"/bin/";
 exe_analog="FuncTest";
 exe_bl="FCTbaseline"
 exe_citi="FCTcitiTriggers"
@@ -18,7 +18,7 @@ Data_file_name_bl1="FCT_BLTEST_LG56HG12amp30mV_baseline$bl1.daq"
 Data_file_name_bl2="FCT_BLTEST_LG56HG12amp30mV_baseline$bl2.daq"
 CITI_subfolder="/CITI_trigger_tests/"
 
-setup_path="/home/neutrino/FCT/FunctionalTest/setup.sh";
+setup_path=$ANALYSIS_FOLDER"/setup.sh";
 log_file=$DATADIR"/log.txt";
 
 

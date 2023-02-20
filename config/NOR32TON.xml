@@ -9,7 +9,7 @@
       AutoResetOnTimeout="False"
       PacketSize="16384"
       Packets="2"
-      FileLimit="10000"
+      FileLimit="1000000"
       Queues="1"
       StartRequestOnly="False"
       StopDaqEndTimeout="2000" />
@@ -4979,7 +4979,8 @@
         SumOr32En="False"
         ForceResetPA="0"
         ForceResetPSC="0"
-        DisableTrigExtPSC="0" />
+        DisableTrigExtPSC="0"
+        DAQSerOscModeEn="False" />
     </FPGA-Misc-Config>
     <CITI-PROBE
       ChannelSelect="0"
@@ -5016,7 +5017,10 @@
       PMB-RESET="False"
       FEB-TRIGIN="False"
       FEB-SEL-IN="False"
-      FEB-RPROG-RX="False" />
+      FEB-RPROG-RX="False"
+      PLL-PHASE="0" />
+    <GPIO-PHASE-TUNE
+      Dummy="False" />
     <GPIO-ADC
       InitOrStart="False" />
     <GPIO-ADC-DPRAM>

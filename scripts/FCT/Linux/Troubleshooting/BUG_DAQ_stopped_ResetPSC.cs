@@ -36,7 +36,7 @@ void ScriptMain(){
     // Send to board
     BoardLib.SetBoardId(0);
     BoardLib.SetDirectParameters();
-    Sync.Sleep(200);
+    //Sync.Sleep(200);
 
     ActivateAllCh(LG,HG);
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
@@ -56,18 +56,20 @@ int RunCITITriggerAcq_32gates(string Test, string config){
     Sync.Sleep(100);                                                     
     BoardLib.OpenConfigFile(config);
     BoardLib.SetBoardId(0); 
+    //Sync.Sleep(200); 
     SendFEB();           
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetDirectParameters();
     
 
-    BoardLib.SetBoardId(126); 
+    BoardLib.SetBoardId(126);
+    //Sync.Sleep(200);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",true);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(200);                                                                    
     if(BoardLib.StartAcquisition(file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
@@ -78,40 +80,47 @@ int RunCITITriggerAcq_32gates(string Test, string config){
         BoardLib.StartAcquisition(file_name,true);
     }
 
-    Sync.Sleep(100);
-    BoardLib.SetBoardId(126); 
+    //Sync.Sleep(100);
+    BoardLib.SetBoardId(126);
+    //Sync.Sleep(200);  
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);                                                                   
+    //Sync.Sleep(100);                                                                   
     int channel = 0;
 
     for(int i=0;i<32;i++){        
 
         if(i==16){
             BoardLib.SetBoardId(0); 
+            //Sync.Sleep(200); 
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",1);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
+            //Sync.Sleep(200); 
         }        
         if(i==20){
             BoardLib.SetBoardId(0); 
+            //Sync.Sleep(200); 
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",2);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
+            //Sync.Sleep(200);
         }
         if(i==24){
             BoardLib.SetBoardId(0); 
+            //Sync.Sleep(200);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",0);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-            Sync.Sleep(50);                                                                    
+            //Sync.Sleep(50);                                                                    
             BoardLib.SetBoardId(126); 
+            //Sync.Sleep(200);
         }
-        
+
         channel = (i%8)*32;
         SetKaladin(channel);
         System.Console.WriteLine("------->gate "+i);
@@ -119,20 +128,23 @@ int RunCITITriggerAcq_32gates(string Test, string config){
         Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.SetBoardId(126); 
+        //Sync.Sleep(200);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("opening gate");       
-        Sync.Sleep(100);
+        //Sync.Sleep(100);
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
         BoardLib.SetBoardId(126); 
+        //Sync.Sleep(200);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
                         System.Console.WriteLine("closing gate");       
         Sync.Sleep(10);
     }
     BoardLib.SetBoardId(0); 
+    Sync.Sleep(200);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.ForceResetPSC",0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-    Sync.Sleep(50);                                                                    
+    //Sync.Sleep(50);                                                                    
     if(!BoardLib.IsTransferingData){
         System.Console.WriteLine("ERROR: DAQ stopped!");
         BoardLib.SetVariable("Board.DirectParam.AveEn", true);
@@ -142,12 +154,14 @@ int RunCITITriggerAcq_32gates(string Test, string config){
     }
 
     BoardLib.SetBoardId(126); 
+    Sync.Sleep(200);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    Sync.Sleep(100);
+    //Sync.Sleep(100);
     BoardLib.SetBoardId(0); 
-    Sync.Sleep(100);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    //Sync.Sleep(200);
+    //BoardLib.SetBoardId(0); Sync.Sleep(1);
+    //Sync.Sleep(200);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     while(GateEn){
@@ -166,16 +180,16 @@ int RunCITITriggerAcq_32gates(string Test, string config){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
-    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
-    Sync.Sleep(50);
+    BoardLib.SetBoardId(126); //Sync.Sleep(1); Sync.Sleep(1);
+    //Sync.Sleep(200);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
 }
 
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
-    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
-    Sync.Sleep(50);
+    BoardLib.SetBoardId(126); //Sync.Sleep(1); Sync.Sleep(1);
+    //Sync.Sleep(200);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(500);
 }
@@ -197,14 +211,14 @@ void SetKaladin(int channel){
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-MUX", Kal_MUX_output);
     System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
     
-    BoardLib.SetBoardId(126); Sync.Sleep(1); Sync.Sleep(1);
+    BoardLib.SetBoardId(126); //Sync.Sleep(200);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(10);
 
 }
 
 void ActivateAllCh(int LG_gain,int HG_gain){
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
+    BoardLib.SetBoardId(0); //Sync.Sleep(200);
     for (int i_ch = 0; i_ch < 256; i_ch++){
         int asic=i_ch/32;
         int local_ch=i_ch%32; 
@@ -318,16 +332,18 @@ void SelectFEBdevices(byte FEBID=0){
 
 void SendGPIO(){
     SelectGPIOdevices();
-    BoardLib.SetBoardId(126); Sync.Sleep(3);
+    BoardLib.SetBoardId(126); //Sync.Sleep(200);
     BoardLib.BoardConfigure();
     Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    System.Console.WriteLine("SendGPIO done");
 }
 
 void SendFEB(byte FEBID=0){
     SelectFEBdevices(FEBID);
-    BoardLib.SetBoardId(0); Sync.Sleep(3);
+    BoardLib.SetBoardId(0); //Sync.Sleep(200);
     BoardLib.BoardConfigure();
     Sync.Sleep(50);
+    System.Console.WriteLine("SendFEB done");
 }

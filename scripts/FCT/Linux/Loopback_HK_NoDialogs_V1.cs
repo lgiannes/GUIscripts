@@ -237,7 +237,7 @@ void Restore_Initial_Config(byte FEB_BoardID,string config_path){
 }
 
 bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
-    
+    System.Console.WriteLine("MIB debug test");
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgFromAddrEn",true);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel",false);
     BoardLib.SetBoardId((byte)((int)FEB_BoardID%128));
@@ -248,7 +248,7 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
     byte address=0;
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    FEB_BoardID = address;
+    //FEB_BoardID = address;
     BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
     Sync.Sleep(500);
     bool MIBdebug_success = true;
@@ -261,7 +261,7 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         address = (byte)Math.Pow(2,i);
         BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
         BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-        FEB_BoardID = address;
+        //FEB_BoardID = address;
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
         if(address != LB_address){
@@ -279,7 +279,7 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         address = (byte)Math.Pow(2,i);
         BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
         BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-        FEB_BoardID = address;
+        //FEB_BoardID = address;
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
         //LB_address = (byte) (LB_address << 3);

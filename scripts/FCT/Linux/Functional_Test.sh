@@ -63,7 +63,7 @@ if bash check_fg.sh | grep -q '/dev/ttyACM0';
 then
   echo "Pulse Gen is connected to: /dev/ttyACM0" 
 else
-  read -p "WARNING: Pulse Gen is NOT connected. Continue? (y=yes, any other key=no) " -n 1 -r 
+  read -p "WARNING: Pulse Gen is NOT connected. Continue for analysis only? (y=yes, any other key=no) " -n 1 -r 
   echo 
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -71,7 +71,7 @@ else
     echo "Enter serial number (for analysis only):"
     read sn
     export DATADIR=$GENERALDATADIR"SN_"$sn"/"
-    echo "DATADIR: "$DATADIR
+    echo "DATA will be stored in:  "$DATADIR
     sudo chmod 777 $DATADIR
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 

@@ -5,7 +5,7 @@
 string config_folder = "/home/neutrino/FCT/code/config/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
-string data_path   =  Environment.GetEnvironmentVariable("GENERALDATADIR");  
+string data_path   =  Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/";  
 //"/home/neutrino/FCT/data_local/";
                         //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
@@ -95,7 +95,8 @@ void RunAcquisition(int SN,int channel){
 
     int baseline = 32786;
     var BashOutput = "";
-    
+    var SNfolder = System.IO.Directory.CreateDirectory(data_path+"/SN_"+SN.ToString()+"/");
+    string data_path_intern = data_path+"/SN_"+SN.ToString()+"/";
     string file_name = "one_ch_test_SN"+SN.ToString()+"_ch"+channel.ToString();
     
     int[] Gate_to_ch={26,23,22,25,27,24,19,29,20,3,30,31,28,17,16,10,18,21,13,15,2,1,0,11,5,9,4,7,12,6,8,14};
@@ -122,14 +123,14 @@ void RunAcquisition(int SN,int channel){
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     Sync.Sleep(20);                                                                    
     BoardLib.SetBoardId(0); Sync.Sleep(1); 
-    if(BoardLib.StartAcquisition(data_path + file_name,true)){ 
+    if(BoardLib.StartAcquisition(data_path_intern + file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
 
     Sync.Sleep(30);                                                                   
     if(!BoardLib.IsTransferingData){
         System.Console.WriteLine("WARNING: DAQ stopped right after starting. RESTART daq");
-        BoardLib.StartAcquisition(data_path + file_name,true);
+        BoardLib.StartAcquisition(data_path_intern + file_name,true);
     }
 
     BoardLib.SetBoardId(0); Sync.Sleep(1);

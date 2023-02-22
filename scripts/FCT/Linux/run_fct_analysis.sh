@@ -7,7 +7,8 @@ then
   DATADIR=$GENERALDATADIR"FEBs/SN_"$sn
   echo "Running analysis only"
 fi
-
+echo "data directory: "$DATADIR
+[ -z $DATADIR ] && echo "data directory does not exist. Run acquisiton first" && exit
 
 exe_path=$ANALYSIS_FOLDER"/bin/";
 exe_analog="FuncTest";

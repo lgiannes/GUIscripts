@@ -803,7 +803,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
     for(int i=0;i<16;i++){        
         if(i==0){
             BoardLib.SetBoardId(0); 
-            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",1);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",2);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             //Sync.Sleep(50);                                                                    
@@ -811,7 +811,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         }
         if(i==4){
             BoardLib.SetBoardId(0); 
-            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",2);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",1);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             //Sync.Sleep(50);                                                                    
@@ -819,7 +819,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         }
         if(i==8){
             BoardLib.SetBoardId(0); 
-            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",0);
+            BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.DisableTrigExtPSC",3);
             BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
             BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
             //Sync.Sleep(50);                                                                    

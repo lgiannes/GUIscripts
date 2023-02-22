@@ -63,6 +63,7 @@ if bash check_fg.sh | grep -q '/dev/ttyACM0';
 then
   echo "Pulse Gen is connected to: /dev/ttyACM0" 
 else
+  echo 
   read -p "WARNING: Pulse Gen is NOT connected. Continue for analysis only? (y=yes, any other key=no) " -n 1 -r 
   echo 
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -70,8 +71,8 @@ else
     # Ask the user for the FEB Serial Number
     echo "Enter serial number (for analysis only):"
     read sn
-    export DATADIR=$GENERALDATADIR"SN_"$sn"/"
-    echo "DATA will be stored in:  "$DATADIR
+    export DATADIR=$GENERALDATADIR"/FEBs/SN_"$sn"/"
+    #echo "DATA are stored in:  "$DATADIR
     sudo chmod 777 $DATADIR
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
@@ -96,8 +97,8 @@ then
 fi
 
 # Print out data folder and give rwe permission
-export DATADIR=$GENERALDATADIR"SN_"$sn"/"
-# echo "DATADIR: "$DATADIR
+export DATADIR=$GENERALDATADIR"/FEBs/SN_"$sn"/"
+echo "DATA will be stored in: "$DATADIR
 sudo chmod 777 $DATADIR
 
 if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]

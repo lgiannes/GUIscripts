@@ -1,4 +1,4 @@
-export GENERALDATADIR="/home/neutrino/FCT/FCT_database/"
+export GENERALDATADIR="/home/neutrino/FCT/data_local/"
 export GUI_FOLDER="/home/neutrino/FCT/GUI_UT92"
 export FCT_RUN_FOLDER="/home/neutrino/FCT/code/scripts/FCT/Linux"
 export MIBDATADIR=$GENERALDATADIR"/MIBs/"

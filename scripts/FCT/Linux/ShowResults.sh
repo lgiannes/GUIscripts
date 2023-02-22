@@ -2,7 +2,7 @@ SN=$1
 
 source setup.sh
 
-DATADIR=$GENERALDATADIR/SN_$SN
+DATADIR=$GENERALDATADIR/FEBs/SN_$SN
 echo
 tail -n3 $DATADIR/output_*.txt
 LBHK_dir=$DATADIR/IO_TEST/

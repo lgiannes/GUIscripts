@@ -3,9 +3,9 @@
 SN=$1
 channel=$2
 
-source setup.sh
+source $FCT_RUN_FOLDER/setup.sh
 
-exe_path="/home/neutrino/FCT/FunctionalTest/bin/";
+exe_path=$ANALYSIS_FOLDER"/bin/";
 
 
 # Check that the pulse generator is connected. Otherwise, abort script
@@ -53,7 +53,7 @@ then
 else
     sudo kill $(pidof mono)
 fi
-file_name=$GENERALDATADIR"/one_ch_test_SN"$SN"_ch"$channel".daq"
+file_name=$GENERALDATADIR"FEBs/SN_"$SN"/one_ch_test_SN"$SN"_ch"$channel".daq"
 
 $exe_path/OneChannelTest -f $file_name
 echo "done"

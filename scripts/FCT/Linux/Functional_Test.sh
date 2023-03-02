@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source setup.sh
-
+echo "Data directory: "$GENERALDATADIR
 ########### To measure execution time #####
 start=`date +%s`
 ###########################################
@@ -12,6 +12,7 @@ then
 else
   echo "Terminating previously open GUI..."
   sudo kill $(pidof mono)
+  sleep 0.1
   echo
 fi
 
@@ -35,12 +36,17 @@ then
   echo    "|       Go on with other tests?        |" 
   echo    "|      (y=yes, any other key=no)       |" 
   echo    "|                                      |"
-  read -p "\\--------------------------------------/" -n 1 -r 
-  echo
-  if [[ $REPLY =~ ^[Yy\r]$ ]]
+  read -p "\\--------------------------------------/" -n 1 -r -t 5 
+  timeout=$?
+  echo 
+  if [[ $REPLY =~ ^[Yy\r]$ ]] 
   then
     echo "Starting other tests ..."
+  elif [[ "$timeout" -gt 128 ]]
+  then
+    echo "Starting other tests (I lose patience after 5 seconds)..."
   else
+    echo "Going out. Thanks!"
     exit
   fi  
 fi

@@ -304,7 +304,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, 
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
@@ -342,12 +342,14 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, 
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
     BoardLib.SetDirectParameters();
     Sync.Sleep(1000);
 
+    // 1.5: MPPC Temperature test
+    bool MPPCTemp_success = MPPCTemp_test(OutFile_Name);
 
     // 2: HV short test 
     bool HVShort_success = HVShort_test(OutFile_Name, HK_values, 35); 
@@ -359,7 +361,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, 
     BoardLib.SetDirectParameters();
     Sync.Sleep(500);
     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-    BoardLib.DeviceConfigure(12);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
     Sync.Sleep(200);
     
     // 3: test Temperature on the FPGA
@@ -385,13 +387,70 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, 
     
     Restore_Initial_Config(FEB_BoardID,config_path);
 
-    System.Console.WriteLine(HV_ADC_success+" "+FPGAcurrent_success+" "+HVShort_success+" "+FPGAtemp_success+" "+FEBtemp0_success+" "+FEBtemp1_success+" "+I12V_success+" "+bkpHV_success+" "+CITItemp_success+" "+MPPC_HV_success+" "+PMezza_0V9_success+" "+PMezza_2V2_success);
+    System.Console.WriteLine(HV_ADC_success+" "+FPGAcurrent_success+" "+MPPCTemp_success+" "+HVShort_success+" "+FPGAtemp_success+" "+FEBtemp0_success+" "+FEBtemp1_success+" "+I12V_success+" "+bkpHV_success+" "+CITItemp_success+" "+MPPC_HV_success+" "+PMezza_0V9_success+" "+PMezza_2V2_success);
     
-    return ( HV_ADC_success && HVShort_success && FPGAtemp_success && 
+    return ( HV_ADC_success && HVShort_success && FPGAtemp_success && MPPCTemp_success &&
              I12V_success && FEBtemp0_success && FEBtemp1_success && 
              CITItemp_success && bkpHV_success && FPGAcurrent_success &&
              MPPC_HV_success && PMezza_0V9_success && PMezza_2V2_success
            ); // && of all HK tests
+}
+
+bool MPPCTemp_test(string OutFile_Name){
+    BoardLib.SetBoardId(0);
+    BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
+    int SUT;//Sensor under test
+    double temp_ON = 69.96;//degrees
+    double temp_OFF = 3.67;//degrees
+    double tolerance = 1;//degrees
+    bool s1=false,s2=false;
+    int s1_count=0,s2_count=0;
+    bool MPPCTemp_success;
+    double read, temp_ON_read=0,temp_OFF_read=0;
+        File.AppendAllText(@OutFile_Name,"----MPPC Temperature test starting" + Environment.NewLine);
+
+    for(SUT=0;SUT<8;SUT++){
+        s1=false;
+        s2=false;
+        BoardLib.SetBoardId(126);
+        BoardLib.SetVariable("GPIO.GPIO-MISC.TSEN-SW",(byte)(Math.Pow(2,SUT)));
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.SetBoardId(0);
+        BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
+        read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+SUT.ToString()+".MPPC-Temp") );
+        if(read<temp_ON+tolerance && read>temp_ON-tolerance){
+            s1=true;
+            temp_ON_read = read;
+            s1_count++;
+        }else{
+            File.AppendAllText(@OutFile_Name,"Temperature sensor failed on Sensor "+SUT.ToString()+" - temp="+read.ToString()+" instead of "+temp_ON.ToString() + Environment.NewLine);
+        }
+        BoardLib.SetBoardId(126);
+        BoardLib.SetVariable("GPIO.GPIO-MISC.TSEN-SW",0);
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.SetBoardId(0);
+        BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
+        read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+SUT.ToString()+".MPPC-Temp") );
+        if(read<temp_OFF+tolerance && read>temp_OFF-tolerance){
+            s2=true;
+            temp_OFF_read = read;
+            s2_count++;
+        }else{
+            File.AppendAllText(@OutFile_Name,"Temperature sensor failed on Sensor "+SUT.ToString()+" - temp="+read.ToString()+" instead of "+temp_OFF.ToString() + Environment.NewLine);
+        }
+
+        if(s1 && s2){
+            File.AppendAllText(@OutFile_Name,"Sensor "+SUT.ToString()+" OK. Temp_ON="+temp_ON_read.ToString()+" Temp_OFF="+temp_OFF_read.ToString() + Environment.NewLine);
+        }
+    }
+
+    if(s1_count==8 && s2_count==8){
+        MPPCTemp_success=true;
+    }else{
+        MPPCTemp_success=false;
+    }
+    return MPPCTemp_success;
 }
 
 bool MPPCHV_test(string OutFile_Name){
@@ -439,7 +498,7 @@ bool MPPCHV_test(string OutFile_Name){
 //                 BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
 //             }
 //         }
-//         BoardLib.DeviceConfigure(11);
+//         BoardLib.DeviceConfigure(11, x_verbose:false);
 //         Sync.Sleep(500);
 //         BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
 //         BoardLib.SetDirectParameters();
@@ -502,7 +561,7 @@ bool I12V_test(string OutFile_Name, string HK_values){
         BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".PowerModes.LG_OTAqDisPP",false);
     
         BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+i.ToString()+".AllStagesPowerOn",false);
-        BoardLib.DeviceConfigure((byte)i);
+        BoardLib.DeviceConfigure((byte)i,x_verbose:false);
         Sync.Sleep(10);
     }
     // Check the current that each single CITI draws:
@@ -822,7 +881,7 @@ bool HVShort_test(string OutFile_Name, string HK_values, double HV_set=35){
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
@@ -872,7 +931,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name, string HK_values){
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting HV DAC-ADC test" + Environment.NewLine);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -903,7 +962,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name, string HK_values){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);
@@ -930,7 +989,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting MPPC HV test (FEB side)" + Environment.NewLine);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -938,7 +997,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
     BoardLib.SetDirectParameters();
     Sync.Sleep(1500);
     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-    BoardLib.DeviceConfigure(12);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     for(int i = 0;i<8;i++){
         HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+i.ToString()+".MPPC-HV") );
@@ -955,7 +1014,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);
@@ -1085,7 +1144,7 @@ void SelectFEBdevices(byte FEBID=0){
 
 void SendGPIO(byte x_phase){
     BoardLib.SetBoardId(126);
-	 BoardLib.DeviceConfigure(13);
+	 BoardLib.DeviceConfigure(13, x_verbose:false);
 	 //System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
 	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
@@ -1112,7 +1171,7 @@ void ScriptMainArgs(int SN){
 
 
     // Set the output folder, 
-    string output_path = Environment.GetEnvironmentVariable("GENERALDATADIR"); 
+    string output_path = Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/"; 
 
     // Serial number of FEB under test. To be inserted fsum32rom user at the beginning of the script
     //int SN = -999;

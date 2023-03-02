@@ -8,8 +8,7 @@ GUI_exe="/UnigeGpioBoard.exe"
 ip_address="10.195.52.144"
 port="11000"
 
-dummy_EOS="EndOfScript.txt"
-dummy_EOS_citi="EndOfScript_citi.txt"
+dummy_EOS_citi="EndOfScript_CITIonly.txt"
 Data_path=$DATADIR
 # echo "DATADIR: "$DATADIR
 

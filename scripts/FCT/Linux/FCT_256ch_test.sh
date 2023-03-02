@@ -24,9 +24,8 @@ GotSN=false
 # fi
 
 
-export DATADIR="/home/neutrino/FCT/data_local/"
-export GENERALDATADIR=$DATADIR
-
+source setup.sh
+DATADIR=$GENERALDATADIR/FEBs/
 # For BASELINE test:
 bl1=32000
 bl2=50000
@@ -51,7 +50,8 @@ else
     echo "Enter serial number (for analysis only):"
     read sn
     export DATADIR=$DATADIR"SN_"$sn"/"
-    echo "DATADIR: "$DATADIR
+    #echo "DATADIR: "$DATADIR
+    [ ! -d "$DATADIR" ] && mkdir "$DATADIR"
     sudo chmod 777 $DATADIR
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
@@ -76,9 +76,10 @@ then
 fi
 
 # Print out data folder and give rwe permission
-export DATADIR=$DATADIR"SN_"$sn"/"
-echo "DATADIR: "$DATADIR
-sudo chmod 777 $DATADIR
+  export DATADIR=$DATADIR"SN_"$sn"/"
+  #echo "DATADIR: "$DATADIR
+  [ ! -d "$DATADIR" ] && mkdir "$DATADIR"
+    sudo chmod 777 $DATADIR
 
 if [[ -f $DATADIR$dummy_EOS ]]
 then 

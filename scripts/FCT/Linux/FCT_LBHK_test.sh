@@ -9,7 +9,7 @@ ip_address="10.195.52.144"
 port="11000"
 
 
-Data_path=$GENERALDATADIR/SN_$sn/
+Data_path=$GENERALDATADIR/FEBs/SN_$sn/
 [ ! -d $Data_path ] && mkdir $Data_path
 [ ! -d $Data_path/IO_TEST/ ] && mkdir $Data_path/IO_TEST/
 sudo chmod 777 $Data_path/IO_TEST/ 

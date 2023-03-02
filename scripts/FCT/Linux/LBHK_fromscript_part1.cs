@@ -26,6 +26,7 @@ string CreateOutputFile(int SN,string whichtest, string output_path){
     
     string SNfolder_path = output_path + "SN_" +SN.ToString();
     string TESTfolder_path = output_path + "SN_" +SN.ToString() + "/" +whichtest+"_TEST/";
+    System.Console.WriteLine("LB/HK test result in: "+TESTfolder_path);
     //var SNfolder = System.IO.Directory.CreateDirectory(SNfolder_path);
     //var TESTfolder = System.IO.Directory.CreateDirectory(TESTfolder_path);
     DateTime now = DateTime.Now;
@@ -44,17 +45,61 @@ string CreateOutputFile(int SN,string whichtest, string output_path){
 
 
 bool Run_LoopBack_test(string OutFile_Name, string config_path){
-        // Starting Loopback test
+    // Starting Loopback test
     System.Console.WriteLine("Starting Loopback test.");
     File.AppendAllText(@OutFile_Name, "Starting Loopback test." + Environment.NewLine);
-
-    // STEP 5: LB test on FEB TRIG OD
+    
+    // Test EEPROM write/read
+    bool EEPROM_success = EEPROM_test(OutFile_Name);
+    
+    // STEP 2: LB test on FEB TRIG OD
     bool LB_FEBtrig_OD_success = FEB_trigOD_test(FEB_BoardID,OutFile_Name);
     // Restore initial config at the end of the test
     Restore_Initial_Config(FEB_BoardID,config_path);
-                                                                        System.Console.WriteLine("----------------------------step 2 completed");       
-    return LB_FEBtrig_OD_success;
+    BoardLib.SetBoardId(0);
 
+
+    System.Console.WriteLine("----------------------------step 2 completed");       
+    return LB_FEBtrig_OD_success && EEPROM_success;
+
+}
+
+bool EEPROM_test(string OutFile_Name){
+    BoardLib.SetBoardId(0);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Write",true);
+    byte value = 0,value_read=0;
+    byte EEPROMaddress = 0,EEPROMaddress_read=1;
+    bool EEPROM_success = false;
+    int count_EEPROM = 0;
+    for(int i=0;i<8;i++){
+        value = (byte)(Math.Pow(2,i+1)-1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",0);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",EEPROMaddress);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",value);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        EEPROMaddress_read = BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Address");
+        value_read = BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value");
+        if (EEPROMaddress==EEPROMaddress_read && value==value_read){
+            count_EEPROM++;
+        }else{
+            File.AppendAllText(@OutFile_Name, "EEPROM: address " + EEPROMaddress + " not read back correctly. Set: "+value+" read: "+value_read + Environment.NewLine);
+        }
+    }
+    if(count_EEPROM<8){
+        System.Console.WriteLine("EEPROM failed");       
+        File.AppendAllText(@OutFile_Name, "EEPROM read/write test FAILED" + Environment.NewLine);
+    }else if(count_EEPROM==8){
+        EEPROM_success = true;
+        System.Console.WriteLine("EEPROM successful");       
+    }
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",0);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",EEPROMaddress);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",0);
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Write",false);
+
+    return EEPROM_success;
 }
 
 bool SUM_or32_test(byte FEB_BoardID, string OutFile_Name){
@@ -279,7 +324,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
@@ -316,7 +361,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
     BoardLib.SetDirectParameters();
@@ -333,7 +378,7 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path){
     BoardLib.SetDirectParameters();
     Sync.Sleep(500);
     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-    BoardLib.DeviceConfigure(12);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
     Sync.Sleep(200);
     
     // 3: test Temperature on the FPGA
@@ -413,7 +458,7 @@ bool MPPCHV_test(string OutFile_Name){
 //                 BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
 //             }
 //         }
-//         BoardLib.DeviceConfigure(11);
+//         BoardLib.DeviceConfigure(11, x_verbose:false);
 //         Sync.Sleep(500);
 //         BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
 //         BoardLib.SetDirectParameters();
@@ -476,7 +521,7 @@ bool I12V_test(string OutFile_Name){
         BoardLib.SetVariable("ASICS.ASIC"+i.ToString()+".PowerModes.LG_OTAqDisPP",false);
     
         BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.AsicsPowerSavingDisable.Asics"+i.ToString()+".AllStagesPowerOn",false);
-        BoardLib.DeviceConfigure((byte)i);
+        BoardLib.DeviceConfigure((byte)i, x_verbose:false);
         Sync.Sleep(10);
     }
     // Check the current that each single CITI draws:
@@ -775,7 +820,7 @@ bool HVShort_test(string OutFile_Name, double HV_set=35){
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
@@ -823,7 +868,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting HV DAC-ADC test" + Environment.NewLine);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -853,7 +898,7 @@ bool HV_test(double[] HVs_volts,string OutFile_Name){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);
@@ -880,7 +925,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
         //System.Console.WriteLine(HV_set_GUI.ToString());
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     File.AppendAllText(@OutFile_Name,Environment.NewLine + "----Starting MPPC HV test (FEB side)" + Environment.NewLine);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -888,7 +933,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
     BoardLib.SetDirectParameters();
     Sync.Sleep(1500);
     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
-    BoardLib.DeviceConfigure(12);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     for(int i = 0;i<8;i++){
         HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+i.ToString()+".MPPC-HV") );
@@ -905,7 +950,7 @@ bool HV_test_FEBside(double[] HVs_volts,string OutFile_Name){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
     BoardLib.SetBoardId(0);
-    BoardLib.DeviceConfigure(11);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(100);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);
@@ -1035,7 +1080,7 @@ void SelectFEBdevices(byte FEBID=0){
 
 void SendGPIO(byte x_phase){
     BoardLib.SetBoardId(126);
-	 BoardLib.DeviceConfigure(13);
+	 BoardLib.DeviceConfigure(13, x_verbose:false);
 	 //System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
 	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
@@ -1069,6 +1114,8 @@ void ScriptMainArgs(int SN){
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    System.Console.WriteLine("Data directory: "+output_path);
+
     TurnOnFEB();
 
 

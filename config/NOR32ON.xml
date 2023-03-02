@@ -4982,6 +4982,17 @@
         DisableTrigExtPSC="0"
         DAQSerOscModeEn="False" />
     </FPGA-Misc-Config>
+    <NIOS>
+      <WRITE
+        Write="False"
+        Read="False"
+        Page="0"
+        Address="0"
+        Value="0" />
+      <READ
+        Address="0"
+        Value="0" />
+    </NIOS>
     <CITI-PROBE
       ChannelSelect="0"
       Reserved="0"

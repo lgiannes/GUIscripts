@@ -8,15 +8,22 @@ GUI_exe="/UnigeGpioBoard.exe"
 ip_address="10.195.52.144"
 port="11000"
 
-dummy_EOS="EndOfScript.txt"
-dummy_EOS_citi="EndOfScript_citi.txt"
+dummy_EOS="EndOfScript_256only.txt"
 Data_path=$DATADIR
 echo "DATADIR: "$DATADIR
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
+command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_256ch_only.cs\",$sn,$bl1,$bl2)"
 # Close all GUIs to avoid double serial com
-sudo kill $(pidof mono)
+if [ -z $(pidof mono) ]
+then 
+  echo
+else
+  echo "Terminating previously open GUI..."
+  sudo kill $(pidof mono)
+  sleep 0.1
+  echo
+fi
 # Open GUI and wait 
 ( cd $GUI_path && mono $GUI_path$GUI_exe & )
 echo "Opening GUI ..."
@@ -37,3 +44,6 @@ then
 else
     sudo kill $(pidof mono)
 fi
+
+# erase EOS file
+sudo rm -f $Data_path$dummy_EOS

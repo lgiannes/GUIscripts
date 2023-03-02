@@ -27,7 +27,7 @@ void ScriptMainArgs(int SN, int channel){
     //     File.Delete(Path.Combine(data_path, "EndOfScript.txt"));    
     // }    
 
-    System.Console.WriteLine("DATADIR="+data_path);
+    System.Console.WriteLine("Data directory="+data_path+"/SN_"+SN.ToString());
     
 
     TurnOnFEB();
@@ -254,7 +254,7 @@ void SetKaladin(int channel){
     uint Kal_En_hex=0;
     
     System.Console.WriteLine("-------------------------"); 
-    System.Console.WriteLine("Ch    :\t"+channel.ToString());
+    System.Console.WriteLine("Kaladin Ch    :\t"+channel.ToString());
     
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-EN", Math.Pow(2,MUX)); // the GUI does automatically the conversion dec-to-hex. DO NOT FEED WITH A HEX VALUE
     System.Console.WriteLine("MUX_EN hex: "+Convert.ToString((BoardLib.GetUInt32Variable("GPIO.GPIO-MISC.KAL-EN")),16)); // Manually convert to hex for displaying

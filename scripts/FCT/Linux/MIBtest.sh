@@ -40,8 +40,8 @@ echo "Enter MIB serial number:"
 read sn
 #This file indentifies the end of script (to close the GUI)
 dummy_EOS="MIB_"$sn"_EndOfScript.txt"
-
-
+MIBDATADIR=$MIBDATADIR/SN_$sn/
+[ ! -d "$MIBDATADIR" ] && mkdir "$MIBDATADIR"
 #give rwe permission to data folder
 sudo chmod 777 $MIBDATADIR
 

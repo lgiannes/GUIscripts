@@ -41,8 +41,8 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
 
 
     TurnOnFEB();
-    System.Console.WriteLine("FEB is on.                           ");
-    //System.Console.WriteLine("FW version: "+BoardLib.GetFirmwareVersion());
+    System.Console.WriteLine("FEB is on. FW version: "+BoardLib.GetFirmwareVersion());
+    BoardLib.GetFirmwareVersion();
     BoardLib.OpenConfigFile(config_path);
     // Set the required Direct Parameters
     SetDefaultDirectParameters();
@@ -148,7 +148,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BoardLib.SetDirectParameters();
 
     ////////////////////////////////////////////////////////////////////////////////////
-    CITIROC_triggers_test(SN,LG,HG);
+    //CITIROC_triggers_test(SN,LG,HG);
 
     ////////////////////////////////////////////////////////////////////////////////////
 
@@ -160,7 +160,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
 
     //Generate dummy file at the end of the script
     string[] o = {"END OF SCRIPT"};
-    File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 
+    File.WriteAllLinesAsync(data_path+"EndOfScript_256only.txt",o); 
     System.Console.WriteLine("END OF SCRIPT");
     return;
 }
@@ -182,7 +182,7 @@ int RunAcquisition(){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.DeviceConfigure(8, x_verbose:false);
+    BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     //Sync.Sleep(5);
     BoardLib.SetDirectParameters(); //Sync.Sleep(3);
@@ -309,7 +309,7 @@ void RunBaselineAcq(int baseline){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.DeviceConfigure(8, x_verbose:false);
+    BoardLib.DeviceConfigure(8);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     //Sync.Sleep(5);
     BoardLib.SetDirectParameters(); //Sync.Sleep(3);
@@ -1361,7 +1361,7 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
 
 void SendGPIO(byte x_phase){
     BoardLib.SetBoardId(126);
-	 BoardLib.DeviceConfigure(13, x_verbose:false);
+	 BoardLib.DeviceConfigure(13);
 	 System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
 	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);

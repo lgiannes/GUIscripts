@@ -2,7 +2,7 @@
 // INIT SETTINGS (should put this in a config file or similar)
 
 //Name of default configuration
-string config_folder = "/home/neutrino/FCT/code/config/";
+string config_folder = Environment.GetEnvironmentVariable("CONFIGFOLDER");
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
 string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/";  

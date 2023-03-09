@@ -1,9 +1,9 @@
 #! /bin/bash
 
 freq=1000 #Hz
-pulseper=1/$freq #s
-amp=0.06 #V
-rise=10E-9 #s
+pulseper=1.0/$freq #s
+amp="0.06" #V
+rise="10E-9" #s
 fall=99E-9 #s
 width=1E-6 #s
 
@@ -19,20 +19,39 @@ width=1E-6 #s
 # tio ${device} --response-timeout 2000
 # fi
 
+echo "CHN 1"     | cat > /dev/ttyACM0
+echo "CHN?"      | cat > /dev/ttyACM0
 
+# echo "setting wave=pulse"
 echo "WAVE PULSE"     | cat > /dev/ttyACM0
-sleep 0.1
+sleep 0.3
+# echo "done"
+# echo "setting amplitude=$amp V"
+echo "AMPUNIT VPP"      | cat > /dev/ttyACM0
 echo "AMPL $amp"      | cat > /dev/ttyACM0
-sleep 0.1
+sleep 0.3
+# echo "done"
+# echo "setting frequency=$freq Hz"
 echo "PULSFREQ $freq" | cat > /dev/ttyACM0
-sleep 0.1
+sleep 0.3
+# echo "done"
+# echo "setting width=$width s"
 echo "PULSWID $width" | cat > /dev/ttyACM0
-sleep 0.1
+sleep 0.3
+# echo "done"
+# echo "setting rising edge=$rise s"
 echo "PULSRISE $rise" | cat > /dev/ttyACM0
-sleep 0.1
+sleep 0.3
+# echo "done"
+# echo "setting falling edge=$fall s"
 echo "PULSFALL $fall" | cat > /dev/ttyACM0
-sleep 0.1
-echo "PULSDELAY 0"     | cat > /dev/ttyACM0
-sleep 0.1
-echo "DCOFFS 0"     | cat > /dev/ttyACM0
-sleep 0.1
+sleep 0.3
+# echo "done"
+# echo "setting delay=0 s"
+echo "PULSDLY 0"    | cat > /dev/ttyACM0
+sleep 0.3
+# echo "done"
+# echo "setting offset=0 s"
+echo "DCOFFS 0"       | cat > /dev/ttyACM0
+sleep 0.3
+# echo "done"

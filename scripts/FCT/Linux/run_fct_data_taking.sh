@@ -5,8 +5,7 @@ bl2=$3
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 # Set the ip address of this machine and the port set for the GUI
-ip_address="10.195.52.144"
-port="11000"
+
 
 dummy_EOS="EndOfScript.txt"
 dummy_EOS_citi="EndOfScript_citi.txt"
@@ -14,9 +13,9 @@ Data_path=$DATADIR
 echo "DATADIR: "$DATADIR
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
-command_citi="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_CITI_test.cs\",$sn)"
-command_merged="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/Script_FCT_merged.cs\",$sn,$bl1,$bl2)"
+command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
+command_citi="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_CITI_test.cs\",$sn)"
+command_merged="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_merged.cs\",$sn,$bl1,$bl2)"
 # Opens GUI only if there are no GUI already open
 if [ -z $(pidof mono) ]
 then 

@@ -1,4 +1,3 @@
-export GENERALDATADIR="/home/neutrino/FCT/FCT_database/"
 [ ! -d $GENERALDATADIR ] && mkdir $GENERALDATADIR
 export GUI_FOLDER="/home/neutrino/FCT/GUI_UT92"
 export FCT_RUN_FOLDER="/home/neutrino/FCT/code/scripts/FCT/Linux"
@@ -10,3 +9,8 @@ export FEBDATADIR=$GENERALDATADIR"/FEBs/"
 export ANALYSIS_FOLDER="/home/neutrino/FCT/FunctionalTest/"
 
 echo $GENERALDATADIR
+
+export ip_address="10.195.52.177"
+#export ip_address="10.195.52.144"
+export port="12000"
+#export port="12000"

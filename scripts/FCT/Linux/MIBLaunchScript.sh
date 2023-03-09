@@ -4,14 +4,13 @@ sn=$1
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 # Set the ip address of this machine and the port set for the GUI
-ip_address="10.195.52.144"
-port="11000"
+
 
 dummy_EOS="/MIB_"$sn"_EndOfScript.txt"
 Data_path=$MIBDATADIR
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/MIBtest.cs\",$sn)"
+command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/MIBtest.cs\",$sn)"
 if [ -z $(pidof mono) ]
 then 
 ( cd $GUI_path && mono $GUI_path$GUI_exe & )

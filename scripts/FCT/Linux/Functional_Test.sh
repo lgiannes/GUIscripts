@@ -16,13 +16,28 @@ else
   echo
 fi
 
+echo    "                ///////////////////////////////////////////////////////"
+echo    "                // Check that the GPIO adapter board is 'FEB' type   //"
+echo    "                //       DO NOT RUN THE FEB FUNCTIONAL TEST IF       //"
+echo    "                //           THE ADAPTER BOARD IS MIB TYPE!!         //"
+echo    "                //     (y=yes, go on. Any other key=no, abort)       //" 
+read -p "                ///////////////////////////////////////////////////////" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then 
+  echo
+else
+  echo "Abort!"
+  exit
+fi
+
 GotSN=false
-  echo    "/--------------------------------------\\"
-  echo    "|                                      |"
-  echo    "|   Run Loopback/Housekeeping test?    |" 
-  echo    "|      (y=yes, any other key=no)       |" 
-  echo    "|                                      |"
-  read -p "\\--------------------------------------/" -n 1 -r
+  echo    "                     /--------------------------------------\\"
+  echo    "                     |                                      |"
+  echo    "                     |   Run Loopback/Housekeeping test?    |" 
+  echo    "                     |      (y=yes, any other key=no)       |" 
+  echo    "                     |                                      |"
+  read -p "                     \\--------------------------------------/" -n 1 -r
   echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -31,12 +46,12 @@ then
   GotSN=true
   bash FCT_LBHK_test.sh $sn
   echo
-  echo    "/--------------------------------------\\"
-  echo    "|                                      |"
-  echo    "|       Go on with other tests?        |" 
-  echo    "|      (y=yes, any other key=no)       |" 
-  echo    "|                                      |"
-  read -p "\\--------------------------------------/" -n 1 -r -t 5 
+  echo    "                     /--------------------------------------\\"
+  echo    "                     |                                      |"
+  echo    "                     |       Go on with other tests?        |" 
+  echo    "                     |      (y=yes, any other key=no)       |" 
+  echo    "                     |                                      |"
+  read -p "                     \\--------------------------------------/" -n 1 -r -t 5 
   timeout=$?
   echo 
   if [[ $REPLY =~ ^[Yy\r]$ ]] 

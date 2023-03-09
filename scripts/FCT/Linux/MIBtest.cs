@@ -19,7 +19,9 @@ void ScriptMainArgs(int SN){
     output_path = output_path + "SN_"+SN.ToString()+"/";
     var SNfolder = System.IO.Directory.CreateDirectory(output_path);
 
+    System.Console.WriteLine("Preparing test ... ");
     TurnOnFEB();
+
     System.Console.WriteLine("FEB is on.");
 
 
@@ -38,7 +40,7 @@ void ScriptMainArgs(int SN){
     OpenShortMIBtest(SN, output_path);
 
     // Turn off FEB
-    TurnOffFEB();
+    //TurnOffFEB();
     // Turn off Pulse Gen at the end
     var BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -59,12 +61,15 @@ void TurnOnFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", 3);
+    Sync.Sleep(50);
+
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(2000);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
-    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.SetBoardId(126); Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(3000);
@@ -100,12 +105,12 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     for(int i = 0;i<8;i++){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
-    BoardLib.SetBoardId(0); Sync.Sleep(2);
+    Sync.Sleep(50); BoardLib.SetBoardId(0); Sync.Sleep(50);
     BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
-    BoardLib.SetDirectParameters();
+    Sync.Sleep(50);BoardLib.SetDirectParameters();
     Sync.Sleep(1000);
 
     // 1: High Voltage measurement DAC-ADC test
@@ -119,7 +124,7 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     bool HVB_ADC_success = true;
 
     // Set high voltages
-    double HighestHV = 35;//V
+    double HighestHV = 3;//V (not used in MIB)
     double[] HVs_volts = new double[8];
 
     // Test HVA
@@ -128,11 +133,11 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(i)+1;
+        HVs_volts[i] = 1.8 + 1.2*(i%2);
     }
     HVA_ADC_success1 = HV_test(HVs_volts,OutFile_Name);
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(7-i)+1;
+        HVs_volts[i] = 1.8 + 1.2*((i+1)%2);
     }
     HVA_ADC_success2 = HV_test(HVs_volts,OutFile_Name);
     // SUCCESS if both are successful
@@ -147,11 +152,11 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(i)+1;
+        HVs_volts[i] = 1.8 + 1.2*(i%2);
     }
     HVB_ADC_success1 = HV_test(HVs_volts,OutFile_Name);
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(7-i)+1;
+        HVs_volts[i] = 1.8 + 1.2*((i+1)%2);
     }
     HVB_ADC_success2 = HV_test(HVs_volts,OutFile_Name);
     // SUCCESS if both are successful

@@ -69,7 +69,7 @@ void ScriptMain(){
     File.AppendAllText(@GainOffsetCsv,"#ch;HV_gain[f];HV_offset[f];HV_gain[UI];HV_offset[I];T_gain[f];T_offset[f];T_gain[UI];T_offset[I]"+Environment.NewLine);
 
     for(int i=0;i<8;i++){
-        G_f_HV[i] = (GM_max.HV_8[i]-GM_min.HV_8[i])/((RawValues_max.HV_8[i]-RawValues_min.HV_8[i])*a_HV);
+        G_f_HV[i] = a_HV_GM*(GM_max.HV_8[i]-GM_min.HV_8[i])/((RawValues_max.HV_8[i]-RawValues_min.HV_8[i])*a_HV);
         O_f_HV[i] = GM_min.HV_8[i]/(G_f_HV[i]*a_HV)-RawValues_min.HV_8[i];
         G_f_T[i] = (GM_max.T_8[i]-GM_min.T_8[i])/((RawValues_max.T_8[i]-RawValues_min.T_8[i])*a_T);
         O_f_T[i] = GM_min.T_8[i]/(G_f_T[i]*a_T)-RawValues_min.T_8[i];
@@ -119,7 +119,6 @@ void ScriptMain(){
 
     for(int i=0;i<8;i++){
         converted_HV_min[i] = a_HV*(RawValues_min_verify.HV_8[i]+O_f_HV[i])*G_f_HV[i];
-        System.Console.WriteLine(G_f_HV[i]);
         System.Console.WriteLine("HV min: "+(converted_HV_min[i]-GM_min_verify.HV_8[i]).ToString("0.#####"));
         converted_HV_max[i] = a_HV*(RawValues_max_verify.HV_8[i]+O_f_HV[i])*G_f_HV[i];
         System.Console.WriteLine("HV max: "+(converted_HV_max[i]-GM_max_verify.HV_8[i]).ToString("0.#####"));
@@ -130,11 +129,11 @@ void ScriptMain(){
         System.Console.WriteLine("");
 
         File.AppendAllText(@csvResiduals_min,i.ToString()+"; "+
-            converted_HV_min[i]/a_HV+"; "+converted_HV_min[i]+"; "+GM_min_verify.HV_8[i]+"; "+
-            RawValues_min_verify.T_8[i]  +"; "+converted_T_min[i] +"; "+GM_min_verify.T_8[i] +Environment.NewLine);
+            converted_HV_min[i]/a_HV+"; "+converted_HV_min[i]+"; "+GM_min_verify.HV_8[i]+"; "+GM_min_verify.HV_8[i]/a_HV_GM+"; "+
+            converted_T_min[i] +"; "+GM_min_verify.T_8[i] +Environment.NewLine);
         File.AppendAllText(@csvResiduals_max,i.ToString()+"; "+
-            RawValues_max_verify.HV_8[i] +"; "+converted_HV_max[i]/a_HV+"; "+converted_HV_max[i]+"; "+GM_max_verify.HV_8[i]+"; "+
-            RawValues_max_verify.T_8[i]  +"; "+converted_T_max[i] +"; "+GM_max_verify.T_8[i] +Environment.NewLine);
+            converted_HV_max[i]/a_HV+"; "+converted_HV_max[i]+"; "+GM_max_verify.HV_8[i]+"; "+GM_max_verify.HV_8[i]/a_HV_GM+"; "+
+            converted_T_max[i] +"; "+GM_max_verify.T_8[i] +Environment.NewLine);
 
     }
 

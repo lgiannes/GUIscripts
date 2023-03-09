@@ -5,8 +5,8 @@ void ScriptMainArgs(int SN){
     //                                    SETTINGS
     // Set the configuration file:
     //string config_path = "C:/Users/neutrino/Desktop/FPGA/working_folder/UT90_analog_time/GPIO_FEB/config/loopbacks.xml";
-    string config_path = "/home/neutrino/FCT/code/config/loopbacks_newGUI_V2.xml";
-    string OpenShort_config = "/home/neutrino/FCT/code/config/config_FCT2_newGUI_V2.xml";
+    string config_path = Environment.GetEnvironmentVariable("CONFIGFOLDER")+"/loopbacks_newGUI_V2.xml";
+    string OpenShort_config = Environment.GetEnvironmentVariable("CONFIGFOLDER")+"/config_FCT2_newGUI_V2.xml";
 
     // Set the output folder, 
     string output_path = Environment.GetEnvironmentVariable("GENERALDATADIR")+"/MIBs/"; 

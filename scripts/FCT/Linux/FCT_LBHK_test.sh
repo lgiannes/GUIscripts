@@ -4,9 +4,7 @@ source setup.sh
 
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
-# Set the ip address of this machine and the port set for the GUI
-ip_address="10.195.52.144"
-port="11000"
+
 
 
 Data_path=$GENERALDATADIR/FEBs/SN_$sn/
@@ -41,7 +39,7 @@ echo "/----------------------------------------------------\\"
 echo "|  Move Jumper J13 to position 2-3. Then press Enter |"
 echo "\----------------------------------------------------/"
 read -n 1
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/LBHK_fromscript_part1.cs\",$sn)"
+command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part1.cs\",$sn)"
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
 { sleep 1; echo $command; sleep 1; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
@@ -51,7 +49,7 @@ echo "/----------------------------------------------------\\"
 echo "|  Move Jumper J13 to position 1-2. Then press Enter |"
 echo "\----------------------------------------------------/"
 read -n 1
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/LBHK_fromscript_part2.cs\",$sn)"
+command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part2.cs\",$sn)"
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
 { sleep 1; echo $command; bash wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 

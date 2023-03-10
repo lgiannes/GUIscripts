@@ -7,10 +7,10 @@ export FEBDATADIR=$GENERALDATADIR"/FEBs/"
 [ ! -d $FEBDATADIR ] && mkdir $FEBDATADIR
 
 export ANALYSIS_FOLDER="/home/neutrino/FCT/FunctionalTest/"
-
+export CONFIGFOLDER="/home/neutrino/FCT/code/config/"
 echo $GENERALDATADIR
 
-export ip_address="10.195.52.177"
-#export ip_address="10.195.52.144"
-export port="12000"
+#export ip_address="10.195.52.177"
+export ip_address="10.195.52.144"
+export port="11000"
 #export port="12000"

@@ -66,10 +66,10 @@ void ScriptMain(){
     File.AppendAllText(@GainOffsetCsv,"#ch;HV_gain[f];HV_offset[f];HV_gain[UI];HV_offset[I];T_gain[f];T_offset[f];T_gain[UI];T_offset[I]"+Environment.NewLine);
 
     for(int i=0;i<8;i++){
-        G_f_HV[i] = (GM_max.HV_8[i]-GM_min.HV_8[i])/4/(RawValues_max.HV_8[i]-RawValues_min.HV_8[i]);
-        O_f_HV[i] = (GM_min.HV_8[i])/4/(G_f_HV[i])-(RawValues_min.HV_8[i]);
-        G_f_T[i] = (GM_max.T_8[i]-GM_min.T_8[i])/(RawValues_max.T_8[i]-RawValues_min.T_8[i]);
-        O_f_T[i] = (GM_min.T_8[i])/(G_f_T[i])-(RawValues_min.T_8[i]);
+        G_f_HV[i] = Convert_HV_GPIO(GM_max.HV_8[i]-GM_min.HV_8[i])/Convert_HV_FEB(RawValues_max.HV_8[i]-RawValues_min.HV_8[i]);
+        O_f_HV[i] = Convert_HV_GPIO(GM_min.HV_8[i])/(G_f_HV[i])-Convert_HV_FEB(RawValues_min.HV_8[i]);
+        G_f_T[i] = Convert_T_GPIO(GM_max.T_8[i]-GM_min.T_8[i])/Convert_T_FEB(RawValues_max.T_8[i]-RawValues_min.T_8[i]);
+        O_f_T[i] = Convert_T_GPIO(GM_min.T_8[i])/(G_f_T[i])-Convert_T_FEB(RawValues_min.T_8[i]);
         //System.Console.WriteLine("T: "+G_f_T[i].ToString()+" \t"+O_f_T[i].ToString());
 
         G_U_HV[i] = (UInt16)Math.Round(G_f_HV[i]*32768);
@@ -118,18 +118,18 @@ void ScriptMain(){
     double t1,t2,t3,t4,t5,t6;
     for(int i=0;i<8;i++){
 
-    hv1 = GM_min_verify.HV_8[i]/4;
-    hv2 = Convert_HV_GPIO( GM_min_verify.HV_8[i] );
-    hv3 = ( (RawValues_min_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] ;
-    hv4 = Convert_HV_GPIO( ( (RawValues_min_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i]*4 );
-    hv5 = RawValues_min_verify.HV_8[i];
-    hv6 = Convert_HV_GPIO( ( (RawValues_min_verify.HV_8[i]) )*4 );
-    t1 = GM_min_verify.T_8[i]; // no need to divide by 4 here, the ADC for temperature sensing in GPIO and FEB have the same range
-    t2 = Convert_T_GPIO( GM_min_verify.T_8[i] );
-    t3 = ( RawValues_min_verify.T_8[i] + O_f_T[i] )*G_f_T[i];
-    t4 = Convert_T_GPIO( ( (RawValues_min_verify.T_8[i]) + O_f_T[i] )*G_f_T[i] );
-    t5 = RawValues_min_verify.T_8[i];
-    t6 = Convert_T_GPIO( RawValues_min_verify.T_8[i] );
+    hv1 = GM_min.HV_8[i];
+    hv2 = Convert_HV_GPIO( GM_min.HV_8[i] );
+    hv3 = ( ( Convert_HV_FEB(RawValues_min.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] )/Convert_HV_GPIO(1);
+    hv4 = ( ( Convert_HV_FEB(RawValues_min.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] );
+    hv5 = RawValues_min.HV_8[i];
+    hv6 = Convert_HV_FEB( RawValues_min.HV_8[i] );
+    t1 = GM_min.T_8[i];
+    t2 = Convert_T_GPIO( GM_min.T_8[i] );
+    t3 = ( RawValues_min.T_8[i] + O_f_T[i] )*G_f_T[i];
+    t4 = ( ( Convert_T_FEB(RawValues_min.T_8[i]) + O_f_T[i] )*G_f_T[i] );
+    t5 = RawValues_min.T_8[i];
+    t6 = Convert_T_FEB( RawValues_min.T_8[i] );
     
 
         File.AppendAllText(@csvResiduals_min,i.ToString()+";"+hv1.ToString()+";"+hv2.ToString()+";"+hv3.ToString()+";"
@@ -137,18 +137,18 @@ void ScriptMain(){
                                                              +t1.ToString()+";"+t2.ToString()+";"+t3.ToString()+";"
                                                              +t4.ToString()+";"+t5.ToString()+";"+t6.ToString()+";"
                                                              +Environment.NewLine);
-    hv1 = GM_max_verify.HV_8[i]/4;
-    hv2 = Convert_HV_GPIO( GM_max_verify.HV_8[i] );
-    hv3 = ( (RawValues_max_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] ;
-    hv4 = Convert_HV_GPIO( ( (RawValues_max_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i]*4 );
-    hv5 = RawValues_max_verify.HV_8[i];
-    hv6 = Convert_HV_GPIO( ( (RawValues_max_verify.HV_8[i]) )*4 );
-    t1 = GM_max_verify.T_8[i]; // no need to divide by 4 here, the ADC for temperature sensing in GPIO and FEB have the same range
-    t2 = Convert_T_GPIO( GM_max_verify.T_8[i] );
-    t3 = ( RawValues_max_verify.T_8[i] + O_f_T[i] )*G_f_T[i];
-    t4 = Convert_T_GPIO( ( (RawValues_max_verify.T_8[i]) + O_f_T[i] )*G_f_T[i] );
-    t5 = RawValues_max_verify.T_8[i];
-    t6 = Convert_T_GPIO( RawValues_max_verify.T_8[i] );
+    hv1 = GM_max.HV_8[i];
+    hv2 = Convert_HV_GPIO( GM_max.HV_8[i] );
+    hv3 = ( ( Convert_HV_FEB(RawValues_max.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] )/Convert_HV_GPIO(1);
+    hv4 = ( ( Convert_HV_FEB(RawValues_max.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] );
+    hv5 = RawValues_max.HV_8[i];
+    hv6 = Convert_HV_FEB( RawValues_max.HV_8[i] );
+    t1 = GM_max.T_8[i];
+    t2 = Convert_T_GPIO( GM_max.T_8[i] );
+    t3 = ( RawValues_max.T_8[i] + O_f_T[i] )*G_f_T[i];
+    t4 = ( ( Convert_T_FEB(RawValues_max.T_8[i]) + O_f_T[i] )*G_f_T[i] );
+    t5 = RawValues_max.T_8[i];
+    t6 = Convert_T_FEB( RawValues_max.T_8[i] );
     
         File.AppendAllText(@csvResiduals_max,i.ToString()+";"+hv1.ToString()+";"+hv2.ToString()+";"+hv3.ToString()+";"
                                                              +hv4.ToString()+";"+hv5.ToString()+";"+hv6.ToString()+";"

@@ -65,18 +65,22 @@ void ScriptMain(){
 
     File.AppendAllText(@GainOffsetCsv,"#ch;HV_gain[f];HV_offset[f];HV_gain[UI];HV_offset[I];T_gain[f];T_offset[f];T_gain[UI];T_offset[I]"+Environment.NewLine);
 
+    // To convert the gain into an Unsigned Integer:
+    int f_to_ui = 32768;
+
     for(int i=0;i<8;i++){
         G_f_HV[i] = (GM_max.HV_8[i]-GM_min.HV_8[i])/4/(RawValues_max.HV_8[i]-RawValues_min.HV_8[i]);
         O_f_HV[i] = (GM_min.HV_8[i])/4/(G_f_HV[i])-(RawValues_min.HV_8[i]);
+
         G_f_T[i] = (GM_max.T_8[i]-GM_min.T_8[i])/(RawValues_max.T_8[i]-RawValues_min.T_8[i]);
         O_f_T[i] = (GM_min.T_8[i])/(G_f_T[i])-(RawValues_min.T_8[i]);
-        //System.Console.WriteLine("T: "+G_f_T[i].ToString()+" \t"+O_f_T[i].ToString());
 
-        G_U_HV[i] = (UInt16)Math.Round(G_f_HV[i]*32768);
+
+        G_U_HV[i] = (UInt16)Math.Round(G_f_HV[i]*f_to_ui);
         O_U_HV[i] = (Int16)Math.Round(O_f_HV[i]);
         //System.Console.WriteLine("HV: "+G_U_HV[i].ToString()+" \t"+O_U_HV[i].ToString());
 
-        G_U_T[i] = (UInt16)Math.Round(G_f_T[i]*32768);
+        G_U_T[i] = (UInt16)Math.Round(G_f_T[i]*f_to_ui);
         O_U_T[i] = (Int16)Math.Round(O_f_T[i]);
         //System.Console.WriteLine("T: "+G_U_T[i].ToString()+" \t"+O_U_T[i].ToString());
         File.AppendAllText(@GainOffsetCsv,i.ToString()+";"+G_f_HV[i].ToString()+";"+O_f_HV[i].ToString()+";"+
@@ -116,45 +120,48 @@ void ScriptMain(){
 
     double hv1,hv2,hv3,hv4,hv5,hv6;
     double t1,t2,t3,t4,t5,t6;
+
     for(int i=0;i<8;i++){
 
-    hv1 = GM_min_verify.HV_8[i]/4;
-    hv2 = Convert_HV_GPIO( GM_min_verify.HV_8[i] );
-    hv3 = ( (RawValues_min_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] ;
-    hv4 = Convert_HV_GPIO( ( (RawValues_min_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i]*4 );
-    hv5 = RawValues_min_verify.HV_8[i];
-    hv6 = Convert_HV_GPIO( ( (RawValues_min_verify.HV_8[i]) )*4 );
-    t1 = GM_min_verify.T_8[i]; // no need to divide by 4 here, the ADC for temperature sensing in GPIO and FEB have the same range
-    t2 = Convert_T_GPIO( GM_min_verify.T_8[i] );
-    t3 = ( RawValues_min_verify.T_8[i] + O_f_T[i] )*G_f_T[i];
-    t4 = Convert_T_GPIO( ( (RawValues_min_verify.T_8[i]) + O_f_T[i] )*G_f_T[i] );
-    t5 = RawValues_min_verify.T_8[i];
-    t6 = Convert_T_GPIO( RawValues_min_verify.T_8[i] );
-    
+        hv1 = GM_min_verify.HV_8[i]/4; // HV ON THE GPIO IN ADC DIVIDED BY 4
+        hv2 = Convert_HV_GPIO( GM_min_verify.HV_8[i] ); // HV ON THE GPIO CONVERTED IN VOLTS
+        hv3 = ( (RawValues_min_verify.HV_8[i]) + O_I_HV[i] )*(double)G_U_HV[i]/f_to_ui ; // CALIBRATED HV ON THE FEB, IN ADC
+        hv4 = Convert_HV_FEB( ( (RawValues_min_verify.HV_8[i]) + O_I_HV[i] )*(double)G_U_HV[i]/f_to_ui ); // CALIBRATED HV ON THE FEB CONVERTED IN VOLTS
+        hv5 = RawValues_min_verify.HV_8[i]; //  UNCALIBRATED HV ON THE FEB, IN ADC
+        hv6 = Convert_HV_FEB( ( (RawValues_min_verify.HV_8[i]) ) ); // UNCALIBRATED HV ON THE FEB, CONVERTEED IN V
+        // repeat for T, all the values that you obtain are in Volts, not degrees
+        t1 = GM_min_verify.T_8[i]; // no need to divide by 4 here, the ADC for temperature sensing in GPIO and FEB have the same range
+        t2 = Convert_T_GPIO( GM_min_verify.T_8[i] );
+        t3 = ( RawValues_min_verify.T_8[i] + O_I_T[i] )*(double)G_U_T[i]/f_to_ui;
+        t4 = Convert_T_FEB( ( (RawValues_min_verify.T_8[i]) + O_I_T[i] )*(double)G_U_T[i]/f_to_ui );
+        t5 = RawValues_min_verify.T_8[i];
+        t6 = Convert_T_FEB( RawValues_min_verify.T_8[i] );
+        
 
         File.AppendAllText(@csvResiduals_min,i.ToString()+";"+hv1.ToString()+";"+hv2.ToString()+";"+hv3.ToString()+";"
-                                                             +hv4.ToString()+";"+hv5.ToString()+";"+hv6.ToString()+";"
-                                                             +t1.ToString()+";"+t2.ToString()+";"+t3.ToString()+";"
-                                                             +t4.ToString()+";"+t5.ToString()+";"+t6.ToString()+";"
-                                                             +Environment.NewLine);
-    hv1 = GM_max_verify.HV_8[i]/4;
-    hv2 = Convert_HV_GPIO( GM_max_verify.HV_8[i] );
-    hv3 = ( (RawValues_max_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i] ;
-    hv4 = Convert_HV_GPIO( ( (RawValues_max_verify.HV_8[i]) + O_f_HV[i] )*G_f_HV[i]*4 );
-    hv5 = RawValues_max_verify.HV_8[i];
-    hv6 = Convert_HV_GPIO( ( (RawValues_max_verify.HV_8[i]) )*4 );
-    t1 = GM_max_verify.T_8[i]; // no need to divide by 4 here, the ADC for temperature sensing in GPIO and FEB have the same range
-    t2 = Convert_T_GPIO( GM_max_verify.T_8[i] );
-    t3 = ( RawValues_max_verify.T_8[i] + O_f_T[i] )*G_f_T[i];
-    t4 = Convert_T_GPIO( ( (RawValues_max_verify.T_8[i]) + O_f_T[i] )*G_f_T[i] );
-    t5 = RawValues_max_verify.T_8[i];
-    t6 = Convert_T_GPIO( RawValues_max_verify.T_8[i] );
-    
+                                                                +hv4.ToString()+";"+hv5.ToString()+";"+hv6.ToString()+";"
+                                                                +t1.ToString()+";"+t2.ToString()+";"+t3.ToString()+";"
+                                                                +t4.ToString()+";"+t5.ToString()+";"+t6.ToString()+";"
+                                                                +Environment.NewLine);
+        hv1 = GM_max_verify.HV_8[i]/4; // HV ON THE GPIO IN ADC DIVIDED BY 4
+        hv2 = Convert_HV_GPIO( GM_max_verify.HV_8[i] ); // HV ON THE GPIO CONVERTED IN VOLTS
+        hv3 = ( (RawValues_max_verify.HV_8[i]) + O_I_HV[i] )*(double)G_U_HV[i]/f_to_ui ; // CALIBRATED HV ON THE FEB, IN ADC
+        hv4 = Convert_HV_FEB( ( (RawValues_max_verify.HV_8[i]) + O_I_HV[i] )*(double)G_U_HV[i]/f_to_ui ); // CALIBRATED HV ON THE FEB CONVERTED IN VOLTS
+        hv5 = RawValues_max_verify.HV_8[i]; //  UNCALIBRATED HV ON THE FEB, IN ADC
+        hv6 = Convert_HV_FEB( ( (RawValues_max_verify.HV_8[i]) ) ); // UNCALIBRATED HV ON THE FEB, CONVERTEED IN V
+        // repeat for T, all the values that you obtain are in Volts, not degrees
+        t1 = GM_max_verify.T_8[i]; // no need to divide by 4 here, the ADC for temperature sensing in GPIO and FEB have the same range
+        t2 = Convert_T_GPIO( GM_max_verify.T_8[i] );
+        t3 = ( RawValues_max_verify.T_8[i] + O_I_T[i] )*(double)G_U_T[i]/f_to_ui;
+        t4 = Convert_T_FEB( ( (RawValues_max_verify.T_8[i]) + O_I_T[i] )*(double)G_U_T[i]/f_to_ui );
+        t5 = RawValues_max_verify.T_8[i];
+        t6 = Convert_T_FEB( RawValues_max_verify.T_8[i] );
+        
         File.AppendAllText(@csvResiduals_max,i.ToString()+";"+hv1.ToString()+";"+hv2.ToString()+";"+hv3.ToString()+";"
-                                                             +hv4.ToString()+";"+hv5.ToString()+";"+hv6.ToString()+";"
-                                                             +t1.ToString()+";"+t2.ToString()+";"+t3.ToString()+";"
-                                                             +t4.ToString()+";"+t5.ToString()+";"+t6.ToString()+";"
-                                                             +Environment.NewLine);
+                                                                +hv4.ToString()+";"+hv5.ToString()+";"+hv6.ToString()+";"
+                                                                +t1.ToString()+";"+t2.ToString()+";"+t3.ToString()+";"
+                                                                +t4.ToString()+";"+t5.ToString()+";"+t6.ToString()+";"
+                                                                +Environment.NewLine);
 
     }
 
@@ -269,7 +276,7 @@ HV_T_8 Compute_RawValues(string csvFile="none"){
         var fs = new FileStream(csvFile, FileMode.Create);
         fs.Dispose();        
         //4File.AppendAllText(@csvFile,"# Raw Values MPPC temperature and HV (FEB measurement)"+Environment.NewLine);
-        File.AppendAllText(@csvFile,"#ch;HV[ADC];T[ADC];HV[V];T[c]"+Environment.NewLine);
+        File.AppendAllText(@csvFile,"#ch;HV[ADC];T[ADC];HV[V];T[V]"+Environment.NewLine);
     }
     
     // Measure raw values (y axis)
@@ -325,7 +332,7 @@ HV_T_8 Compute_GM(bool MAX, string GPIO_calib_file, string csvFile="none", strin
         var fs_T = new FileStream(csvFile_T, FileMode.Create);
         fs_T.Dispose();
         //File.AppendAllText(@csvFile_T,"# Reference values for MPPC T (GPIO measurement)"+Environment.NewLine);
-        File.AppendAllText(@csvFile_T,"#ch;T[ADC];T[c]"+Environment.NewLine);
+        File.AppendAllText(@csvFile_T,"#ch;T[ADC];T[V]"+Environment.NewLine);
     }
 
     double f1 = 3000;
@@ -473,16 +480,16 @@ HV_T_8 Compute_GM(bool MAX, string GPIO_calib_file, string csvFile="none", strin
 
 
 double Convert_HV_FEB(double ADC){
-    return ADC*3/65535/0.02856;
+    return ADC*1.60284e-3;
 }
 double Convert_T_FEB(double ADC){
-    return 1/(Math.Log(0.3*(1.1*65535.0/ADC-1))/3435.0+1/298.15)-273.15;
+    return 4.5777e-5*ADC;
 }
 double Convert_T_GPIO(double ADC){
-    return 1/(Math.Log(0.3*(1.1*65535.0/ADC-1))/3435.0+1/298.15)-273.15;
+    return 4.5777e-5*ADC;
 }
 double Convert_HV_GPIO(double ADC){
-    return (1+1000/29.4)*ADC*3/262144;   
+    return ADC/4*1.60284e-3; 
 }
 
 

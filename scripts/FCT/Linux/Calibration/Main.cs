@@ -57,9 +57,9 @@ void ScriptMain(){
     double[] G_f_T={0,0,0,0,0,0,0,0};
     double[] O_f_T={0,0,0,0,0,0,0,0};
     UInt16[] G_U_HV={0,0,0,0,0,0,0,0};
-    Int16[] O_U_HV ={0,0,0,0,0,0,0,0};
+    Int16[] O_I_HV ={0,0,0,0,0,0,0,0};
     UInt16[] G_U_T={0,0,0,0,0,0,0,0};
-    Int16[] O_U_T ={0,0,0,0,0,0,0,0};
+    Int16[] O_I_T ={0,0,0,0,0,0,0,0};
     
 
 
@@ -77,16 +77,16 @@ void ScriptMain(){
 
 
         G_U_HV[i] = (UInt16)Math.Round(G_f_HV[i]*f_to_ui);
-        O_U_HV[i] = (Int16)Math.Round(O_f_HV[i]);
-        //System.Console.WriteLine("HV: "+G_U_HV[i].ToString()+" \t"+O_U_HV[i].ToString());
+        O_I_HV[i] = (Int16)Math.Round(O_f_HV[i]);
+        //System.Console.WriteLine("HV: "+G_U_HV[i].ToString()+" \t"+O_I_HV[i].ToString());
 
         G_U_T[i] = (UInt16)Math.Round(G_f_T[i]*f_to_ui);
-        O_U_T[i] = (Int16)Math.Round(O_f_T[i]);
-        //System.Console.WriteLine("T: "+G_U_T[i].ToString()+" \t"+O_U_T[i].ToString());
+        O_I_T[i] = (Int16)Math.Round(O_f_T[i]);
+        //System.Console.WriteLine("T: "+G_U_T[i].ToString()+" \t"+O_I_T[i].ToString());
         File.AppendAllText(@GainOffsetCsv,i.ToString()+";"+G_f_HV[i].ToString()+";"+O_f_HV[i].ToString()+";"+
-                                                         G_U_HV[i].ToString()+";"+O_U_HV[i].ToString()+";"+
+                                                         G_U_HV[i].ToString()+";"+O_I_HV[i].ToString()+";"+
                                                          G_f_T[i].ToString()+ ";"+O_f_T[i].ToString()+ ";"+
-                                                         G_U_T[i].ToString()+ ";"+O_U_T[i].ToString()+
+                                                         G_U_T[i].ToString()+ ";"+O_I_T[i].ToString()+
                                                          Environment.NewLine);
 
     }
@@ -187,11 +187,11 @@ void ScriptMain(){
         BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
         address+=1;
         BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
-        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",O_U_HV[i]&0xFF);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",O_I_HV[i]&0xFF);
         BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
         address+=1;
         BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
-        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",(O_U_HV[i]>>8)&0xFF);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",(O_I_HV[i]>>8)&0xFF);
         BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
         address+=1;
     }
@@ -205,11 +205,11 @@ void ScriptMain(){
         BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
         address+=1;
         BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
-        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",O_U_T[i]&0xFF);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",O_I_T[i]&0xFF);
         BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
         address+=1;
         BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
-        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",(O_U_T[i]>>8)&0xFF);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",(O_I_T[i]>>8)&0xFF);
         BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
         address+=1;
     }

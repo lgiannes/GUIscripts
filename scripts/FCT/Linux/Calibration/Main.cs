@@ -9,7 +9,7 @@ void ScriptMain(){
     string pathToCsvFiles = "/home/neutrino/FCT/FCT_database/FEBs/SN_"+SN.ToString()+"/"; 
     //string pathToCsvFiles = Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/SN_"+SN.ToString()+"/"; 
 
-    int samples = 50;
+    int samples = 20;
 
     System.IO.Directory.CreateDirectory(pathToCsvFiles);
     pathToCsvFiles = pathToCsvFiles + "Calibration/";
@@ -75,6 +75,58 @@ void ScriptMain(){
 
         G_f_T[i] = (GM_max.T_8[i]-GM_min.T_8[i])/(RawValues_max.T_8[i]-RawValues_min.T_8[i]);
         O_f_T[i] = (GM_min.T_8[i])/(G_f_T[i])-(RawValues_min.T_8[i]);
+
+        // Check that the gain and offset values are within the expected range
+        if(G_f_HV[i]>1.99 || G_f_HV[i]<0){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("FATAL: calibration problem on HV channel "+i.ToString());
+            System.Console.WriteLine("Gain out of range");
+            System.Console.WriteLine("Re-run calibration after the end of the test");
+            System.Console.WriteLine("");
+        }
+        if(O_f_HV[i]<-32768 || O_f_HV[i]>32768){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("FATAL: calibration problem on HV channel "+i.ToString());
+            System.Console.WriteLine("Offset out of range");
+            System.Console.WriteLine("Re-run calibration after the end of the test");
+            System.Console.WriteLine("");
+        }
+        if(G_f_T[i]>1.99 || G_f_T[i]<0){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("FATAL: calibration problem on T channel "+i.ToString());
+            System.Console.WriteLine("Gain out of range");
+            System.Console.WriteLine("Re-run calibration after the end of the test");
+            System.Console.WriteLine("");
+        }
+        if(O_f_T[i]<-32768 || O_f_T[i]>32768){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("FATAL: calibration problem on T channel "+i.ToString());
+            System.Console.WriteLine("Offset out of range");
+            System.Console.WriteLine("Re-run calibration after the end of the test");
+            System.Console.WriteLine("");
+        }
+        // WARNINGS
+        if(G_f_HV[i]>1.1 || G_f_HV[i]<0.9){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("WARNING: Ridiculous gain  on HV channel "+i.ToString());
+            System.Console.WriteLine("");
+        }
+        if(O_f_HV[i]<-80 || O_f_HV[i]>80){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("WARNING: Ridiculous offset  on HV channel "+i.ToString());
+            System.Console.WriteLine("");
+        }
+        if(G_f_T[i]>1.1 || G_f_T[i]<0.9){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("WARNING: Ridiculous gain  on T channel "+i.ToString());
+            System.Console.WriteLine("");
+        }
+        if(O_f_T[i]<-80 || O_f_T[i]>80){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("WARNING: Ridiculous offset  on T channel "+i.ToString());
+            System.Console.WriteLine("");
+        }
+        
 
 
         G_U_HV[i] = (UInt16)Math.Round(G_f_HV[i]*f_to_ui);

@@ -794,7 +794,7 @@ bool bkpHV_test(string OutFile_Name, string HK_values){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 35;//V
+    double mu = 40;//V
     double Delta = 2;//V
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;

@@ -1421,7 +1421,7 @@ void Calibration(int SN, int GPIO){
     //string GPIO_calib_folder = "/DATA/neutrino/FCT/GPIO_cal/GPIO_SN"+GPIO.ToString()+"/";
     string GPIO_calib_folder = Environment.GetEnvironmentVariable("GPIO_CALIB_FOLDER")+"/GPIO_SN"+GPIO.ToString()+"/";
     string GPIO_calib_file = GPIO_calib_folder+"cal_GPIO_SN"+GPIO.ToString()+".csv";
-    string VerifyGPIO_file = GPIO_calib_folder+"verify.csv";
+    string VerifyGPIO_file = GPIO_calib_folder+"verify.csv"; // NOT USED during FCT !
     TurnOnFEB();
     string pathToCsvFiles = Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/SN_"+SN.ToString()+"/"; 
     //string pathToCsvFiles = Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/SN_"+SN.ToString()+"/"; 

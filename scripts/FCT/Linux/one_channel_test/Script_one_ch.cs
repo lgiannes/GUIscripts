@@ -2,7 +2,7 @@
 // INIT SETTINGS (should put this in a config file or similar)
 
 //Name of default configuration
-string config_folder = "/home/neutrino/FCT/code/config/";
+string config_folder = Environment.GetEnvironmentVariable("CONFIGFOLDER");
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
 //Set the path to which data should be saved
 string data_path   =  Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/";  
@@ -26,9 +26,11 @@ void ScriptMainArgs(int SN, int channel){
     //     // If file found, delete it    
     //     File.Delete(Path.Combine(data_path, "EndOfScript.txt"));    
     // }    
+    var SNfolder = System.IO.Directory.CreateDirectory(data_path+"/SN_"+SN.ToString()+"/");
+    string data_directory=data_path+"/SN_"+SN.ToString()+"/Single_Channels_Tests/";
+    System.Console.WriteLine("Data directory="+data_directory);
+    var folder = System.IO.Directory.CreateDirectory(data_directory);
 
-    System.Console.WriteLine("Data directory="+data_path+"/SN_"+SN.ToString());
-    
 
     TurnOnFEB();
     System.Console.WriteLine("FEB is on");
@@ -72,7 +74,7 @@ void ScriptMainArgs(int SN, int channel){
     }
 
 
-    RunAcquisition(SN, channel);
+    RunAcquisition(SN, channel, data_directory );
     
     BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
@@ -90,13 +92,12 @@ void ScriptMainArgs(int SN, int channel){
 
 
 
-void RunAcquisition(int SN,int channel){
+void RunAcquisition(int SN,int channel,string data_directory){
     Sync.Sleep(5);                                                                    
 
     int baseline = 32786;
     var BashOutput = "";
-    var SNfolder = System.IO.Directory.CreateDirectory(data_path+"/SN_"+SN.ToString()+"/");
-    string data_path_intern = data_path+"/SN_"+SN.ToString()+"/";
+    string data_path_intern = data_directory;
     string file_name = "one_ch_test_SN"+SN.ToString()+"_ch"+channel.ToString();
     
     int[] Gate_to_ch={26,23,22,25,27,24,19,29,20,3,30,31,28,17,16,10,18,21,13,15,2,1,0,11,5,9,4,7,12,6,8,14};

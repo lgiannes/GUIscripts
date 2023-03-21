@@ -53,7 +53,7 @@ then
 else
     sudo kill $(pidof mono)
 fi
-file_name=$GENERALDATADIR"FEBs/SN_"$SN"/one_ch_test_SN"$SN"_ch"$channel".daq"
+file_name=$GENERALDATADIR"FEBs/SN_"$SN"/Single_Channels_Tests/one_ch_test_SN"$SN"_ch"$channel".daq"
 
 $exe_path/OneChannelTest -f $file_name
 echo "done"

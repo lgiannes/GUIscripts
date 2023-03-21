@@ -1131,6 +1131,51 @@ void ScriptMainArgs(int SN){
     // Ask the user fot the FEB Serial Number
     //int SN = Dialog.ShowInputDialog<int>("Insert Serial number of FEB under test.");       
 
+    // Check 150k resistor. DO NOT GO ON if this test fails
+    // HV on PS: 10 V
+    // Set the HV on the channels to 9 V
+    // Check that the HV is 0 on all channels (or less than 2 V)
+    bool R150K=false;
+    double thr=3;//V
+    int count = 0;
+    double HV_set_d = 9;
+    UInt16 HV_set = Convert.ToUInt16(Math.Round(HV_set_d*65535/102.46));
+    for(int i = 0;i<8;i++){
+        BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",HV_set);
+    }
+    BoardLib.SetBoardId(0);
+    BoardLib.DeviceConfigure(11, x_verbose:false);
+    Sync.Sleep(500);
+    BoardLib.SetVariable("Board.DirectParam.HvDACApply", true);  
+    BoardLib.SetDirectParameters();
+    Sync.Sleep(1000);
+    BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
+    BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
+    double HV_read_volts=0;
+    for(int i = 0;i<8;i++){
+        HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+i.ToString()+".MPPC-HV") );
+        if( (HV_read_volts > thr) ){
+            System.Console.WriteLine("Warning: HV on channel "+i.ToString()+" is above "+thr.ToString()+" V. (Measured: "+HV_read_volts+" V)");       
+            R150K = false;
+        }else{
+            System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V");       
+            count++;
+        }
+    }
+    if (count==8){
+        R150K=true;
+    }
+    if(!R150K){
+        System.Console.WriteLine("Resistor at HV input is NOT 150K! Aborto test for prection.");       
+        return;
+    }
+
+    BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",false);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
+
+
+
     // Generate output txt file
     string OutFile_Name = CreateOutputFile(SN,"IO",output_path);
 

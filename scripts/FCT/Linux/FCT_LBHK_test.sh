@@ -36,7 +36,10 @@ fi
 
 # PART 1
 echo "/----------------------------------------------------\\"
-echo "|  Move Jumper J13 to position 2-3. Then press Enter |"
+echo "|       Move Jumper J13 to position 2-3.             |"
+echo "|              Set input HV to 10 V.                 |"
+echo "|                                                    |"
+echo "|                   Press enter.                     |"
 echo "\----------------------------------------------------/"
 read -n 1
 command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part1.cs\",$sn)"
@@ -46,7 +49,10 @@ command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part1.cs\",$sn)"
 # PART 2:
 echo
 echo "/----------------------------------------------------\\"
-echo "|  Move Jumper J13 to position 1-2. Then press Enter |"
+echo "|       Move Jumper J13 to position 1-2.             |"
+echo "|              Set input HV to 55 V.                 |"
+echo "|                                                    |"
+echo "|                   Press enter.                     |"
 echo "\----------------------------------------------------/"
 read -n 1
 command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part2.cs\",$sn)"

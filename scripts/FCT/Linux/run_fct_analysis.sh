@@ -11,6 +11,7 @@ echo "data directory: "$DATADIR
 [ -z $DATADIR ] && echo "data directory does not exist. Run acquisiton first" && exit
 
 exe_path=$ANALYSIS_FOLDER"/bin/";
+exe_calib="CalibrationPlots"
 exe_analog="FuncTest";
 exe_bl="FCTbaseline"
 exe_citi="FCTcitiTriggers"
@@ -34,6 +35,8 @@ echo
 #Launch the ROOT analyses.
 #Setup
 source $setup_path;
+#Calibration
+$exe_path$exe_calib -s $sn;
 #Open/Short and Basic Analog test
 $exe_path$exe_analog -f $DATADIR$Data_file_name -s$sn;
 #Baseline test

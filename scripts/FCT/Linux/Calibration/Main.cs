@@ -567,8 +567,8 @@ HV_T_8 Compute_GM(bool MAX, string GPIO_calib_file, int samples=50, string csvFi
 
     for(int i=0;i<8;i++){
         // T
-        T_sense = f1*f2/(f1+R[i]);
-        T_ADC = T_sense*65535/3;
+        T_sense = f1*f2/(f1+R[i]);// V 
+        T_ADC = T_sense*65535/3;// ADC
         GM_T_ADC[i] = T_ADC;
         GM_T_vec[i] = Convert_T_GPIO(T_ADC);
         if(csvFile!="none"){

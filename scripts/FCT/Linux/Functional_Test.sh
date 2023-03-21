@@ -45,6 +45,11 @@ then
   read sn
   GotSN=true
   bash FCT_LBHK_test.sh $sn
+  if [[ R150K==0 ]]
+  then
+    kill $(pidof mono)
+    exit
+  fi
   echo
   echo    "                     /--------------------------------------\\"
   echo    "                     |                                      |"

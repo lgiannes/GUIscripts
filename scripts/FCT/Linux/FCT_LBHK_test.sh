@@ -44,8 +44,13 @@ echo "\----------------------------------------------------/"
 read -n 1
 command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part1.cs\",$sn)"
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; sleep 1; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
+{ sleep 1; echo $command; sleep 4; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
+if [[ R150K==0 ]]
+then
+    echo "Abort"
+    exit
+fi
 # PART 2:
 echo
 echo "/----------------------------------------------------\\"

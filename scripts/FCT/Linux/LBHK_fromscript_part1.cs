@@ -1117,6 +1117,8 @@ void ScriptMainArgs(int SN){
     System.Console.WriteLine("Data directory: "+output_path);
 
     TurnOnFEB();
+    System.Console.WriteLine("FEB is ON.");
+
 
 
     // send Board tab settings
@@ -1130,7 +1132,9 @@ void ScriptMainArgs(int SN){
 
     // Ask the user fot the FEB Serial Number
     //int SN = Dialog.ShowInputDialog<int>("Insert Serial number of FEB under test.");       
-
+    // Generate output txt file
+    string OutFile_Name = CreateOutputFile(SN,"IO",output_path);
+    Sync.Sleep(5000);
     // Check 150k resistor. DO NOT GO ON if this test fails
     // HV on PS: 10 V
     // Set the HV on the channels to 9 V
@@ -1152,14 +1156,19 @@ void ScriptMainArgs(int SN){
     BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
     BoardLib.DeviceConfigure(12, x_verbose:false);
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
+    double Bkp_HV = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-BKP-HV") );
     double HV_read_volts=0;
+    if(Bkp_HV<4){
+        System.Console.WriteLine("Error on input HV. Set input HV to 10 V and re start the test. ");       
+        return;
+    }
     for(int i = 0;i<8;i++){
         HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+i.ToString()+".MPPC-HV") );
         if( (HV_read_volts > thr) ){
             System.Console.WriteLine("Warning: HV on channel "+i.ToString()+" is above "+thr.ToString()+" V. (Measured: "+HV_read_volts+" V)");       
             R150K = false;
         }else{
-            System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V");       
+            System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V. bkp HV is "+Bkp_HV.ToString()+" V.");       
             count++;
         }
     }
@@ -1167,7 +1176,10 @@ void ScriptMainArgs(int SN){
         R150K=true;
     }
     if(!R150K){
-        System.Console.WriteLine("Resistor at HV input is NOT 150K! Aborto test for prection.");       
+        System.Console.WriteLine("");       
+        System.Console.WriteLine("Resistor at HV input is NOT 150K! Abort test for protection.");       
+        File.AppendAllText(@OutFile_Name,"ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED.");
+        System.Console.WriteLine("");       
         return;
     }
 
@@ -1176,8 +1188,6 @@ void ScriptMainArgs(int SN){
 
 
 
-    // Generate output txt file
-    string OutFile_Name = CreateOutputFile(SN,"IO",output_path);
 
     System.Console.WriteLine("----------------------------step 1 (initialization) completed");       
     bool LB_success=false;

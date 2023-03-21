@@ -10,6 +10,11 @@ do
     #update last line of the txt file to be compared with templates
     endline=$( tail -n 1 $1$file_path_name )
     #echo "endline: "endline
-    sleep 1
+    sleep 1.5
+    if [[ $endline == "ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED." ]]
+    then
+        export R150K=0;
+        exit
+    fi
 done
 sleep 1

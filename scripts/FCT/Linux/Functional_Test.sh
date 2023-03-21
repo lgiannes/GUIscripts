@@ -61,7 +61,9 @@ then
   then
     echo "Starting other tests (I lose patience after 5 seconds)..."
   else
+    kill $(pidof mono)
     echo "Going out. Thanks!"
+    bash ShowResults.sh $sn
     exit
   fi  
 fi

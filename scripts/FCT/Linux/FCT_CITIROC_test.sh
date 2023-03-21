@@ -49,7 +49,7 @@ else
     # Ask the user for the FEB Serial Number
     echo "Enter serial number (for analysis only):"
     read sn
-    export DATADIR=$GENERALDATADIR"SN_"$sn"/"
+    export DATADIR=$GENERALDATADIR"/FEBs/SN_"$sn"/"
     echo "DATADIR: "$DATADIR
     sudo chmod 777 $DATADIR
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    

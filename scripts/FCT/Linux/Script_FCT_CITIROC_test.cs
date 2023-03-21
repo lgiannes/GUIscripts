@@ -20,53 +20,17 @@ double amplitude = 0.03;//V
 void ScriptMainArgs(int SN,int bl1, int bl2){
     
     string config_path = config_folder+"config_FCT2_newGUI_V2.xml";
-
-    // // Delete "EndOfScript.txt" dummy file if it exists in the data directory
-    // NO NEED TO DO. ALREADY DONE IN THE BASH SCRIPT 
-    // if (File.Exists(Path.Combine(data_path, "EndOfScript.txt"))){    
-    //     // If file found, delete it    
-    //     File.Delete(Path.Combine(data_path, "EndOfScript.txt"));    
-    // }    
-
     // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
     data_path = data_path + "SN_" + SN.ToString() + "/";
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
-
-    // BoardLib.Reconnect();
-    System.Console.Write("Preparing 256-chs test ...  3\r");
-    Sync.Sleep(1500);
-    System.Console.Write("Preparing 256-chs test ...  2\r");
-    Sync.Sleep(1500);
-    System.Console.Write("Preparing 256-chs test ...  1\r");
-
-
     TurnOnFEB();
     System.Console.WriteLine("FEB is on.                           ");
-    //System.Console.WriteLine("FW version: "+BoardLib.GetFirmwareVersion());
     BoardLib.OpenConfigFile(config_path);
-    // Set the required Direct Parameters
     SetDefaultDirectParameters();
 
     // Send to board
     BoardLib.SetBoardId(0); 
     BoardLib.SetDirectParameters(); //Sync.Sleep(3);
-    
-    bool Sync_good = false;
-    Sync_good = SyncTest();
-    if(!Sync_good){
-        System.Console.WriteLine("Sync not working");
-        return;
-    }else{
-         System.Console.WriteLine("Sync test Successful!");
-    }
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    //Sync.Sleep(200);
-        
-    // Enable preamp and DAQ on all channels
-    ActivateAllCh(LG,HG);
-    // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
-    System.Console.WriteLine("FEB is configured");
 
     // Set up communication with Pulse gen
     var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
@@ -80,73 +44,6 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
         System.Console.WriteLine("Pulse gen is configured");
     }
 
-
-    int AcqTag = RunAcquisition();
-    if(AcqTag==-10){
-        System.Console.WriteLine("Re-running 256-ch acquisition!");
-        AcqTag = RunAcquisition();
-    }
-    //BoardLib.Reconnect();
-    // Sync.Sleep(500);
-    // TurnOffFEB();
-    // Sync.Sleep(1000);
-    // TurnOnFEB();
-    // Sync_good = false;
-    // Sync_good = SyncTest();
-    // if(!Sync_good){
-    //     System.Console.WriteLine("Sync not working");
-    //     return;
-    // }else{
-    //     System.Console.WriteLine("Sync test Successful!");
-    // }
-
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO(3);
-    SetDefaultDirectParameters();
-
-    BoardLib.SetBoardId(0); //Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); //Sync.Sleep(3);
-    //Sync.Sleep(200);
-    ActivateAllCh(LG,HG);
-    //Sync.Sleep(200);
-
-    RunBaselineAcq(bl1);
-
-    //BoardLib.Reconnect();
-    // Sync.Sleep(500);
-    // TurnOffFEB();
-    // Sync.Sleep(1000);
-    // TurnOnFEB();
-    // Sync_good = false;
-    // Sync_good = SyncTest();
-    // if(!Sync_good){
-    //     System.Console.WriteLine("Sync not working");
-    //     return;
-    // }else{
-    //     System.Console.WriteLine("Sync test Successful!");
-    // }
-
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO(3);
-    SetDefaultDirectParameters();
-
-    BoardLib.SetBoardId(0); //Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); //Sync.Sleep(3);
-    //Sync.Sleep(250);
-    ActivateAllCh(LG,HG);
-    //Sync.Sleep(200);
-
-    RunBaselineAcq(bl2);
-
-    
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",true);
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
-    SetDefaultDirectParameters();
-    BoardLib.SetDirectParameters();
-
     ////////////////////////////////////////////////////////////////////////////////////
     CITIROC_triggers_test(SN,LG,HG);
 
@@ -158,10 +55,6 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     System.Console.WriteLine("Pulse Generator OFF");
     TurnOffFEB();
-
-
-    int GPIO=Int32.Parse(Environment.GetEnvironmentVariable("GPIO_SN"));
-    Calibration(SN,GPIO);
 
     //Generate dummy file at the end of the script
     string[] o = {"END OF SCRIPT"};

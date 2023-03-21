@@ -49,7 +49,7 @@ bool Run_LoopBack_test(string OutFile_Name, string config_path){
     System.Console.WriteLine("Starting Loopback test.");
     File.AppendAllText(@OutFile_Name, "Starting Loopback test." + Environment.NewLine);
     
-    // Test EEPROM write/read
+    // Test EEPROM write/read 
     bool EEPROM_success = EEPROM_test(OutFile_Name);
     
     // STEP 2: LB test on FEB TRIG OD

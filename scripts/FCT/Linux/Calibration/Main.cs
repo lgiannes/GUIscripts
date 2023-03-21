@@ -109,21 +109,25 @@ void ScriptMain(){
         if(G_f_HV[i]>1.1 || G_f_HV[i]<0.9){
             System.Console.WriteLine("");
             System.Console.WriteLine("WARNING: Ridiculous gain  on HV channel "+i.ToString());
+            System.Console.WriteLine(G_f_HV[i]);
             System.Console.WriteLine("");
         }
         if(O_f_HV[i]<-80 || O_f_HV[i]>80){
             System.Console.WriteLine("");
             System.Console.WriteLine("WARNING: Ridiculous offset  on HV channel "+i.ToString());
+            System.Console.WriteLine(O_f_HV[i]);
             System.Console.WriteLine("");
         }
         if(G_f_T[i]>1.1 || G_f_T[i]<0.9){
             System.Console.WriteLine("");
             System.Console.WriteLine("WARNING: Ridiculous gain  on T channel "+i.ToString());
+            System.Console.WriteLine(G_f_T[i]);
             System.Console.WriteLine("");
         }
         if(O_f_T[i]<-80 || O_f_T[i]>80){
             System.Console.WriteLine("");
             System.Console.WriteLine("WARNING: Ridiculous offset  on T channel "+i.ToString());
+            System.Console.WriteLine(O_f_T[i]);
             System.Console.WriteLine("");
         }
         
@@ -218,16 +222,19 @@ void ScriptMain(){
 
     }
 
-    return;
     System.Console.Write("Saving calibration values in EEPROM registers...");
 
     // Save calibration values in the EEPROM registers
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Write",true);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Read",false);
+
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",0);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",0);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",SN&0xFF);
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",1);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Value",(SN>>8)&0xFF);
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
     int address=0;
     for(int i=0;i<8;i++){
@@ -268,7 +275,105 @@ void ScriptMain(){
     }
     System.Console.Write("  Done!\n");
 
+    //Verify that the values written in teh EEPROM are correct (after a power cycle 
+    //TurnOffFEB();
+    //TurnOnFEB();
+    BoardLib.SetBoardId(0);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Write",false);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Read",true);
 
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",0);
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",0);
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+    if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==(SN&0xFF))){
+        System.Console.WriteLine("Error in EEPROM reading! (SN) page 0, address 0");
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + (SN&0xFF).ToString());
+    }    
+    BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",1);
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+    BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+    if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==(SN>>8&0xFF))){
+        System.Console.WriteLine("Error in EEPROM reading! (SN) page 0, address 1");
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + (SN>>8&0xFF).ToString());
+    }
+    address=0;
+    for(int i=0;i<8;i++){
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==(G_U_HV[i]&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + (G_U_HV[i]&0xFF).ToString());
+        }
+        address+=1;
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==((G_U_HV[i]>>8)&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + ((G_U_HV[i]>>8)&0xFF).ToString());
+        }
+        address+=1;
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==(O_I_HV[i]&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + (O_I_HV[i]&0xFF).ToString());
+        }
+        address+=1;
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==((O_I_HV[i]>>8)&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + ((O_I_HV[i]>>8)&0xFF).ToString());
+        }
+        address+=1;
+    }
+    for(int i=0;i<8;i++){
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==(G_U_T[i]&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + (G_U_T[i]&0xFF).ToString());
+        }
+        address+=1;
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==((G_U_T[i]>>8)&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + ((G_U_T[i]>>8)&0xFF).ToString());
+        }
+        address+=1;
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==(O_I_T[i]&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + (O_I_T[i]&0xFF).ToString());
+        }
+        address+=1;
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Page",1);
+        BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Address",address);
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.WRITE");
+        BoardLib.UpdateUserParameters("FPGA-MISC.NIOS.READ");
+        if(!(BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value")==((O_I_T[i]>>8)&0xFF))){
+            System.Console.WriteLine("Error in EEPROM reading! page 1, address "+address.ToString());
+            System.Console.WriteLine("Read: " + BoardLib.GetByteVariable("FPGA-MISC.NIOS.READ.Value").ToString() + " Written: " + ((O_I_T[i]>>8)&0xFF).ToString());
+        }
+        address+=1;
+    }
 
     // Finally, enable EEPROM WRITE PROTECT (HW action)
 

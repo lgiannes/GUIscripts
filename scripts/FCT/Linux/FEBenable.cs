@@ -13,7 +13,7 @@ void TurnOffFEB(){
 
 void ScriptMain(){
     TurnOnFEB();
-
+    System.Console.WriteLine("FEB is ON");
     return;
 }
 

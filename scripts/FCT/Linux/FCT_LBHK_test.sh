@@ -46,11 +46,12 @@ command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part1.cs\",$sn)"
 { sleep 1; echo $command; sleep 4; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
 
+
 # PART 2:
 echo
 echo "/----------------------------------------------------\\"
 echo "|       Move Jumper J13 to position 1-2.             |"
-echo "|              Set input HV to 55 V.                 |"
+echo "|              Set input HV to $PS_HV V.                 |"
 echo "|                                                    |"
 echo "|                   Press enter.                     |"
 echo "\----------------------------------------------------/"

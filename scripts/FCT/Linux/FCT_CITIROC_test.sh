@@ -1,119 +1,49 @@
-#!/bin/bash
-
-########### To measure execution time #####
-start=`date +%s`
-###########################################
-
-GotSN=false
-# read -p "Run Loopback/Housekeeping test? " -n 1 -r 
-# echo 
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#   echo "Enter serial number:"
-#   read sn
-#   GotSN=true
-#   bash run_LBHK_test.sh $sn
-#   read -p "Go on with other tests? " -n 1 -r 
-#   echo
-#   if [[ $REPLY =~ ^[Yy]$ ]]
-#   then
-#     echo "Starting other tests ..."
-#   else
-#     exit
-#   fi  
-# fi
-
+sn=$1
 
 source setup.sh
 
-# For BASELINE test:
-bl1=32000
-bl2=50000
+GUI_path=$GUI_FOLDER
+GUI_exe="/UnigeGpioBoard.exe"
 
-#This file indentifies the end of script (to close the GUI)
-dummy_EOS="EndOfScript.txt"
-dummy_EOS_citi="EndOfScript_citi.txt"
 
-#Kill all the jobs (avoid double serial communication)
-  # sudo kill $(pidof mono)
+dummy_EOS="EndOfScript_citi.txt"
+Data_path=$GENERALDATADIR/FEBs/SN_$sn/
+[ ! -d $Data_path ] && mkdir $Data_path
+[ ! -d $Data_path/Calibration ] && mkdir $Data_path/Calibration
+sudo chmod 777 $Data_path/Calibration/ 
 
-# Check that the pulse generator is connected. Otherwise, abort script
-if bash check_fg.sh | grep -q '/dev/ttyACM0'; 
+# Close all GUIs to avoid double serial com
+if [ -z $(pidof mono) ]
+then 
+    ( cd $GUI_path && mono $GUI_path$GUI_exe& )
+    echo "Opening GUI ..."
+    sleep 0.5
+    echo
+    echo "When GUI is open, press Enter "
+    echo "(Close pop-up error windows on GUI, if any. DO NOT CLOSE THE SOCKET WINDOW! )"
+    read -n 1
+else
+    sudo kill $(pidof mono)
+    ( cd $GUI_path && mono $GUI_path$GUI_exe& )
+    echo "Opening GUI ..."
+    sleep 0.5
+    echo
+    echo "When GUI is open, press Enter "
+    echo "(Close pop-up error windows on GUI, if any. DO NOT CLOSE THE SOCKET WINDOW! )"
+    read -n 1
+fi
+
+if [[ -f $Data_path$dummy_EOS ]]
 then
-  echo "Pulse Gen is connected to: /dev/ttyACM0" 
-else
-  read -p "ERROR: Pulse Gen is NOT connected. Continue? (y=yes, any other key=no) " -n 1 -r 
-  echo 
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    # Ask the user for the FEB Serial Number
-    echo "Enter serial number (for analysis only):"
-    read sn
-    export DATADIR=$GENERALDATADIR"/FEBs/SN_"$sn"/"
-    echo "DATADIR: "$DATADIR
-    sudo chmod 777 $DATADIR
-    # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
-    # then 
-       echo "Running analysis on existing files"
-       bash run_CITI_analysis.sh $sn $bl1 $bl2
-       exit
-    # else
-    #   echo "no data"
-    #   exit
-    # fi
-  else
-    exit
-  fi
+    rm -f $Data_path$dummy_EOS
 fi
+command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_merged.cs\",$sn,0,0,false,true)"
+{ sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS; } | telnet $ip_address $port 
 
+# run analysis
+exe_path=$ANALYSIS_FOLDER"/bin/";
+exe_citi="FCTcitiTriggers"
+CITI_subfolder="/CITI_trigger_tests/"
+$exe_path$exe_citi -f $Data_path$CITI_subfolder -s$sn -v0;
 
-# Ask the user for the FEB Serial Number
-if [ $GotSN = false ]
-then 
-  echo "Enter serial number:"
-  read sn
-fi
-
-# Print out data folder and give rwe permission
-export DATADIR=$GENERALDATADIR"SN_"$sn"/"
-echo "DATADIR: "$DATADIR
-sudo chmod 777 $DATADIR
-
-if [[ -f $DATADIR$dummy_EOS_citi ]]
-then 
-  read -p "Files already present for this SN. Do you want to overwrite?  (y=yes, any other key=no) " -n 1 -r
-  echo    # (optional) move to a new line
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
-    rm -f $DATADIR$dummy_EOS_citi
-    bash run_CITI_datataking.sh $sn $bl1 $bl2
-    bash run_CITI_analysis.sh $sn $bl1 $bl2
-  else
-    echo
-    echo "Running analysis on existing files"
-    echo
-    bash run_CITI_analysis.sh $sn $bl1 $bl2
-    exit
-  fi
-else
-  rm -f $DATADIR$dummy_EOS_citi;
-  bash run_CITI_datataking.sh $sn $bl1 $bl2;
-  bash run_CITI_analysis.sh $sn $bl1 $bl2;
-  echo "EXIT"
-  exit;
-fi
-
-########### To measure execution time #####
-end=`date +%s`
-###########################################
-# mins=(`expr $end - $start`)/60
-# secs=(`expr $end - $start`)%60
-
-# echo 
-# echo 
-# echo Execution time was  and  seconds.
-
-
-
-
+bash ShowResults $sn

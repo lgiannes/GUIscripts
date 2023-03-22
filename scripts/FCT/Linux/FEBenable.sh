@@ -15,13 +15,13 @@ fi
 # Open GUI and wait 
 ( cd $GUI_path && mono $GUI_path$GUI_exe & )
 
-echo "Do nothig. wait 5 secs."
+echo "Do nothing. wait 5 secs. (You may check that the GPIO is ON)"
 sleep 2.5
 echo "another 2 sec ..."
 
 
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 1; echo $command; sleep 1; } | telnet $ip_address $port 
+{ sleep 1; echo $command; sleep 2; } | telnet $ip_address $port 
 
 # Close the GUI
 if [ -z $(pidof mono) ]

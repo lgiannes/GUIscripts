@@ -1165,7 +1165,7 @@ void ScriptMainArgs(int SN){
     for(int i = 0;i<8;i++){
         HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+i.ToString()+".MPPC-HV") );
         if( (HV_read_volts > thr) ){
-            System.Console.WriteLine("Warning: HV on channel "+i.ToString()+" is above "+thr.ToString()+" V. (Measured: "+HV_read_volts+" V)");       
+            System.Console.WriteLine("Warning: HV on channel "+i.ToString()+" is above "+thr.ToString()+" V. (Measured: "+HV_read_volts+" V). bkp HV is "+Bkp_HV.ToString()+" V.");       
             R150K = false;
         }else{
             System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V. bkp HV is "+Bkp_HV.ToString()+" V.");       
@@ -1177,7 +1177,8 @@ void ScriptMainArgs(int SN){
     }
     if(!R150K){
         System.Console.WriteLine("");       
-        System.Console.WriteLine("Resistor at HV input is NOT 150K! Abort test for protection.");       
+        System.Console.WriteLine("Resistor at HV input is NOT 150K! Abort test for protection.");  
+        System.Console.WriteLine(" DO NOT APPLY 55 V ");  
         File.AppendAllText(@OutFile_Name,"ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED.");
         System.Console.WriteLine("");       
         return;

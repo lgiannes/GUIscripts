@@ -17,7 +17,7 @@ double amplitude = 0.03;//V
 
 
 
-void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false){
+void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_only=false){
     
     string config_path = config_folder+"config_FCT2_newGUI_V2.xml";
     int GPIO=Int32.Parse(Environment.GetEnvironmentVariable("GPIO_SN"));    
@@ -89,65 +89,69 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false){
         System.Console.WriteLine("Pulse gen is configured");
     }
 
-
-    int AcqTag = RunAcquisition();
-    if(AcqTag==-10){
-        System.Console.WriteLine("Re-running 256-ch acquisition!");
+    int AcqTag = -10;
+    if(!CITI_only){
         AcqTag = RunAcquisition();
+        if(AcqTag==-10){
+            System.Console.WriteLine("");
+            System.Console.WriteLine("Re-running 256-ch acquisition!");
+            System.Console.WriteLine(" ");
+            AcqTag = RunAcquisition();
+        }
+        //BoardLib.Reconnect();
+        // Sync.Sleep(500);
+        // TurnOffFEB();
+        // Sync.Sleep(1000);
+        // TurnOnFEB();
+        // Sync_good = false;
+        // Sync_good = SyncTest();
+        // if(!Sync_good){
+        //     System.Console.WriteLine("Sync not working");
+        //     return;
+        // }else{
+        //     System.Console.WriteLine("Sync test Successful!");
+        // }
+
+        //Restore initial config
+        BoardLib.OpenConfigFile(config_path);
+        SendGPIO(3);
+        SetDefaultDirectParameters();
+
+        BoardLib.SetBoardId(0); //Sync.Sleep(5);
+        BoardLib.SetDirectParameters(); //Sync.Sleep(3);
+        //Sync.Sleep(200);
+        ActivateAllCh(LG,HG);
+        //Sync.Sleep(200);
+
+        RunBaselineAcq(bl1);
+
+        //BoardLib.Reconnect();
+        // Sync.Sleep(500);
+        // TurnOffFEB();
+        // Sync.Sleep(1000);
+        // TurnOnFEB();
+        // Sync_good = false;
+        // Sync_good = SyncTest();
+        // if(!Sync_good){
+        //     System.Console.WriteLine("Sync not working");
+        //     return;
+        // }else{
+        //     System.Console.WriteLine("Sync test Successful!");
+        // }
+
+        //Restore initial config
+        BoardLib.OpenConfigFile(config_path);
+        SendGPIO(3);
+        SetDefaultDirectParameters();
+
+        BoardLib.SetBoardId(0); //Sync.Sleep(5);
+        BoardLib.SetDirectParameters(); //Sync.Sleep(3);
+        //Sync.Sleep(250);
+        ActivateAllCh(LG,HG);
+        //Sync.Sleep(200);
+
+        RunBaselineAcq(bl2);
     }
-    //BoardLib.Reconnect();
-    // Sync.Sleep(500);
-    // TurnOffFEB();
-    // Sync.Sleep(1000);
-    // TurnOnFEB();
-    // Sync_good = false;
-    // Sync_good = SyncTest();
-    // if(!Sync_good){
-    //     System.Console.WriteLine("Sync not working");
-    //     return;
-    // }else{
-    //     System.Console.WriteLine("Sync test Successful!");
-    // }
-
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO(3);
-    SetDefaultDirectParameters();
-
-    BoardLib.SetBoardId(0); //Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); //Sync.Sleep(3);
-    //Sync.Sleep(200);
-    ActivateAllCh(LG,HG);
-    //Sync.Sleep(200);
-
-    RunBaselineAcq(bl1);
-
-    //BoardLib.Reconnect();
-    // Sync.Sleep(500);
-    // TurnOffFEB();
-    // Sync.Sleep(1000);
-    // TurnOnFEB();
-    // Sync_good = false;
-    // Sync_good = SyncTest();
-    // if(!Sync_good){
-    //     System.Console.WriteLine("Sync not working");
-    //     return;
-    // }else{
-    //     System.Console.WriteLine("Sync test Successful!");
-    // }
-
-    //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
-    SendGPIO(3);
-    SetDefaultDirectParameters();
-
-    BoardLib.SetBoardId(0); //Sync.Sleep(5);
-    BoardLib.SetDirectParameters(); //Sync.Sleep(3);
-    //Sync.Sleep(250);
-    ActivateAllCh(LG,HG);
-    //Sync.Sleep(200);
-
-    RunBaselineAcq(bl2);
 
     
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",true);
@@ -168,8 +172,9 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false){
     System.Console.WriteLine("Pulse Generator OFF");
     TurnOffFEB();
 
-
-    Calibration(SN,GPIO);
+    if(!CITI_only){
+        Calibration(SN,GPIO);
+    }
 
     //Generate dummy file at the end of the script
     File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 
@@ -1365,7 +1370,7 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
     //System.Console.WriteLine("Pulse Generator OFF");
 
     //Generate dummy file at the end of the script
-    string[] o = {"END OF SCRIPT"};
+    string[] o = {"END OF CITIROC TRIGGERS SCRIPT"};
     File.WriteAllLinesAsync(data_path+"EndOfScript_citi.txt",o); 
     return;
 }
@@ -1424,6 +1429,7 @@ string GenerateProgressString(int p, int t){
 void Calibration(int SN, int GPIO){
     //int SN=256;// to be passed as argument
     System.Console.WriteLine("Starting HV and Temperature calibration procedure ...");
+    System.Console.WriteLine("Calibration FEB #"+SN.ToString()+". Using calibration paramters for GPIO #"+GPIO.ToString());
     //int GPIO=47;// SN of the GPIO used, to be passed as argument
     //string GPIO_calib_folder = "/DATA/neutrino/FCT/GPIO_cal/GPIO_SN"+GPIO.ToString()+"/";
     string GPIO_calib_folder = Environment.GetEnvironmentVariable("GPIO_CALIB_FOLDER")+"/GPIO_SN"+GPIO.ToString()+"/";

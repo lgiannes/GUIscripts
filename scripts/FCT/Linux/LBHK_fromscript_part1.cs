@@ -1158,7 +1158,7 @@ void ScriptMainArgs(int SN){
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     double Bkp_HV = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-BKP-HV") );
     double HV_read_volts=0;
-    if(Bkp_HV<4){
+    if(Bkp_HV>10.7 || Bkp_HV<9.3){
         System.Console.WriteLine("Error on input HV. Set input HV to 10 V and re start the test. ");       
         return;
     }

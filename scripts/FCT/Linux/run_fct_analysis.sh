@@ -2,7 +2,7 @@ sn=$1
 bl1=$2
 bl2=$3
 
-if [[ $# -eq 4 && ($4 == 1) ]]
+if [[ $# -eq 5 && ($5 == 1) ]]
 then 
   DATADIR=$GENERALDATADIR"FEBs/SN_"$sn
   echo "Running analysis only"
@@ -35,8 +35,15 @@ echo
 #Launch the ROOT analyses.
 #Setup
 source $setup_path;
-#Calibration
-$exe_path$exe_calib -s $sn;
+if [[ $4=="NOCALIB" ]]
+then
+  echo
+  echo "Not doing calibration analysis."
+  echo
+else
+  #Calibration
+  $exe_path$exe_calib -s $sn;
+fi
 #Open/Short and Basic Analog test
 $exe_path$exe_analog -f $DATADIR$Data_file_name -s$sn;
 #Baseline test

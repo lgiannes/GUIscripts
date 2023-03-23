@@ -795,7 +795,6 @@ bool bkpHV_test(string OutFile_Name, string HK_values){
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
     double mu = Convert.ToDouble(Environment.GetEnvironmentVariable("PS_HV"));//V
-    System.Console.WriteLine("Check that the Voltage on the Power supply is "+mu.ToString()+". Otherwise, change option in setup.sh.");
     double Delta = 2;//V
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
@@ -811,6 +810,8 @@ bool bkpHV_test(string OutFile_Name, string HK_values){
         File.AppendAllText(@OutFile_Name, "backplane HV: "+read+" V -> FAILED. "+"Acc. range: "+(mu-Delta).ToString()+","+(mu+Delta).ToString() +Environment.NewLine);
         System.Console.WriteLine("backplane HV test FAILED");
         success = false;
+        System.Console.WriteLine("This test will always fail if the voltage on the power supply is not "+mu.ToString()+ " V");
+        System.Console.WriteLine("Check that the Voltage on the Power supply is "+mu.ToString()+". Otherwise, change option \"PS_HV\" in setup.sh.");
     }
     File.AppendAllText(@HK_values, "HV_bkp; "+read+"; V; Backplane HV" +Environment.NewLine);
 

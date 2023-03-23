@@ -2,6 +2,7 @@ sn=$1
 bl1=$2
 bl2=$3
 
+
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 # Set the ip address of this machine and the port set for the GUI
@@ -15,7 +16,15 @@ echo "DATADIR: "$DATADIR
 # Define the command to run the GUI script
 command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
 command_citi="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_CITI_test.cs\",$sn)"
-command_merged="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_merged.cs\",$sn,$bl1,$bl2)"
+if [[ $4=="NOCALIB" ]]
+then
+  echo
+  echo "Not doing calibration."
+  echo
+  command_merged="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_merged_NOCALIB.cs\",$sn,$bl1,$bl2)"
+else
+    command_merged="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_merged.cs\",$sn,$bl1,$bl2)"
+fi
 # Opens GUI only if there are no GUI already open
 if [ -z $(pidof mono) ]
 then 

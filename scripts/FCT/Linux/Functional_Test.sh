@@ -1,4 +1,25 @@
 #!/bin/bash
+str=NOCALIB
+# echo $1
+# echo $str
+
+if [[ -z $1 ]]
+then  
+  echo
+  echo "Calibration will be included"
+  echo
+elif [[ $1 == $str ]]
+then
+  echo
+  echo "Calibration will NOT be included"
+  echo
+else  
+  echo "USAGE:"
+  echo "no arguments: run full test and calibration"
+  echo "\"NOCALIB\": run full test without calibration"
+  echo "I don't understand any other argument"
+  exit
+fi
 
 source setup.sh
 echo "Data directory: "$GENERALDATADIR
@@ -66,6 +87,8 @@ then
     echo "Going out. Thanks!"
     bash ShowResults.sh $sn
     exit
+    echo
+
   fi  
 fi
 
@@ -101,7 +124,7 @@ else
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
        echo "Running analysis on existing files"
-       bash run_fct_analysis.sh $sn $bl1 $bl2
+       bash run_fct_analysis.sh $sn $bl1 $bl2 $1
        exit
     # else
     #   echo "no data"
@@ -135,20 +158,20 @@ then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
     rm -f $DATADIR$dummy_EOS
     rm -f $DATADIR$dummy_EOS_citi
-    bash run_fct_data_taking.sh $sn $bl1 $bl2
-    bash run_fct_analysis.sh $sn $bl1 $bl2
+    bash run_fct_data_taking.sh $sn $bl1 $bl2 $1
+    bash run_fct_analysis.sh $sn $bl1 $bl2 $1
   else
     echo
     echo "Running analysis on existing files"
     echo
-    bash run_fct_analysis.sh $sn $bl1 $bl2
+    bash run_fct_analysis.sh $sn $bl1 $bl2 $1
     exit
   fi
 else
   rm -f $DATADIR$dummy_EOS;
   rm -f $DATADIR$dummy_EOS_citi;
-  bash run_fct_data_taking.sh $sn $bl1 $bl2;
-  bash run_fct_analysis.sh $sn $bl1 $bl2;
+  bash run_fct_data_taking.sh $sn $bl1 $bl2 $1;
+  bash run_fct_analysis.sh $sn $bl1 $bl2 $1;
   exit
 fi
 

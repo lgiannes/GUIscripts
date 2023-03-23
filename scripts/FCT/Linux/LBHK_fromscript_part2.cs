@@ -1250,7 +1250,7 @@ System.IO.FileInfo LatestFileWritten(System.IO.FileInfo[] FilesList){
 int CountFailedTests(string pathToFile){
     int count = 0;
     foreach (var line in File.ReadAllLines(pathToFile)){
-        if (line.Contains("FAILED"))
+        if (line.Contains("FAIL") || line.Contains("fail"))
             count++;
     }
     return count;

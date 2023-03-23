@@ -1,5 +1,5 @@
 #!/bin/bash
-str=NOCALIB
+export str_cal=NOCALIB
 # echo $1
 # echo $str
 
@@ -8,7 +8,7 @@ then
   echo
   echo "Calibration will be included"
   echo
-elif [[ $1 == $str ]]
+elif [[ $1 == $str_cal ]]
 then
   echo
   echo "Calibration will NOT be included"
@@ -20,6 +20,8 @@ else
   echo "I don't understand any other argument"
   exit
 fi
+
+bool_cal=$1
 
 source setup.sh
 echo "Data directory: "$GENERALDATADIR
@@ -158,6 +160,7 @@ then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
     rm -f $DATADIR$dummy_EOS
     rm -f $DATADIR$dummy_EOS_citi
+    echo "arguments: " $sn $bl1 $bl2 $1
     bash run_fct_data_taking.sh $sn $bl1 $bl2 $1
     bash run_fct_analysis.sh $sn $bl1 $bl2 $1
   else

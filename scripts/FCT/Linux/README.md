@@ -3,24 +3,24 @@
 **Always run them in a subshell (bash ...)**
 **it is good practice to work as root privileged user. run the following:**
 
-sudo -i
+    sudo -i
 
 **and insert password**
 
 **Then move to the scripts folder (if that has been saved in the .bashrc):**
 
-cd $FCT_RUN_FOLDER 
+    cd $FCT_RUN_FOLDER 
 
 ## Complete Functional test
 **the main script of this package is Functional_Test.sh**
 **it can be run without arguments to have a full functional test + calibration of the board:**
 
-time bash Functional_Test.sh
+    time bash Functional_Test.sh
 
 **duration: around 5'30"**
 **For the first test of the boards, before installation of the coldplate, the FCT has to be launched WITHOUT calibration. You can do so by adding the argument "NOCALIB":**
 
-time bash Functional_Test.sh NOCALIB
+    time bash Functional_Test.sh NOCALIB
 
 **duration: around 6'30"**
 
@@ -28,41 +28,41 @@ time bash Functional_Test.sh NOCALIB
 **this script runs the first part of the test. Some hardware actions are required!**
 **provide serial number as argument!**
 
-time bash FCT_LBHK_test.sh SN
+    time bash FCT_LBHK_test.sh SN
 
 ## 256ch test
 **this script tests all the 256 analog channels and the well functioning of baseline change**
 
-time bash FCT_256ch_test.sh
+    time bash FCT_256ch_test.sh
 
 ## FCT_CITIROC_test.sh
 **this script tests the different trigger options of the CITIROCs**
 **provide serial number as argument!**
 
-time bash FCT_CITIROC_test.sh SN
+    time bash FCT_CITIROC_test.sh SN
 
 ## Calibration
 **this sript runs the calibration routine for the FEB**
 **provide serial number as argument!**
 
-time bash FCT_Calibration.sh SN
+    time bash FCT_Calibration.sh SN
 
 ## Analysis only
 **this script runs teh analysis for a certain serial number for which the data taking part of the test (or the whole test) has already been done**
 **provide serial number as argument!**
 
-time bash Analysis_only.sh SN
+    time bash Analysis_only.sh SN
 
 ## MIB test
 **this script test the MIB. Warning: this is supposed to be run with the MIB type adapter board (look at the label at the bottom lef tof the big adapter board (connected to the GPIO))**
 
-time bash MIBtest.sh 
+    time bash MIBtest.sh 
 
 ## Show Results
 **this script shows the results for a certain serial number for which the FCT (complete) has alrady been done**
 **provide serial number as argument!**
 
-bash ShowResults.sh SN
+    bash ShowResults.sh SN
 
 **this is automatically launched at the end of each of the scripts above**
 
@@ -72,49 +72,59 @@ bash ShowResults.sh SN
 # Test Bench set up
 
 ## INSTALL GUI
-    ### install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
-    install monodevelop:
+### install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
+install monodevelop:
     sudo apt install apt-transport-https dirmngr
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
     echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
-	    sudo apt update
-    install libUSB
-	    sudo apt-get install libusb-1.0-0-dev
-    make usb accessible from all users
-    navigate to the folder /etc/udev/rules.d/ and create WITH USER PRIVILEGES a text file named 89-bmfeb.rules
-    put the following line in the file and save it
+	sudo apt update
+install libUSB
+	sudo apt-get install libusb-1.0-0-dev
+make usb accessible from all users:
+navigate to the folder /etc/udev/rules.d/ and create WITH USER PRIVILEGES a text file named 89-bmfeb.rules
+put the following line in the file and save it
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="206b", GROUP="neutrino", MODE="0660"
-    in a root privileged terminal, run the following to force reload of devices:
+in a root privileged terminal, run the following to force reload of devices:
     udevadm control --reload-rules && udevadm trigger 	
 
 ### install the GUI from https://partphys.unige.ch/~favrey/SFGD/SFGD-GPIO/ 
-	file: SFGD_GPIOFrontEnd-v951-linux.zip
-	unzip it to a folder (eg ..../GUI/)
-	Copy the json files in this shared folder https://drive.switch.ch/index.php/s/gc07AWr8Cv2iY5a 
-	into the GUI folder. The password to access the shared folder is FCT
+file: SFGD_GPIOFrontEnd-v951-linux.zip
+unzip it to a folder (eg ..../GUI/)
+Copy the json files in this shared folder https://drive.switch.ch/index.php/s/gc07AWr8Cv2iY5a into the GUI folder. The password to access the shared folder is FCT
 	
  
 ## PROGRAM THE BOARDS
-	download quartus programmer for Linux:
-	download files in:
-		https://llrbox.in2p3.fr/owncloud/index.php/s/ywaVEVcpqgFqY9N
-		Run the .run file and follow the instructions
-		copy the following text into the file: /etc/udev/rules.d/51-usbblaster.rules
-			# USB Blaster
-			SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
-			SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6002", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
-			SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6003", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
-			# USB Blaster II
-			SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6010", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
-			SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
-		sudo ln -s /lib64/libudev.so.1 /lib64/libudev.so.0
-		Restart PC
-	Program the GPIO: 
-		download latest firmware at: https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/GPIO/
-	Program the FEB:
-		download the latest firmware at https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/UT_92/
-		Use .jic for permanent programming, .sof to program until power cycle
-
+### download quartus programmer for Linux:
+download files in:
+	https://llrbox.in2p3.fr/owncloud/index.php/s/ywaVEVcpqgFqY9N
+Run the .run file and follow the instructions
+copy the following text into the file: /etc/udev/rules.d/51-usbblaster.rules
+	# USB Blaster
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6002", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6003", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
+    # USB Blaster II
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6010", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666", NAME="bus/usb/$env{BUSNUM}/$env{DEVNUM}", RUN+="/bin/chmod 0666 %c"
+then run
+    sudo ln -s /lib64/libudev.so.1 /lib64/libudev.so.0
+Restart PC
+	
+### Program the GPIO: 
+download latest firmware at: https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/GPIO/
+Open Quartus, then open the programmer. 
+Select your USB blaster by clicking on Hardware setup and then "currently selected hardware"
+Set the mode as "active serial programming".
+Open the fw file that you downloaded (File/Open...).
+Check the box "Program/Configure". Press Start
+### Program the FEB:
+download the latest firmware at https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/UT_92/
+**Use .jic for permanent programming, .sof to program until power cycle**
+Open Quartus, then open the programmer. 
+Select your USB blaster by clicking on Hardware setup and then "currently selected hardware"
+Set the mode as JTAG.
+Open the fw file that you downloaded (File/Open...).
+Check the box "Program/Configure". Press Start.
 ## INSTALL ROOT
 	download required dependencies:
 	 sudo apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \

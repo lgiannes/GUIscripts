@@ -1,52 +1,51 @@
 # RUN THE SCRIPTS. The list of all the scripts and description follows
-** WARNING: Never run scripts with source or ./ **
-** Always run them in a subshell (bash ...)**
+**WARNING: Never run scripts with source or ./**
+**Always run them in a subshell (bash ...)**
 
 ## Complete Functional test
-** the main script of this package is Functional_Test.sh **
-** it can be run without arguments to have a full functional test + calibration of the board: **
+**the main script of this package is Functional_Test.sh**
+**it can be run without arguments to have a full functional test + calibration of the board:**
 time bash Functional_Test.sh
-** duration: around 5'30"
-** For the first test of the boards, before installation of the coldplate, the FCT has to be launched WITHOUT calibration. You can do so by adding the argument "NOCALIB": **
+**duration: around 5'30"**
+**For the first test of the boards, before installation of the coldplate, the FCT has to be launched WITHOUT calibration. You can do so by adding the argument "NOCALIB":**
 time bash Functional_Test.sh NOCALIB
-** duration: around 6'30" **
+**duration: around 6'30"**
 
 ## Housekeeping/Loopback only
-** this script runs the first part of the test. Some hardware actions are required!**
-** provide serial number as argument!**
+**this script runs the first part of the test. Some hardware actions are required!**
+**provide serial number as argument!**
 time bash FCT_LBHK_test.sh SN
 
 ## 256ch test
-** this script tests all the 256 analog channels and the well functioning of baseline change**
+**this script tests all the 256 analog channels and the well functioning of baseline change**
 time bash FCT_256ch_test.sh
 
 ## FCT_CITIROC_test.sh
-** this script tests the different trigger options of the CITIROCs**
-** provide serial number as argument!**
+**this script tests the different trigger options of the CITIROCs**
+**provide serial number as argument!**
 time bash FCT_CITIROC_test.sh SN
 
 ## Calibration
-__ this sript runs the calibration routine for the FEB__
-** provide serial number as argument!**
+**this sript runs the calibration routine for the FEB**
+**provide serial number as argument!**
 time bash FCT_Calibration.sh SN
 
 ## Analysis only
-** this script runs teh analysis for a certain serial number for which the data taking part of the test (or the whole test) has already been done**
-** provide serial number as argument!**
+**this script runs teh analysis for a certain serial number for which the data taking part of the test (or the whole test) has already been done**
+**provide serial number as argument!**
 time bash Analysis_only.sh SN
 
 ## MIB test
-** this script test the MIB. Warning: this is supposed to be run with the MIB type adapter board (look at the label at the bottom lef tof the big adapter board (connected to the GPIO))**
+**this script test the MIB. Warning: this is supposed to be run with the MIB type adapter board (look at the label at the bottom lef tof the big adapter board (connected to the GPIO))**
 time bash MIBtest.sh 
 
 ## Show Results
-** this script shows the results for a certain serial number for which the FCT (complete) has alrady been done**
-** provide serial number as argument!**
+**this script shows the results for a certain serial number for which the FCT (complete) has alrady been done**
+**provide serial number as argument!**
 bash ShowResults.sh SN
-** this is automatically launched at the end of each of the scripts above**
+**this is automatically launched at the end of each of the scripts above**
 
-** it is always good practice to source setup.sh in the terminal where the scripts are being ran
- all these scripts use subscripts and c sharp code contained in the ./utils/ folder**
+**it is always good practice to source setup.sh in the terminal where the scripts are being ran all these scripts use subscripts and c sharp code contained in the ./utils/ folder**
 
 
 ### Test Bench set up

@@ -74,12 +74,12 @@ bash ShowResults.sh SN
 ## INSTALL GUI
 install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
    install monodevelop:
-	$ sudo apt install apt-transport-https dirmngr
-	$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-	$ echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
-	$ sudo apt update
+	sudo apt install apt-transport-https dirmngr
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+	echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
+	 sudo apt update
     install libUSB
-	$ sudo apt-get install libusb-1.0-0-dev
+	 sudo apt-get install libusb-1.0-0-dev
     make usb accessible from all users
 	navigate to the folder /etc/udev/rules.d/ and create WITH USER PRIVILEGES a text file named 89-bmfeb.rules
 	put the following line in the file and save it
@@ -117,32 +117,32 @@ install the dependencies (partially following the instructions in: https://partp
 
 ## INSTALL ROOT
 	download required dependencies:
-	$ sudo apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+	 sudo apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
 	libxft-dev libxext-dev python libssl-dev
 	install binay distribution for ROOT6 (6 or higher):
 	go to the folder wher eyou want your ROOT to be (let's call it $ROOTFOLDER).
-	$ https://root.cern/download/root_v6.26.10.Linux-ubuntu22-x86_64-gcc11.3.tar.gz
-	$ tar -xzvf root_v6.26.10.Linux-ubuntu22-x86_64-gcc11.3.tar.gz 
-	$ source root/bin/thisroot.sh
-	and add this last line to your ~/.bashrc file (don't forget to sfecify the path there!!
+	 https://root.cern/download/root_v6.26.10.Linux-ubuntu22-x86_64-gcc11.3.tar.gz
+	 tar -xzvf root_v6.26.10.Linux-ubuntu22-x86_64-gcc11.3.tar.gz 
+	 source root/bin/thisroot.sh
+	and add this last line to your ~/.bashrc file (don't forget to sfecify the path there!!)
 	check that root is installed by typing "root" in whichever terminal
 
 ## CLONE SOFTWARE REPOSITORIES
 	install git
-	$ sudo apt install git
+	 sudo apt install git
 	create a directory for the software and navigate into it
 	clone analysis repository
-	$ git clone https://github.com/lgiannes/FunctionalTest.git
+	 git clone https://github.com/lgiannes/FunctionalTest.git
 	clone GUI scripts repository
-	$ git clone https://github.com/lgiannes/GUIscripts.git
+	 git clone https://github.com/lgiannes/GUIscripts.git
 	REMARK: The code is private, you need to have GitHub account and have access to the repositories to clone them. Ask lorenzo.giannessi@unige.ch for permission
 
 ## COMPILE THE SOFTWARE
 	install the dependencies: You need C++17 and CMake2.8.12 minimum
 	navigate to FunctionalTest/build and run:
-	$ bash cmake_clean.sh
-	$ cmake ..
-	$ make
+	 bash cmake_clean.sh
+	 cmake ..
+	 make
 	
 	modify the setup.sh files in both repositories according to your machine!
  
@@ -160,7 +160,7 @@ install the dependencies (partially following the instructions in: https://partp
 ## UTILITIES:
 	1. it is recommended to install an IDE (even a simple one is ok)
 	to install Visual Studio Code:
-		$ sudo apt-get install ./code_1.76.0-1677667493_amd64.deb 
+		 sudo apt-get install ./code_1.76.0-1677667493_amd64.deb 
 	2. set up environment variables:
 	add the following lines at the bottom of your ~/.bashrc file (take care of using the right paths!!! they may change depending on the computer):	
 	export FCT_FOLDER="/path/to/GUIscripts/scripts/FCT/Linux/"

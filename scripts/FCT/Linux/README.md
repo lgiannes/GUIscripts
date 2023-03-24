@@ -2,7 +2,7 @@
 
 MANDATORY to connect the GPIo to a USB3 port. USB2 is not supported
 
-
+## ADD INSTRUCTIONS FOR THE SCRIPTS!
 
 #### PRELIMINARY PROCEDURE: compile root analysis
     cd /home/neutrino/FCT/FunctionalTest/build

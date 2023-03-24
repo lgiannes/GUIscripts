@@ -47,7 +47,7 @@
 ## Show Results  
 **this script shows the results for a certain serial number for which the FCT (complete) has alrady been done**  
 **provide serial number as argument!**    
-    ```bash ShowResults.sh SN ``` 
+    ```bash ShowResults.sh SN ```  
 **this is automatically launched at the end of each of the scripts above**
 
 **it is always good practice to source setup.sh in the terminal where the scripts are being ran all these scripts use subscripts and c sharp code contained in the ./utils/ folder**  

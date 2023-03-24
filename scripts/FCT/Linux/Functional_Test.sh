@@ -23,7 +23,7 @@ fi
 
 bool_cal=$1
 
-source $FCT_RUN_FOLDER/setup.sh
+source "$FCT_RUN_FOLDER/setup.sh"
 echo "Data directory: "$GENERALDATADIR
 ########### To measure execution time #####
 start=`date +%s`
@@ -67,7 +67,7 @@ then
   echo "Enter serial number:"
   read sn
   GotSN=true
-  bash $FCT_UTILS/FCT_LBHK_test.sh $sn
+  bash "$FCT_RUN_FOLDER/FCT_LBHK_test.sh" $sn
 
   echo
   echo    "                     /--------------------------------------\\"
@@ -87,7 +87,7 @@ then
   else
     kill $(pidof mono)
     echo "Going out. Thanks!"
-    bash $FCT_RUN_FOLDER/ShowResults.sh $sn
+    bash "$FCT_RUN_FOLDER/ShowResults.sh" $sn
     exit
     echo
 
@@ -126,7 +126,7 @@ else
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
        echo "Running analysis on existing files"
-       bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1
+       bash "$FCT_UTILS/run_fct_analysis.sh" $sn $bl1 $bl2 $1
        exit
     # else
     #   echo "no data"
@@ -158,23 +158,23 @@ then
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
-    rm -f $DATADIR$dummy_EOS
-    rm -f $DATADIR$dummy_EOS_citi
-    echo "arguments: " $sn $bl1 $bl2 $1
-    bash $FCT_UTILS/run_fct_data_taking.sh $sn $bl1 $bl2 $1
-    bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1
+    rm -f "$DATADIR$dummy_EOS"
+    rm -f "$DATADIR$dummy_EOS_citi"
+    echo "arguments:  SN:"$sn "bl1:"$bl1 "bl2:"$bl2 "calib? (empty=YES):"$1
+    bash "$FCT_UTILS/run_fct_data_taking.sh" $sn $bl1 $bl2 $1
+    bash "$FCT_UTILS/run_fct_analysis.sh" $sn $bl1 $bl2 $1
   else
     echo
     echo "Running analysis on existing files"
     echo
-    bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1
+    bash "$FCT_UTILS/run_fct_analysis.sh" $sn $bl1 $bl2 $1
     exit
   fi
 else
-  rm -f $DATADIR$dummy_EOS;
-  rm -f $DATADIR$dummy_EOS_citi;
-  bash $FCT_UTILS/run_fct_data_taking.sh $sn $bl1 $bl2 $1;
-  bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1;
+  rm -f "$DATADIR$dummy_EOS";
+  rm -f "$DATADIR$dummy_EOS_citi";
+  bash "$FCT_UTILS/run_fct_data_taking.sh" $sn $bl1 $bl2 $1;
+  bash "$FCT_UTILS/run_fct_analysis.sh" $sn $bl1 $bl2 $1;
   exit
 fi
 

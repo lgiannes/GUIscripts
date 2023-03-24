@@ -1171,7 +1171,7 @@ void ScriptMainArgs(int SN){
             System.Console.WriteLine("Warning: HV on channel "+i.ToString()+" is above "+thr.ToString()+" V. (Measured: "+HV_read_volts+" V). bkp HV is "+Bkp_HV.ToString()+" V.");       
             R150K = false;
         }else{
-            System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V. bkp HV is "+Bkp_HV.ToString()+" V.");       
+            System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V.\t bkp HV is "+Bkp_HV.ToString()+" V.");       
             count++;
         }
     }

@@ -1,3 +1,17 @@
+### RUN THE SCRIPTS
+Never run scripts with source or ./ 
+Always run them in a subshell (bash ...)
+
+
+
+
+
+
+
+
+
+
+
 ### Test Bench set up
 
 MANDATORY to connect the GPIO to a USB3 port. USB2 is not supported

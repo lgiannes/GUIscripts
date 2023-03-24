@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source setup.sh
+source $FCT_RUN_FOLDER/setup.sh
 
 
 if [ -z $(pidof mono) ]
@@ -15,7 +15,7 @@ fi
 
 
 # Check that the pulse generator is connected. Otherwise, abort script
-if bash check_fg.sh | grep -q '/dev/ttyACM0'; 
+if bash $FCT_UTILS/check_fg.sh | grep -q '/dev/ttyACM0'; 
 then
   echo "Pulse Gen is connected to: /dev/ttyACM0" 
 else

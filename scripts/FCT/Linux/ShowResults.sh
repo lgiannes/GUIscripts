@@ -1,8 +1,14 @@
-SN=$1
+if [[ -z $1 ]]
+then
+echo Tell me the Serial Number! Thank you
+exit
+fi
 
-source setup.sh
+sn=$1
 
-DATADIR=$GENERALDATADIR/FEBs/SN_$SN
+source $FCT_RUN_FOLDER/setup.sh
+
+DATADIR=$GENERALDATADIR/FEBs/SN_$sn
 echo
 tail -n3 $DATADIR/output_*.txt
 LBHK_dir=$DATADIR/IO_TEST/

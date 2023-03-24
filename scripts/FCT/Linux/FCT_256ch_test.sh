@@ -38,7 +38,7 @@ dummy_EOS_citi="EndOfScript_citi.txt"
   # sudo kill $(pidof mono)
 
 # Check that the pulse generator is connected. Otherwise, abort script
-if bash check_fg.sh | grep -q '/dev/ttyACM0'; 
+if bash $FCT_UTILS/check_fg.sh | grep -q '/dev/ttyACM0'; 
 then
   echo "Pulse Gen is connected to: /dev/ttyACM0" 
 else

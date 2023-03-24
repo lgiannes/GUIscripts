@@ -2,11 +2,7 @@ sn=$1
 bl1=$2
 bl2=$3
 
-if [[ $# -eq 5 && ($5 == 1) ]]
-then 
-  DATADIR=$GENERALDATADIR"FEBs/SN_"$sn
-  echo "Running analysis only"
-fi
+
 echo "data directory: "$DATADIR
 [ -z $DATADIR ] && echo "data directory does not exist. Run acquisiton first" && exit
 
@@ -35,13 +31,16 @@ echo
 #Launch the ROOT analyses.
 #Setup
 source $setup_path;
-if [[ $4=="NOCALIB" ]]
+
+if [[ $4 = "$str_cal" ]]
 then
   echo
   echo "Not doing calibration analysis."
   echo
 else
-  #Calibration
+  echo
+  echo "Calibration will be included"
+  echo
   $exe_path$exe_calib -s $sn;
 fi
 #Open/Short and Basic Analog test

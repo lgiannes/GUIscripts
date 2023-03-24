@@ -1,3 +1,9 @@
+if [[ -z $1 ]]
+then
+echo Tell me the Serial Number! Thank you
+exit
+fi
+
 sn=$1
 
 source $FCT_RUN_FOLDER/setup.sh

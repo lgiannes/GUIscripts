@@ -153,11 +153,11 @@ if everything is set and connected (FEB enabled, dongle connected) it will be en
 ## UTILITIES:
 1. it is recommended to install an IDE (even a simple one is ok)  
 to install Visual Studio Code:  
-	sudo apt-get install ./code_1.76.0-1677667493_amd64.deb  
+	```sudo apt-get install ./code_1.76.0-1677667493_amd64.deb  ```
 2. set up environment variables:  
 add the following lines at the bottom of your ~/.bashrc file (take care of using the right paths!!! they may change depending on the computer):	 
 	export FCT_FOLDER="/path/to/GUIscripts/scripts/FCT/Linux/"  
-	export GUI_FOLDER="/path/to/GUI/"  
+    export GUI_FOLDER="/path/to/GUI/"  
 		
 
 ---

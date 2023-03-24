@@ -1,6 +1,6 @@
 ### Test Bench set up
 
-MANDATORY to connect the GPIo to a USB3 port. USB2 is not supported
+MANDATORY to connect the GPIO to a USB3 port. USB2 is not supported
 
 
 
@@ -17,9 +17,8 @@ Insert password: UniGeneve2022
 # Go to script folder: 
     cd /home/neutrino/FCT/code/scripts/FCT/Linux/
 # Run bash script
-    bash Socket.sh 
-or
-    time bash Socket.sh
+
+    time bash Functional_Test.sh
 the GUI should be opening. (use "time") to display the total excution time at the end of script
 
 # BUG HINT:
@@ -29,9 +28,6 @@ Check that the socket window says: "waiting for a new single client connection"
 
 # BUG HINT:
 If the socket server stops at start up (you get "server: stopped" when you open the GUI), try to change the number of the port from the app-settings.json file contained in the GUI directory (same directory as UnigeGpioBoard.exe) Numbers accepted ONLY above 10000
-
-# BUG HINT:
-[SCR_MSG]:[[ERR]:[A script is running. First abort the script by sending 'ESC+A, Enter' before sending another request !]  -> this error does not prevent the script from running correctly
 
 Insert the serial number of the FEB under test.
 

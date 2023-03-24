@@ -54,19 +54,19 @@ then
   then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
     rm -f $MIBDATADIR$dummy_EOS
-    bash MIBLaunchScript.sh $sn
-    bash MIBLaunchAnalysis.sh $sn
+    bash $FCT_UTILS/MIBLaunchScript.sh $sn
+    bash $FCT_UTILS/MIBLaunchAnalysis.sh $sn
   else
     echo
     echo "Running analysis on existing files"
     echo
-    bash MIBLaunchAnalysis.sh $sn
+    bash $FCT_UTILS/MIBLaunchAnalysis.sh $sn
     exit
   fi
 else
   rm -f $MIBDATADIR$dummy_EOS;
-  bash MIBLaunchScript.sh $sn
-  bash MIBLaunchAnalysis.sh $sn
+  bash $FCT_UTILS/MIBLaunchScript.sh $sn
+  bash $FCT_UTILS/MIBLaunchAnalysis.sh $sn
   exit
 fi
 

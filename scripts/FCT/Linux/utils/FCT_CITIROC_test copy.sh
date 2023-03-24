@@ -24,7 +24,7 @@ GotSN=false
 # fi
 
 
-source setup.sh
+source $FCT_RUN_FOLDER/setup.sh
 
 # For BASELINE test:
 bl1=32000
@@ -55,7 +55,7 @@ else
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
        echo "Running analysis on existing files"
-       bash run_CITI_analysis.sh $sn $bl1 $bl2
+       bash $FCT_UTILS/run_CITI_analysis.sh $sn $bl1 $bl2
        exit
     # else
     #   echo "no data"
@@ -87,19 +87,19 @@ then
   then
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
     rm -f $DATADIR$dummy_EOS_citi
-    bash run_CITI_datataking.sh $sn $bl1 $bl2
-    bash run_CITI_analysis.sh $sn $bl1 $bl2
+    bash $FCT_UTILS/run_CITI_datataking.sh $sn $bl1 $bl2
+    bash $FCT_UTILS/run_CITI_analysis.sh $sn $bl1 $bl2
   else
     echo
     echo "Running analysis on existing files"
     echo
-    bash run_CITI_analysis.sh $sn $bl1 $bl2
+    bash $FCT_UTILS/run_CITI_analysis.sh $sn $bl1 $bl2
     exit
   fi
 else
   rm -f $DATADIR$dummy_EOS_citi;
-  bash run_CITI_datataking.sh $sn $bl1 $bl2;
-  bash run_CITI_analysis.sh $sn $bl1 $bl2;
+  bash $FCT_UTILS/run_CITI_datataking.sh $sn $bl1 $bl2;
+  bash $FCT_UTILS/run_CITI_analysis.sh $sn $bl1 $bl2;
   echo "EXIT"
   exit;
 fi

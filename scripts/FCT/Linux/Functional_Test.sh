@@ -23,7 +23,7 @@ fi
 
 bool_cal=$1
 
-source setup.sh
+source $FCT_RUN_FOLDER/setup.sh
 echo "Data directory: "$GENERALDATADIR
 ########### To measure execution time #####
 start=`date +%s`
@@ -67,7 +67,7 @@ then
   echo "Enter serial number:"
   read sn
   GotSN=true
-  bash FCT_LBHK_test.sh $sn
+  bash $FCT_UTILS/FCT_LBHK_test.sh $sn
 
   echo
   echo    "                     /--------------------------------------\\"
@@ -87,7 +87,7 @@ then
   else
     kill $(pidof mono)
     echo "Going out. Thanks!"
-    bash ShowResults.sh $sn
+    bash $FCT_RUN_FOLDER/ShowResults.sh $sn
     exit
     echo
 
@@ -108,7 +108,7 @@ dummy_EOS_citi="EndOfScript_citi.txt"
   # sudo kill $(pidof mono)
 
 # Check that the pulse generator is connected. Otherwise, abort script
-if bash check_fg.sh | grep -q '/dev/ttyACM0'; 
+if bash $FCT_UTILS/check_fg.sh | grep -q '/dev/ttyACM0'; 
 then
   echo "Pulse Gen is connected to: /dev/ttyACM0" 
 else
@@ -126,7 +126,7 @@ else
     # if [[ (-f $DATADIR$dummy_EOS) && (-f $DATADIR$dummy_EOS_citi) ]]    
     # then 
        echo "Running analysis on existing files"
-       bash run_fct_analysis.sh $sn $bl1 $bl2 $1
+       bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1
        exit
     # else
     #   echo "no data"
@@ -161,20 +161,20 @@ then
     rm -f $DATADIR$dummy_EOS
     rm -f $DATADIR$dummy_EOS_citi
     echo "arguments: " $sn $bl1 $bl2 $1
-    bash run_fct_data_taking.sh $sn $bl1 $bl2 $1
-    bash run_fct_analysis.sh $sn $bl1 $bl2 $1
+    bash $FCT_UTILS/run_fct_data_taking.sh $sn $bl1 $bl2 $1
+    bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1
   else
     echo
     echo "Running analysis on existing files"
     echo
-    bash run_fct_analysis.sh $sn $bl1 $bl2 $1
+    bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1
     exit
   fi
 else
   rm -f $DATADIR$dummy_EOS;
   rm -f $DATADIR$dummy_EOS_citi;
-  bash run_fct_data_taking.sh $sn $bl1 $bl2 $1;
-  bash run_fct_analysis.sh $sn $bl1 $bl2 $1;
+  bash $FCT_UTILS/run_fct_data_taking.sh $sn $bl1 $bl2 $1;
+  bash $FCT_UTILS/run_fct_analysis.sh $sn $bl1 $bl2 $1;
   exit
 fi
 

@@ -3,8 +3,8 @@ GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 # Set the ip address of this machine and the port set for the GUI
 
-source setup.sh
-command="Sync.RunScript(\"$FCT_RUN_FOLDER/FEBenable.cs\")"
+source $FCT_UTILS/setup.sh
+command="Sync.RunScript(\"$FCT_UTILS//FEBenable.cs\")"
 
 if [ -z $(pidof mono) ]
 then 
@@ -12,6 +12,8 @@ then
 else
     sudo kill $(pidof mono)
 fi
+sleep 1
+echo
 # Open GUI and wait 
 ( cd $GUI_path && mono $GUI_path$GUI_exe & )
 

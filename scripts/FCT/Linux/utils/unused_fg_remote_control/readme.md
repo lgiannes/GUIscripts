@@ -1,0 +1,2 @@
+there scripts were used to drive the pulse generator remotely in a previous version of the software.
+Right now we don't use tio anymore but write the command directly into the file correspponding to the USB device, and the control happens in teh c sharp scripts

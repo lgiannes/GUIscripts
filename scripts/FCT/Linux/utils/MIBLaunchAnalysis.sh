@@ -2,11 +2,11 @@ sn=$1
 
 
 
-exe_path="/home/neutrino/FCT/FunctionalTest/bin/";
+exe_path=$ANALYSIS_FOLDER/bin/;
 exe_mib="MIBtest";
 Data_file_name="MIB_"$sn"_openshort.daq"
 
-setup_path="/home/neutrino/FCT/FunctionalTest/setup.sh";
+setup_path="$ANALYSIS_FOLDER/setup.sh";
 
 
 # echo $DATADIR

@@ -18,7 +18,7 @@ Data_file_name_bl1="FCT_BLTEST_LG56HG12amp30mV_baseline$bl1.daq"
 Data_file_name_bl2="FCT_BLTEST_LG56HG12amp30mV_baseline$bl2.daq"
 CITI_subfolder="/CITI_trigger_tests/"
 
-setup_path="/home/neutrino/FCT/FunctionalTest/setup.sh";
+setup_path="$ANALYSIS_FOLDER/setup.sh";
 log_file=$DATADIR"/log.txt";
 
 
@@ -35,4 +35,4 @@ $exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn -v0;
 echo 
 echo "RESULTS:"
 echo 
-bash ShowResults.sh $sn
+bash $FCT_RUN_FOLDER/ShowResults.sh $sn

@@ -1,6 +1,6 @@
 sn=$1
 
-source setup.sh
+source $FCT_RUN_FOLDER/setup.sh
 
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
@@ -37,8 +37,8 @@ if [[ -f $Data_path$dummy_EOS ]]
 then
     rm -f $Data_path$dummy_EOS
 fi
-command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/Script_FCT_merged.cs\",$sn,0,0,false,true)"
-{ sleep 1; echo $command; bash wait.sh $Data_path$dummy_EOS; } | telnet $ip_address $port 
+command="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_merged.cs\",$sn,0,0,false,true)"
+{ sleep 1; echo $command; bash $FCT_UTILS/wait.sh $Data_path$dummy_EOS; } | telnet $ip_address $port 
 
 # run analysis
 exe_path=$ANALYSIS_FOLDER"/bin/";

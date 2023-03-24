@@ -1,6 +1,6 @@
 sn=$1
 
-source setup.sh
+source $FCT_RUN_FOLDER/setup.sh
 
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
@@ -42,8 +42,8 @@ echo "|                                                    |"
 echo "|                   Press enter.                     |"
 echo "\----------------------------------------------------/"
 read -n 1
-command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part1.cs\",$sn)"
-{ sleep 1; echo $command; sleep 4; bash wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
+command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part1.cs\",$sn)"
+{ sleep 1; echo $command; sleep 4; bash $FCT_UTILS/wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
 
 
@@ -56,7 +56,7 @@ echo "|                                                    |"
 echo "|                   Press enter.                     |"
 echo "\----------------------------------------------------/"
 read -n 1
-command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/LBHK_fromscript_part2.cs\",$sn)"
-{ sleep 1; echo $command; bash wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
+command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part2.cs\",$sn)"
+{ sleep 1; echo $command; bash $FCT_UTILS/wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
 

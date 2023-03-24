@@ -72,7 +72,7 @@ bash ShowResults.sh SN
 # Test Bench set up
 
 ## INSTALL GUI
-    install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
+    ### install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
     install monodevelop:
     sudo apt install apt-transport-https dirmngr
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -110,10 +110,10 @@ bash ShowResults.sh SN
 		sudo ln -s /lib64/libudev.so.1 /lib64/libudev.so.0
 		Restart PC
 	Program the GPIO: 
-		download firmware at: https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/GPIO/
+		download latest firmware at: https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/GPIO/
 	Program the FEB:
-		download the firmware at https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/UT_92/
-		file: ut92_V1.9-V1067.jic (Use .jic for permanent programming, .sof to program until power cycle)
+		download the latest firmware at https://partphys.unige.ch/~favrey/SFGD/FW%20FCT/UT_92/
+		Use .jic for permanent programming, .sof to program until power cycle
 
 ## INSTALL ROOT
 	download required dependencies:

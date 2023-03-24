@@ -1,11 +1,12 @@
 # RUN THE SCRIPTS. The list of all the scripts and description follows
 **WARNING: Never run scripts with source or ./**
-**Always run them in a subshell (bash ...)**
-**it is good practice to work as root privileged user. run the following:**
+**Always run them in a subshell (bash ...)
+it is good practice to work as root privileged user. run the following:**
 
 sudo -i
 
 **and insert password**
+
 **Then move to the scripts folder (if that has been saved in the .bashrc):**
 
 cd $FCT_RUN_FOLDER 

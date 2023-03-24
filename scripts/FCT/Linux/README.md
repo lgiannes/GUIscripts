@@ -72,7 +72,7 @@ bash ShowResults.sh SN
 # Test Bench set up
 
 ## INSTALL GUI
-install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
+    install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
    install monodevelop:
 	sudo apt install apt-transport-https dirmngr
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF

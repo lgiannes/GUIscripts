@@ -73,19 +73,19 @@ bash ShowResults.sh SN
 
 ## INSTALL GUI
     install the dependencies (partially following the instructions in: https://partphys.unige.ch/~favrey/Misc/UnigeGpioBoard/Install.txt)
-   install monodevelop:
-	sudo apt install apt-transport-https dirmngr
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-	echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
-	 sudo apt update
+    install monodevelop:
+    sudo apt install apt-transport-https dirmngr
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
+	    sudo apt update
     install libUSB
-	 sudo apt-get install libusb-1.0-0-dev
+	    sudo apt-get install libusb-1.0-0-dev
     make usb accessible from all users
-	navigate to the folder /etc/udev/rules.d/ and create WITH USER PRIVILEGES a text file named 89-bmfeb.rules
-	put the following line in the file and save it
-	SUBSYSTEMS=="usb", ATTRS{idVendor}=="206b", GROUP="neutrino", MODE="0660"
-	in a root privileged terminal, run the following to force reload of devices:
-	udevadm control --reload-rules && udevadm trigger 	
+    navigate to the folder /etc/udev/rules.d/ and create WITH USER PRIVILEGES a text file named 89-bmfeb.rules
+    put the following line in the file and save it
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="206b", GROUP="neutrino", MODE="0660"
+    in a root privileged terminal, run the following to force reload of devices:
+    udevadm control --reload-rules && udevadm trigger 	
 
 ### install the GUI from https://partphys.unige.ch/~favrey/SFGD/SFGD-GPIO/ 
 	file: SFGD_GPIOFrontEnd-v951-linux.zip

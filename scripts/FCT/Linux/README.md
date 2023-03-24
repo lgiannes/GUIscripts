@@ -26,7 +26,7 @@ time bash FCT_256ch_test.sh
 time bash FCT_CITIROC_test.sh SN
 
 ## Calibration
-** this sript runs the calibration routine for the FEB**
+__ this sript runs the calibration routine for the FEB__
 ** provide serial number as argument!**
 time bash FCT_Calibration.sh SN
 

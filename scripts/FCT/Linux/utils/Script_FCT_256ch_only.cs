@@ -41,7 +41,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
 
 
     TurnOnFEB();
-    System.Console.WriteLine("FEB is on. FW version: "+BoardLib.GetFirmwareVersion());
+    System.Console.WriteLine("FEB is on.                           ");
     BoardLib.GetFirmwareVersion();
     BoardLib.OpenConfigFile(config_path);
     // Set the required Direct Parameters
@@ -182,7 +182,7 @@ int RunAcquisition(){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.DeviceConfigure(8);
+    BoardLib.DeviceConfigure(8, x_verbose:false);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     //Sync.Sleep(5);
     BoardLib.SetDirectParameters(); //Sync.Sleep(3);
@@ -309,7 +309,7 @@ void RunBaselineAcq(int baseline){
         BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
     }
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.DeviceConfigure(8);
+    BoardLib.DeviceConfigure(8, x_verbose:false);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
     //Sync.Sleep(5);
     BoardLib.SetDirectParameters(); //Sync.Sleep(3);
@@ -1361,7 +1361,7 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
 
 void SendGPIO(byte x_phase){
     BoardLib.SetBoardId(126);
-	 BoardLib.DeviceConfigure(13);
+	 BoardLib.DeviceConfigure(13, x_verbose:false);
 	 System.Console.WriteLine("SendGPIO BoardConfigure done");
     Sync.Sleep(50);
 	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);

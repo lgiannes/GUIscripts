@@ -14,7 +14,11 @@ void TurnOffFEB(){
 void ScriptMain(){
     TurnOnFEB();
     System.Console.WriteLine("FEB is ON");
-    return;
+    BoardLib.SetBoardId(126);
+    BoardLib.GetFirmwareVersion();
+    BoardLib.SetBoardId(0);
+    BoardLib.GetFirmwareVersion();
+    System.Console.WriteLine("All is good");
 }
 
 

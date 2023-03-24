@@ -7,10 +7,12 @@
 **it can be run without arguments to have a full functional test + calibration of the board:**
 
 time bash Functional_Test.sh
+
 **duration: around 5'30"**
 **For the first test of the boards, before installation of the coldplate, the FCT has to be launched WITHOUT calibration. You can do so by adding the argument "NOCALIB":**
 
 time bash Functional_Test.sh NOCALIB
+
 **duration: around 6'30"**
 
 ## Housekeeping/Loopback only
@@ -57,8 +59,8 @@ bash ShowResults.sh SN
 
 **it is always good practice to source setup.sh in the terminal where the scripts are being ran all these scripts use subscripts and c sharp code contained in the ./utils/ folder**
 
-
-### Test Bench set up
+---
+# Test Bench set up
 
 MANDATORY to connect the GPIO to a USB3 port. USB2 is not supported
 

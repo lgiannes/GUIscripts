@@ -2,6 +2,11 @@
 export str_cal=NOCALIB
 # echo $1
 # echo $str
+if [[ -z $FCT_RUN_FOLDER ]]
+then
+echo "Do source setup.sh before!!!"
+exit
+fi
 
 if [[ -z $1 ]]
 then  
@@ -22,6 +27,7 @@ else
 fi
 
 bool_cal=$1
+
 
 source "$FCT_RUN_FOLDER/setup.sh"
 echo "Data directory: "$GENERALDATADIR

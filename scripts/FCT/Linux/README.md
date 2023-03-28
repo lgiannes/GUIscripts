@@ -11,10 +11,10 @@
 **the main script of this package is Functional_Test.sh**  
 **it can be run without arguments to have a full functional test + calibration of the board:**  
    ```time bash Functional_Test.sh  ```
-**duration: around 5'30"**  
+**duration: around 6'30"**  
 **For the first test of the boards, before installation of the coldplate, the FCT has to be launched WITHOUT calibration. You can do so by adding the argument "NOCALIB":**  
    ```time bash Functional_Test.sh NOCALIB  ```
-**duration: around 6'30"**  
+**duration: around 5'30"**  
 
 ## Housekeeping/Loopback only  
 **this script runs the first part of the test. Some hardware actions are required!**

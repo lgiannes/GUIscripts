@@ -40,6 +40,9 @@
 **provide serial number as argument!**  
     ```time bash Analysis_only.sh SN  ```
 
+## Single channel test
+**this script is intended as a very fast way to test a single channel. It prints out the number of hits recorded (expected around 160 for HG,LG, Re and FE) and the ADC mean and RMS of the channel.**
+```time bash one_channel_test/run_one_ch_test.sh $SN $Ch```
 ## MIB test  
 **this script test the MIB. Warning: this is supposed to be run with the MIB type adapter board (look at the label at the bottom lef tof the big adapter board (connected to the GPIO))**  
     ```time bash MIBtest.sh  ```

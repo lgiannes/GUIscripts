@@ -51,6 +51,6 @@ command="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_merged.cs\",$sn,0,0,false,tr
 exe_path=$ANALYSIS_FOLDER"/bin/";
 exe_citi="FCTcitiTriggers"
 CITI_subfolder="/CITI_trigger_tests/"
-$exe_path$exe_citi -f $Data_path$CITI_subfolder -s$sn -v0;
+$exe_path$exe_citi -f $Data_path$CITI_subfolder -s$sn -v0 -a0;
 
 bash $FCT_RUN_FOLDER/ShowResults.sh $sn

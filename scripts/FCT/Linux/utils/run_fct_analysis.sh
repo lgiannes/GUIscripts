@@ -48,7 +48,7 @@ $exe_path$exe_analog -f $DATADIR$Data_file_name -s$sn;
 #Baseline test
 $exe_path$exe_bl -a $DATADIR$Data_file_name_bl1 -b $DATADIR$Data_file_name_bl2 -s$sn;
 #CITIROC triggers test
-$exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn -v0;
+$exe_path$exe_citi -f $DATADIR$CITI_subfolder -s$sn -v0 -a0;
 
 echo 
 echo "RESULTS:"

@@ -11,10 +11,10 @@
 **the main script of this package is Functional_Test.sh**  
 **it can be run without arguments to have a full functional test + calibration of the board:**  
    ```time bash Functional_Test.sh  ```
-**duration: around 5'30"**  
+**duration: around 6'30"**  
 **For the first test of the boards, before installation of the coldplate, the FCT has to be launched WITHOUT calibration. You can do so by adding the argument "NOCALIB":**  
    ```time bash Functional_Test.sh NOCALIB  ```
-**duration: around 6'30"**  
+**duration: around 5'30"**  
 
 ## Housekeeping/Loopback only  
 **this script runs the first part of the test. Some hardware actions are required!**
@@ -40,6 +40,9 @@
 **provide serial number as argument!**  
     ```time bash Analysis_only.sh SN  ```
 
+## Single channel test
+**this script is intended as a very fast way to test a single channel. It prints out the number of hits recorded (expected around 160 for HG,LG, Re and FE) and the ADC mean and RMS of the channel.**
+```time bash one_channel_test/run_one_ch_test.sh $SN $Ch```
 ## MIB test  
 **this script test the MIB. Warning: this is supposed to be run with the MIB type adapter board (look at the label at the bottom lef tof the big adapter board (connected to the GPIO))**  
     ```time bash MIBtest.sh  ```

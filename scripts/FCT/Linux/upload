@@ -1,0 +1,3 @@
+scp -r SN_10/ lgiannes@lxplus.cern.ch:/eos/user/l/lgiannes/NOCOLDPLATE/
+
+# replace 10 with the serial number you want to upload

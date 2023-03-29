@@ -1816,7 +1816,7 @@ void SetMinMax(bool MAX){
     double HV_factor = 65535/102.46;
     if(MAX){
         TSW_set=255;//FF
-        HV_set=(int) HV_factor*39;
+        HV_set=(int) HV_factor*55;
     }else{
         TSW_set=0;
         HV_set=(int) HV_factor*5;

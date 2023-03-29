@@ -1705,8 +1705,8 @@ void Calibration(int SN, int GPIO){
     System.Console.Write("  Done!\n");
 
     //Verify that the values written in teh EEPROM are correct (after a power cycle 
-    //TurnOffFEB();
-    //TurnOnFEB();
+    TurnOffFEB();
+    TurnOnFEB();
     BoardLib.SetBoardId(0);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Write",false);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Read",true);

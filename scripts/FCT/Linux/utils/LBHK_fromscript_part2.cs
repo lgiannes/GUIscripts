@@ -52,10 +52,12 @@ bool Run_LoopBack_test(string OutFile_Name, string config_path){
         // BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
         // SelectFEBdevices();
         // BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
-    bool MIBdebug_success=false, FEBbusy_success=false, FEBtrig_success=false, LB_FEBtrig_OD_success=false, SUM32_success=false;
+    bool MIBdebug_success=false, FEBbusy_success=false, FEBtrig_success=false, LB_FEBtrig_OD_success=false, SUM32_success=false, SEL_test_success=false;
 
     // STEP 2: MIB Debug test
     MIBdebug_success = MIB_Debug_test(FEB_BoardID,OutFile_Name);
+    // STEP 2.1: SEL test. Leave this test here, DO NOT restore initial config, it need the same config as before
+    SEL_test_success = SEL_test(OutFile_Name);
     // Restore initial config at the end of the test
     Restore_Initial_Config(FEB_BoardID,config_path);
                                                                         System.Console.WriteLine("----------------------------step 3 completed");       
@@ -76,8 +78,8 @@ bool Run_LoopBack_test(string OutFile_Name, string config_path){
     Restore_Initial_Config(FEB_BoardID,config_path);
                                                                         System.Console.WriteLine("----------------------------step 5 completed");       
     
-    System.Console.WriteLine(MIBdebug_success+" "+FEBbusy_success+" "+FEBtrig_success+" "+SUM32_success);
-    return (MIBdebug_success && FEBbusy_success && FEBtrig_success && SUM32_success);
+    System.Console.WriteLine(MIBdebug_success+" "+FEBbusy_success+" "+FEBtrig_success+" "+SUM32_success+" "+SEL_test_success);
+    return (MIBdebug_success && FEBbusy_success && FEBtrig_success && SUM32_success && SEL_test_success);
     
 
 }
@@ -101,6 +103,7 @@ bool SUM_or32_test(byte FEB_BoardID, string OutFile_Name){
     double sum32_V=0;
     for(int i=0;i<5;i++){
         address = (byte)(Math.Pow(2,i)-1); 
+        // here enable feb
         BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
         BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
         FEB_BoardID = address;
@@ -114,6 +117,7 @@ bool SUM_or32_test(byte FEB_BoardID, string OutFile_Name){
         }else{
             File.AppendAllText(@OutFile_Name, "SUM_or32 ADC test. FEB-ADDRESS = "+ address.ToString() + ": OK!" + Environment.NewLine + "----------------"  + Environment.NewLine);
         }
+        //here disable feb
     }
 
     //Reset the BoardID at the end 
@@ -259,9 +263,9 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
         if(address != LB_address){
-            File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug FAILED: " + (address).ToString()+" != "+(LB_address).ToString() + Environment.NewLine);
+            File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug FAILED (ADDR:"+address+"): " + (address).ToString()+" != "+(LB_address).ToString() +" ->Missing pull up"+ Environment.NewLine);
             MIBdebug_success = false;
-            System.Console.WriteLine("Loopback on MIB Debug FAILED: " + address.ToString()+" != "+LB_address.ToString());
+            System.Console.WriteLine("Loopback on MIB Debug FAILED (ADDR:"+address+"): " + address.ToString()+" != "+LB_address.ToString()+" ->Missing pull up");
         }
     }
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel",true);
@@ -278,16 +282,37 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
         //LB_address = (byte) (LB_address << 3);
         if(address>>3 != LB_address){
-            File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug FAILED: " + (address>>3).ToString()+" != "+(LB_address).ToString() + Environment.NewLine);
+            File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug FAILED (ADDR:"+address+"): " + (address>>3).ToString()+" != "+(LB_address).ToString() +" ->Missing pull up"+ Environment.NewLine);
             MIBdebug_success = false;
-            System.Console.WriteLine("Loopback on MIB Debug FAILED: " + (address>>3).ToString()+" != "+(LB_address).ToString());
+            System.Console.WriteLine("Loopback on MIB Debug FAILED (ADDR:"+address+"): " + (address>>3).ToString()+" != "+(LB_address).ToString()+" ->Missing pull up");
         }
     }
-    if(MIBdebug_success){ File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug: TEST SUCCESSFUL " + Environment.NewLine); }
+    if(MIBdebug_success){ File.AppendAllText(@OutFile_Name, "Address loopback on MIB Debug (pull up resistors test): TEST SUCCESSFUL " + Environment.NewLine); }
 
+    //Reset adress to 0 at the end
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",0);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
 
 
     return MIBdebug_success;
+}
+
+bool SEL_test(string OutFile_Name){
+    bool success = false;
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
+    // SEL line is loopbacked to bit 0 of the MIB debug connector
+    byte SEL_LB = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
+    if ( SEL_LB == 2 ){
+        File.AppendAllText(@OutFile_Name, "SEL line test (LB on MIBdebug) SUCCESSFUL. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
+        success = true;
+    }else{
+        System.Console.WriteLine("SEL line loopback test FAILED");
+        File.AppendAllText(@OutFile_Name, "SEL line test (LB on MIBdebug) FAILED. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
+        success = false;
+    }
+    return success;
 }
 
 bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, string HK_values){
@@ -1111,15 +1136,17 @@ bool read_IsInRange(byte address_set,double ADC_read,string OutFile_Name){
     return accept;
 }
 
-void TurnOnFEB(){    
+void TurnOnFEB(int BID=0){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR", BID);
     BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
 }
-void TurnOffFEB(){    
+void TurnOffFEB(int BID=0){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR", BID);
     BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
-    Sync.Sleep(1500);
+    Sync.Sleep(3000);
 }
 
 void SelectGPIOdevices(){

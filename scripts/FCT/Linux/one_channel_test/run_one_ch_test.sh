@@ -9,7 +9,7 @@ exe_path=$ANALYSIS_FOLDER"/bin/";
 
 
 # Check that the pulse generator is connected. Otherwise, abort script
-if bash $FCT_RUN_FOLDER"/check_fg.sh" | grep -q '/dev/ttyACM0'; 
+if bash $FCT_UTILS"/check_fg.sh" | grep -q '/dev/ttyACM0'; 
 then
   echo "Pulse Gen is connected to: /dev/ttyACM0" 
 else

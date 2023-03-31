@@ -22,12 +22,11 @@ sudo chmod 777 $GENERALDATADIR
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 # Set the ip address of this machine and the port set for the GUI
-ip_address="10.195.52.144"
-port="11000"
+
 
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"/home/neutrino/FCT/code/scripts/FCT/Linux/one_channel_test/Script_one_ch.cs\",$SN,$channel)"
+command="Sync.RunScriptArgs(\"$FCT_RUN_FOLDER/one_channel_test/Script_one_ch.cs\",$SN,$channel)"
 # Close all GUIs to avoid double serial com
 if [ -z $(pidof mono) ]
 then 

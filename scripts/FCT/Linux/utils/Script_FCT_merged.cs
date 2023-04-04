@@ -1705,8 +1705,8 @@ void Calibration(int SN, int GPIO){
     System.Console.Write("  Done!\n");
 
     //Verify that the values written in teh EEPROM are correct (after a power cycle 
-    //TurnOffFEB();
-    //TurnOnFEB();
+    TurnOffFEB();
+    TurnOnFEB();
     BoardLib.SetBoardId(0);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Write",false);
     BoardLib.SetVariable("FPGA-MISC.NIOS.WRITE.Read",true);
@@ -1816,7 +1816,7 @@ void SetMinMax(bool MAX){
     double HV_factor = 65535/102.46;
     if(MAX){
         TSW_set=255;//FF
-        HV_set=(int) HV_factor*39;
+        HV_set=(int) HV_factor*55;
     }else{
         TSW_set=0;
         HV_set=(int) HV_factor*5;

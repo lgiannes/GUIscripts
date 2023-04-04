@@ -15,7 +15,7 @@ do
     then
         echo "      ------------------------------------------------------------ "
         echo "     |                                                            |"
-        echo "     |   Abort the test, DO NOT APPLY more than 40 V on this FEB  |"
+        echo "     |   Abort the test, DO NOT APPLY more than 10 V on this FEB  |"
         echo "     |                                                            |"
         echo "      ------------------------------------------------------------ "
 

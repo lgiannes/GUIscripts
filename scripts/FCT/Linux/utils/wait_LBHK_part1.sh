@@ -13,8 +13,16 @@ do
     sleep 1.5
     if [[ $endline == "ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED." ]]
     then
-        export R150K=0;
-        exit
+        echo "      ------------------------------------------------------------ "
+        echo "     |                                                            |"
+        echo "     |   Abort the test, DO NOT APPLY more than 40 V on this FEB  |"
+        echo "     |                                                            |"
+        echo "      ------------------------------------------------------------ "
+
+        while true
+        do
+        sleep 1
+        done
     fi
 done
 sleep 1

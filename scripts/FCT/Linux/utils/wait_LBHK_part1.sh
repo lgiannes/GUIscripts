@@ -13,16 +13,13 @@ do
     sleep 1.5
     if [[ $endline == "ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED." ]]
     then
-        echo "      ------------------------------------------------------------ "
-        echo "     |                                                            |"
-        echo "     |   Abort the test, DO NOT APPLY more than 20 V on this FEB  |"
-        echo "     |                                                            |"
-        echo "      ------------------------------------------------------------ "
-
-        while true
+        echo "Sync.RunScript(\"$FCT_UTILS//ErrorMessage.cs\")"
+        sleep 300     
+        while (true)
         do
-        sleep 1
+            sleep 1
         done
     fi
+    
 done
 sleep 1

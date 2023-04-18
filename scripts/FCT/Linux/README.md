@@ -153,6 +153,24 @@ You have to request a (free!) license that they'll send you by email in order to
 download the files in this folder and put them in a dedicated folder https://drive.switch.ch/index.php/s/ADUFEtVxJqEhqb5  
 if everything is set and connected (FEB enabled, dongle connected) it will be enough to double click on the batch file "config_ltc_FEB"  
 
+Once virtualbox in installed, you might need to enable the USB devices to be detected by the virtual machine. You can do so by adding the user to the list of users that use vbox with: sudo adduser $USER  vboxusers
+
+Turn on the FEB and make sure the LT programmer is conencted
+Open the virtual machine on the the Linux PC. The pin is 2023.
+navigate to the folder supervisor_prog on the Desktop and double click on config_ltc_FEB
+this is the log that you should see for a successful programming (ADD IMAGE)
+
+
+If things go wrong...
+DEBUG: check that the LT programmer is working and communicating with the supervisor chip
+Open the LT programmer
+If the FEB is turned on and the programmer is connected  you should see a green box saying COnnect Dongle: "CONNECTED"
+click "go online" at the top of the window
+navigate to Utilities -> I2C Utility... -> Command Files
+click on the "..." block to browse command files and select "mcp_0x20_activate.txt"
+click Run Cmd FIle
+click PC to RAM and then RAM to NVM
+
 ## UTILITIES:
 1. it is recommended to install an IDE (even a simple one is ok)  
 to install Visual Studio Code:  

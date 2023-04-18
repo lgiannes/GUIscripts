@@ -1543,7 +1543,7 @@ void Calibration(int SN, int GPIO){
             System.Console.WriteLine("WARNING: Ridiculous gain  on HV channel "+i.ToString());
             System.Console.WriteLine("");
         }
-        if(O_f_HV[i]<-80 || O_f_HV[i]>80){
+        if(O_f_HV[i]<-100 || O_f_HV[i]>100){
             System.Console.WriteLine("");
             System.Console.WriteLine("WARNING: Ridiculous offset  on HV channel "+i.ToString());
             System.Console.WriteLine("");
@@ -1553,7 +1553,7 @@ void Calibration(int SN, int GPIO){
             System.Console.WriteLine("WARNING: Ridiculous gain  on T channel "+i.ToString());
             System.Console.WriteLine("");
         }
-        if(O_f_T[i]<-80 || O_f_T[i]>80){
+        if(O_f_T[i]<-100 || O_f_T[i]>100){
             System.Console.WriteLine("");
             System.Console.WriteLine("WARNING: Ridiculous offset  on T channel "+i.ToString());
             System.Console.WriteLine("");

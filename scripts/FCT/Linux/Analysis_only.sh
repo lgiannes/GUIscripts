@@ -11,7 +11,11 @@ fi
 sn=$1
 export str_cal="NOCALIB"
 export DATADIR=$GENERALDATADIR"FEBs/SN_"$sn"/"
-
+if [[ ! -d $DATADIR ]]
+then 
+    echo "$DATADIR :folder not found"
+    exit 
+fi
     echo
     echo "Running analysis on existing files"
     echo

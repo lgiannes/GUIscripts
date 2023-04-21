@@ -479,6 +479,13 @@ void ActivateAllCh(int LG_gain,int HG_gain){
         int asic=i_ch/32;
         int local_ch=i_ch%32; 
     
+        // DAC10b
+        BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].GlobalControl.DAC10b", 300);
+        // DAC10b_t
+        BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].GlobalControl.DAC10b_t", 300);
+
         // En32Trigger
         BoardLib.SetVariable("Asics[" + asic.ToString() +
                                 "].GlobalControl.En32Trigger", true);
@@ -492,7 +499,7 @@ void ActivateAllCh(int LG_gain,int HG_gain){
         BoardLib.SetVariable("Asics[" + asic.ToString() +
                                 "].Channels[" + local_ch.ToString() +
                                 "].DAC4bTrigger_t", 0);
-
+        
         // DAC4bTrigger
         BoardLib.SetVariable("Asics[" + asic.ToString() +
                                 "].Channels[" + local_ch.ToString() +

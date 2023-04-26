@@ -19,3 +19,11 @@ echo "==>" $DATADIR/IO_TEST/$IO_TEST_output "<=="
 
 tail -n3 $DATADIR/IO_TEST/$IO_TEST_output
 echo
+
+
+if [ ! -f  "$DATADIR/Summary/ADC_data_SN$sn.csv" ]
+then 
+echo "ADC summary file NOT correctly stored"
+else
+echo "$DATADIR/Summary/ADC_data_SN$sn.csv"
+fi

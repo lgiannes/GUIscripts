@@ -487,6 +487,38 @@ void SetKaladin(int channel){
 
 }
 
+void SetAllKaladinChannels(int channel){
+    // sends the pulse to 4 channels on the citiroc to which the argument("channel") belongs (22, 30, 14, 5)
+    int asic = channel/32;          // Asic number
+    int loc_ch = channel%32;        // Channel within the ASIC
+    int loc_MUX = loc_ch/8;         // Which MUX within the ASIC (4 MUXs per ASIC) 
+    int Kal_MUX_output = loc_ch%8;  // Which channel output within the MUX (8 output, selected with 3bits number)
+    int MUX = asic*4 + loc_MUX;     // Global MUX (32 in total, 4 per ASIC)
+    uint Kal_En_hex=0;
+    
+    // activated all the MUXs belonging to the CITIROC under fire
+    UInt32 MUX_hex = (UInt32)(Math.Pow(2,(asic*4 + 0)) + 
+                        Math.Pow(2,(asic*4 + 1)) + 
+                        Math.Pow(2,(asic*4 + 2)) + 
+                        Math.Pow(2,(asic*4 + 3)) ); 
+
+    // /System.Console.WriteLine("-------------------------"); 
+    //System.Console.WriteLine("Kal Ch    :\t"+channel.ToString());
+    BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-EN", MUX_hex); // the GUI does automatically the conversion dec-to-hex. DO NOT FEED WITH A HEX VALUE
+    //System.Console.WriteLine("MUX_EN hex: "+Convert.ToString((BoardLib.GetUInt32Variable("GPIO.GPIO-MISC.KAL-EN")),16)); // Manually convert to hex for displaying
+    
+    BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-MUX", 0);
+    // /System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
+    
+    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    //Sync.Sleep(10);
+
+    //System.Console.WriteLine(BoardLib.ElapsedTime);
+    //System.Console.WriteLine("average rate: "+BoardLib.AvgXferRate+" kB/s");
+
+
+}
 
 
 
@@ -844,7 +876,7 @@ void RunCITITriggerAcq_PSCExtTrig(string Test, string config, int SN, string dat
         }
         channel = (i%8)*32;
         System.Console.Write("\r Kal Ch: "+channel.ToString()+" | ");
-        SetKaladin(channel);
+        SetAllKaladinChannels(channel);
         //Sync.Sleep(50);                                                                   
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",true);
         BoardLib.SetBoardId(126); 
@@ -1298,14 +1330,40 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
     // gates 12-15: disable ExtTrigPSC on the last 4 CITI -> NO expected signal
     // gates 0-7: enable ExtTrigPSC on all CITI -> signal expected in all gates
     BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Debug.OR32toTrigExtPSC",true);
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG",60);
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG",60);
     for(int asic=0;asic<8;asic++){
+        // Set the shaper time constant and the Hold time to NOT match: if the ADC starts, it should see nothing
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.SelTrigExtPSC",true);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
+        BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].GlobalControl.DAC10b", 450);
+        BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].GlobalControl.DAC10b_t", 550);
+        for(int ch=0;ch<32;ch++){
+            if(ch==22){
+                BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].Channels[" + ch.ToString() +
+                                "].HG_Gain", 24);
+                BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].Channels[" + ch.ToString() +
+                                "].LG_Gain", 58);
+            }else{
+                BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].Channels[" + ch.ToString() +
+                                "].HG_Gain", 1);
+                BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                "].Channels[" + ch.ToString() +
+                                "].LG_Gain", 50);    
+            }
+        }
     }
+
     //SendFEB();
     config = "PSCExtTrig.xml";
     BoardLib.SaveConfigFile(config_folder + config);
+
     RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN, data_path);
 
   

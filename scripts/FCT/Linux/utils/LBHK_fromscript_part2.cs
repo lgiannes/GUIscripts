@@ -1232,6 +1232,8 @@ void ScriptMainArgs(int SN){
     File.AppendAllText(@HK_values, "measurement; value; unit; comment;  " + Environment.NewLine);
     /////////////////////////////////////////////////////////////////////////////////////
  
+    TurnOnFEB();
+
     LB_success = Run_LoopBack_test(OutFile_Name,config_path);
     HK_success = HouseKeeping_test(OutFile_Name,FEB_BoardID,config_path, HK_values);
 

@@ -480,7 +480,6 @@ void SetKaladin(int channel){
 
 
 
-
 void ActivateAllCh(int LG_gain,int HG_gain){
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
     for (int i_ch = 0; i_ch < 256; i_ch++){
@@ -1289,14 +1288,20 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
     // gates 12-15: disable ExtTrigPSC on the last 4 CITI -> NO expected signal
     // gates 0-7: enable ExtTrigPSC on all CITI -> signal expected in all gates
     BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Debug.OR32toTrigExtPSC",true);
+
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG",60);
+    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG",60);
     for(int asic=0;asic<8;asic++){
+        // Set the shaper time constant and the Hold time to NOT match: if the ADC starts, it should see nothing
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.SelTrigExtPSC",true);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
         BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
     }
+
     //SendFEB();
     config = "PSCExtTrig.xml";
     BoardLib.SaveConfigFile(config_folder + config);
+
     RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN, data_path);
 
   

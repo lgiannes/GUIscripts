@@ -4816,8 +4816,8 @@
     <FPGA-DAQ-Global>
       <Analog-path>
         <Hold
-          HoldLG="15"
-          HoldHG="15"
+          HoldLG="60"
+          HoldHG="60"
           HoldDisable="False"
           HoldOnRazChN="False" />
         <Hold-Mask

@@ -789,7 +789,7 @@ bool FPGAcurrent_test(string OutFile_Name, string HK_values){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 4.2;//Amps
+    double mu = 4.82;//Amps
     double Delta = 1;//Amps
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;

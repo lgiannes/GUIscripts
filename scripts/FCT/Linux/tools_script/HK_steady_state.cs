@@ -29,8 +29,8 @@ void ScriptMain(){
         elapsedMs = watch.ElapsedMilliseconds;
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-FPGA-Current") );
-        File.AppendAllText(@HK_values, (elapsedMs*1000).ToString() + ";"+read.ToString() + Environment.NewLine);
-        System.Console.WriteLine("time:"+(elapsedMs*1000).ToString()+"s\tI = "+read.ToString()+" A");
+        File.AppendAllText(@HK_values, (elapsedMs/1000).ToString() + ";"+read.ToString() + Environment.NewLine);
+        System.Console.WriteLine("time:"+(elapsedMs/1000).ToString()+"s\tI = "+read.ToString()+" A");
         Sync.Sleep((int)(1000*60*mins_sleep));
 
 

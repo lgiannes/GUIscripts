@@ -62,7 +62,7 @@ void ScriptMainArgs(int SN, int channel){
     System.Console.WriteLine("FEB is configured");
 
     // Set up communication with Pulse gen
-    var BashOutput = ExecuteBashCommand("bash $FCT_RUN_FOLDER/fg_setup.sh");
+    var BashOutput = ExecuteBashCommand("bash $FCT_RUN_FOLDER/utils/fg_setup.sh");
     Sync.Sleep(10);
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
@@ -80,11 +80,22 @@ void ScriptMainArgs(int SN, int channel){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
     BoardLib.SetBoardId(0); Sync.Sleep(250);
     BoardLib.SetDirectParameters(); Sync.Sleep(250);
+
+    BoardLib.SetBoardId(0);
+    BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
+    BoardLib.DeviceConfigure(12, x_verbose:false);
+    BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
+    double read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FPGA-Temp") );
+    System.Console.WriteLine("FPGA T: "+read.ToString());
+    read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group7.Citiroc-Temp") );
+    System.Console.WriteLine("CITI7 T: "+read.ToString());
     TurnOffFEB();
 
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
+
+
 
     return;
 }

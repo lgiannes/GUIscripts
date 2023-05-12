@@ -89,6 +89,13 @@ void ScriptMainArgs(int SN, int channel){
     System.Console.WriteLine("FPGA T: "+read.ToString());
     read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group7.Citiroc-Temp") );
     System.Console.WriteLine("CITI7 T: "+read.ToString());
+    read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group6.Citiroc-Temp") );
+    System.Console.WriteLine("CITI6 T: "+read.ToString());
+    read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group0.Citiroc-Temp") );
+    System.Console.WriteLine("CITI0 T: "+read.ToString());
+    read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-FPGA-Current") );
+    System.Console.WriteLine("FPGA curr: "+read.ToString());
+    
     TurnOffFEB();
 
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");

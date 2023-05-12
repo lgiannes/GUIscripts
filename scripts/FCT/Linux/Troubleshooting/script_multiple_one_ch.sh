@@ -19,6 +19,7 @@ read -n 1
 
 
 for i in {1..30}; do
+echo "time: "$(date) >> dump.txt
 bash one_channel_test/NOGUI_run_one_ch_test.sh $sn 224 >>dump.txt
 done
 

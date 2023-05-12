@@ -20,6 +20,7 @@ double amplitude = 0.03;//V
 void ScriptMainArgs(int SN,int bl1, int bl2){
     
     string config_path = config_folder+"config_FCT2_newGUI_V2.xml";
+    string nochannels_config_path = config_folder+"NOCHANNELS.xml";
 
     // // Delete "EndOfScript.txt" dummy file if it exists in the data directory
     // NO NEED TO DO. ALREADY DONE IN THE BASH SCRIPT 
@@ -60,7 +61,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2){
          System.Console.WriteLine("Sync test Successful!");
     }
     //Restore initial config
-    BoardLib.OpenConfigFile(config_path);
+    BoardLib.OpenConfigFile(nochannels_config_path);
     //Sync.Sleep(200);
         
     // Enable preamp and DAQ on all channels
@@ -178,8 +179,13 @@ int RunAcquisition(){
     
 
     for(int asic = 0;asic<8;asic++){
-        BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
-        BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
+        if(asic==0){
+            BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
+            BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
+        }else{
+            BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.HG",baseline);
+            BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Channels.ASIC"+asic.ToString()+".Thresholds.BaselineDAC.LG",baseline);
+        }
     }
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.DeviceConfigure(8, x_verbose:false);
@@ -1152,218 +1158,6 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
 }
 
 
-
-void CITIROC_triggers_test(int SN, int LG, int HG){
-//    int SN = 1; // to be set as argument when the script is launched from bash
-
-
-
-    // CREATE THE DATA DIRECTORY BASED ON THE SERIAL NUMBER
-    var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
-
-
-
-    string default_config = config_folder + "config_FCT2_newGUI_V2.xml";
-    string config="";
-    // The default config is the same as the one used for the 256ch + baseline test
-    // where the ADC starts on OR32 and enOR32=ON
-    BoardLib.OpenConfigFile(default_config);
-    SendGPIO(3);
-    // Set the required Direct Parameters
-    SetDefaultDirectParameters();
-    
-    // Send to board
-    BoardLib.SetBoardId(0);
-    //Sync.Sleep(10);
-    
-    BoardLib.SetDirectParameters(); //Sync.Sleep(3);
-
-    bool Sync_good = false;
-    Sync_good = SyncTest();
-    if(!Sync_good){
-        System.Console.WriteLine("Sync not working");
-        return;
-    }else{
-         System.Console.WriteLine("Sync test Successful!");
-    }
-    //Restore initial config
-    BoardLib.OpenConfigFile(default_config);
-    SendGPIO(3);
-    //Sync.Sleep(200);
-
-    ActivateAllCh(LG,HG);
-    // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
-    System.Console.WriteLine("FEB is configured");
-
-    // Set up communication with Pulse gen
-    var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
-    //Sync.Sleep(50);
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-    //Sync.Sleep(50);
-    if(string.Compare(BashOutput,"error: no device connected\n")==0){
-        System.Console.WriteLine(BashOutput);
-    }else{
-        System.Console.WriteLine("Pulse gen is configured");
-    }
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 1. test VALID_event, Force Reset PSC, Force Reset PA (32 gates),
-    // ADC starts on OR32 and enOR32=ON (default): 
-    // signal expected ONLY in the first 8 gates (default config with OR32=ON)
-    int OutputRun = -999;
-    OutputRun = RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
-    
-    if(OutputRun==-999){
-        BoardLib.Reconnect();
-        Sync.Sleep(3000);
-        SetDefaultDirectParameters();
-        BoardLib.SetBoardId(0);
-        BoardLib.SetDirectParameters();
-        //Sync.Sleep(3);
-        OutputRun = RunCITITriggerAcq_32gates("OR32ON_ValEv_ResetPSC_ResetPA",default_config, SN, data_path);
-    }
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 2. ADC starts on OR32, enOR32=OFF -> no expected signal
-    for(int asic=0;asic<8;asic++){
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
-    }
-    // SendFEB();
-    config = "OR32OFF.xml";
-    BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("OR32OFF",config_folder+config, SN, data_path);
-
-
-
-    // Restore default config
-    BoardLib.OpenConfigFile(default_config);
-    //SendFEB();
-    //BoardLib.SetDirectParameters();
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 3. ADC starts on NOR32, enNOR32=ON -> signal expected in each gate
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcStartsignal","NOR32x8");
-    for(int asic=0;asic<8;asic++){
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnNOR32",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
-    }
-    // SendFEB();
-    config = "NOR32ON.xml";
-    BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("NOR32ON",config_folder+config, SN, data_path);
-
-
-
-    // Restore default config
-    BoardLib.OpenConfigFile(default_config);
-    //SendFEB();
-    //BoardLib.SetDirectParameters();
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 4. ADC starts on NOR32_t, enNOR32_t=ON -> signal expected in each gate
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.ADC.AdcStartsignal","NOR32Tx8");
-    for(int asic=0;asic<8;asic++){
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnNOR32_t",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.EnOR32",false);
-    }
-    //SendFEB();
-    config = "NOR32TON.xml";
-    BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("NOR32TON",config_folder+config, SN, data_path);
-
-
-    // Restore default config
-    BoardLib.OpenConfigFile(default_config);
-    //SendFEB();
-    //BoardLib.SetDirectParameters();
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 5. PSCExtTrig: loopback Or32 to ExtTrigPSC, 
-    // gates 8-11: disable ExtTrigPSC on the first 4 CITI -> NO expected signal
-    // gates 12-15: disable ExtTrigPSC on the last 4 CITI -> NO expected signal
-    // gates 0-7: enable ExtTrigPSC on all CITI -> signal expected in all gates
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Debug.OR32toTrigExtPSC",true);
-    for(int asic=0;asic<8;asic++){
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.SelTrigExtPSC",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
-    }
-    //SendFEB();
-    config = "PSCExtTrig.xml";
-    BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_PSCExtTrig("PSCExtTrig",config_folder+config, SN, data_path);
-
-  
-
-    // Restore default config
-    BoardLib.OpenConfigFile(default_config);
-    //SendFEB();
-    //BoardLib.SetDirectParameters();
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*  Hold time and Shaping time setting:
-    Hold Time = N_set * 2.5 ns | Range: 0 to 8191
-    Sh.  Time = N_set * 12.5 ns| Range: 0 to 7
-    */
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 6. Hold time SCA test (right Hold Time) -> signal expected in each gate
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG",15);
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG",15);
-    for(int asic=0;asic<8;asic++){
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SCAorPeakD",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SCAorPeakD",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
-    }
-    //SendFEB();
-    config = "SCA_RightHT.xml";
-    BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("SCA_RightHT",config_folder+config, SN, data_path);
-
-
-
-    // Restore default config
-    BoardLib.OpenConfigFile(default_config);
-    SendFEB();
-    BoardLib.SetDirectParameters();
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 7. Hold time SCA test (wrong Hold Time) -> no expected signal
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldHG",60);
-    BoardLib.SetVariable("FPGA-DAQ.FPGA-DAQ-Global.Analog-path.Hold.HoldLG",60);
-    for(int asic=0;asic<8;asic++){
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SCAorPeakD",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SCAorPeakD",true);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.HG_SH_TimeConstant",3);
-        BoardLib.SetVariable("ASICS.ASIC"+asic.ToString()+".GlobalControl.LG_SH_TimeConstant",3);
-    }
-    //SendFEB();
-    config = "SCA_WrongHT.xml";
-    BoardLib.SaveConfigFile(config_folder + config);
-    RunCITITriggerAcq_8gates("SCA_WrongHT",config_folder+config, SN, data_path);
-
-
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmConfLock", true);
-    BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
-    BoardLib.SetDirectParameters(); //Sync.Sleep(1);
-    TurnOffFEB();
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Turn off Pulse Gen at the end
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
-    //System.Console.WriteLine("Pulse Generator OFF");
-
-    //Generate dummy file at the end of the script
-    string[] o = {"END OF SCRIPT"};
-    File.WriteAllLinesAsync(data_path+"EndOfScript_citi.txt",o); 
-    return;
-}
 
 
 void SendGPIO(byte x_phase){

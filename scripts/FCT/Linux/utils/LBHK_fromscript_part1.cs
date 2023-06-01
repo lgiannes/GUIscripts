@@ -1047,7 +1047,9 @@ bool read_IsInRange(byte address_set,double ADC_read,string OutFile_Name){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.SetBoardId(0); 
     Sync.Sleep(1500);
 }
 void TurnOffFEB(){    
@@ -1197,6 +1199,10 @@ void ScriptMainArgs(int SN){
     bool LB_success=false;
 
     LB_success = Run_LoopBack_test(OutFile_Name,config_path);
+
+    BoardLib.SetBoardId(0); 
+    BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
+    BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     
 
     return;

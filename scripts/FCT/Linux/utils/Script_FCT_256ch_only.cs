@@ -437,6 +437,7 @@ bool SyncTest(){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");

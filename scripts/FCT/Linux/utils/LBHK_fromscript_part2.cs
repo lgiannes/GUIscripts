@@ -280,7 +280,8 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         FEB_BoardID = address;
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
-        //LB_address = (byte) (LB_address << 3);
+        // bit 1 is the SEL line, you want to ignore it. Set bit 1 to 0
+        LB_address = (byte)((int)LB_address&0b11111101);
         if(address>>3 != LB_address){
             File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug FAILED (ADDR:"+address+"): " + (address>>3).ToString()+" != "+(LB_address).ToString() +" ->Missing pull up"+ Environment.NewLine);
             MIBdebug_success = false;
@@ -298,21 +299,36 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
 }
 
 bool SEL_test(string OutFile_Name){
-    bool success = false;
+    bool success = false,success1 = false;
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
-    // SEL line is loopbacked to bit 0 of the MIB debug connector
+    // SEL line is loopbacked to bit 1 of the MIB debug connector
     byte SEL_LB = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
     if ( SEL_LB == 2 ){
-        File.AppendAllText(@OutFile_Name, "SEL line test (LB on MIBdebug) SUCCESSFUL. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "SEL line high test (LB on MIBdebug) SUCCESSFUL. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
         success = true;
     }else{
         System.Console.WriteLine("SEL line loopback test FAILED");
-        File.AppendAllText(@OutFile_Name, "SEL line test (LB on MIBdebug) FAILED. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
+        File.AppendAllText(@OutFile_Name, "SEL line high test (LB on MIBdebug) FAILED. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
         success = false;
     }
-    return success;
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", false);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
+    // SEL line is loopbacked to bit 1 of the MIB debug connector
+    SEL_LB = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
+    if ( SEL_LB == 0 ){
+        File.AppendAllText(@OutFile_Name, "SEL line low test (LB on MIBdebug) SUCCESSFUL. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
+        success1 = true;
+    }else{
+        System.Console.WriteLine("SEL line loopback test FAILED");
+        File.AppendAllText(@OutFile_Name, "SEL line low test (LB on MIBdebug) FAILED. Reading from MIB: 0b"+Convert.ToString(SEL_LB,2)+ Environment.NewLine);
+        success = false;
+    }
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    return success&&success1;
 }
 
 bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, string HK_values){
@@ -1138,6 +1154,7 @@ bool read_IsInRange(byte address_set,double ADC_read,string OutFile_Name){
 
 void TurnOnFEB(int BID=0){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR", BID);
     BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
@@ -1241,7 +1258,7 @@ void ScriptMainArgs(int SN){
 
     System.Console.WriteLine("end of HK/LB test");   
 
-    TurnOffFEB();
+    //TurnOffFEB();
 
     Sync.Sleep(5);
     

@@ -439,9 +439,11 @@ bool SyncTest(){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+
     Sync.Sleep(1500);
 }
 void TurnOffFEB(){    
@@ -1362,7 +1364,7 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.SetDirectParameters(); //Sync.Sleep(1);
-    TurnOffFEB();
+    // TurnOffFEB();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Turn off Pulse Gen at the end
@@ -1808,7 +1810,7 @@ void Calibration(int SN, int GPIO){
 
     // Finally, enable EEPROM WRITE PROTECT (HW action)
 
-    TurnOffFEB();
+    // TurnOffFEB();
     return;
 }
 

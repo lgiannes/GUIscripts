@@ -170,12 +170,12 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     System.Console.WriteLine("Pulse Generator OFF");
-    TurnOffFEB();
+    // TurnOffFEB();
 
     if(!CITI_only){
         Calibration(SN,GPIO);
     }
-
+    TurnOffFEB();
     //Generate dummy file at the end of the script
     File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 
     System.Console.WriteLine("END OF SCRIPT");
@@ -448,6 +448,7 @@ bool SyncTest(){
 
 void TurnOnFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
     BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
@@ -1371,7 +1372,7 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
     BoardLib.SetVariable("Board.DirectParam.AdcFsmReset", true);
     BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.SetDirectParameters(); //Sync.Sleep(1);
-    TurnOffFEB();
+    // TurnOffFEB();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Turn off Pulse Gen at the end
@@ -1715,7 +1716,7 @@ void Calibration(int SN, int GPIO){
     }
     System.Console.Write("  Done!\n");
 
-    //Verify that the values written in teh EEPROM are correct (after a power cycle 
+    //Verify that the values written in the EEPROM are correct (after a power cycle) 
     TurnOffFEB();
     TurnOnFEB();
     BoardLib.SetBoardId(0);
@@ -1817,7 +1818,7 @@ void Calibration(int SN, int GPIO){
 
     // Finally, enable EEPROM WRITE PROTECT (HW action)
 
-    TurnOffFEB();
+    
     return;
 }
 

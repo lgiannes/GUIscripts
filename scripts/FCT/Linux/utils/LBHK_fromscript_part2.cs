@@ -747,8 +747,8 @@ bool PMezza_2V2_test(string OutFile_Name, string HK_values){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 25;//degrees
-    double Delta = 15;//degrees
+    double mu = 35;//degrees
+    double Delta = 10;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;
     // UInt32 current_read_int = 0;

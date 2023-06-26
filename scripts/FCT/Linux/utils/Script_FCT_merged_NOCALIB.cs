@@ -442,7 +442,7 @@ void TurnOnFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
 
     Sync.Sleep(1500);
 }
@@ -450,7 +450,7 @@ void TurnOffFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
     Sync.Sleep(3000);
 }
 
@@ -471,7 +471,7 @@ void SetKaladin(int channel){
     // /System.Console.WriteLine("MUX_CH: "+BoardLib.GetByteVariable("GPIO.GPIO-MISC.KAL-MUX"));
     
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
     //Sync.Sleep(10);
 
     //System.Console.WriteLine(BoardLib.ElapsedTime);
@@ -1387,7 +1387,7 @@ void SendGPIO(byte x_phase){
     Sync.Sleep(50);
 	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
 	 Console.WriteLine(" => GPIO Phase set to " + x_phase.ToString());
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
 	 BoardLib.UpdateUserParameters("GPIO.GPIO-PHASE-TUNE");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
 	 System.Console.WriteLine("SendGPIO done");
@@ -1841,7 +1841,7 @@ void SetMinMax(bool MAX){
     BoardLib.SetBoardId(126);
     BoardLib.SetVariable("GPIO.GPIO-MISC.TSEN-SW",TSW_set);
     // System.Console.WriteLine("updating parameters with TSEN-SW");
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
     BoardLib.SetBoardId(0);
 }
 

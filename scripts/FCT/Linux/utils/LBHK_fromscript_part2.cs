@@ -235,7 +235,9 @@ void Restore_Initial_Config(byte FEB_BoardID,string config_path){
 }
 
 bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
-    
+
+
+    BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.GlobalEnable",true);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgFromAddrEn",true);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel",false);
     BoardLib.SetBoardId(0); Sync.Sleep(1);
@@ -279,9 +281,10 @@ bool MIB_Debug_test(byte FEB_BoardID,string OutFile_Name){
         BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
         FEB_BoardID = address;
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
-        LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
+        LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug"); // 5 bits only
+        // LB_address (from MIBDebug): bit0 = 0; bit1 = SEL_IN; bit2,3,4 = bits5,6,7 from FEB_ADDRESS
         // bit 1 is the SEL line, you want to ignore it. Set bit 1 to 0
-        LB_address = (byte)((int)LB_address&0b11111101);
+        LB_address = (byte)((int)LB_address&0b00011101);
         if(address>>3 != LB_address){
             File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug FAILED (ADDR:"+address+"): " + (address>>3).ToString()+" != "+(LB_address).ToString() +" ->Missing pull up"+ Environment.NewLine);
             MIBdebug_success = false;

@@ -365,15 +365,15 @@ bool HouseKeeping_test(string OutFile_Name,byte FEB_BoardID,string config_path, 
     bool HV_ADC_success = true;
 
     // Set high voltages
-    double HighestHV = 35;//V
+    double HighestHV = 58;//V
     double[] HVs_volts = new double[8];
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(i)+1;
+        HVs_volts[i] = HighestHV/8*(i)+HighestHV/8;
     }
     HV_ADC_success1 = HV_test(HVs_volts,OutFile_Name, HK_values);
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(7-i)+1;
+        HVs_volts[i] = HighestHV/8*(7-i)+HighestHV/8;
     }
     HV_ADC_success2 = HV_test(HVs_volts,OutFile_Name, HK_values);
     // SUCCESS if both are successful
@@ -500,15 +500,15 @@ bool MPPCTemp_test(string OutFile_Name){
 bool MPPCHV_test(string OutFile_Name){
     // Set high voltages
     bool HV_ADC_success,HV_ADC_success1,HV_ADC_success2;
-    double HighestHV = 35;//V
+    double HighestHV = 58;//V
     double[] HVs_volts = new double[8];
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(i)+1;
+        HVs_volts[i] = HighestHV/8*(i)+HighestHV/8;
     }
     HV_ADC_success1 = HV_test_FEBside(HVs_volts,OutFile_Name);
     for(int i=0;i<8;i++){
-        HVs_volts[i] = HighestHV/8*(7-i)+1;
+        HVs_volts[i] = HighestHV/8*(7-i)+HighestHV/8;
     }
     HV_ADC_success2 = HV_test_FEBside(HVs_volts,OutFile_Name);
     // SUCCESS if both are successful
@@ -750,7 +750,7 @@ bool PMezza_2V2_test(string OutFile_Name, string HK_values){
      
     BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
     // Set current template (OK if [mu-Delta,mu+Delta])
-    double mu = 25;//degrees
+    double mu = 30;//degrees
     double Delta = 15;//degrees
     //double CF = 0.1716;// Conversion factor (UInt32 to uA)
     double read = 0;

@@ -199,8 +199,13 @@ bool FEB_trig_test(byte FEB_BoardID, string OutFile_Name){
 }
 
 bool RemProg_test(byte FEB_BoardID, string OutFile_Name){
+    // Set SEL=1. This is irrelevant for SOME FWs (1.3), but necessary for some others (1.4)
+    BoardLib.SetBoardId(126);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", true);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
+    BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
+    BoardLib.SetBoardId(0);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.RemoteProgRxTxLoopbackEn",true);
-    BoardLib.SetBoardId(0); Sync.Sleep(1);
     BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config");
     Sync.Sleep(500);
     BoardLib.SetBoardId(126); Sync.Sleep(1);
@@ -211,8 +216,8 @@ bool RemProg_test(byte FEB_BoardID, string OutFile_Name){
     bool FEBtrig_success = true;
     bool LB_FEBtrig = BoardLib.GetBoolVariable("GPIO.GPIO-STATUS.FEB-RPROG-Tx");
     if(!LB_FEBtrig){
-        File.AppendAllText(@OutFile_Name, "FEB Remote Prog LoopBack test FAILED" + Environment.NewLine);
-        System.Console.WriteLine("Loopback on FEB Remote prog FAILED");
+        File.AppendAllText(@OutFile_Name, "FEB Remote Prog LoopBack test FAILED (Rx=1, Tx=0)" + Environment.NewLine);
+        System.Console.WriteLine("Loopback on FEB Remote prog FAILED (Rx=1, Tx=0)");
         FEBtrig_success = false;
     }
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-RPROG-RX", false);
@@ -221,12 +226,20 @@ bool RemProg_test(byte FEB_BoardID, string OutFile_Name){
     Sync.Sleep(500);
     LB_FEBtrig = BoardLib.GetBoolVariable("GPIO.GPIO-STATUS.FEB-RPROG-Tx");
     if(LB_FEBtrig){
-        File.AppendAllText(@OutFile_Name, "FEB Remote Prog LoopBack test FAILED" + Environment.NewLine);
-        System.Console.WriteLine("Loopback on FEB Remote prog FAILED");
+        File.AppendAllText(@OutFile_Name, "FEB Remote Prog LoopBack test FAILED (Rx=0, Tx=1)" + Environment.NewLine);
+        System.Console.WriteLine("Loopback on FEB Remote prog FAILED (Rx=0, Tx=1)");
         FEBtrig_success = false;
     }
     if(FEBtrig_success){ File.AppendAllText(@OutFile_Name, "FEB Remote Prog LoopBack: TEST SUCCESSFUL" + Environment.NewLine); }
     
+
+    // Reset SEL=0 at the end.
+    BoardLib.SetBoardId(126);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-SEL-IN", false);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
+    BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
+    BoardLib.SetBoardId(0);
+
     return FEBtrig_success;
 }
 

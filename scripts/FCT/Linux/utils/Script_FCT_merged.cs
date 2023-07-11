@@ -1418,24 +1418,41 @@ void SendGPIO(byte x_phase){
 void EndOfRunProtocol(){
     BoardLib.StopAcquisition();
     System.Console.WriteLine("END OF ACQUISITION");
-    
+    // some time to push remaining data
+    Sync.Sleep(200);
+
+    //////////////////////////////////////////////////////////////////////////
+    // Short EndOfRunProtocol
+    // THIS IS BUGGY! DO NOT USE
+    // BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+    // BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    // //Sync.Sleep(10);
+    // BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    // BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
+    // System.Console.WriteLine("End of short end of run protocol");
+
+    // return;
+    //////////////////////////////////////////////////////////////////////////
+
+
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
     //Sync.Sleep(10);
-    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    //Sync.Sleep(100);
-    BoardLib.GetFirmwareVersion();
+    System.Console.WriteLine("Stopped GTS beacon");
+    Sync.Sleep(20);
     BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     while(GateEn){
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        //Sync.Sleep(200); 
+        BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
         BoardLib.ReadStatus();
         GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
     }
-    System.Console.WriteLine("Stopped GTS beacon");
+    System.Console.WriteLine("Closed gate.");
     BoardLib.WaitForEndOfTransfer(true);
 
 }

@@ -274,16 +274,22 @@ void ScriptMainArgs(int SN){
     double Bkp_HV = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-BKP-HV") );
     double HV_read_volts=0;
     if(Bkp_HV>11.7 || Bkp_HV<8.3){
+        System.Console.BackgroundColor = ConsoleColor.Red;
+        System.Console.ForegroundColor = ConsoleColor.White;
         System.Console.WriteLine("\n\n");       
         System.Console.WriteLine("Error on input HV. Set input HV to 10 V and re start the test. ");       
         System.Console.WriteLine("    Use ctrl C twice to abort.");       
         System.Console.WriteLine("");       
+        System.Console.ResetColor();
         return;
     }
     for(int i = 0;i<8;i++){
         HV_read_volts = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+i.ToString()+".MPPC-HV") );
         if( (HV_read_volts > thr) ){
+            System.Console.BackgroundColor = ConsoleColor.Red;
+            System.Console.ForegroundColor = ConsoleColor.White;
             System.Console.WriteLine("Warning: HV on channel "+i.ToString()+" is above "+thr.ToString()+" V. (Measured: "+HV_read_volts+" V). bkp HV is "+Bkp_HV.ToString()+" V.");       
+            System.Console.ResetColor();
             R150K = false;
         }else{
             System.Console.WriteLine("Info: On channel "+i.ToString()+" Measured: "+HV_read_volts+" V.\t bkp HV is "+Bkp_HV.ToString()+" V.");       
@@ -294,11 +300,14 @@ void ScriptMainArgs(int SN){
         R150K=true;
     }
     if(!R150K){
+        System.Console.BackgroundColor = ConsoleColor.Red;
+        System.Console.ForegroundColor = ConsoleColor.White;        
         System.Console.WriteLine("");       
         System.Console.WriteLine("Resistor at HV input is NOT 150K! Abort test for protection.");  
         System.Console.WriteLine(" DO NOT APPLY 55 V ");  
         File.AppendAllText(@OutFile_Name,"ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED.");
         System.Console.WriteLine("");       
+        System.Console.ResetColor();
         return;
     }
 

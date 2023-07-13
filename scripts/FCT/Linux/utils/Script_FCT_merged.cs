@@ -1454,6 +1454,7 @@ void EndOfRunProtocol(){
     }
     System.Console.WriteLine("Closed gate.");
     BoardLib.WaitForEndOfTransfer(true);
+    Sync.Sleep(300);
 
 }
 

@@ -1174,29 +1174,39 @@ void SendGPIO(byte x_phase){
 	 System.Console.WriteLine("SendGPIO done");
 }
 
+
 void EndOfRunProtocol(){
-    BoardLib.StopAcquisition();
-    System.Console.WriteLine("END OF ACQUISITION");
-    
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    //Sync.Sleep(10);
-    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
+    Sync.Sleep(20);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    System.Console.WriteLine("Closing gate.");
     while(GateEn){
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        //Sync.Sleep(200); 
+        BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
         BoardLib.ReadStatus();
-        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
+        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn"); 
+        Sync.Sleep(10);
     }
+    Sync.Sleep(500);
+    System.Console.WriteLine("Gate closed. Stopping GTS.");
+    Sync.Sleep(500);
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     System.Console.WriteLine("Stopped GTS beacon");
+    Sync.Sleep(500);
+    BoardLib.StopAcquisition();
+    Sync.Sleep(600);
     BoardLib.WaitForEndOfTransfer(true);
+    Sync.Sleep(500);
+    System.Console.WriteLine("END OF ACQUISITION");
+    Sync.Sleep(500);
 
 }
+
 
 string GenerateProgressString(int p, int t){
     int percent4 = (int)Math.Ceiling( 25*((double)(p+1)/(double)t) );

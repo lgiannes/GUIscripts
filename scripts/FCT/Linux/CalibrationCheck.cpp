@@ -62,21 +62,34 @@ void CreateHistograms(const std::vector<double>& data, const std::string& title,
 
 int CalibrationCheck(){
     // Ask for the SN
+
+    // Get the environment variable GENERALDATADIR
+    const char* GENDATADIR_ENV =std::getenv("GENERALDATADIR");
+    std::string generalDataDir;
+    if (GENDATADIR_ENV == NULL) {
+        std::cout << "Error: Environment variable GENERALDATADIR is not set." << std::endl;
+        std::cout << "Do source setup.sh" << std::endl;
+        exit(0);
+        return 1;
+    }else{
+        generalDataDir = std::string(GENDATADIR_ENV) + "/";
+    }
     std::string SN;
     std::cout << "Enter the SN: ";
     std::cin >> SN;
-    // Get the environment variable GENERALDATADIR
-    std::string generalDataDir = std::getenv("GENERALDATADIR");
-    if (generalDataDir.empty()) {
-        std::cout << "Error: Environment variable GENERALDATADIR is not set." << std::endl;
-        std::cout << "Do source setup.sh" << std::endl;
-        return 1;
-    }
 
     // Find the calibration files
     std::string calibrationFile_M = generalDataDir + "FEBs/SN_" + SN + "/Calibration/RawValues_max.csv";
     std::string calibrationFile_m = generalDataDir + "FEBs/SN_" + SN + "/Calibration/RawValues_min.csv";
-    // Read the calibration files
+    // Check if the files exist
+    std::ifstream file_M(calibrationFile_M);
+    std::ifstream file_m(calibrationFile_m);
+    if (!file_M || !file_m) {
+        std::cout << "Error: Calibration files do not exist for SN"<<SN<<" in folder "<<generalDataDir << std::endl;
+        exit(0);
+        return 1;
+    }
+
 
 
     int numBins = 40;

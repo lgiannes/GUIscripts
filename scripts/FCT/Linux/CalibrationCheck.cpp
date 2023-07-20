@@ -140,6 +140,6 @@ int CalibrationCheck(){
         canvas->Update();
 
     }
-
+    cout<<".q to exit"<<endl;
     return 0;
 }

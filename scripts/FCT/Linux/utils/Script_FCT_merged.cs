@@ -1476,6 +1476,31 @@ void Calibration(int SN, int GPIO){
 
     int samples = 20;
 
+    // Check that the backplane HV is set to the correct value. Otherwise, stop the test
+    BoardLib.SetVariable("FPGA-HV-HK.FPGA-HouseKeeping.HKEn",true);
+    BoardLib.SetBoardId(0);
+    BoardLib.DeviceConfigure(12, x_verbose:false);    
+    BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
+    // Set current template (OK if [mu-Delta,mu+Delta])
+    double Expected_bkpHV = Convert.ToDouble(Environment.GetEnvironmentVariable("PS_HV"));//V
+    double Tolerance = 2;//V
+    double read = 0;
+    read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.FEB-HK.FEB-BKP-HV") );
+    if(read < Expected_bkpHV+Tolerance && read > Expected_bkpHV-Tolerance){
+        System.Console.WriteLine("ok");
+    }else{
+        System.Console.WriteLine("////////////////////////////////////////////");
+        System.Console.WriteLine("//          Backplane HV is wrong!        //");
+        System.Console.WriteLine("////////////////////////////////////////////");
+        System.Console.WriteLine("    Check the voltage on the Power Supply. ");
+        System.Console.WriteLine("    Set it to "+Expected_bkpHV.ToString() + " V.");
+        System.Console.WriteLine("    Abort pressing ctrl+C twice. Restart calibration.");
+        while(true){
+            Sync.Sleep(1000);
+        }
+    }
+
+
     System.IO.Directory.CreateDirectory(pathToCsvFiles);
     pathToCsvFiles = pathToCsvFiles + "Calibration/";
     System.IO.Directory.CreateDirectory(pathToCsvFiles);

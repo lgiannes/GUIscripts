@@ -24,7 +24,7 @@ echo "another 2 sec ..."
 
 
 # Open the serial com and send the command. Wait for it to end. Send second command, wait for it to end an close serial port com
-{ sleep 2.0; echo $command; sleep 3.0; } | telnet $ip_address $port 
+{ sleep 2.0; echo $command; sleep 5.0; } | telnet $ip_address $port 
 
 # Close the GUI
 if [ -z $(pidof mono) ]

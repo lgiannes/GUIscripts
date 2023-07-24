@@ -41,6 +41,10 @@ fi
 
 
 # PART 1
+# SET UP POWER SUPPLY
+echo "V2 10.0" > /dev/ttyACM1
+echo "OP2 1" > /dev/ttyACM1
+
 echo "/----------------------------------------------------\\"
 echo "|       Move Jumper J13 to position 2-3.             |"
 echo "|              Set input HV to 10 V.                 |"
@@ -54,6 +58,11 @@ command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part1.cs\",$sn)"
 
 
 # PART 2:
+# SET UP POWER SUPPLY
+echo "V2 $PS_HV" > /dev/ttyACM1
+echo "OP2 0" > /dev/ttyACM1
+echo "OP2 1" > /dev/ttyACM1
+
 echo
 echo "/----------------------------------------------------\\"
 echo "|       Move Jumper J13 to position 1-2.             |"
@@ -64,6 +73,10 @@ echo "\----------------------------------------------------/"
 read -n 1
 command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part2.cs\",$sn)"
 { sleep 1; echo $command; bash $FCT_UTILS/wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
+
+# SET UP POWER SUPPLY
+# echo "V2 0.0" > /dev/ttyACM1
+# echo "OP2 0" > /dev/ttyACM1
 
 
 # run ShowResults manually, only when the script is launched as standalone

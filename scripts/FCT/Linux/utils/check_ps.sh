@@ -1,5 +1,5 @@
 echo
-for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name ttyACM0); 
+for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name ttyACM1); 
 do     (
     syspath="${sysdevpath%/dev}"; 
     devname="$(udevadm info -q name -p $syspath)";
@@ -11,10 +11,10 @@ done
 sleep 1.5
 echo
 echo "If in the line above you don't read:"
-echo "\"/dev/ttyACM0 - THURLBY_THANDAR_TG5011_55126528\""
-echo "the pulse generator is not correctly working"
+echo "\"/dev/ttyACM1 - TTi_MX_Series_PSU_491122\""
+echo "the power supply is not correctly working"
 echo 
 
 # Possible troubleshooting: 
-# remove the device file /dev/ttyACM0: $ sudo rm /dev/ttyACM0
-# then disconnect and reconnect the pulse generator 
+# remove the device file /dev/ttyACM1: $ sudo rm /dev/ttyACM1
+# then disconnect and reconnect the power supply 

@@ -40,8 +40,9 @@ else
 fi
 
 
-
-
+# auto set PS to 60 V (HV)
+  echo "V2 60" > /dev/ttyACM1
+  echo "OP2 1" > /dev/ttyACM1
 # PART 2:
 echo
 echo "/----------------------------------------------------\\"
@@ -54,6 +55,9 @@ read -n 1
 command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part2.cs\",$sn)"
 { sleep 1; echo $command; bash $FCT_UTILS/wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
+# auto set PS to 60 V (HV)
+  echo "V2 0" > /dev/ttyACM1
+  echo "OP2 0" > /dev/ttyACM1
 
 # run ShowResults manually, only when the script is launched as standalone
 # bash $FCT_RUN_FOLDER/ShowResults.sh $sn

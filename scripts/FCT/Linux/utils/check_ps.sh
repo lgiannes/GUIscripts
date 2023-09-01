@@ -15,6 +15,8 @@ echo "\"/dev/ttyACM1 - TTi_MX_Series_PSU_491122\""
 echo "the power supply is not correctly working"
 echo 
 
-# Possible troubleshooting: 
-# remove the device file /dev/ttyACM1: $ sudo rm /dev/ttyACM1
-# then disconnect and reconnect the power supply 
+echo "troubleshooting:" 
+echo "remove the device file /dev/ttyACM1: sudo rm /dev/ttyACM1 "
+echo "do the same for /dev/ttyACM0: sudo rm /dev/ttyACM0"
+echo "then disconnect and reconnect the pulse generator" 
+echo 

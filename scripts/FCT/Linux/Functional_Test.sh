@@ -76,7 +76,16 @@ then
   echo "Enter serial number:"
   read sn
   GotSN=true
-  bash "$FCT_RUN_FOLDER/FCT_LBHK_test.sh" $sn
+  source "$FCT_RUN_FOLDER/FCT_LBHK_test.sh" $sn
+  if [[ $? -eq 1 ]]
+  then
+    echo "Loopback/Housekeeping test failed. Aborting!"
+    echo 
+    kill $(pidof mono)
+    echo 
+    echo
+    exit
+  fi
 
   echo
   echo    "                     /--------------------------------------\\"

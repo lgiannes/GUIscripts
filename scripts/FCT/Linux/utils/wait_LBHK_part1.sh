@@ -14,11 +14,12 @@ do
     if [[ $endline == "ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED." ]]
     then
         echo "Sync.RunScript(\"$FCT_UTILS//ErrorMessage.cs\")"
-        sleep 300     
-        while (true)
-        do
-            sleep 1
-        done
+        sleep 1
+        return -1
+        # while (true)
+        # do
+        #     sleep 1
+        # done
     fi
     
 done

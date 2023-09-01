@@ -15,6 +15,8 @@ echo "\"/dev/ttyACM0 - THURLBY_THANDAR_TG5011_55126528\""
 echo "the pulse generator is not correctly working"
 echo 
 
-# Possible troubleshooting: 
-# remove the device file /dev/ttyACM0: $ sudo rm /dev/ttyACM0
-# then disconnect and reconnect the pulse generator 
+echo "troubleshooting:" 
+echo "remove the device file /dev/ttyACM0: sudo rm /dev/ttyACM0"
+echo "do the same for /dev/ttyACM1: sudo rm /dev/ttyACM1"
+echo "then disconnect and reconnect the pulse generator" 
+echo 

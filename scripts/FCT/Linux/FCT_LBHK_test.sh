@@ -1,3 +1,43 @@
+wait_LBHK_part1(){
+    endline=" "
+    #wait until the last line in the text file passed from user contains the desired string
+    while [[ ($endline != "FEB-trig-OD LoopBack: TEST SUCCESSFUL") && ($endline != "FEB-trig-OD LoopBack test FAILED") ]]
+    do
+        # grab name of the last written file in the directory
+        file_path_name=$( ls -tp $1 | grep -v / | head -n1 )
+        #echo "file_path_name: "$file_path_name
+        #if there are no files, sleep 1 and continue
+        [ -z "$file_path_name" ] && sleep 1 &&  continue
+        #update last line of the txt file to be compared with templates
+        endline=$( tail -n 1 $1$file_path_name )
+        #echo "endline: "endline
+        sleep 1.5
+        if [[ $endline == "ERROR: WRONG RESISTOR ON CURRENT LIMITER DETECTED." ]]
+        then
+            #echo "Sync.RunScript(\"$FCT_UTILS//ErrorMessage.cs\")"
+            echo "-----------------------------------------------"
+            echo "| PROBLEM ON CURRENT LIMITER CIRCUIT DETECTED |"
+            echo "-----------------------------------------------"
+            echo 
+            sleep 1
+            return 1
+            # while (true)
+            # do
+            #     sleep 1
+            # done
+        fi
+        
+    done
+    sleep 1
+    return 0
+}
+
+
+
+
+
+
+
 if [[ -z $1 ]]
 then
 echo Tell me the Serial Number! Thank you
@@ -53,15 +93,27 @@ echo "|                   Press enter.                     |"
 echo "\----------------------------------------------------/"
 read -n 1
 command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part1.cs\",$sn)"
-{ sleep 1; echo $command; sleep 4; bash $FCT_UTILS/wait_LBHK_part1.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
+# chmod 777 $FCT_UTILS/wait_LBHK_part1.sh
+{ sleep 1; echo $command; sleep 3; wait_LBHK_part1 $Data_path/IO_TEST/;} | telnet $ip_address $port
 
+wait_LBHK_part1 $Data_path/IO_TEST/
+wait_res=$?
+# echo "wait_res: $wait_res"
 
-# PART 2:
-# SET UP POWER SUPPLY
-echo "V2 $PS_HV" > /dev/ttyACM1
-echo "OP2 0" > /dev/ttyACM1
-echo "OP2 1" > /dev/ttyACM1
+if [[ $wait_res == 1 ]]
+then
+    # turn off HV and abort
+    echo "V2 0" > /dev/ttyACM1
+    echo "OP2 0" > /dev/ttyACM1
+    return 1    
+else
+    # PART 2:
+    # SET UP POWER SUPPLY
+    echo "V2 $PS_HV" > /dev/ttyACM1
+    echo "OP2 0" > /dev/ttyACM1
+    echo "OP2 1" > /dev/ttyACM1
+fi
 
 echo
 echo "/----------------------------------------------------\\"
@@ -81,3 +133,5 @@ command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part2.cs\",$sn)"
 
 # run ShowResults manually, only when the script is launched as standalone
 # bash $FCT_RUN_FOLDER/ShowResults.sh $sn
+
+return 0;

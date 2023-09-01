@@ -79,8 +79,8 @@ int CalibrationCheck(){
     std::cin >> SN;
 
     // Find the calibration files
-    std::string calibrationFile_M = generalDataDir + "FEBs/SN_" + SN + "/Calibration/RawValues_max.csv";
-    std::string calibrationFile_m = generalDataDir + "FEBs/SN_" + SN + "/Calibration/RawValues_min.csv";
+    std::string calibrationFile_M = generalDataDir + "FEBs/SN_" + SN + "/Calibration/RawValues_max_verify.csv";
+    std::string calibrationFile_m = generalDataDir + "FEBs/SN_" + SN + "/Calibration/RawValues_min_verify.csv";
     // Check if the files exist
     std::ifstream file_M(calibrationFile_M);
     std::ifstream file_m(calibrationFile_m);

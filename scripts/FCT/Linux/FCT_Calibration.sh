@@ -11,9 +11,7 @@ source $FCT_RUN_FOLDER/setup.sh
 GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 
-# activate HV
-  echo "V2 60" > /dev/ttyACM1
-  echo "OP2 1" > /dev/ttyACM1
+
 
 
 dummy_EOS="EndOfCalib.txt"
@@ -50,9 +48,7 @@ fi
 command="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_merged.cs\",$sn,0,0,true)"
 { sleep 1; echo $command; bash $FCT_UTILS/wait.sh $Data_path$dummy_EOS; } | telnet $ip_address $port 
 
-# deactivate HV
-  echo "V2 0" > /dev/ttyACM1
-  echo "OP2 0" > /dev/ttyACM1
+
 
 
 # run analysis

@@ -11,9 +11,9 @@ exe_calib="CalibrationPlots"
 exe_analog="FuncTest";
 exe_bl="FCTbaseline"
 exe_citi="FCTcitiTriggers"
-Data_file_name="FCT_os_LG56HG12amp30mV_bl32786.daq";
-Data_file_name_bl1="FCT_BLTEST_LG56HG12amp30mV_baseline$bl1.daq"
-Data_file_name_bl2="FCT_BLTEST_LG56HG12amp30mV_baseline$bl2.daq"
+Data_file_name="FCT_AllChannelsFile.daq";
+Data_file_name_bl1="FCT_BLTEST_baseline$bl1.daq"
+Data_file_name_bl2="FCT_BLTEST_baseline$bl2.daq"
 CITI_subfolder="/CITI_trigger_tests/"
 
 setup_path=$ANALYSIS_FOLDER"/setup.sh";

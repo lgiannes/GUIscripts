@@ -1,4 +1,4 @@
-#### Mother directory
+### Mother directory
 #export GENERALDATADIR="/DATA/FCT_retests_y/"
 #export GENERALDATADIR="/DATA/FCT_WITH_COLDPLATES/"
 export GENERALDATADIR="/DATA/FCT_RETEST_FEB_FROMJAPAN/"

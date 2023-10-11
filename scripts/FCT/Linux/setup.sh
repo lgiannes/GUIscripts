@@ -1,4 +1,4 @@
-### Mother directory
+#### Mother directory
 #export GENERALDATADIR="/DATA/FCT_retests_y/"
 #export GENERALDATADIR="/DATA/FCT_WITH_COLDPLATES/"
 export GENERALDATADIR="/DATA/FCT_RETEST_FEB_FROMJAPAN/"
@@ -40,3 +40,4 @@ export amp="0.030" #V
 export HG="12"
 export LG="56"
 export DAC10B="300"
+

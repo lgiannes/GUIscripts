@@ -11,7 +11,7 @@ done
 sleep 1.5
 echo
 echo "If in the line above you don't read:"
-echo "\"/dev/ttyACM0 - THURLBY_THANDAR_TG5011_55126528\""
+echo "\"/dev/ttyACM0 - model/name of pulse generator\""
 echo "the pulse generator is not correctly working"
 echo 
 

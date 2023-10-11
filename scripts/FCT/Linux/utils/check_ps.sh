@@ -11,7 +11,7 @@ done
 sleep 1.5
 echo
 echo "If in the line above you don't read:"
-echo "\"/dev/ttyACM1 - TTi_MX_Series_PSU_491122\""
+echo "\"/dev/ttyACM1 - model/name of power supply\""
 echo "the power supply is not correctly working"
 echo 
 

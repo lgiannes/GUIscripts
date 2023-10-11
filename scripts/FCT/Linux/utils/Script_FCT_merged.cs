@@ -17,7 +17,7 @@ string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR")+"/F
 
 
 void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_only=false){
-        
+
 
     string config_path = config_folder+config_name;
     int GPIO=Int32.Parse(Environment.GetEnvironmentVariable("GPIO_SN"));    
@@ -35,11 +35,11 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     var DATAfolder = System.IO.Directory.CreateDirectory(data_path);
 
     // BoardLib.Reconnect();
-    System.Console.Write("Preparing 256-chs test ...  3\r");
+    System.Console.Write("Preparing test ...  3\r");
     TurnOffFEB();
-    System.Console.Write("Preparing 256-chs test ...  2\r");
+    System.Console.Write("Preparing test ...  2\r");
     Sync.Sleep(1500);
-    System.Console.Write("Preparing 256-chs test ...  1\r");
+    System.Console.Write("Preparing test ...  1\r");
 
 
     TurnOnFEB();
@@ -53,13 +53,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
 
     BoardLib.SetDirectParameters(); //Sync.Sleep(3);
 
-    if(calib_only){
-        Calibration(SN,GPIO);
-        //Generate dummy file at the end of the script
-        File.WriteAllLinesAsync(data_path+"EndOfCalib.txt",o); 
-        System.Console.WriteLine("END OF SCRIPT");
-        return;
-    }
+
     bool Sync_good = false;
     Sync_good = SyncTest();
     if(!Sync_good){
@@ -81,21 +75,27 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
     System.Console.WriteLine("FEB is configured as: "+LastUsedConfig_AllChannelsTest);
 
-    // Set up communication with Pulse gen
-    string PulseGenSetup_File = "fg_setup.sh";
-    var BashOutput = ExecuteBashCommand("bash "+ Environment.GetEnvironmentVariable("FCT_UTILS")+ PulseGenSetup_File);
-    //Sync.Sleep(50);
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-    BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
-    //Sync.Sleep(50);
-    if(string.Compare(BashOutput,"error: no device connected\n")==0){
-        System.Console.WriteLine(BashOutput);
-    }else{
-        System.Console.WriteLine("Pulse gen is configured as: "+PulseGenSetup_File);
-    }
+    string PulseGenSetup_File, BashOutput;
+    int AcqTag;
+    
+    ////////////////////////////////////////////////////////////////////////////////////
+    if ( Int32.Parse(Environment.GetEnvironmentVariable("NO_CH_TEST")) == 0 ){
 
-    int AcqTag = -10;
-    if(!CITI_only){
+        // Set up communication with Pulse gen
+        PulseGenSetup_File = "fg_setup.sh";
+        BashOutput = ExecuteBashCommand("bash "+ Environment.GetEnvironmentVariable("FCT_UTILS")+ PulseGenSetup_File);
+        //Sync.Sleep(50);
+        BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+        BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
+        //Sync.Sleep(50);
+        if(string.Compare(BashOutput,"error: no device connected\n")==0){
+            System.Console.WriteLine(BashOutput);
+        }else{
+            System.Console.WriteLine("Pulse gen is configured as: "+PulseGenSetup_File);
+        }
+
+        AcqTag = -10;
+
         AcqTag = RunAcquisition();
         if(AcqTag==-10){
             System.Console.WriteLine("");
@@ -118,19 +118,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
         //Sync.Sleep(200);
         RunBaselineAcq(bl1);
 
-        //BoardLib.Reconnect();
-        // Sync.Sleep(500);
-        // TurnOffFEB();
-        // Sync.Sleep(1000);
-        // TurnOnFEB();
-        // Sync_good = false;
-        // Sync_good = SyncTest();
-        // if(!Sync_good){
-        //     System.Console.WriteLine("Sync not working");
-        //     return;
-        // }else{
-        //     System.Console.WriteLine("Sync test Successful!");
-        // }
+
 
         //Restore initial config
         BoardLib.OpenConfigFile(config_path);
@@ -145,7 +133,10 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
         //Sync.Sleep(200);
 
         RunBaselineAcq(bl2);
+    }else{
+        System.Console.WriteLine("Skipping all-channels test.");
     }
+    ////////////////////////////////////////////////////////////////////////////////////
 
     
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.ReadoutEn",true);
@@ -158,10 +149,12 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(5);
     BoardLib.SetDirectParameters();
 
-
     ////////////////////////////////////////////////////////////////////////////////////
-    CITIROC_triggers_test(SN);
-
+    if ( Int32.Parse(Environment.GetEnvironmentVariable("NO_CITI_TRIG")) == 0 ){
+        CITIROC_triggers_test(SN);
+    }else{
+        System.Console.WriteLine("Skipping CITIROC triggers test.");
+    }
     ////////////////////////////////////////////////////////////////////////////////////
 
     // Turn off Pulse Gen at the end
@@ -171,9 +164,14 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     System.Console.WriteLine("Pulse Generator OFF");
     // TurnOffFEB();
 
-    if(!CITI_only){
+    ////////////////////////////////////////////////////////////////////////////////////
+    if ( Int32.Parse(Environment.GetEnvironmentVariable("NO_CALIB")) == 0 ){
         Calibration(SN,GPIO);
+    }else{
+        System.Console.WriteLine("Skipping calibration.");
     }
+    ////////////////////////////////////////////////////////////////////////////////////
+
     TurnOffFEB();
     //Generate dummy file at the end of the script
     File.WriteAllLinesAsync(data_path+"EndOfScript.txt",o); 

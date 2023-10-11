@@ -11,6 +11,20 @@ fi
 # bash FEBenable.sh
 
 
+trap ctrl_c INT
+
+function ctrl_c() {
+        echo
+        echo "Aborting"
+        echo "Turning off HV ..."
+        source set_HV_setup_$WHICHSETUP.sh OFF
+        echo "Turning off pulse gen ..." 
+        echo "OUTPUT OFF" | cat > /dev/ttyACM0
+        echo "OUTPUT OFF" | cat > /dev/ttyACM0
+        echo "DO NOT disconnect FEB if LV is on"
+        exit;
+}
+
 # if [[ -z $1 ]]
 # then  
 #   echo

@@ -82,8 +82,12 @@ fi
 
 # PART 1
 # SET UP POWER SUPPLY
+echo "V1 0" > /dev/ttyACM1
 echo "V2 10.0" > /dev/ttyACM1
+echo "OP1 0" > /dev/ttyACM1
 echo "OP2 1" > /dev/ttyACM1
+# echo "OP1 0" > /dev/ttyACM1
+
 
 echo "/----------------------------------------------------\\"
 echo "|       Move Jumper J13 to position 2-3.             |"
@@ -106,12 +110,15 @@ then
     # turn off HV and abort
     echo "V2 0" > /dev/ttyACM1
     echo "OP2 0" > /dev/ttyACM1
+    echo "OP1 0" > /dev/ttyACM1
+
     return 1    
 else
     # PART 2:
     # SET UP POWER SUPPLY
-    echo "V2 $PS_HV" > /dev/ttyACM1
-    echo "OP2 0" > /dev/ttyACM1
+    echo "V1 35" > /dev/ttyACM1
+    echo "V2 25" > /dev/ttyACM1
+    echo "OP1 1" > /dev/ttyACM1
     echo "OP2 1" > /dev/ttyACM1
 fi
 

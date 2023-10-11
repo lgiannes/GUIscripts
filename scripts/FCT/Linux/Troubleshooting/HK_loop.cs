@@ -48,6 +48,8 @@ void ScriptMain(){
 
     }
     System.Console.WriteLine("Housekeeping stuck!");
+    TurnOffFEB();
+
 }
 
 
@@ -55,4 +57,12 @@ void TurnOnFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", true);
     BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
     Sync.Sleep(1500);
+}
+
+
+void TurnOffFEB(int BID=0){    
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
+    BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR", BID);
+    BoardLib.SetBoardId(126); Sync.Sleep(1); BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); BoardLib.GetFirmwareVersion();
+    Sync.Sleep(3000);
 }

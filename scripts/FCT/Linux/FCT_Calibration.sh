@@ -12,8 +12,11 @@ GUI_path=$GUI_FOLDER
 GUI_exe="/UnigeGpioBoard.exe"
 
 # activate HV
-  echo "V2 60" > /dev/ttyACM1
+# version setup2
+  echo "V1 35" > /dev/ttyACM1
+  echo "V2 25" > /dev/ttyACM1
   echo "OP2 1" > /dev/ttyACM1
+  echo "OP1 1" > /dev/ttyACM1
 
 
 dummy_EOS="EndOfCalib.txt"
@@ -51,7 +54,10 @@ command="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_merged.cs\",$sn,0,0,true)"
 { sleep 1; echo $command; bash $FCT_UTILS/wait.sh $Data_path$dummy_EOS; } | telnet $ip_address $port 
 
 # deactivate HV
+# version setup2
   echo "V2 0" > /dev/ttyACM1
+  echo "V1 0" > /dev/ttyACM1
+  echo "OP1 0" > /dev/ttyACM1
   echo "OP2 0" > /dev/ttyACM1
 
 

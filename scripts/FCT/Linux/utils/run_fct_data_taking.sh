@@ -20,8 +20,8 @@ Data_path=$DATADIR
 echo "DATADIR: "$DATADIR
 
 # Define the command to run the GUI script
-command="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
-command_citi="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_CITI_test.cs\",$sn)"
+# command="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_openshort.cs\",$sn,$bl1,$bl2)"
+# command_citi="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_CITI_test.cs\",$sn)"
 #debug
 #echo "in:  "$str_input
 #echo "cmp: "$str_cal

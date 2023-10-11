@@ -4,14 +4,14 @@
 //Name of default configuration
 string config_folder = Environment.GetEnvironmentVariable("CONFIGFOLDER");
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/FEB-GPIO_firmware/UT_60charge/etc/config/linearity_one_channel.xml";
+string config_name = Environment.GetEnvironmentVariable("CONFIGNAME");
 //Set the path to which data should be saved
 string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR")+"/FEBs/";  
                         //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
 
-int LG = 56;
-int HG = 12;
-double amplitude = 0.03;//V
+int LG = Int32.Parse(Environment.GetEnvironmentVariable("LG"));
+int HG = Int32.Parse(Environment.GetEnvironmentVariable("HG"));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,10 @@ double amplitude = 0.03;//V
 
 void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_only=false){
     
-    string config_path = config_folder+"config_FCT2_newGUI_V2.xml";
+    // Check whether the LG and HG are ints
+    
+
+    string config_path = config_folder+config_name;
     int GPIO=Int32.Parse(Environment.GetEnvironmentVariable("GPIO_SN"));    
     string[] o = {"END OF SCRIPT"};
 
@@ -74,12 +77,16 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
 
        
     // Enable preamp and DAQ on all channels
-    ActivateAllCh(LG,HG);
+    ActivateAllCh();
+    // Save last use config in a file
+    string LastUsedConfig_AllChannelsTest = config_folder + "/LastUsedConfig_AllChannelsTest.xml";
+    BoardLib.SaveConfigFile(LastUsedConfig_AllChannelsTest);
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
-    System.Console.WriteLine("FEB is configured");
+    System.Console.WriteLine("FEB is configured as: "+LastUsedConfig_AllChannelsTest);
 
     // Set up communication with Pulse gen
-    var BashOutput = ExecuteBashCommand("bash fg_setup.sh");
+    string PulseGenSetup_File = "fg_setup.sh";
+    var BashOutput = ExecuteBashCommand("bash "+ Environment.GetEnvironmentVariable("FCT_UTILS")+ PulseGenSetup_File);
     //Sync.Sleep(50);
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT ON\" | cat > /dev/ttyACM0");
@@ -87,7 +94,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     if(string.Compare(BashOutput,"error: no device connected\n")==0){
         System.Console.WriteLine(BashOutput);
     }else{
-        System.Console.WriteLine("Pulse gen is configured");
+        System.Console.WriteLine("Pulse gen is configured as: "+PulseGenSetup_File);
     }
 
     int AcqTag = -10;
@@ -110,7 +117,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
         BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(5);
         BoardLib.SetDirectParameters(); //Sync.Sleep(3);
         //Sync.Sleep(200);
-        ActivateAllCh(LG,HG);
+        ActivateAllCh();
         //Sync.Sleep(200);
         RunBaselineAcq(bl1);
 
@@ -137,7 +144,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
         BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(5);
         BoardLib.SetDirectParameters(); //Sync.Sleep(3);
         //Sync.Sleep(250);
-        ActivateAllCh(LG,HG);
+        ActivateAllCh();
         //Sync.Sleep(200);
 
         RunBaselineAcq(bl2);
@@ -153,6 +160,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
     BoardLib.GetFirmwareVersion();
     BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(5);
     BoardLib.SetDirectParameters();
+
 
     ////////////////////////////////////////////////////////////////////////////////////
     CITIROC_triggers_test(SN,LG,HG);
@@ -185,7 +193,7 @@ int RunAcquisition(){
     int baseline = 32786;
     var BashOutput = "";
     
-    string file_name = "FCT_os_LG"+LG.ToString()+"HG"+HG.ToString()+"amp"+((int)1000*amplitude).ToString()+"mV_"+"bl"+baseline.ToString();
+    string file_name = "FCT_AllChannelsFile";
     
 
     for(int asic = 0;asic<8;asic++){
@@ -315,7 +323,7 @@ int RunAcquisition(){
 
 void RunBaselineAcq(int baseline){
     
-    string file_name = "FCT_BLTEST_LG"+LG.ToString()+"HG"+HG.ToString()+"amp"+((int)1000*amplitude).ToString()+"mV_"+"baseline"+baseline.ToString();
+    string file_name = "FCT_BLTEST_baseline"+baseline.ToString();
     var BashOutput = "";
     
     for(int asic = 0;asic<8;asic++){
@@ -493,18 +501,35 @@ void SetKaladin(int channel){
 
 
 
-void ActivateAllCh(int LG_gain,int HG_gain){
+void ActivateAllCh(){
     BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
+
+    // Set HG and LG, check if they are properly set
+    int HG_gain,LG_gain;
+    bool LG_s = Int32.TryParse(Environment.GetEnvironmentVariable("LG"),out LG_gain);
+    bool HG_s = Int32.TryParse(Environment.GetEnvironmentVariable("HG"),out HG_gain);
+    if ( !(LG_s && HG_s) ){
+        throw new ArgumentException("HG or LG are not int");
+    }
+    // Repeat for DAC10B
+    int DAC10B;
+    if (!Int32.TryParse(Environment.GetEnvironmentVariable("DAC10B"),out DAC10B)){
+        throw new ArgumentException("DAC10B is not an int");
+    }
+
+
     for (int i_ch = 0; i_ch < 256; i_ch++){
         int asic=i_ch/32;
         int local_ch=i_ch%32; 
-            // DAC10b
-        BoardLib.SetVariable("Asics[" + asic.ToString() +
-                                "].GlobalControl.DAC10b", 300);
-        // DAC10b_t
-        BoardLib.SetVariable("Asics[" + asic.ToString() +
-                                "].GlobalControl.DAC10b_t", 300);
 
+        if(DAC10B!=0){
+            // DAC10b
+            BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                    "].GlobalControl.DAC10b", DAC10B);
+            // DAC10b_t
+            BoardLib.SetVariable("Asics[" + asic.ToString() +
+                                    "].GlobalControl.DAC10b_t", DAC10B);
+        }
         // En32Trigger
         BoardLib.SetVariable("Asics[" + asic.ToString() +
                                 "].GlobalControl.En32Trigger", true);
@@ -1183,7 +1208,7 @@ int RunCITITriggerAcq_32gates(string Test, string config, int SN, string data_pa
 
 
 
-void CITIROC_triggers_test(int SN, int LG, int HG){
+void CITIROC_triggers_test(int SN){
 //    int SN = 1; // to be set as argument when the script is launched from bash
 
 
@@ -1221,7 +1246,7 @@ void CITIROC_triggers_test(int SN, int LG, int HG){
     SendGPIO(3);
     //Sync.Sleep(200);
 
-    ActivateAllCh(LG,HG);
+    ActivateAllCh();
     // YOU MIGHT WANT TO CHANGE IT TO HAVE THE ADC STARTING AT GATE_CLOSE SIGNAL
     System.Console.WriteLine("FEB is configured");
 

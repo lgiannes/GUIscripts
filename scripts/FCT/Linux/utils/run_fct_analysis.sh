@@ -32,17 +32,13 @@ echo
 #Setup
 source $setup_path;
 
-if [[ $4 = "$str_cal" ]]
-then
-  echo
-  echo "Not doing calibration analysis."
-  echo
-else
-  echo
-  echo "Calibration will be included"
+
+  # echo
+  # echo "Calibration will be included"
   echo
   $exe_path$exe_calib -s $sn;
-fi
+
+
 #Open/Short and Basic Analog test
 $exe_path$exe_analog -f $DATADIR$Data_file_name -s$sn;
 #Baseline test

@@ -26,18 +26,10 @@ echo "DATADIR: "$DATADIR
 #echo "in:  "$str_input
 #echo "cmp: "$str_cal
 
-if [[ "$str_input" = "$str_cal" ]]
-then
-  echo
-  echo "Not doing calibration."
-  echo
-  command_merged="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_merged_NOCALIB.cs\",$sn,$bl1,$bl2)"
-else
-  echo
-  echo "Calibration will be performed."
+
   echo
   command_merged="Sync.RunScriptArgs(\"$FCT_UTILS/Script_FCT_merged.cs\",$sn,$bl1,$bl2)"
-fi
+
 # Opens GUI only if there are no GUI already open
 if [ -z $(pidof mono) ]
 then 

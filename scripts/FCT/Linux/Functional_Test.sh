@@ -11,23 +11,23 @@ fi
 # bash FEBenable.sh
 
 
-if [[ -z $1 ]]
-then  
-  echo
-  echo "Calibration will be included"
-  echo
-elif [[ $1 == $str_cal ]]
-then
-  echo
-  echo "Calibration will NOT be included"
-  echo
-else  
-  echo "USAGE:"
-  echo "no arguments: run full test and calibration"
-  echo "\"NOCALIB\": run full test without calibration"
-  echo "I don't understand any other argument"
-  exit
-fi
+# if [[ -z $1 ]]
+# then  
+#   echo
+#   echo "Calibration will be included"
+#   echo
+# elif [[ $1 == $str_cal ]]
+# then
+#   echo
+#   echo "Calibration will NOT be included"
+#   echo
+# else  
+#   echo "USAGE:"
+#   echo "no arguments: run full test and calibration"
+#   echo "\"NOCALIB\": run full test without calibration"
+#   echo "I don't understand any other argument"
+#   exit
+# fi
 
 bool_cal=$1
 

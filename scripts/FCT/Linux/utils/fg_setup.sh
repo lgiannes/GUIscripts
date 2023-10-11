@@ -3,7 +3,7 @@
 freq=1000 #Hz
 pulseper=1.0/$freq #s
 ## the amplitude shoul dbe set already
-echo "Amplitude = $amp V (cross check pulse generator)"
+#echo "Amplitude = $amp V (cross check pulse generator)"
 rise="10E-9" #s
 fall=99E-9 #s
 width=1E-6 #s

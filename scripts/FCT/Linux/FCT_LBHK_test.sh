@@ -82,12 +82,7 @@ fi
 
 # PART 1
 # SET UP POWER SUPPLY
-echo "V1 0" > /dev/ttyACM1
-echo "V2 10.0" > /dev/ttyACM1
-echo "OP1 0" > /dev/ttyACM1
-echo "OP2 1" > /dev/ttyACM1
-# echo "OP1 0" > /dev/ttyACM1
-
+source set_HV_setup_$WHICHSETUP.sh 10
 
 echo "/----------------------------------------------------\\"
 echo "|       Move Jumper J13 to position 2-3.             |"
@@ -108,18 +103,13 @@ wait_res=$?
 if [[ $wait_res == 1 ]]
 then
     # turn off HV and abort
-    echo "V2 0" > /dev/ttyACM1
-    echo "OP2 0" > /dev/ttyACM1
-    echo "OP1 0" > /dev/ttyACM1
-
+    source set_HV_setup_$WHICHSETUP.sh OFF
     return 1    
 else
     # PART 2:
     # SET UP POWER SUPPLY
-    echo "V1 35" > /dev/ttyACM1
-    echo "V2 25" > /dev/ttyACM1
-    echo "OP1 1" > /dev/ttyACM1
-    echo "OP2 1" > /dev/ttyACM1
+    source set_HV_setup_$WHICHSETUP.sh 60
+
 fi
 
 echo
@@ -133,9 +123,9 @@ read -n 1
 command="Sync.RunScriptArgs(\"$FCT_UTILS//LBHK_fromscript_part2.cs\",$sn)"
 { sleep 1; echo $command; bash $FCT_UTILS/wait_LBHK.sh $Data_path/IO_TEST/; } | telnet $ip_address $port 
 
-# SET UP POWER SUPPLY
-# echo "V2 0.0" > /dev/ttyACM1
-# echo "OP2 0" > /dev/ttyACM1
+# TURN OFF POWER SUPPLY
+source set_HV_setup_$WHICHSETUP.sh OFF
+
 
 
 # run ShowResults manually, only when the script is launched as standalone

@@ -10,17 +10,14 @@ string data_path   =    Environment.GetEnvironmentVariable("GENERALDATADIR")+"/F
                         //"/DATA/dataFCT/";
                         //"/home/lorenzo/T2K-uniGe/FEB_GPIO/data/linearity_tests_citiroc/multichannelHGLG/";
 
-int LG = Int32.Parse(Environment.GetEnvironmentVariable("LG"));
-int HG = Int32.Parse(Environment.GetEnvironmentVariable("HG"));
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_only=false){
-    
-    // Check whether the LG and HG are ints
-    
+        
 
     string config_path = config_folder+config_name;
     int GPIO=Int32.Parse(Environment.GetEnvironmentVariable("GPIO_SN"));    
@@ -39,7 +36,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
 
     // BoardLib.Reconnect();
     System.Console.Write("Preparing 256-chs test ...  3\r");
-    Sync.Sleep(1500);
+    TurnOffFEB();
     System.Console.Write("Preparing 256-chs test ...  2\r");
     Sync.Sleep(1500);
     System.Console.Write("Preparing 256-chs test ...  1\r");
@@ -163,7 +160,7 @@ void ScriptMainArgs(int SN,int bl1, int bl2,bool calib_only =false, bool CITI_on
 
 
     ////////////////////////////////////////////////////////////////////////////////////
-    CITIROC_triggers_test(SN,LG,HG);
+    CITIROC_triggers_test(SN);
 
     ////////////////////////////////////////////////////////////////////////////////////
 
@@ -517,6 +514,7 @@ void ActivateAllCh(){
         throw new ArgumentException("DAC10B is not an int");
     }
 
+    System.Console.WriteLine("HG: "+HG_gain.ToString()+" LG: "+LG_gain.ToString()+" DAC10B: "+DAC10B);
 
     for (int i_ch = 0; i_ch < 256; i_ch++){
         int asic=i_ch/32;
@@ -1487,6 +1485,10 @@ string GenerateProgressString(int p, int t){
 
 
 void Calibration(int SN, int GPIO){
+
+    System.Console.WriteLine("Turn on the HV");
+    var BashOutput = ExecuteBashCommand("source "+Environment.GetEnvironmentVariable("FCT_RUN_FOLDER")+"/set_HV_setup_"+Environment.GetEnvironmentVariable("WHICHSETUP")+".sh 60");
+
     //int SN=256;// to be passed as argument
     System.Console.WriteLine("Starting HV and Temperature calibration procedure ...");
     System.Console.WriteLine("Calibration FEB #"+SN.ToString()+". Using calibration paramters for GPIO #"+GPIO.ToString());
@@ -1735,6 +1737,10 @@ void Calibration(int SN, int GPIO){
 
     }
 
+
+    System.Console.WriteLine("Turn off the HV");
+    BashOutput = ExecuteBashCommand("source  "+Environment.GetEnvironmentVariable("FCT_RUN_FOLDER")+"/set_HV_setup_"+Environment.GetEnvironmentVariable("WHICHSETUP")+".sh OFF");
+
     //return;
         System.Console.Write("Saving calibration values in EEPROM registers...");
 
@@ -1904,8 +1910,7 @@ void Calibration(int SN, int GPIO){
         address+=1;
     }
 
-    // Finally, enable EEPROM WRITE PROTECT (HW action)
-
+    TurnOffFEB();    
     
     return;
 }

@@ -113,19 +113,7 @@ then
 fi
 
 
-if [ -z $1 ]; then
-  # SET UP POWER SUPPLY to 60 V for calibration
-  echo "V2 25" > /dev/ttyACM1
-  echo "V1 35" > /dev/ttyACM1
-  echo "OP1 1" > /dev/ttyACM1
-  echo "OP2 1" > /dev/ttyACM1
-fi
-if [[ $1 != $str_cal ]]; then
-  echo "V2 25" > /dev/ttyACM1
-  echo "V1 35" > /dev/ttyACM1
-  echo "OP1 1" > /dev/ttyACM1
-  echo "OP2 1" > /dev/ttyACM1
-fi
+
 
 
 # For BASELINE test:
@@ -200,11 +188,7 @@ then
     echo "Running analysis on existing files"
     echo
     bash "$FCT_UTILS/run_fct_analysis.sh" $sn $bl1 $bl2 $1
-    # turn off HV at the end
-    echo "V2 0" > /dev/ttyACM1
-    echo "V1 0" > /dev/ttyACM1
-    echo "OP1 0" > /dev/ttyACM1
-    echo "OP2 0" > /dev/ttyACM1
+
     echo
     echo "check that HV is OFF before disconnecting the FEB!!"
     echo
@@ -215,11 +199,6 @@ else
   rm -f "$DATADIR$dummy_EOS_citi";
   bash "$FCT_UTILS/run_fct_data_taking.sh" $sn $bl1 $bl2 $1;
   bash "$FCT_UTILS/run_fct_analysis.sh" $sn $bl1 $bl2 $1;
-  # turn off HV at the end
-    echo "V2 0" > /dev/ttyACM1
-    echo "V1 0" > /dev/ttyACM1
-    echo "OP1 0" > /dev/ttyACM1
-    echo "OP2 0" > /dev/ttyACM1
   echo
   echo "check that HV is OFF before disconnecting the FEB!!"
   echo

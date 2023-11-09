@@ -40,7 +40,7 @@ void ScriptMainArgs(int SN){
     OpenShortMIBtest(SN, output_path);
 
     // Turn off FEB
-    //TurnOffFEB();
+    TurnOffFEB();
     // Turn off Pulse Gen at the end
     var BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
     BashOutput = ExecuteBashCommand("echo \"OUTPUT OFF\" | cat > /dev/ttyACM0");
@@ -65,14 +65,16 @@ void TurnOnFEB(){
     BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", 3);
     Sync.Sleep(50);
 
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
     Sync.Sleep(2000);
 }
 void TurnOffFEB(){    
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-En", false);
     BoardLib.SetBoardId(126); Sync.Sleep(1); //Sync.Sleep(1);
     //Sync.Sleep(50);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
     Sync.Sleep(3000);
 }
 
@@ -106,7 +108,7 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     for(int i = 0;i<8;i++){
         BoardLib.SetVariable("FPGA-HV-HK.FPGA-HV.HV-CH"+i.ToString()+".DAC",0);
     }
-    Sync.Sleep(50); BoardLib.SetBoardId(0); Sync.Sleep(50);
+    Sync.Sleep(50);     BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); Sync.Sleep(50);
     BoardLib.DeviceConfigure(11, x_verbose:false);
     Sync.Sleep(500);
     BoardLib.SetVariable("Board.DirectParam.BaselineDACApply", true);
@@ -129,9 +131,10 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     double[] HVs_volts = new double[8];
 
     // Test HVA
-    BoardLib.SetBoardId(126);
+    System.Console.WriteLine("HVA");
+    BoardLib.GetFirmwareVersion();    BoardLib.SetBoardId(126);    BoardLib.GetFirmwareVersion(); 
     BoardLib.SetVariable("GPIO.GPIO-MISC.HVAB-SW",true);//true=HVA
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
         HVs_volts[i] = 1.8 + 1.2*(i%2);
@@ -148,9 +151,10 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     }
 
     // Test HVB
-    BoardLib.SetBoardId(126);
+    System.Console.WriteLine("HVB");
+    BoardLib.GetFirmwareVersion();    BoardLib.SetBoardId(126);
     BoardLib.SetVariable("GPIO.GPIO-MISC.HVAB-SW",false);//false=HVB   
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
     // Test two different HV value for each ASIC. -> two loops
     for(int i=0;i<8;i++){
         HVs_volts[i] = 1.8 + 1.2*(i%2);
@@ -178,11 +182,11 @@ bool HouseKeepingMIBtest(string OutFile_Name,string config_path){
     BoardLib.SetDirectParameters();
     Sync.Sleep(1000);
     
-    Restore_Initial_Config(config_path);
+    Restore_Initial_Config(config_path); 
 
     bool MPPCTempA_success = MPPCTemp_test(OutFile_Name);
 
-
+    System.Console.WriteLine("  -End of HV test");
     return ( HVA_ADC_success && HVB_ADC_success && MPPCTempA_success);
 }
 
@@ -205,7 +209,8 @@ bool MPPCTemp_test(string OutFile_Name){
         s2=false;
         BoardLib.SetBoardId(126);
         BoardLib.SetVariable("GPIO.GPIO-MISC.TSEN-SW",(byte)(Math.Pow(2,SUT)));
-        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+            BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
         BoardLib.SetBoardId(0);
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+SUT.ToString()+".MPPC-Temp") );
@@ -218,7 +223,8 @@ bool MPPCTemp_test(string OutFile_Name){
         }
         BoardLib.SetBoardId(126);
         BoardLib.SetVariable("GPIO.GPIO-MISC.TSEN-SW",0);
-        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+            BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
         BoardLib.SetBoardId(0);
         BoardLib.UpdateUserParameters("FPGA-HV-HK.Housekeeping-DPRAM-V2");
         read = Convert.ToDouble( BoardLib.GetFormulaVariable("FPGA-HV-HK.Housekeeping-DPRAM-V2.Group.Group"+SUT.ToString()+".MPPC-Temp") );
@@ -304,12 +310,14 @@ void Restore_Initial_Config(string config_path){
     SendGPIO(3);
     SendFEB();
     BoardLib.SetBoardId(126); Sync.Sleep(1);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC"); 
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+ 
     BoardLib.SetBoardId(0); Sync.Sleep(1);
-    BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config"); 
+    BoardLib.UpdateUserParameters("FPGA-MISC.FPGA-Misc-Config"); BoardLib.GetFirmwareVersion();
 }
 
 bool MIB_Debug_test(int FEB_BoardID, string OutFile_Name){
+    System.Console.WriteLine("MIB debug test starting");
     File.AppendAllText(@OutFile_Name,Environment.NewLine+"Debug: ");
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgFromAddrEn",true);
     BoardLib.SetVariable("FPGA-MISC.FPGA-Misc-Config.FunctionalTesting.MIBdbgAddr75Sel",false);
@@ -320,7 +328,8 @@ bool MIB_Debug_test(int FEB_BoardID, string OutFile_Name){
     BoardLib.SetBoardId(126); Sync.Sleep(1);
     byte address=0;
     BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
     FEB_BoardID = address;
     BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
     Sync.Sleep(500);
@@ -333,7 +342,8 @@ bool MIB_Debug_test(int FEB_BoardID, string OutFile_Name){
     for(int i=0;i<5;i++){
         address = (byte)Math.Pow(2,i);
         BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
-        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+            BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
         FEB_BoardID = address;
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
@@ -351,7 +361,8 @@ bool MIB_Debug_test(int FEB_BoardID, string OutFile_Name){
     for(int i=5;i<8;i++){
         address = (byte)Math.Pow(2,i);
         BoardLib.SetVariable("GPIO.GPIO-MISC.FEB-ADDR",address);
-        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+            BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
         FEB_BoardID = address;
         BoardLib.UpdateUserParameters("GPIO.GPIO-STATUS");
         LB_address = BoardLib.GetByteVariable("GPIO.GPIO-STATUS.MIBDebug");
@@ -365,6 +376,7 @@ bool MIB_Debug_test(int FEB_BoardID, string OutFile_Name){
     //if(MIBdebug_success){ File.AppendAllText(@OutFile_Name, "Loopback on MIB Debug: TEST SUCCESSFUL " + Environment.NewLine); }
 
 
+    System.Console.WriteLine("  -End of MIB debug test");
 
     return MIBdebug_success;
 }
@@ -418,7 +430,7 @@ int RunMIBAcquisition(string MIBdaqFileName){
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     //Sync.Sleep(200);                                                                    
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
     if(BoardLib.StartAcquisition(file_name,true)){ 
         System.Console.WriteLine("Asynchronous acquisition started");
     }
@@ -429,7 +441,7 @@ int RunMIBAcquisition(string MIBdaqFileName){
         BoardLib.StartAcquisition(file_name,true);
     }
 
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
+    BoardLib.SetBoardId(0); BoardLib.GetFirmwareVersion();//Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
     while(GateEn){
@@ -440,7 +452,7 @@ int RunMIBAcquisition(string MIBdaqFileName){
     }
 
     //Sync.Sleep(20);
-    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.SetBoardId(126); BoardLib.GetFirmwareVersion();//Sync.Sleep(1); //Sync.Sleep(1);
     BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",true);
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     //Sync.Sleep(300);                                                                   
@@ -512,31 +524,40 @@ void SetKaladin_8chs(int channel){
     BoardLib.SetVariable("GPIO.GPIO-MISC.KAL-MUX", Kal_MUX_output); // only depends on local channel
     
     BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
 
 }
 
 void EndOfRunProtocol(){
-    BoardLib.StopAcquisition();
-    System.Console.WriteLine("END OF ACQUISITION");
-    
-    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
-    //Sync.Sleep(10);
-    BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
-    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-    //Sync.Sleep(100);
-    BoardLib.SetBoardId(0); //Sync.Sleep(1);
+    Sync.Sleep(20);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
     BoardLib.ReadStatus();
     bool GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");
+    System.Console.WriteLine("Closing gate.");
     while(GateEn){
         BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GateOpen",false);
+        BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1);
         BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
-        //Sync.Sleep(200); 
+        BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(1);
         BoardLib.ReadStatus();
-        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn");  
+        GateEn = BoardLib.GetBoolVariable("Board.StatusParam.GateEn"); 
+        Sync.Sleep(10);
     }
+    Sync.Sleep(500);
+    System.Console.WriteLine("Gate closed. Stopping GTS.");
+    Sync.Sleep(500);
+    BoardLib.SetVariable("GPIO.GPIO-DIRECT-PARAMS.GTSEn",false);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(126); //Sync.Sleep(1); //Sync.Sleep(1);
+    BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
     System.Console.WriteLine("Stopped GTS beacon");
+    Sync.Sleep(500);
+    BoardLib.StopAcquisition();
+    Sync.Sleep(600);
     BoardLib.WaitForEndOfTransfer(true);
+    Sync.Sleep(500);
+    System.Console.WriteLine("END OF ACQUISITION");
+    Sync.Sleep(500);
 
 }
 
@@ -660,16 +681,16 @@ void SendGPIO(byte x_phase){
     Sync.Sleep(50);
 	 BoardLib.SetVariable("GPIO.GPIO-MISC.PLL-PHASE", x_phase);
 	 Console.WriteLine(" => GPIO Phase set to " + x_phase.ToString());
-    BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");
+        BoardLib.UpdateUserParameters("GPIO.GPIO-MISC");    BoardLib.GetFirmwareVersion();
+
 	 BoardLib.UpdateUserParameters("GPIO.GPIO-PHASE-TUNE");
     BoardLib.UpdateUserParameters("GPIO.GPIO-DIRECT-PARAMS");
 	 System.Console.WriteLine("SendGPIO done");
 }
 
 void SendFEB(byte FEBID=0){
-
     SelectFEBdevices(FEBID);
-    BoardLib.SetBoardId(0); //Sync.Sleep(3);
+    BoardLib.GetFirmwareVersion();BoardLib.SetBoardId(0); //Sync.Sleep(3);
     BoardLib.BoardConfigure();
     //Sync.Sleep(50);
 }

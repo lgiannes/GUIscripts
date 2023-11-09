@@ -2,6 +2,20 @@
 
 source $FCT_RUN_FOLDER/setup.sh
 
+trap ctrl_c INT
+
+function ctrl_c() {
+        echo
+        echo "Aborting"
+        echo "Turning off HV ..."
+        source set_HV_setup_$WHICHSETUP.sh OFF
+        echo "Turning off pulse gen ..." 
+        echo "OUTPUT OFF" | cat > /dev/ttyACM0
+        echo "OUTPUT OFF" | cat > /dev/ttyACM0
+        echo "DO NOT disconnect FEB if LV is on"
+        exit;
+}
+
 
 if [ -z $(pidof mono) ]
 then 
@@ -52,9 +66,15 @@ then
   echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
+    #turn on HV
+    source set_HV_setup_$WHICHSETUP.sh "15"
     #Remove the "EndOFScript.txt" dummy file if it exists already in the directory
     rm -f $MIBDATADIR$dummy_EOS
     bash $FCT_UTILS/MIBLaunchScript.sh $sn
+
+    #turn off HV
+    source set_HV_setup_$WHICHSETUP.sh OFF 
+
     bash $FCT_UTILS/MIBLaunchAnalysis.sh $sn
   else
     echo
@@ -64,9 +84,17 @@ then
     exit
   fi
 else
+    #turn on HV
+    source set_HV_setup_$WHICHSETUP.sh "15"
   rm -f $MIBDATADIR$dummy_EOS;
   bash $FCT_UTILS/MIBLaunchScript.sh $sn
+
+  #turn off HV
+  source set_HV_setup_$WHICHSETUP.sh OFF 
+
   bash $FCT_UTILS/MIBLaunchAnalysis.sh $sn
+
+
   exit
 fi
 
